@@ -34,12 +34,17 @@ final public class Canvas {
     // MARK: - Initializer
 
     /// Initializer
-    /// - parameter width: Canvas width
-    /// - parameter height: Canvas height
+    /// - parameter size: Canvas size
     /// - parameter tortoiseImage: Tortoise icon image
-    public required init(width: Number, height: Number, tortoiseImage: CGImage? = nil) {
-        context = Context(canvasSize: CGSize(width: width, height: height),
-                          tortoiseImage: tortoiseImage)
+    public required init(size: CGSize, tortoiseImage: CGImage? = nil) {
+        self.context = Context(canvasSize: size, tortoiseImage: tortoiseImage)
+    }
+
+    /// Initializer
+    /// - parameter size: Canvas size
+    /// - parameter tortoiseImage: Tortoise icon image
+    public required init(context: CGContext, size: CGSize, tortoiseImage: CGImage? = nil) {
+        self.context = Context(cgContext: context, canvasSize: size, tortoiseImage: tortoiseImage)
     }
 
     // MARK: - Methods

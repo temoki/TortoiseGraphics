@@ -5,7 +5,7 @@ import CoreGraphics
 class TortoiseGraphicsTests: XCTestCase {
     
     func testExample() {
-        let canvas = Canvas(width: 300, height: 300)
+        let canvas = Canvas(size: CGSize(width: 300, height: 300))
         
         canvas.🐢
             .setRGB(0, [0.8, 0.8, 0.8])
@@ -30,8 +30,8 @@ class TortoiseGraphicsTests: XCTestCase {
             .setPenColor(1)
             .home()
             .done()
-        canvas.draw()
 
+        canvas.draw()
         let image = canvas.rendered
         XCTAssertNotNil(image)
 
