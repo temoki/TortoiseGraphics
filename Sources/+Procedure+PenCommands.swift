@@ -34,7 +34,7 @@ public extension Procedure {
 
     /// Set the drawing colour to colour-number.
     /// This is the colour number used to draw lines and do fills.
-    /// Use SetRGB to set this colour number to a particular colour value.
+    /// Use setRGB to set this colour number to a particular colour value.
     /// - parameter number: Color number
     /// - returns: self
     public func setPenColor(_ number: @escaping NumberOutput) -> Procedure {
@@ -44,7 +44,7 @@ public extension Procedure {
 
     /// Set the drawing colour to colour-number.
     /// This is the colour number used to draw lines and do fills.
-    /// Use SetRGB to set this colour number to a particular colour value.
+    /// Use setRGB to set this colour number to a particular colour value.
     /// - parameter number: Color number
     /// - returns: self
     public func setPenColor(_ number: Number) -> Procedure {
