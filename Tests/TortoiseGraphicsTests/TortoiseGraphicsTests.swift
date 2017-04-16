@@ -7,10 +7,9 @@ class TortoiseGraphicsTests: XCTestCase {
     func testExample() {
         let canvas = Canvas(width: 300, height: 300)
         
-        let color = "color"
         canvas.🐢
-            //.clearScreen()
-            .make(color, 0)
+            .setRGB(0, [0.8, 0.8, 0.8])
+            .make("color", 0)
             .repeat(12) { $0
                 .setPenWidth(2)
                 .right(15)
@@ -22,12 +21,14 @@ class TortoiseGraphicsTests: XCTestCase {
                 .setPenWidth(1)
                 .right(15)
                 .repeat(6) { $0
-                    .make(color) { $0[color] + 1 }
-                    .setPenColor({ $0[color] })
+                    .make("color") { $0["color"] + 1 }
+                    .setPenColor({ $0["color"] })
                     .forward(20)
                     .right(60)
                 }
             }
+            .setPenColor(1)
+            .home()
             .done()
         canvas.draw()
 

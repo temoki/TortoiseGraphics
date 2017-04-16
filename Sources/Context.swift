@@ -74,8 +74,13 @@ class Context {
         self.bitmapContext = cgContext
 
         // Convert bitmap origin
-        self.bitmapContext.translateBy(x: 0, y: canvasSize.height)
-        self.bitmapContext.scaleBy(x: 1, y: -1)
+        #if os(iOS)
+            // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
+            // The default coordinate system for views in iOS and OS X
+            // differ in the orientation of the vertical axis:
+            self.bitmapContext.translateBy(x: 0, y: canvasSize.height)
+            self.bitmapContext.scaleBy(x: 1, y: -1)
+        #endif
         self.bitmapContext.translateBy(x: halfWidth, y: halfHeight)
 
         self.colorPalette = ColorPalette()
