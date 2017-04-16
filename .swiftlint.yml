@@ -1,0 +1,17 @@
+opt_in_rules:
+  - force_unwrapping
+
+disabled_rules:
+  - line_length
+
+included:
+  - Sources
+
+identifier_name:
+  excluded:
+    - 🐢
+    - r
+    - g
+    - b
+
+force_cast: warning
