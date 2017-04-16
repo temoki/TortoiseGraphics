@@ -67,19 +67,11 @@ class Context {
 
     // MARK: - Initializer
 
-    init(canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
+    init(cgContext: CGContext, canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
-
-        self.bitmapContext = CGContext(data: nil,
-                                       width: canvasSize.width.integer,
-                                       height: canvasSize.height.integer,
-                                       bitsPerComponent: 8,
-                                       bytesPerRow: canvasSize.width.integer * 4,
-                                       space: CGColorSpaceCreateDeviceRGB(),
-                                       bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
-        // swiftlint:disable:previous force_unwrapping
+        self.bitmapContext = cgContext
 
         // Convert bitmap origin
         self.bitmapContext.translateBy(x: 0, y: canvasSize.height)
@@ -100,8 +92,21 @@ class Context {
 
         self.variablesStack = Context.defaultVariableStack
         self.procedures = Context.defaultProcedures
-        
+
         self.reset()
+    }
+
+    convenience init(canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
+        let cgContext = CGContext(data: nil,
+                                       width: canvasSize.width.integer,
+                                       height: canvasSize.height.integer,
+                                       bitsPerComponent: 8,
+                                       bytesPerRow: canvasSize.width.integer * 4,
+                                       space: CGColorSpaceCreateDeviceRGB(),
+                                       bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+        // swiftlint:disable:previous force_unwrapping
+
+        self.init(cgContext: cgContext, canvasSize: canvasSize, tortoiseImage: tortoiseImage)
     }
 
     // MARK: - Methods
