@@ -1,6 +1,8 @@
-# 🐢 TortoiseGraphics
+# TortoiseGraphics 🐢
 
-A  turtle graphics engine written in Swift.
+A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key feature of the [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)) engine written in Swift.
+
+The commands were implemented with reference to [ACSLogo](http://www.alancsmith.co.uk/logo).
 
 [![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](hhttps://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager/)
