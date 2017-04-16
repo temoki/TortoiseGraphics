@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_51"
+               BlueprintIdentifier = "OBJ_55"
                BuildableName = "TortoiseGraphics.framework"
                BlueprintName = "TortoiseGraphics"
                ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_94"
+               BlueprintIdentifier = "OBJ_102"
                BuildableName = "TortoiseGraphicsTests.xctest"
                BlueprintName = "TortoiseGraphicsTests"
                ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
@@ -55,7 +55,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_51"
+            BlueprintIdentifier = "OBJ_55"
             BuildableName = "TortoiseGraphics.framework"
             BlueprintName = "TortoiseGraphics"
             ReferencedContainer = "container:TortoiseGraphics.xcodeproj">

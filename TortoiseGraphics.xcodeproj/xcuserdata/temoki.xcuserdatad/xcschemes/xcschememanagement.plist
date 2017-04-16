@@ -4,6 +4,11 @@
 <dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>OBJ_102</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>OBJ_22</key>
 		<dict>
 			<key>primary</key>
@@ -25,6 +30,11 @@
 			<true/>
 		</dict>
 		<key>OBJ_51</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>OBJ_55</key>
 		<dict>
 			<key>primary</key>
 			<true/>

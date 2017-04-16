@@ -7,197 +7,209 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		OBJ_101 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* TortoiseGraphics.framework */; };
-		OBJ_56 /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* +Canvas.swift */; };
-		OBJ_57 /* +Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* +Procedure.swift */; };
-		OBJ_58 /* +Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* +Properties.swift */; };
-		OBJ_59 /* +Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* +Type.swift */; };
-		OBJ_60 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Color.swift */; };
-		OBJ_61 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* ColorPallete.swift */; };
-		OBJ_62 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* Command.swift */; };
-		OBJ_63 /* CommandArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* CommandArc.swift */; };
-		OBJ_64 /* CommandBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* CommandBack.swift */; };
-		OBJ_65 /* CommandCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* CommandCall.swift */; };
-		OBJ_66 /* CommandClean.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* CommandClean.swift */; };
-		OBJ_67 /* CommandClearScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* CommandClearScreen.swift */; };
-		OBJ_68 /* CommandDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* CommandDefine.swift */; };
-		OBJ_69 /* CommandDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* CommandDot.swift */; };
-		OBJ_70 /* CommandForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* CommandForward.swift */; };
-		OBJ_71 /* CommandHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* CommandHome.swift */; };
-		OBJ_72 /* CommandIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* CommandIf.swift */; };
-		OBJ_73 /* CommandLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CommandLeft.swift */; };
-		OBJ_74 /* CommandLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* CommandLocal.swift */; };
-		OBJ_75 /* CommandMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* CommandMake.swift */; };
-		OBJ_76 /* CommandPenDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* CommandPenDown.swift */; };
-		OBJ_77 /* CommandPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* CommandPrint.swift */; };
-		OBJ_78 /* CommandRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* CommandRepeat.swift */; };
-		OBJ_79 /* CommandRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* CommandRight.swift */; };
-		OBJ_80 /* CommandSetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* CommandSetBackground.swift */; };
-		OBJ_81 /* CommandSetHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* CommandSetHeading.swift */; };
-		OBJ_82 /* CommandSetLineCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* CommandSetLineCap.swift */; };
-		OBJ_83 /* CommandSetLineDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* CommandSetLineDash.swift */; };
-		OBJ_84 /* CommandSetPenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* CommandSetPenColor.swift */; };
-		OBJ_85 /* CommandSetPenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* CommandSetPenWidth.swift */; };
-		OBJ_86 /* CommandSetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* CommandSetPosition.swift */; };
-		OBJ_87 /* CommandSetRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* CommandSetRGB.swift */; };
-		OBJ_88 /* CommandSetX.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CommandSetX.swift */; };
-		OBJ_89 /* CommandSetY.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* CommandSetY.swift */; };
-		OBJ_90 /* CommandShowTurtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* CommandShowTurtle.swift */; };
-		OBJ_91 /* CommandWhile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* CommandWhile.swift */; };
-		OBJ_92 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* Context.swift */; };
-		OBJ_99 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* TortoiseGraphicsTests.swift */; };
+		OBJ_100 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_48 /* Context.swift */; };
+		OBJ_107 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* TortoiseGraphicsTests.swift */; };
+		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
+		OBJ_60 /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* +Canvas.swift */; };
+		OBJ_61 /* +Procedure+ControlCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* +Procedure+ControlCommands.swift */; };
+		OBJ_62 /* +Procedure+DrawCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* +Procedure+DrawCommands.swift */; };
+		OBJ_63 /* +Procedure+MoveCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* +Procedure+MoveCommands.swift */; };
+		OBJ_64 /* +Procedure+PenCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* +Procedure+PenCommands.swift */; };
+		OBJ_65 /* +Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* +Procedure.swift */; };
+		OBJ_66 /* +Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* +Properties.swift */; };
+		OBJ_67 /* +Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_15 /* +Type.swift */; };
+		OBJ_68 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* Color.swift */; };
+		OBJ_69 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_17 /* ColorPallete.swift */; };
+		OBJ_70 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Command.swift */; };
+		OBJ_71 /* CommandArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* CommandArc.swift */; };
+		OBJ_72 /* CommandBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* CommandBack.swift */; };
+		OBJ_73 /* CommandCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* CommandCall.swift */; };
+		OBJ_74 /* CommandClean.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* CommandClean.swift */; };
+		OBJ_75 /* CommandClearScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* CommandClearScreen.swift */; };
+		OBJ_76 /* CommandDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* CommandDefine.swift */; };
+		OBJ_77 /* CommandDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* CommandDot.swift */; };
+		OBJ_78 /* CommandForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* CommandForward.swift */; };
+		OBJ_79 /* CommandHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* CommandHome.swift */; };
+		OBJ_80 /* CommandIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* CommandIf.swift */; };
+		OBJ_81 /* CommandLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* CommandLeft.swift */; };
+		OBJ_82 /* CommandLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* CommandLocal.swift */; };
+		OBJ_83 /* CommandMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* CommandMake.swift */; };
+		OBJ_84 /* CommandPenDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* CommandPenDown.swift */; };
+		OBJ_85 /* CommandPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_33 /* CommandPrint.swift */; };
+		OBJ_86 /* CommandRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_34 /* CommandRepeat.swift */; };
+		OBJ_87 /* CommandRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* CommandRight.swift */; };
+		OBJ_88 /* CommandSetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_36 /* CommandSetBackground.swift */; };
+		OBJ_89 /* CommandSetHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_37 /* CommandSetHeading.swift */; };
+		OBJ_90 /* CommandSetLineCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_38 /* CommandSetLineCap.swift */; };
+		OBJ_91 /* CommandSetLineDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_39 /* CommandSetLineDash.swift */; };
+		OBJ_92 /* CommandSetPenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_40 /* CommandSetPenColor.swift */; };
+		OBJ_93 /* CommandSetPenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_41 /* CommandSetPenWidth.swift */; };
+		OBJ_94 /* CommandSetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_42 /* CommandSetPosition.swift */; };
+		OBJ_95 /* CommandSetRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_43 /* CommandSetRGB.swift */; };
+		OBJ_96 /* CommandSetX.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_44 /* CommandSetX.swift */; };
+		OBJ_97 /* CommandSetY.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_45 /* CommandSetY.swift */; };
+		OBJ_98 /* CommandShowTurtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_46 /* CommandShowTurtle.swift */; };
+		OBJ_99 /* CommandWhile.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* CommandWhile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		14B0E94F1EA37AC2007FBC3D /* PBXContainerItemProxy */ = {
+		14B0E9501EA38438007FBC3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = OBJ_1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = OBJ_51;
+			remoteGlobalIDString = OBJ_55;
 			remoteInfo = TortoiseGraphics;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		OBJ_10 /* +Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Properties.swift"; sourceTree = "<group>"; };
-		OBJ_11 /* +Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Type.swift"; sourceTree = "<group>"; };
-		OBJ_12 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		OBJ_13 /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
-		OBJ_14 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		OBJ_15 /* CommandArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandArc.swift; sourceTree = "<group>"; };
-		OBJ_16 /* CommandBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandBack.swift; sourceTree = "<group>"; };
-		OBJ_17 /* CommandCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCall.swift; sourceTree = "<group>"; };
-		OBJ_18 /* CommandClean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClean.swift; sourceTree = "<group>"; };
-		OBJ_19 /* CommandClearScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClearScreen.swift; sourceTree = "<group>"; };
-		OBJ_20 /* CommandDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDefine.swift; sourceTree = "<group>"; };
-		OBJ_21 /* CommandDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDot.swift; sourceTree = "<group>"; };
-		OBJ_22 /* CommandForward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandForward.swift; sourceTree = "<group>"; };
-		OBJ_23 /* CommandHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHome.swift; sourceTree = "<group>"; };
-		OBJ_24 /* CommandIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandIf.swift; sourceTree = "<group>"; };
-		OBJ_25 /* CommandLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLeft.swift; sourceTree = "<group>"; };
-		OBJ_26 /* CommandLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLocal.swift; sourceTree = "<group>"; };
-		OBJ_27 /* CommandMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMake.swift; sourceTree = "<group>"; };
-		OBJ_28 /* CommandPenDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPenDown.swift; sourceTree = "<group>"; };
-		OBJ_29 /* CommandPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPrint.swift; sourceTree = "<group>"; };
-		OBJ_30 /* CommandRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRepeat.swift; sourceTree = "<group>"; };
-		OBJ_31 /* CommandRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRight.swift; sourceTree = "<group>"; };
-		OBJ_32 /* CommandSetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetBackground.swift; sourceTree = "<group>"; };
-		OBJ_33 /* CommandSetHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetHeading.swift; sourceTree = "<group>"; };
-		OBJ_34 /* CommandSetLineCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetLineCap.swift; sourceTree = "<group>"; };
-		OBJ_35 /* CommandSetLineDash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetLineDash.swift; sourceTree = "<group>"; };
-		OBJ_36 /* CommandSetPenColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPenColor.swift; sourceTree = "<group>"; };
-		OBJ_37 /* CommandSetPenWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPenWidth.swift; sourceTree = "<group>"; };
-		OBJ_38 /* CommandSetPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPosition.swift; sourceTree = "<group>"; };
-		OBJ_39 /* CommandSetRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetRGB.swift; sourceTree = "<group>"; };
-		OBJ_40 /* CommandSetX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetX.swift; sourceTree = "<group>"; };
-		OBJ_41 /* CommandSetY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetY.swift; sourceTree = "<group>"; };
-		OBJ_42 /* CommandShowTurtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandShowTurtle.swift; sourceTree = "<group>"; };
-		OBJ_43 /* CommandWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandWhile.swift; sourceTree = "<group>"; };
-		OBJ_44 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		OBJ_47 /* TortoiseGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseGraphicsTests.swift; sourceTree = "<group>"; };
-		OBJ_49 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		OBJ_50 /* TortoiseGraphicsTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TortoiseGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_10 /* +Procedure+DrawCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure+DrawCommands.swift"; sourceTree = "<group>"; };
+		OBJ_11 /* +Procedure+MoveCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure+MoveCommands.swift"; sourceTree = "<group>"; };
+		OBJ_12 /* +Procedure+PenCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure+PenCommands.swift"; sourceTree = "<group>"; };
+		OBJ_13 /* +Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure.swift"; sourceTree = "<group>"; };
+		OBJ_14 /* +Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Properties.swift"; sourceTree = "<group>"; };
+		OBJ_15 /* +Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Type.swift"; sourceTree = "<group>"; };
+		OBJ_16 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		OBJ_17 /* ColorPallete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
+		OBJ_18 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		OBJ_19 /* CommandArc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandArc.swift; sourceTree = "<group>"; };
+		OBJ_20 /* CommandBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandBack.swift; sourceTree = "<group>"; };
+		OBJ_21 /* CommandCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCall.swift; sourceTree = "<group>"; };
+		OBJ_22 /* CommandClean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClean.swift; sourceTree = "<group>"; };
+		OBJ_23 /* CommandClearScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClearScreen.swift; sourceTree = "<group>"; };
+		OBJ_24 /* CommandDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDefine.swift; sourceTree = "<group>"; };
+		OBJ_25 /* CommandDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandDot.swift; sourceTree = "<group>"; };
+		OBJ_26 /* CommandForward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandForward.swift; sourceTree = "<group>"; };
+		OBJ_27 /* CommandHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHome.swift; sourceTree = "<group>"; };
+		OBJ_28 /* CommandIf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandIf.swift; sourceTree = "<group>"; };
+		OBJ_29 /* CommandLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLeft.swift; sourceTree = "<group>"; };
+		OBJ_30 /* CommandLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLocal.swift; sourceTree = "<group>"; };
+		OBJ_31 /* CommandMake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMake.swift; sourceTree = "<group>"; };
+		OBJ_32 /* CommandPenDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPenDown.swift; sourceTree = "<group>"; };
+		OBJ_33 /* CommandPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPrint.swift; sourceTree = "<group>"; };
+		OBJ_34 /* CommandRepeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRepeat.swift; sourceTree = "<group>"; };
+		OBJ_35 /* CommandRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRight.swift; sourceTree = "<group>"; };
+		OBJ_36 /* CommandSetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetBackground.swift; sourceTree = "<group>"; };
+		OBJ_37 /* CommandSetHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetHeading.swift; sourceTree = "<group>"; };
+		OBJ_38 /* CommandSetLineCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetLineCap.swift; sourceTree = "<group>"; };
+		OBJ_39 /* CommandSetLineDash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetLineDash.swift; sourceTree = "<group>"; };
+		OBJ_40 /* CommandSetPenColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPenColor.swift; sourceTree = "<group>"; };
+		OBJ_41 /* CommandSetPenWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPenWidth.swift; sourceTree = "<group>"; };
+		OBJ_42 /* CommandSetPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetPosition.swift; sourceTree = "<group>"; };
+		OBJ_43 /* CommandSetRGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetRGB.swift; sourceTree = "<group>"; };
+		OBJ_44 /* CommandSetX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetX.swift; sourceTree = "<group>"; };
+		OBJ_45 /* CommandSetY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSetY.swift; sourceTree = "<group>"; };
+		OBJ_46 /* CommandShowTurtle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandShowTurtle.swift; sourceTree = "<group>"; };
+		OBJ_47 /* CommandWhile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandWhile.swift; sourceTree = "<group>"; };
+		OBJ_48 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		OBJ_51 /* TortoiseGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseGraphicsTests.swift; sourceTree = "<group>"; };
+		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_54 /* TortoiseGraphicsTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = TortoiseGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_8 /* +Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Canvas.swift"; sourceTree = "<group>"; };
-		OBJ_9 /* +Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure.swift"; sourceTree = "<group>"; };
+		OBJ_9 /* +Procedure+ControlCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Procedure+ControlCommands.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		OBJ_100 /* Frameworks */ = {
+		OBJ_101 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_101 /* TortoiseGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_93 /* Frameworks */ = {
+		OBJ_108 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				OBJ_109 /* TortoiseGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		OBJ_45 /* Tests */ = {
+		OBJ_49 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_46 /* TortoiseGraphicsTests */,
+				OBJ_50 /* TortoiseGraphicsTests */,
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_46 /* TortoiseGraphicsTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_47 /* TortoiseGraphicsTests.swift */,
-			);
-			name = TortoiseGraphicsTests;
-			path = Tests/TortoiseGraphicsTests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_48 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_49 /* TortoiseGraphics.framework */,
-				OBJ_50 /* TortoiseGraphicsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		OBJ_5 /*  */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_45 /* Tests */,
-				OBJ_48 /* Products */,
+				OBJ_49 /* Tests */,
+				OBJ_52 /* Products */,
 			);
 			name = "";
 			sourceTree = "<group>";
+		};
+		OBJ_50 /* TortoiseGraphicsTests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_51 /* TortoiseGraphicsTests.swift */,
+			);
+			name = TortoiseGraphicsTests;
+			path = Tests/TortoiseGraphicsTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_53 /* TortoiseGraphics.framework */,
+				OBJ_54 /* TortoiseGraphicsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_8 /* +Canvas.swift */,
-				OBJ_9 /* +Procedure.swift */,
-				OBJ_10 /* +Properties.swift */,
-				OBJ_11 /* +Type.swift */,
-				OBJ_12 /* Color.swift */,
-				OBJ_13 /* ColorPallete.swift */,
-				OBJ_14 /* Command.swift */,
-				OBJ_15 /* CommandArc.swift */,
-				OBJ_16 /* CommandBack.swift */,
-				OBJ_17 /* CommandCall.swift */,
-				OBJ_18 /* CommandClean.swift */,
-				OBJ_19 /* CommandClearScreen.swift */,
-				OBJ_20 /* CommandDefine.swift */,
-				OBJ_21 /* CommandDot.swift */,
-				OBJ_22 /* CommandForward.swift */,
-				OBJ_23 /* CommandHome.swift */,
-				OBJ_24 /* CommandIf.swift */,
-				OBJ_25 /* CommandLeft.swift */,
-				OBJ_26 /* CommandLocal.swift */,
-				OBJ_27 /* CommandMake.swift */,
-				OBJ_28 /* CommandPenDown.swift */,
-				OBJ_29 /* CommandPrint.swift */,
-				OBJ_30 /* CommandRepeat.swift */,
-				OBJ_31 /* CommandRight.swift */,
-				OBJ_32 /* CommandSetBackground.swift */,
-				OBJ_33 /* CommandSetHeading.swift */,
-				OBJ_34 /* CommandSetLineCap.swift */,
-				OBJ_35 /* CommandSetLineDash.swift */,
-				OBJ_36 /* CommandSetPenColor.swift */,
-				OBJ_37 /* CommandSetPenWidth.swift */,
-				OBJ_38 /* CommandSetPosition.swift */,
-				OBJ_39 /* CommandSetRGB.swift */,
-				OBJ_40 /* CommandSetX.swift */,
-				OBJ_41 /* CommandSetY.swift */,
-				OBJ_42 /* CommandShowTurtle.swift */,
-				OBJ_43 /* CommandWhile.swift */,
-				OBJ_44 /* Context.swift */,
+				OBJ_9 /* +Procedure+ControlCommands.swift */,
+				OBJ_10 /* +Procedure+DrawCommands.swift */,
+				OBJ_11 /* +Procedure+MoveCommands.swift */,
+				OBJ_12 /* +Procedure+PenCommands.swift */,
+				OBJ_13 /* +Procedure.swift */,
+				OBJ_14 /* +Properties.swift */,
+				OBJ_15 /* +Type.swift */,
+				OBJ_16 /* Color.swift */,
+				OBJ_17 /* ColorPallete.swift */,
+				OBJ_18 /* Command.swift */,
+				OBJ_19 /* CommandArc.swift */,
+				OBJ_20 /* CommandBack.swift */,
+				OBJ_21 /* CommandCall.swift */,
+				OBJ_22 /* CommandClean.swift */,
+				OBJ_23 /* CommandClearScreen.swift */,
+				OBJ_24 /* CommandDefine.swift */,
+				OBJ_25 /* CommandDot.swift */,
+				OBJ_26 /* CommandForward.swift */,
+				OBJ_27 /* CommandHome.swift */,
+				OBJ_28 /* CommandIf.swift */,
+				OBJ_29 /* CommandLeft.swift */,
+				OBJ_30 /* CommandLocal.swift */,
+				OBJ_31 /* CommandMake.swift */,
+				OBJ_32 /* CommandPenDown.swift */,
+				OBJ_33 /* CommandPrint.swift */,
+				OBJ_34 /* CommandRepeat.swift */,
+				OBJ_35 /* CommandRight.swift */,
+				OBJ_36 /* CommandSetBackground.swift */,
+				OBJ_37 /* CommandSetHeading.swift */,
+				OBJ_38 /* CommandSetLineCap.swift */,
+				OBJ_39 /* CommandSetLineDash.swift */,
+				OBJ_40 /* CommandSetPenColor.swift */,
+				OBJ_41 /* CommandSetPenWidth.swift */,
+				OBJ_42 /* CommandSetPosition.swift */,
+				OBJ_43 /* CommandSetRGB.swift */,
+				OBJ_44 /* CommandSetX.swift */,
+				OBJ_45 /* CommandSetY.swift */,
+				OBJ_46 /* CommandShowTurtle.swift */,
+				OBJ_47 /* CommandWhile.swift */,
+				OBJ_48 /* Context.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -205,12 +217,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_51 /* TortoiseGraphics */ = {
+		OBJ_102 /* TortoiseGraphicsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_52 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */;
+			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */;
 			buildPhases = (
-				OBJ_55 /* Sources */,
-				OBJ_93 /* Frameworks */,
+				OBJ_106 /* Sources */,
+				OBJ_108 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_110 /* PBXTargetDependency */,
+			);
+			name = TortoiseGraphicsTests;
+			productName = TortoiseGraphicsTests;
+			productReference = OBJ_54 /* TortoiseGraphicsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		OBJ_55 /* TortoiseGraphics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */;
+			buildPhases = (
+				OBJ_59 /* Sources */,
+				OBJ_101 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,25 +247,8 @@
 			);
 			name = TortoiseGraphics;
 			productName = TortoiseGraphics;
-			productReference = OBJ_49 /* TortoiseGraphics.framework */;
+			productReference = OBJ_53 /* TortoiseGraphics.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		OBJ_94 /* TortoiseGraphicsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_95 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */;
-			buildPhases = (
-				OBJ_98 /* Sources */,
-				OBJ_100 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				OBJ_102 /* PBXTargetDependency */,
-			);
-			name = TortoiseGraphicsTests;
-			productName = TortoiseGraphicsTests;
-			productReference = OBJ_50 /* TortoiseGraphicsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -254,80 +266,118 @@
 				en,
 			);
 			mainGroup = OBJ_5 /*  */;
-			productRefGroup = OBJ_48 /* Products */;
+			productRefGroup = OBJ_52 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_51 /* TortoiseGraphics */,
-				OBJ_94 /* TortoiseGraphicsTests */,
+				OBJ_55 /* TortoiseGraphics */,
+				OBJ_102 /* TortoiseGraphicsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		OBJ_55 /* Sources */ = {
+		OBJ_106 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_56 /* +Canvas.swift in Sources */,
-				OBJ_57 /* +Procedure.swift in Sources */,
-				OBJ_58 /* +Properties.swift in Sources */,
-				OBJ_59 /* +Type.swift in Sources */,
-				OBJ_60 /* Color.swift in Sources */,
-				OBJ_61 /* ColorPallete.swift in Sources */,
-				OBJ_62 /* Command.swift in Sources */,
-				OBJ_63 /* CommandArc.swift in Sources */,
-				OBJ_64 /* CommandBack.swift in Sources */,
-				OBJ_65 /* CommandCall.swift in Sources */,
-				OBJ_66 /* CommandClean.swift in Sources */,
-				OBJ_67 /* CommandClearScreen.swift in Sources */,
-				OBJ_68 /* CommandDefine.swift in Sources */,
-				OBJ_69 /* CommandDot.swift in Sources */,
-				OBJ_70 /* CommandForward.swift in Sources */,
-				OBJ_71 /* CommandHome.swift in Sources */,
-				OBJ_72 /* CommandIf.swift in Sources */,
-				OBJ_73 /* CommandLeft.swift in Sources */,
-				OBJ_74 /* CommandLocal.swift in Sources */,
-				OBJ_75 /* CommandMake.swift in Sources */,
-				OBJ_76 /* CommandPenDown.swift in Sources */,
-				OBJ_77 /* CommandPrint.swift in Sources */,
-				OBJ_78 /* CommandRepeat.swift in Sources */,
-				OBJ_79 /* CommandRight.swift in Sources */,
-				OBJ_80 /* CommandSetBackground.swift in Sources */,
-				OBJ_81 /* CommandSetHeading.swift in Sources */,
-				OBJ_82 /* CommandSetLineCap.swift in Sources */,
-				OBJ_83 /* CommandSetLineDash.swift in Sources */,
-				OBJ_84 /* CommandSetPenColor.swift in Sources */,
-				OBJ_85 /* CommandSetPenWidth.swift in Sources */,
-				OBJ_86 /* CommandSetPosition.swift in Sources */,
-				OBJ_87 /* CommandSetRGB.swift in Sources */,
-				OBJ_88 /* CommandSetX.swift in Sources */,
-				OBJ_89 /* CommandSetY.swift in Sources */,
-				OBJ_90 /* CommandShowTurtle.swift in Sources */,
-				OBJ_91 /* CommandWhile.swift in Sources */,
-				OBJ_92 /* Context.swift in Sources */,
+				OBJ_107 /* TortoiseGraphicsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		OBJ_98 /* Sources */ = {
+		OBJ_59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_99 /* TortoiseGraphicsTests.swift in Sources */,
+				OBJ_60 /* +Canvas.swift in Sources */,
+				OBJ_61 /* +Procedure+ControlCommands.swift in Sources */,
+				OBJ_62 /* +Procedure+DrawCommands.swift in Sources */,
+				OBJ_63 /* +Procedure+MoveCommands.swift in Sources */,
+				OBJ_64 /* +Procedure+PenCommands.swift in Sources */,
+				OBJ_65 /* +Procedure.swift in Sources */,
+				OBJ_66 /* +Properties.swift in Sources */,
+				OBJ_67 /* +Type.swift in Sources */,
+				OBJ_68 /* Color.swift in Sources */,
+				OBJ_69 /* ColorPallete.swift in Sources */,
+				OBJ_70 /* Command.swift in Sources */,
+				OBJ_71 /* CommandArc.swift in Sources */,
+				OBJ_72 /* CommandBack.swift in Sources */,
+				OBJ_73 /* CommandCall.swift in Sources */,
+				OBJ_74 /* CommandClean.swift in Sources */,
+				OBJ_75 /* CommandClearScreen.swift in Sources */,
+				OBJ_76 /* CommandDefine.swift in Sources */,
+				OBJ_77 /* CommandDot.swift in Sources */,
+				OBJ_78 /* CommandForward.swift in Sources */,
+				OBJ_79 /* CommandHome.swift in Sources */,
+				OBJ_80 /* CommandIf.swift in Sources */,
+				OBJ_81 /* CommandLeft.swift in Sources */,
+				OBJ_82 /* CommandLocal.swift in Sources */,
+				OBJ_83 /* CommandMake.swift in Sources */,
+				OBJ_84 /* CommandPenDown.swift in Sources */,
+				OBJ_85 /* CommandPrint.swift in Sources */,
+				OBJ_86 /* CommandRepeat.swift in Sources */,
+				OBJ_87 /* CommandRight.swift in Sources */,
+				OBJ_88 /* CommandSetBackground.swift in Sources */,
+				OBJ_89 /* CommandSetHeading.swift in Sources */,
+				OBJ_90 /* CommandSetLineCap.swift in Sources */,
+				OBJ_91 /* CommandSetLineDash.swift in Sources */,
+				OBJ_92 /* CommandSetPenColor.swift in Sources */,
+				OBJ_93 /* CommandSetPenWidth.swift in Sources */,
+				OBJ_94 /* CommandSetPosition.swift in Sources */,
+				OBJ_95 /* CommandSetRGB.swift in Sources */,
+				OBJ_96 /* CommandSetX.swift in Sources */,
+				OBJ_97 /* CommandSetY.swift in Sources */,
+				OBJ_98 /* CommandShowTurtle.swift in Sources */,
+				OBJ_99 /* CommandWhile.swift in Sources */,
+				OBJ_100 /* Context.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		OBJ_102 /* PBXTargetDependency */ = {
+		OBJ_110 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_51 /* TortoiseGraphics */;
-			targetProxy = 14B0E94F1EA37AC2007FBC3D /* PBXContainerItemProxy */;
+			target = OBJ_55 /* TortoiseGraphics */;
+			targetProxy = 14B0E9501EA38438007FBC3D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		OBJ_104 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphicsTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = TortoiseGraphicsTests;
+			};
+			name = Debug;
+		};
+		OBJ_105 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphicsTests_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				TARGET_NAME = TortoiseGraphicsTests;
+			};
+			name = Release;
+		};
 		OBJ_3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -372,7 +422,7 @@
 			};
 			name = Release;
 		};
-		OBJ_53 /* Debug */ = {
+		OBJ_57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -393,7 +443,7 @@
 			};
 			name = Debug;
 		};
-		OBJ_54 /* Release */ = {
+		OBJ_58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
@@ -411,46 +461,21 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGET_NAME = TortoiseGraphics;
-			};
-			name = Release;
-		};
-		OBJ_96 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphicsTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = TortoiseGraphicsTests;
-			};
-			name = Debug;
-		};
-		OBJ_97 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
-				);
-				HEADER_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphicsTests_Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @loader_path/Frameworks";
-				OTHER_LDFLAGS = "$(inherited)";
-				OTHER_SWIFT_FLAGS = "$(inherited)";
-				TARGET_NAME = TortoiseGraphicsTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_104 /* Debug */,
+				OBJ_105 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		OBJ_2 /* Build configuration list for PBXProject "TortoiseGraphics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -460,20 +485,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_52 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */ = {
+		OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				OBJ_53 /* Debug */,
-				OBJ_54 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		OBJ_95 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				OBJ_96 /* Debug */,
-				OBJ_97 /* Release */,
+				OBJ_57 /* Debug */,
+				OBJ_58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
