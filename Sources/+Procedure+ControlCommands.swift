@@ -123,9 +123,9 @@ public extension Procedure {
     /// - returns: self
     public func `if`(_ condition: @escaping BoolOutput,
                      then: (Procedure) -> Procedure,
-                     else: (Procedure) -> Procedure) -> Procedure {
+                     else: ((Procedure) -> Procedure)? = nil) -> Procedure {
         let thenProcedure = then(Procedure())
-        let elseProcedure = `else`(Procedure())
+        let elseProcedure = `else`?(Procedure())
         add(command: CommandIf(condition: condition,
                                thenProcedure: thenProcedure,
                                elseProcedure: elseProcedure))
@@ -139,7 +139,7 @@ public extension Procedure {
     /// - returns: self
     public func `if`(_ condition: Bool,
                      then: (Procedure) -> Procedure,
-                     else: (Procedure) -> Procedure) -> Procedure {
+                     else: ((Procedure) -> Procedure)?) -> Procedure {
         return `if`({_ in condition}, then: then, else: `else`)
     }
 

@@ -12,9 +12,9 @@ class CommandIf: Command {
 
     let condition: BoolOutput
     let thenProcedure: Procedure
-    let elseProcedure: Procedure
+    let elseProcedure: Procedure?
 
-    init(condition: @escaping BoolOutput, thenProcedure: Procedure, elseProcedure: Procedure) {
+    init(condition: @escaping BoolOutput, thenProcedure: Procedure, elseProcedure: Procedure?) {
         self.condition = condition
         self.thenProcedure = thenProcedure
         self.elseProcedure = elseProcedure
@@ -24,7 +24,7 @@ class CommandIf: Command {
         if condition(Properties(context: context)) {
             thenProcedure.doExecute(context: context)
         } else {
-            elseProcedure.doExecute(context: context)
+            elseProcedure?.doExecute(context: context)
         }
     }
 
