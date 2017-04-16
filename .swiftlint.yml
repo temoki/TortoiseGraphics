@@ -10,6 +10,8 @@ included:
 identifier_name:
   excluded:
     - 🐢
+    - x
+    - y
     - r
     - g
     - b

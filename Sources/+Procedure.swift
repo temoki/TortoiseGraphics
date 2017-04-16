@@ -10,9 +10,9 @@ import Foundation
 
 public class Procedure: Command {
 
-    private var commandList: [Command] = []
+    internal var commandList: [Command] = []
 
-    private var variables: [String: Number] = [:]
+    internal var variables: [String: Number] = [:]
 
     internal func add(command: Command) {
         commandList.append(command)
