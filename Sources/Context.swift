@@ -100,11 +100,19 @@ class Context {
 
         self.variablesStack = Context.defaultVariableStack
         self.procedures = Context.defaultProcedures
+        
+        self.reset()
     }
 
     // MARK: - Methods
 
     func reset() {
+        backgroundColor = Context.defaultBackgroundColor
+        showTortoise = Context.defaultShowTortoise
+        penDown = Context.defaultPenDown
+        penColor = Context.defaultPenColor
+        penWidth = Context.defaultPenWidth
+
         colorPalette.reset()
         clearScreen()
 
@@ -113,15 +121,10 @@ class Context {
     }
 
     func clearScreen() {
-        backgroundColor = Context.defaultBackgroundColor
         clean()
 
-        showTortoise = Context.defaultShowTortoise
         position = Context.defaultPosition
         heading = Context.defaultHeading
-        penDown = Context.defaultPenDown
-        penColor = Context.defaultPenColor
-        penWidth = Context.defaultPenWidth
     }
 
     func clean() {
