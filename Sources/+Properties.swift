@@ -42,7 +42,7 @@ public class Properties {
     /// - parameter max: Max number
     /// - returns: Random number
     public func random(_ max: Number) -> Number {
-        let upperBound = UInt32(Swift.min(Swift.max(max.integer, 0), Int(UInt32.max)))
+        let upperBound = UInt32(Swift.min(Swift.max(Int64(max.integer), 0), Int64(UInt32.max)))
         return Number(arc4random_uniform(upperBound))
     }
 
