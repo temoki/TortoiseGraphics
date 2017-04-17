@@ -131,7 +131,7 @@ dependencies: [
 ### [Cocoapods](https://github.com/cocoapods/cocoapods)
 
 ```ruby
-pod 'TortoiseGraphics', :git => 'https://github.com/temoki/TortoiseGraphics.git'
+pod 'TortoiseGraphics'
 ```
 
 ## Roadmap
