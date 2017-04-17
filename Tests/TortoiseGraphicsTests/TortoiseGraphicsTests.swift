@@ -3,10 +3,10 @@ import XCTest
 import CoreGraphics
 
 class TortoiseGraphicsTests: XCTestCase {
-    
+
     func testExample() {
         let canvas = Canvas(size: CGSize(width: 300, height: 300))
-        
+
         canvas.🐢
             .setRGB(0, [0.8, 0.8, 0.8])
             .make("color", 0)
@@ -22,7 +22,7 @@ class TortoiseGraphicsTests: XCTestCase {
                 .right(15)
                 .repeat(6) { $0
                     .make("color") { $0["color"] + 1 }
-                    .setPenColor({ $0["color"] })
+                    .setPenColor { $0["color"] }
                     .forward(20)
                     .right(60)
                 }
@@ -38,13 +38,15 @@ class TortoiseGraphicsTests: XCTestCase {
         let url = URL(fileURLWithPath: path)
         let destination = CGImageDestinationCreateWithURL(url as CFURL, kUTTypePNG, 1, nil)
         XCTAssertNotNil(destination)
-        
+
+        // swiftlint:disable force_unwrapping
         CGImageDestinationAddImage(destination!, image!, nil)
         CGImageDestinationFinalize(destination!)
+        // swiftlint:enable force_unwrapping
     }
 
     static var allTests = [
-        ("testExample", testExample),
+        ("testExample", testExample)
     ]
 
 }

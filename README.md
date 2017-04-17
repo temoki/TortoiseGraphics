@@ -25,7 +25,7 @@ canvas.🐢
         .right(15)
         .repeat(6) { $0
             .make("color") { $0["color"] + 1 }
-            .setPenColor({ $0["color"] })
+            .setPenColor { $0["color"] }
             .forward(20)
             .right(60)
         }
@@ -58,7 +58,7 @@ let image = canvas.rendered
 
 ### Move and Draw
 
-* `cleanScreen`
+* `clearScreen`
 * `clean`
 * `forward`
 * `back`
@@ -85,7 +85,6 @@ let image = canvas.rendered
 
 ### Control
 
-* `done`
 * `showTortoise`
 * `hideTortoise`
 * `define`
