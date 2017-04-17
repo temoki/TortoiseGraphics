@@ -4,8 +4,8 @@ A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key featu
 
 The commands were implemented with reference to [ACSLogo](http://www.alancsmith.co.uk/logo).
 
-[![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](hhttps://swift.org)
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](https://swift.org)
+[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
 
 ## Example
 
@@ -117,11 +117,23 @@ let image = canvas.rendered
 
 ## Installation
 
-* Swift Package Manager
+### [Swift Package Manager](https://swift.org/package-manager)
+
+```swift
+dependencies: [
+    .Package(url: "https://github.com/temoki/TortoiseGraphics.git", majorVersion: 0)
+]
+```
+
+### [Cocoapods](https://github.com/cocoapods/cocoapods)
+
+```ruby
+pod 'TortoiseGraphics', :git => 'https://github.com/temoki/TortoiseGraphics.git'
+```
 
 ## Roadmap
 
-* Carthage/Cocoapods installation
+* Carthage installation
 
 ## License
 
