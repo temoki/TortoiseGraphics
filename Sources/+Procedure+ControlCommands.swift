@@ -11,17 +11,11 @@ import Foundation
 /// Procedure: Control commands
 public extension Procedure {
 
-    // MARK: - done
-
-    /// Done
-    public func done() {
-        // end of method chain
-    }
-
     // MARK: - showTortoise
 
     /// Show the tortoise if it is hidden.
     /// - returns: self
+    @discardableResult
     public func showTortoise() -> Procedure {
         add(command: CommandShowTortoise(show: true))
         return self
@@ -32,6 +26,7 @@ public extension Procedure {
     /// Hide the tortoise. Its position remains the same.
     /// Drawing happens in the same way, and the tortoiseʼs position is affected by drawing commands
     /// in the same way as when it is showing.
+    @discardableResult
     public func hideTortoise() -> Procedure {
         add(command: CommandShowTortoise(show: false))
         return self
@@ -45,6 +40,7 @@ public extension Procedure {
     /// - parameter parameterNames: Parameter names
     /// - parameter statements: Procedure statements
     /// - returns: self
+    @discardableResult
     public func define(_ procedureName: String,
                        _ parameterNames: [String],
                        _ statements: (Procedure) -> Procedure) -> Procedure {
@@ -62,6 +58,7 @@ public extension Procedure {
     /// - parameter procedureName: Procedure name
     /// - parameter parameters: Parameters
     /// - returns: self
+    @discardableResult
     public func call(_ procedureName: String, _ parameters: [String: NumberOutput]) -> Procedure {
         add(command: CommandCall(name: procedureName, parameters: parameters))
         return self
@@ -71,6 +68,7 @@ public extension Procedure {
     /// - parameter procedureName: Procedure name
     /// - parameter parameters: Parameters
     /// - returns: self
+    @discardableResult
     public func call(_ procedureName: String, _ parameters: [String: Number]) -> Procedure {
         var newParameters: [String: NumberOutput] = [:]
         parameters.forEach { (keyValue) in
@@ -85,6 +83,7 @@ public extension Procedure {
     /// - parameter number: Repeat times
     /// - parameter statements: Repeat statements
     /// - returns: self
+    @discardableResult
     public func `repeat`(_ number: @escaping NumberOutput,
                          _ statements: (Procedure) -> Procedure) -> Procedure {
         let procedure = statements(Procedure())
@@ -96,6 +95,7 @@ public extension Procedure {
     /// - parameter number: Repeat times
     /// - parameter statements: Repeat statements
     /// - returns: self
+    @discardableResult
     public func `repeat`(_ number: Number,
                          _ statements: (Procedure) -> Procedure) -> Procedure {
         return `repeat`({_ in number}, statements)
@@ -107,6 +107,7 @@ public extension Procedure {
     /// - parameter condition: condition
     /// - parameter statements: Repeat statements
     /// - returns: self
+    @discardableResult
     public func `while`(_ condition: @escaping BoolOutput,
                         _ statements: (Procedure) -> Procedure) -> Procedure {
         let procedure = statements(Procedure())
@@ -121,6 +122,7 @@ public extension Procedure {
     /// - parameter Then: True-statements
     /// - parameter Else: False-statements
     /// - returns: self
+    @discardableResult
     public func `if`(_ condition: @escaping BoolOutput,
                      then: (Procedure) -> Procedure,
                      else: ((Procedure) -> Procedure)? = nil) -> Procedure {
@@ -137,6 +139,7 @@ public extension Procedure {
     /// - parameter Then: True-statements
     /// - parameter Else: False-statements
     /// - returns: self
+    @discardableResult
     public func `if`(_ condition: Bool,
                      then: (Procedure) -> Procedure,
                      else: ((Procedure) -> Procedure)?) -> Procedure {
@@ -150,6 +153,7 @@ public extension Procedure {
     /// - parameter variableName: Variable name
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func make(_ variableName: String, _ number: @escaping NumberOutput) -> Procedure {
         add(command: CommandMake(variableName: variableName, number: number))
         return self
@@ -160,6 +164,7 @@ public extension Procedure {
     /// - parameter variableName: Variable name
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func make(_ variableName: String, _ number: Number) -> Procedure {
         return make(variableName, {_ in number})
     }
@@ -170,6 +175,7 @@ public extension Procedure {
     /// - parameter variableName: Variable name
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func local(_ variableName: String, _ number: @escaping NumberOutput) -> Procedure {
         add(command: CommandLocal(variableName: variableName, number: number))
         return self
@@ -179,6 +185,7 @@ public extension Procedure {
     /// - parameter variableName: Variable name
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func local(_ variableName: String, _ number: Number) -> Procedure {
         return local(variableName, {_ in number})
     }
@@ -188,6 +195,7 @@ public extension Procedure {
     /// Prints out a number to the debug console.
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func print(_ number: @escaping NumberOutput) -> Procedure {
         add(command: CommandPrint(number: number))
         return self
@@ -196,6 +204,7 @@ public extension Procedure {
     /// Prints out a number to the debug console.
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func print(_ number: Number) -> Procedure {
         return print({_ in number})
     }
@@ -203,6 +212,7 @@ public extension Procedure {
     /// Prints out a boolean to the debug console.
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func print(_ boolean: @escaping BoolOutput) -> Procedure {
         add(command: CommandPrint(boolean: boolean))
         return self
@@ -211,6 +221,7 @@ public extension Procedure {
     /// Prints out a boolean to the debug console.
     /// - parameter number: Number
     /// - returns: self
+    @discardableResult
     public func print(_ boolean: Bool) -> Procedure {
         return print({_ in boolean})
     }

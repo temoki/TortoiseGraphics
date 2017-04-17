@@ -16,6 +16,7 @@ public extension Procedure {
     /// Put the pen into draw state.
     /// If the tortoise moves, it will draw a line.
     /// - returns: self
+    @discardableResult
     public func penDown() -> Procedure {
         add(command: CommandPenDown(true))
         return self
@@ -25,6 +26,7 @@ public extension Procedure {
 
     /// Put the pen into non-draw state.
     /// - returns: self
+    @discardableResult
     public func penUp() -> Procedure {
         add(command: CommandPenDown(false))
         return self
@@ -37,6 +39,7 @@ public extension Procedure {
     /// Use setRGB to set this colour number to a particular colour value.
     /// - parameter number: Color number
     /// - returns: self
+    @discardableResult
     public func setPenColor(_ number: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetPenColor(number: number))
         return self
@@ -47,6 +50,7 @@ public extension Procedure {
     /// Use setRGB to set this colour number to a particular colour value.
     /// - parameter number: Color number
     /// - returns: self
+    @discardableResult
     public func setPenColor(_ number: Number) -> Procedure {
         return setPenColor({_ in number})
     }
@@ -57,6 +61,7 @@ public extension Procedure {
     /// New lines are drawn with this width.
     /// - parameter width: Pen width
     /// - returns: self
+    @discardableResult
     public func setPenWidth(_ width: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetPenWidth(width))
         return self
@@ -78,6 +83,7 @@ public extension Procedure {
     /// The red dashed lines show where the lines end.
     /// - parameter lineCap: Line cap
     /// - returns: self
+    @discardableResult
     public func setLineCap(_ lineCap: LineCap) -> Procedure {
         add(command: CommandSetLineCap(lineCap))
         return self
@@ -92,6 +98,7 @@ public extension Procedure {
     /// - parameter phase: Phase
     /// - parameter dashLengths: Dash lengths (drawn-dash-1, empty-dash-1, drawn-dash-2, ...)
     /// - returns: self
+    @discardableResult
     public func setLineDash(_ phase: @escaping NumberOutput, _ dashLengths: [NumberOutput]) -> Procedure {
         add(command: CommandSetLineDash(phase: phase, dashLengths: dashLengths))
         return self
@@ -104,6 +111,7 @@ public extension Procedure {
     /// - parameter phase: Phase
     /// - parameter dashLengths: Dash lengths (drawn-dash-1, empty-dash-1, drawn-dash-2, ...)
     /// - returns: self
+    @discardableResult
     public func setLineDash(_ phase: Number, _ dashLengths: [Number]) -> Procedure {
         let numberOutputs = dashLengths.map { (dashLength) -> NumberOutput in
             return {(_) in dashLength}
@@ -117,6 +125,7 @@ public extension Procedure {
     /// This colour will be used when ClearScreen or Clean is called.
     /// - parameter number: Color number
     /// - returns: self
+    @discardableResult
     public func setBackground(_ number: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetBackground(number: number))
         return self
@@ -126,6 +135,7 @@ public extension Procedure {
     /// This colour will be used when ClearScreen or Clean is called.
     /// - parameter number: Color number
     /// - returns: self
+    @discardableResult
     public func setBackground(_ number: Number) -> Procedure {
         return setBackground({_ in number})
     }
@@ -142,6 +152,7 @@ public extension Procedure {
     /// - parameter number: Color number
     /// - parameter componets: RGB and Opacity components
     /// - returns: self
+    @discardableResult
     public func setRGB(_ number: @escaping NumberOutput, _ components: [NumberOutput]) -> Procedure {
         add(command: CommandSetRGB(number: number, components: components))
         return self
@@ -157,6 +168,7 @@ public extension Procedure {
     /// - parameter number: Color number
     /// - parameter componets: RGB and Opacity components
     /// - returns: self
+    @discardableResult
     public func setRGB(_ number: Number, _ components: [Number]) -> Procedure {
         let numberOutputs = components.map { (component) -> NumberOutput in
             return {(_) in component}

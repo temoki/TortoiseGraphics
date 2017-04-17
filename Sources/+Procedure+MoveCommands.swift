@@ -17,6 +17,7 @@ public extension Procedure {
     /// If the pen is down, a line is drawn.
     /// - parameter distance: Distance
     /// - returns: self
+    @discardableResult
     public func forward(_ distance: @escaping NumberOutput) -> Procedure {
         add(command: CommandForward(distance: distance))
         return self
@@ -26,6 +27,7 @@ public extension Procedure {
     /// If the pen is down, a line is drawn.
     /// - parameter distance: Distance
     /// - returns: self
+    @discardableResult
     public func forward(_ distance: Number) -> Procedure {
         return forward({_ in distance})
     }
@@ -36,6 +38,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter distance: Distance
     /// - returns: self
+    @discardableResult
     public func back(_ distance: @escaping NumberOutput) -> Procedure {
         add(command: CommandBack(distance: distance))
         return self
@@ -45,6 +48,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter distance: Distance
     /// - returns: self
+    @discardableResult
     public func back(_ distance: Number) -> Procedure {
         return back({_ in distance})
     }
@@ -54,6 +58,7 @@ public extension Procedure {
     /// Rotate the tortoise clockwise through angle degrees.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func right(_ angle: @escaping NumberOutput) -> Procedure {
         add(command: CommandRight(angle: angle))
         return self
@@ -62,6 +67,7 @@ public extension Procedure {
     /// Rotate the tortoise clockwise through angle degrees.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func right(_ angle: Number) -> Procedure {
         return right({_ in angle})
     }
@@ -71,6 +77,7 @@ public extension Procedure {
     /// Rotate the tortoise anti-clockwise through angle degrees.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func left(_ angle: @escaping NumberOutput) -> Procedure {
         add(command: CommandLeft(angle: angle))
         return self
@@ -79,6 +86,7 @@ public extension Procedure {
     /// Rotate the tortoise anti-clockwise through angle degrees.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func left(_ angle: Number) -> Procedure {
         return left({_ in angle})
     }
@@ -88,6 +96,7 @@ public extension Procedure {
     /// Move the tortoise to the middle of the screen (position [0 0])
     /// and set its heading to zero (pointing straight up).
     /// - returns: self
+    @discardableResult
     public func home() -> Procedure {
         add(command: CommandHome())
         return self
@@ -101,6 +110,7 @@ public extension Procedure {
     /// The heading increases as you go clockwise - straight down is 180.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func setHeading(_ angle: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetHeading(angle: angle))
         return self
@@ -112,6 +122,7 @@ public extension Procedure {
     /// The heading increases as you go clockwise - straight down is 180.
     /// - parameter angle: Angle (degree)
     /// - returns: self
+    @discardableResult
     public func setHeading(_ angle: Number) -> Procedure {
         return setHeading({_ in angle})
     }
@@ -123,6 +134,7 @@ public extension Procedure {
     /// - parameter x: X coordinate
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func setPosition(_ x: @escaping NumberOutput, _ y: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetPosition(x: x, y: y))
         return self
@@ -133,6 +145,7 @@ public extension Procedure {
     /// - parameter x: X coordinate
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func setPosition(_ x: Number, _ y: Number) -> Procedure {
         return setPosition({_ in x}, {_ in y})
     }
@@ -143,6 +156,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter x: X coordinate
     /// - returns: self
+    @discardableResult
     public func setX(_ x: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetX(x))
         return self
@@ -152,6 +166,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter x: X coordinate
     /// - returns: self
+    @discardableResult
     public func setX(_ x: Number) -> Procedure {
         return setX({_ in x})
     }
@@ -162,6 +177,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func setY(_ y: @escaping NumberOutput) -> Procedure {
         add(command: CommandSetY(y))
         return self
@@ -171,6 +187,7 @@ public extension Procedure {
     /// Draws a line if the pen is down.
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func setY(_ y: Number) -> Procedure {
         return setY({_ in y})
     }

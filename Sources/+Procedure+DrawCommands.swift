@@ -16,6 +16,7 @@ public extension Procedure {
     /// Clear the graphics screen and set the tortoise to its home position.
     /// The graphics screen is filled with the current background pen colour.
     /// The same as doing Clean followed by Home.
+    @discardableResult
     public func clearScreen() -> Procedure {
         add(command: CommandClearScreen())
         return self
@@ -25,6 +26,7 @@ public extension Procedure {
 
     /// Clear the graphics screen without affecting the tortoise.
     /// The graphics screen is filled with the current background pen colour.
+    @discardableResult
     public func clean() -> Procedure {
         add(command: CommandClean())
         return self
@@ -37,6 +39,7 @@ public extension Procedure {
     /// - parameter x: X coordinate
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func dot(_ x: @escaping NumberOutput, _ y: @escaping NumberOutput) -> Procedure {
         add(command: CommandDot(x: x, y: y))
         return self
@@ -47,6 +50,7 @@ public extension Procedure {
     /// - parameter x: X coordinate
     /// - parameter y: Y coordinate
     /// - returns: self
+    @discardableResult
     public func dot(_ x: Number, _ y: Number) -> Procedure {
         return dot({_ in x}, {_ in y})
     }
@@ -60,6 +64,7 @@ public extension Procedure {
     /// - parameter angle: Angle (degree)
     /// - parameter radius: Radius
     /// - returns: self
+    @discardableResult
     public func arc(_ angle: @escaping NumberOutput, _ radius: @escaping NumberOutput) -> Procedure {
         add(command: CommandArc(angle: angle, radius: radius))
         return self
@@ -72,6 +77,7 @@ public extension Procedure {
     /// - parameter angle: Angle (degree)
     /// - parameter radius: Radius
     /// - returns: self
+    @discardableResult
     public func arc(_ angle: Number, _ radius: Number) -> Procedure {
         return arc({_ in angle}, {_ in radius})
     }

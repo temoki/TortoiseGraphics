@@ -29,7 +29,6 @@ class TortoiseGraphicsTests: XCTestCase {
             }
             .setPenColor(1)
             .home()
-            .done()
 
         canvas.draw()
         let image = canvas.rendered
