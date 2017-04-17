@@ -45,7 +45,7 @@ canvas.🐢
 let canvas = Canvas(size: CGSize(width: 300, height: 300))
 
 // Command 🐢 on canvas.
-canvas.🐢.right(90).forward(100).done()
+canvas.🐢.right(90).forward(100)
 
 // Draw canvas.
 canvas.draw()

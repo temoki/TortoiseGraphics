@@ -6,6 +6,7 @@ disabled_rules:
 
 included:
   - Sources
+  - Tests
 
 identifier_name:
   excluded:
