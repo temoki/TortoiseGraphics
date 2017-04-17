@@ -52,7 +52,7 @@ canvas.🐢.right(90).forward(100)
 // Draw canvas.
 canvas.draw()
 
-// Get rendered image from can.
+// Get rendered image from canvas.
 let image = canvas.rendered
 ```
 
