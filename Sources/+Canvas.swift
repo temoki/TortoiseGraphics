@@ -6,7 +6,7 @@
 //  Copyright © 2016 temoki. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
 /// Tortoise
 final public class Canvas {

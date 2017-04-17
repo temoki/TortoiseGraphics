@@ -6,7 +6,7 @@
 //  Copyright © 2016 temoki. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
 
 // swiftlint:disable variable_name
 
