@@ -32,7 +32,6 @@ canvas.🐢
     }
     .setPenColor(1)
     .home()
-    .done()
 ```
 
 <img src="https://github.com/temoki/TortoiseGraphics/blob/master/example.png" width="300" />
