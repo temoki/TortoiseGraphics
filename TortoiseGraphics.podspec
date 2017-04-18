@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version          = '0.1.0'
   s.summary          = 'A turtle graphics (a key feature of the Logo) engine written in Swift.'
   s.description      = 'A turtle graphics (a key feature of the Logo) engine written in Swift. The commands were implemented with reference to ACSLogo.'
-  s.homepage         = 'http://temoki.com'
+  s.homepage         = 'https://github.com/temoki/TortoiseGraphics'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = 'temoki'
   s.source           = { :git => 'https://github.com/temoki/TortoiseGraphics.git', :tag => s.version.to_s }
