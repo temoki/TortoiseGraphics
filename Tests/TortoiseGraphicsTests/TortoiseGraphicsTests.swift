@@ -30,18 +30,26 @@ class TortoiseGraphicsTests: XCTestCase {
             .setPenColor(1)
             .home()
 
-        canvas.draw()
-        let image = canvas.rendered
-        XCTAssertNotNil(image)
+        var images: [CGImage] = []
+        canvas.draw(oneByOne: { images.append($0) })
+        XCTAssert(!images.isEmpty)
 
-        let path = NSHomeDirectory().appending("/Desktop/TortoiseGraphicsExample.png")
-        let url = URL(fileURLWithPath: path)
-        let destination = CGImageDestinationCreateWithURL(url as CFURL, kUTTypePNG, 1, nil)
-        XCTAssertNotNil(destination)
+        let path = NSHomeDirectory().appending("/Desktop/TortoiseGraphicsExample")
+        let pngURL = URL(fileURLWithPath: path.appending(".png"))
+        let gifURL = URL(fileURLWithPath: path.appending(".gif"))
 
         // swiftlint:disable force_unwrapping
-        CGImageDestinationAddImage(destination!, image!, nil)
-        CGImageDestinationFinalize(destination!)
+        let pngDestination = CGImageDestinationCreateWithURL(pngURL as CFURL, kUTTypePNG, 1, nil)
+        XCTAssertNotNil(pngDestination)
+        CGImageDestinationAddImage(pngDestination!, images.last!, nil)
+        CGImageDestinationFinalize(pngDestination!)
+
+        let gifDestination = CGImageDestinationCreateWithURL(gifURL as CFURL, kUTTypeGIF, images.count, nil)
+        XCTAssertNotNil(gifDestination)
+        images.forEach {
+            CGImageDestinationAddImage(gifDestination!, $0, nil)
+        }
+        CGImageDestinationFinalize(gifDestination!)
         // swiftlint:enable force_unwrapping
     }
 

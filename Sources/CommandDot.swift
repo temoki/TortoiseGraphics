@@ -30,4 +30,8 @@ class CommandDot: Command {
         }
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

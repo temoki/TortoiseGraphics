@@ -21,4 +21,8 @@ class CommandSetHeading: Command {
         context.heading = Context.defaultHeading - angle
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

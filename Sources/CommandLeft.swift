@@ -24,4 +24,8 @@ class CommandLeft: Command {
         context.heading += angleOutput(context: context)
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

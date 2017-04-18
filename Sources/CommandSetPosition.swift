@@ -28,4 +28,8 @@ class CommandSetPosition: Command {
         context.bitmapContext.move(to: pos)
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

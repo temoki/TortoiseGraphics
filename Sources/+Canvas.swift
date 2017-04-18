@@ -26,11 +26,6 @@ final public class Canvas {
         return tortoise
     }
 
-    /// Rendered canvas image
-    public var rendered: CGImage? {
-        return context.makeRenderedImage()
-    }
-
     // MARK: - Initializer
 
     /// Initializer
@@ -55,10 +50,18 @@ final public class Canvas {
         tortoise.clear()
     }
 
-    /// Draw to canvas
-    public func draw() {
+    /// Draw by executing all commands
+    public func draw() -> CGImage? {
+        context.drawingHandler = nil
         tortoise.doExecute(context: context)
-        context.drawTortoise()
+        return context.render()
+    }
+
+    /// Draw by executing commands one by one
+    public func draw(oneByOne handler: @escaping DrawingHandler) {
+        context.drawingHandler = handler
+        tortoise.doExecute(context: context)
+        context.drawingHandler = nil
     }
 
 }

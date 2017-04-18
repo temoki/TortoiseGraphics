@@ -11,7 +11,11 @@ import CoreGraphics
 class CommandClean: Command {
 
     func execute(context: Context) {
-        context.clearScreen()
+        context.clean()
+    }
+
+    var isGraphicsCommand: Bool {
+        return true
     }
 
 }

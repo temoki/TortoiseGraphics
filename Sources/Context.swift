@@ -65,23 +65,15 @@ class Context {
 
     var procedures: [String: Procedure]
 
+    var drawingHandler: DrawingHandler?
+
     // MARK: - Initializer
 
     init(cgContext: CGContext, canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
-        self.bitmapContext = cgContext
-
-        // Convert bitmap origin
-        #if os(iOS)
-            // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
-            // The default coordinate system for views in iOS and OS X
-            // differ in the orientation of the vertical axis:
-            self.bitmapContext.translateBy(x: 0, y: canvasSize.height)
-            self.bitmapContext.scaleBy(x: 1, y: -1)
-        #endif
-        self.bitmapContext.translateBy(x: halfWidth, y: halfHeight)
+        self.bitmapContext = Context.convertCoordinate(cgContext)
 
         self.colorPalette = ColorPalette()
 
@@ -102,15 +94,7 @@ class Context {
     }
 
     convenience init(canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
-        let cgContext = CGContext(data: nil,
-                                       width: canvasSize.width.integer,
-                                       height: canvasSize.height.integer,
-                                       bitsPerComponent: 8,
-                                       bytesPerRow: canvasSize.width.integer * 4,
-                                       space: CGColorSpaceCreateDeviceRGB(),
-                                       bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
-        // swiftlint:disable:previous force_unwrapping
-
+        let cgContext = Context.createCGContext(canvasSize: canvasSize)
         self.init(cgContext: cgContext, canvasSize: canvasSize, tortoiseImage: tortoiseImage)
     }
 
@@ -122,6 +106,7 @@ class Context {
         penDown = Context.defaultPenDown
         penColor = Context.defaultPenColor
         penWidth = Context.defaultPenWidth
+        drawingHandler = nil
 
         colorPalette.reset()
         clearScreen()
@@ -145,22 +130,66 @@ class Context {
         bitmapContext.restoreGState()
     }
 
-    func makeRenderedImage() -> CGImage? {
+    func render() -> CGImage? {
         bitmapContext.flush()
-        return bitmapContext.makeImage()
+        guard let image = bitmapContext.makeImage() else { return nil }
+        let newContext = Context.convertCoordinate(Context.createCGContext(canvasSize: canvasRect.size))
+        newContext.draw(image, in: canvasRect)
+        if showTortoise {
+            Context.drawTortoise(newContext,
+                                 position: position,
+                                 heading: heading,
+                                 tortoiseImage: tortoiseImage)
+        }
+        return newContext.makeImage()
     }
 
     func drawTortoise() {
         guard showTortoise else { return }
-        bitmapContext.saveGState()
+        Context.drawTortoise(bitmapContext,
+                             position: position,
+                             heading: heading,
+                             tortoiseImage: tortoiseImage)
+    }
+
+    // MARK: - Private
+
+    private static func createCGContext(canvasSize: CGSize) -> CGContext {
+        return CGContext(data: nil,
+                         width: canvasSize.width.integer,
+                         height: canvasSize.height.integer,
+                         bitsPerComponent: 8,
+                         bytesPerRow: canvasSize.width.integer * 4,
+                         space: CGColorSpaceCreateDeviceRGB(),
+                         bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+        // swiftlint:disable:previous force_unwrapping
+    }
+
+    private static func convertCoordinate(_ cgContext: CGContext) -> CGContext {
+        #if os(iOS)
+            // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
+            // The default coordinate system for views in iOS and OS X
+            // differ in the orientation of the vertical axis:
+            cgContext.translateBy(x: 0, y: cgContext.height)
+            cgContext.scaleBy(x: 1, y: -1)
+        #endif
+
+        // Convert bitmap origin
+        cgContext.translateBy(x: CGFloat(cgContext.width) * 0.5, y: CGFloat(cgContext.height) * 0.5)
+
+        return cgContext
+    }
+
+    static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, tortoiseImage: CGImage?) {
+        cgContext.saveGState()
         if let image = tortoiseImage {
             // Draw tortoise image
             let imageSize = CGSize(width: image.width, height: image.height)
             let drawRect = CGRect(origin: CGPoint.zero, size: imageSize)
-            bitmapContext.translateBy(x: position.x, y: position.y)
-            bitmapContext.rotate(by: (heading-Context.defaultHeading).radian)
-            bitmapContext.translateBy(x: -imageSize.width*0.5, y: -imageSize.height*0.5)
-            bitmapContext.draw(image, in: drawRect)
+            cgContext.translateBy(x: position.x, y: position.y)
+            cgContext.rotate(by: (heading-Context.defaultHeading).radian)
+            cgContext.translateBy(x: -imageSize.width*0.5, y: -imageSize.height*0.5)
+            cgContext.draw(image, in: drawRect)
 
         } else {
             // Dras triangle's 3 points.
@@ -170,13 +199,13 @@ class Context {
             let pos2 = CGPoint(x: -10, y:  5).applying(transform)
             let pos3 = CGPoint(x: -10, y: -5).applying(transform)
 
-            bitmapContext.move(to: pos1)
-            bitmapContext.addLine(to: pos2)
-            bitmapContext.addLine(to: pos3)
-            bitmapContext.closePath()
-            bitmapContext.fillPath()
+            cgContext.move(to: pos1)
+            cgContext.addLine(to: pos2)
+            cgContext.addLine(to: pos3)
+            cgContext.closePath()
+            cgContext.fillPath()
         }
-        bitmapContext.restoreGState()
+        cgContext.restoreGState()
     }
 
 }

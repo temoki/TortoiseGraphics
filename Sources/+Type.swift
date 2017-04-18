@@ -23,6 +23,9 @@ public typealias BoolOutput = (Properties) -> Bool
 /// Line Cap Style
 public typealias LineCap = CGLineCap
 
+/// Drawing Handler
+public typealias DrawingHandler = (CGImage) -> Void
+
 /// Number
 internal extension Number {
 

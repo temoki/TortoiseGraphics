@@ -14,4 +14,8 @@ class CommandClearScreen: Command {
         context.clearScreen()
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

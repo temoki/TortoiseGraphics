@@ -45,4 +45,8 @@ class CommandArc: Command {
         context.position = center
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

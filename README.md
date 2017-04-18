@@ -37,8 +37,13 @@ canvas.🐢
     .home()
 ```
 
+### Drawn image
+
 <img src="https://github.com/temoki/TortoiseGraphics/blob/master/example.png" width="300" />
 
+### Drawing animation
+
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/example.gif" width="300" />
 
 ## Usage
 
@@ -49,11 +54,19 @@ let canvas = Canvas(size: CGSize(width: 300, height: 300))
 // Command 🐢 on canvas.
 canvas.🐢.right(90).forward(100)
 
-// Draw canvas.
-canvas.draw()
+// Draw by executing all commands
+let image = canvas.draw()
 
-// Get rendered image from canvas.
-let image = canvas.rendered
+// Draw by executing commands one by one
+canvas.draw(oneByOne: { (image) in
+    // a image in drawing process
+})
+```
+
+### Draw be executeing commands one by one
+
+```swift
+let image = canvas.draw()
 ```
 
 ## Commands

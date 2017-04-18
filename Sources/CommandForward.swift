@@ -31,4 +31,8 @@ class CommandForward: Command {
         context.position = newPos
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

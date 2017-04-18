@@ -14,12 +14,23 @@ protocol Command {
     /// Execute this command
     func execute(context: Context)
 
+    /// Whether this command update canvas
+    var isGraphicsCommand: Bool { get }
+
 }
 
 extension Command {
 
     func doExecute(context: Context) {
         execute(context: context)
+        guard isGraphicsCommand else { return }
+        guard let handler = context.drawingHandler else { return }
+        guard let image = context.render() else { return }
+        handler(image)
+    }
+
+    var isGraphicsCommand: Bool {
+        return false
     }
 
 }

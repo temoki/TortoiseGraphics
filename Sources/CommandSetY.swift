@@ -26,4 +26,8 @@ class CommandSetY: Command {
         context.position = position
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }

@@ -15,4 +15,8 @@ class CommandHome: Command {
         context.heading = Context.defaultHeading
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }
