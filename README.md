@@ -63,12 +63,6 @@ canvas.draw(oneByOne: { (image) in
 })
 ```
 
-### Draw be executeing commands one by one
-
-```swift
-let image = canvas.draw()
-```
-
 ## Commands
 
 ### Move and Draw
