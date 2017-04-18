@@ -170,7 +170,7 @@ class Context {
             // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
             // The default coordinate system for views in iOS and OS X
             // differ in the orientation of the vertical axis:
-            cgContext.translateBy(x: 0, y: cgContext.height)
+            cgContext.translateBy(x: 0, y: CGFloat(cgContext.height))
             cgContext.scaleBy(x: 1, y: -1)
         #endif
 
