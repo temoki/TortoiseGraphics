@@ -6,6 +6,7 @@ The commands were implemented with reference to [ACSLogo](http://www.alancsmith.
 
 [![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](https://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![Platform](https://img.shields.io/cocoapods/p/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
@@ -135,15 +136,17 @@ dependencies: [
 ]
 ```
 
+### [Carthage](https://github.com/Carthage/Carthage)
+
+```
+github "temoki/TortoiseGraphics"
+```
+
 ### [Cocoapods](https://github.com/cocoapods/cocoapods)
 
 ```ruby
 pod 'TortoiseGraphics'
 ```
-
-## Roadmap
-
-* Carthage installation
 
 ## License
 
