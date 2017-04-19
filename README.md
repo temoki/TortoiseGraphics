@@ -60,7 +60,7 @@ let image = canvas.draw()
 
 // Draw by executing commands one by one
 canvas.draw(oneByOne: { (image) in
-    // a image in drawing process
+    // an image in drawing process
 })
 ```
 
