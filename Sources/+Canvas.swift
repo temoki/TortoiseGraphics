@@ -25,6 +25,11 @@ final public class Canvas {
     public var 🐢: Tortoise {
         return tortoise
     }
+    
+    /// Canvas size
+    public var size: CGSize {
+        return context.canvasRect.size
+    }
 
     // MARK: - Initializer
 
