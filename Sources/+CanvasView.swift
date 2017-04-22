@@ -77,7 +77,7 @@
         public func draw() {
             guard let image = canvas.draw() else { return }
             drawingStack.set(image)
-            display()
+            updateDisplay()
         }
 
         /// Draw with animation
@@ -89,7 +89,7 @@
                     Thread.sleep(forTimeInterval: interval)
                     self.drawingStack.push(image)
                     DispatchQueue.main.async {
-                        self.display()
+                        self.updateDisplay()
                     }
                 })
                 DispatchQueue.main.async {
