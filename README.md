@@ -48,6 +48,8 @@ canvas.🐢
 
 ## Usage
 
+### Draw CGImage
+
 ```swift
 // Instantiate a canvas.
 let canvas = Canvas(size: CGSize(width: 300, height: 300))
@@ -55,13 +57,32 @@ let canvas = Canvas(size: CGSize(width: 300, height: 300))
 // Command 🐢 on canvas.
 canvas.🐢.right(90).forward(100)
 
-// Draw by executing all commands
+// Draw image (CGImage) by executing all commands
 let image = canvas.draw()
 
 // Draw by executing commands one by one
 canvas.draw(oneByOne: { (image) in
-    // an image in drawing process
+    // an image (CGImage) in drawing process
 })
+```
+
+### Draw in view (macOS/iOS)
+
+```swift
+// Instantiate a view.
+let view = CanvasView(canvasSize: CGSize(width: 300, height: 300))
+
+// Command 🐢 on canvas.
+view.canvas.🐢.right(90).forward(100)
+
+// Draw in view
+view.draw()
+
+// Draw in view with animation
+view.animate(atTimeInterval: 0.1) {
+    // animation finished
+}
+
 ```
 
 ## Commands

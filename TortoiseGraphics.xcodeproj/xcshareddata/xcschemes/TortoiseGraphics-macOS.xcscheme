@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_55"
                BuildableName = "TortoiseGraphics.framework"
-               BlueprintName = "TortoiseGraphics"
+               BlueprintName = "TortoiseGraphics-macOS"
                ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "OBJ_102"
                BuildableName = "TortoiseGraphicsTests.xctest"
-               BlueprintName = "TortoiseGraphicsTests"
+               BlueprintName = "TortoiseGraphics-macOS-Tests"
                ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,7 +57,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "OBJ_55"
             BuildableName = "TortoiseGraphics.framework"
-            BlueprintName = "TortoiseGraphics"
+            BlueprintName = "TortoiseGraphics-macOS"
             ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -1,20 +1,34 @@
 import PlaygroundSupport
-import Cocoa
 import TortoiseGraphics
+import CoreGraphics
 
-let size = CGSize(width: 300, height: 300)
-let canvas = Canvas(size: size)
+let view = CanvasView(canvasSize: CGSize(width: 300, height: 300))
+PlaygroundPage.current.liveView = view
 
-canvas.🐢
-    .right(30)
-    .forward(100)
-    .right(120)
-    .forward(100)
-    .right(120)
-    .forward(100)
+view.canvas.🐢
+    .setRGB(0, [0.8, 0.8, 0.8])
+    .make("color", 0)
+    .repeat(12) { $0
+        .setPenWidth(2)
+        .right(15)
+        .repeat(6) { $0
+            .setPenColor { $0.penColor + 1 }
+            .forward(50)
+            .right(60)
+        }
+        .setPenWidth(1)
+        .right(15)
+        .repeat(6) { $0
+            .make("color") { $0["color"] + 1 }
+            .setPenColor { $0["color"] }
+            .forward(20)
+            .right(60)
+        }
+    }
+    .setPenColor(1)
+    .home()
 
-let cgImage = canvas.draw()
-let image = NSImage(cgImage: cgImage!, size: .zero)
-let imageView = NSImageView(frame: NSRect(origin: .zero, size: size))
-imageView.image = image
-PlaygroundPage.current.liveView = imageView
+//view.draw()
+view.animate(atTimeInterval: 0.1) {
+    print("FINISHED")
+}
