@@ -2,7 +2,7 @@ import PlaygroundSupport
 import TortoiseGraphics
 import CoreGraphics
 
-let view = CanvasView(canvasSize: CGSize(width: 300, height: 300))
+let view = CanvasView(canvasSize: CGSize(width: 300, height: 300), tortoise: #imageLiteral(resourceName: "Tortoise.pdf"))
 PlaygroundPage.current.liveView = view
 
 view.canvas.🐢
