@@ -4,8 +4,12 @@ import CoreGraphics
 
 class TortoiseGraphicsTests: XCTestCase {
 
-    func testExample() {
-        let canvas = Canvas(size: CGSize(width: 300, height: 300))
+    func testOutputExample() {
+        let url = URL(fileURLWithPath: "./Assets/Tortoise.pdf")
+        let image = NSImage(byReferencing: url)
+        var rect = CGRect(origin: .zero, size: image.size)
+        let cgImage = NSImage(byReferencing: url).cgImage(forProposedRect: &rect, context: nil, hints: nil)
+        let canvas = Canvas(size: CGSize(width: 300, height: 300), tortoise: cgImage)
 
         canvas.🐢
             .setRGB(0, [0.8, 0.8, 0.8])
@@ -34,9 +38,8 @@ class TortoiseGraphicsTests: XCTestCase {
         canvas.draw(oneByOne: { images.append($0) })
         XCTAssert(!images.isEmpty)
 
-        let path = NSHomeDirectory().appending("/Desktop/TortoiseGraphicsExample")
-        let pngURL = URL(fileURLWithPath: path.appending(".png"))
-        let gifURL = URL(fileURLWithPath: path.appending(".gif"))
+        let pngURL = URL(fileURLWithPath: "./example.png")
+        let gifURL = URL(fileURLWithPath: "./example.gif")
 
         // swiftlint:disable force_unwrapping
         let pngDestination = CGImageDestinationCreateWithURL(pngURL as CFURL, kUTTypePNG, 1, nil)
@@ -54,7 +57,7 @@ class TortoiseGraphicsTests: XCTestCase {
     }
 
     static var allTests = [
-        ("testExample", testExample)
+        ("testOutputExample", testOutputExample)
     ]
 
 }
