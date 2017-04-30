@@ -69,7 +69,7 @@ class Context {
 
     // MARK: - Initializer
 
-    init(cgContext: CGContext, canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
+    init(cgContext: CGContext, canvasSize: CGSize, tortoise image: CGImage? = nil) {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
@@ -77,7 +77,7 @@ class Context {
 
         self.colorPalette = ColorPalette()
 
-        self.tortoiseImage = tortoiseImage
+        self.tortoiseImage = image
 
         self.showTortoise = Context.defaultShowTortoise
         self.backgroundColor = Context.defaultBackgroundColor
@@ -93,9 +93,9 @@ class Context {
         self.reset()
     }
 
-    convenience init(canvasSize: CGSize, tortoiseImage: CGImage? = nil) {
+    convenience init(canvasSize: CGSize, tortoise image: CGImage? = nil) {
         let cgContext = Context.createCGContext(canvasSize: canvasSize)
-        self.init(cgContext: cgContext, canvasSize: canvasSize, tortoiseImage: tortoiseImage)
+        self.init(cgContext: cgContext, canvasSize: canvasSize, tortoise: image)
     }
 
     // MARK: - Methods

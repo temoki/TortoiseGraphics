@@ -35,16 +35,16 @@ final public class Canvas {
 
     /// Initializer
     /// - parameter size: Canvas size
-    /// - parameter tortoiseImage: Tortoise icon image
-    public required init(size: CGSize, tortoiseImage: CGImage? = nil) {
-        self.context = Context(canvasSize: size, tortoiseImage: tortoiseImage)
+    /// - parameter tortoise: Tortoise icon image
+    public required init(size: CGSize, tortoise image: CGImage? = nil) {
+        self.context = Context(canvasSize: size, tortoise: image)
     }
 
     /// Initializer
     /// - parameter size: Canvas size
-    /// - parameter tortoiseImage: Tortoise icon image
-    public required init(context: CGContext, size: CGSize, tortoiseImage: CGImage? = nil) {
-        self.context = Context(cgContext: context, canvasSize: size, tortoiseImage: tortoiseImage)
+    /// - parameter tortoise: Tortoise icon image
+    public required init(context: CGContext, size: CGSize, tortoise image: CGImage? = nil) {
+        self.context = Context(cgContext: context, canvasSize: size, tortoise: image)
     }
 
     // MARK: - Methods

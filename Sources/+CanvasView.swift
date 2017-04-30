@@ -9,9 +9,11 @@
 #if os(OSX)
     import AppKit
     public typealias View = NSView
+    public typealias Image = NSImage
 #elseif os(iOS)
     import UIKit
     public typealias View = UIView
+    public typealias Image = UIImage
 #endif
 
 #if os(OSX) || os(iOS)
@@ -49,6 +51,15 @@
     }
 #endif
 
+#if os(OSX)
+    fileprivate extension NSImage {
+        var cgImage: CGImage? {
+            var rect = CGRect(origin: .zero, size: self.size)
+            return cgImage(forProposedRect: &rect, context: nil, hints: nil)
+        }
+    }
+#endif
+
 #if os(OSX) || os(iOS)
     /// Canvas View
     public class CanvasView: View {
@@ -62,8 +73,9 @@
 
         /// Initializer
         /// - parameter canvasSize: Canvas size
-        public init(canvasSize: CGSize) {
-            self.canvas = Canvas(size: canvasSize)
+        /// - parameter tortoise: Tortoise icon image
+        public init(canvasSize: CGSize, tortoise image: Image? = nil) {
+            self.canvas = Canvas(size: canvasSize, tortoise: image?.cgImage)
             super.init(frame: CGRect(origin: .zero, size: canvasSize))
         }
 
