@@ -1,15 +1,15 @@
 //
 //  ViewController.swift
-//  Cocoapods-iOS
+//  Cocoapods-macOS
 //
 //  Created by temoki on 2017/05/01.
 //  Copyright © 2017年 temoki. All rights reserved.
 //
 
-import UIKit
+import Cocoa
 import TortoiseGraphics
 
-class ViewController: UIViewController {
+class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,11 @@ class ViewController: UIViewController {
                 }
                 .right(10)
         }
-        view.animate(atTimeInterval: 0.1)
-    }
+        view.animate(atTimeInterval: 0.1)    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override var representedObject: Any? {
+        didSet {
+        }
     }
 
 
