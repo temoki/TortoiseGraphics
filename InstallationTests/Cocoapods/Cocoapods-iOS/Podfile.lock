@@ -1,0 +1,12 @@
+PODS:
+  - TortoiseGraphics (0.4.0)
+
+DEPENDENCIES:
+  - TortoiseGraphics
+
+SPEC CHECKSUMS:
+  TortoiseGraphics: 88babd1d757fb88eb27f6026299777b593706007
+
+PODFILE CHECKSUM: b98aceb991d8d4fd0cecc350729baa50af7205f7
+
+COCOAPODS: 1.2.0
