@@ -181,6 +181,7 @@
 				14E7864A1EAA6AEA0074FC37 /* +Procedure+PenCommands.swift */,
 				14E7864B1EAA6AEA0074FC37 /* +Properties.swift */,
 				14E7864C1EAA6AEA0074FC37 /* +Type.swift */,
+				14A170A91EB81FD6009DF3D9 /* CGContext+.swift */,
 				14E7864D1EAA6AEA0074FC37 /* Color.swift */,
 				14E7864E1EAA6AEA0074FC37 /* ColorPallete.swift */,
 				14E7864F1EAA6AEA0074FC37 /* Command.swift */,
@@ -214,7 +215,6 @@
 				14E7866B1EAA6AEA0074FC37 /* CommandShowTurtle.swift */,
 				14E7866C1EAA6AEA0074FC37 /* CommandWhile.swift */,
 				14E7866D1EAA6AEA0074FC37 /* Context.swift */,
-				14A170A91EB81FD6009DF3D9 /* CGContext+.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
