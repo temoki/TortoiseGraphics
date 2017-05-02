@@ -9,7 +9,7 @@ class TortoiseGraphicsTests: XCTestCase {
         let image = NSImage(byReferencing: url)
         var rect = CGRect(origin: .zero, size: image.size)
         let cgImage = NSImage(byReferencing: url).cgImage(forProposedRect: &rect, context: nil, hints: nil)
-        let canvas = Canvas(size: CGSize(width: 300, height: 300), tortoise: cgImage)
+        let canvas = Canvas(size: CGSize(width: 300, height: 300), scale: 2, tortoise: cgImage)
 
         canvas.🐢
             .setRGB(0, [0.8, 0.8, 0.8])

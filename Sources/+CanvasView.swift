@@ -75,7 +75,12 @@
         /// - parameter canvasSize: Canvas size
         /// - parameter tortoise: Tortoise icon image
         public init(canvasSize: CGSize, tortoise image: Image? = nil) {
-            self.canvas = Canvas(size: canvasSize, tortoise: image?.cgImage)
+            #if os(iOS)
+                let scale = UIScreen.main.scale
+            #else
+                let scale = NSScreen.main()?.backingScaleFactor ?? 1
+            #endif
+            self.canvas = Canvas(size: canvasSize, scale: scale, tortoise: image?.cgImage)
             super.init(frame: CGRect(origin: .zero, size: canvasSize))
         }
 

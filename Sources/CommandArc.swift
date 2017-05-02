@@ -28,6 +28,7 @@ class CommandArc: Command {
 
         // Arc start position
         let transform = CGAffineTransform(translationX: center.x, y: center.y)
+            .scaledBy(x: context.canvasScale, y: context.canvasScale)
             .rotated(by: context.heading.radian)
         let startPos = CGPoint(x: radius, y: 0).applying(transform)
 
@@ -37,7 +38,7 @@ class CommandArc: Command {
 
         // Draw
         context.bitmapContext.move(to: startPos)
-        context.bitmapContext.addArc(center: center, radius: radius,
+        context.bitmapContext.addArc(center: center, radius: radius * context.canvasScale,
                                      startAngle: startAngle, endAngle: endAngle, clockwise: true)
         context.bitmapContext.strokePath()
 

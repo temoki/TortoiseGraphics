@@ -26,8 +26,14 @@ class Context {
     // MARK: - Properties
 
     let canvasRect: CGRect
+    
+    var scaledCanvasRect: CGRect {
+        return canvasRect.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
+    }
 
     let bitmapContext: CGContext
+    
+    let canvasScale: CGFloat
 
     let colorPalette: ColorPalette
 
@@ -57,7 +63,7 @@ class Context {
 
     var penWidth: Number {
         didSet {
-            bitmapContext.setLineWidth(penWidth)
+            bitmapContext.setLineWidth(penWidth * canvasScale)
         }
     }
 
@@ -69,11 +75,14 @@ class Context {
 
     // MARK: - Initializer
 
-    init(canvasSize: CGSize, tortoise image: CGImage? = nil) {
+    init(canvasSize: CGSize, canvasScale: CGFloat = 1, tortoise image: CGImage? = nil) {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
+        let bitmapSize = canvasSize.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
+        
+        self.canvasScale = canvasScale
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
-        self.bitmapContext = Context.createBitmapCGContext(canvasSize: canvasSize)
+        self.bitmapContext = Context.createBitmapCGContext(size: bitmapSize)
         self.bitmapContext.tg_helloTortoiseGraphicsWorld()
 
         self.colorPalette = ColorPalette()
@@ -119,22 +128,22 @@ class Context {
     }
 
     func clean() {
-        bitmapContext.clear(canvasRect)
+        bitmapContext.clear(scaledCanvasRect)
         bitmapContext.saveGState()
         bitmapContext.setFillColor(colorPalette.color(number: backgroundColor).cgColor)
-        bitmapContext.fill(canvasRect)
+        bitmapContext.fill(scaledCanvasRect)
         bitmapContext.restoreGState()
     }
 
     func render() -> CGImage? {
         bitmapContext.flush()
         guard let image = bitmapContext.makeImage() else { return nil }
-        let newCGContext = Context.createBitmapCGContext(canvasSize: canvasRect.size)
+        let newCGContext = Context.createBitmapCGContext(size: scaledCanvasRect.size)
 
         // Draw rendered image
         newCGContext.saveGState()
         newCGContext.tg_moveOriginToCenter()
-        newCGContext.draw(image, in: canvasRect)
+        newCGContext.draw(image, in: scaledCanvasRect)
         newCGContext.restoreGState()
 
         // Draw tortoise
@@ -144,6 +153,7 @@ class Context {
             Context.drawTortoise(newCGContext,
                                  position: position,
                                  heading: heading,
+                                 scale: canvasScale,
                                  tortoiseImage: tortoiseImage)
             newCGContext.restoreGState()
         }
@@ -155,29 +165,31 @@ class Context {
         Context.drawTortoise(bitmapContext,
                              position: position,
                              heading: heading,
+                             scale: canvasScale,
                              tortoiseImage: tortoiseImage)
     }
 
     // MARK: - Private
 
-    private static func createBitmapCGContext(canvasSize: CGSize) -> CGContext {
+    private static func createBitmapCGContext(size: CGSize) -> CGContext {
         return CGContext(data: nil,
-                         width: canvasSize.width.integer,
-                         height: canvasSize.height.integer,
+                         width: size.width.integer,
+                         height: size.height.integer,
                          bitsPerComponent: 8,
-                         bytesPerRow: canvasSize.width.integer * 4,
+                         bytesPerRow: size.width.integer * 4,
                          space: CGColorSpaceCreateDeviceRGB(),
                          bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
         // swiftlint:disable:previous force_unwrapping
     }
 
-    static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, tortoiseImage: CGImage?) {
+    static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, scale: CGFloat, tortoiseImage: CGImage?) {
         cgContext.saveGState()
         if let image = tortoiseImage {
             // Draw tortoise image
             let imageSize = CGSize(width: image.width, height: image.height)
             let drawRect = CGRect(origin: CGPoint.zero, size: imageSize)
             cgContext.translateBy(x: position.x, y: position.y)
+            cgContext.scaleBy(x: scale, y: scale)
             cgContext.rotate(by: (heading-Context.defaultHeading).radian)
             cgContext.translateBy(x: -imageSize.width*0.5, y: -imageSize.height*0.5)
             cgContext.draw(image, in: drawRect)
@@ -185,6 +197,7 @@ class Context {
         } else {
             // Dras triangle's 3 points.
             let transform = CGAffineTransform(translationX: position.x, y: position.y)
+                .scaledBy(x: scale, y: scale)
                 .rotated(by: heading.radian)
             let pos1 = CGPoint(x:  10, y:  0).applying(transform)
             let pos2 = CGPoint(x: -10, y:  5).applying(transform)

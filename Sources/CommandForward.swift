@@ -22,6 +22,7 @@ class CommandForward: Command {
 
     func execute(context: Context) {
         let transform = CGAffineTransform(translationX: context.position.x, y: context.position.y)
+            .scaledBy(x: context.canvasScale, y: context.canvasScale)
             .rotated(by: context.heading.radian)
         let newPos = CGPoint(x: distanceOutput(context: context), y: 0).applying(transform)
         if context.penDown {
