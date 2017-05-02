@@ -54,17 +54,14 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-InstallationTests/Cocoapods/Cocoapods-iOS/Pods
-InstallationTests/Cocoapods/Cocoapods-iOS/Podfile.lock
-InstallationTests/Cocoapods/Cocoapods-macOS/Pods
-InstallationTests/Cocoapods/Cocoapods-macOS/Podfile.lock
+#Pods/
 
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-InstallationTests/Carthage/Carthage/Checkouts
-InstallationTests/Carthage/Carthage/Build
-InstallationTests/Carthage/Cartfile.resolved
+#
+#Carthage/Checkouts
+#Carthage/Build
 
 # fastlane
 #
