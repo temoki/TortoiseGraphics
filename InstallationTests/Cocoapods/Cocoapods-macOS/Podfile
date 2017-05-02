@@ -3,6 +3,6 @@ platform :osx, '10.10'
 target 'Cocoapods-macOS' do
   use_frameworks!
 
-  pod 'TortoiseGraphics'
+  pod 'TortoiseGraphics', :git => 'https://github.com/temoki/TortoiseGraphics.git', :branch => 'develop'
 
 end

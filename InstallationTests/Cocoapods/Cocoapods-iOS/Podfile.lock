@@ -2,11 +2,21 @@ PODS:
   - TortoiseGraphics (0.4.0)
 
 DEPENDENCIES:
-  - TortoiseGraphics
+  - TortoiseGraphics (from `https://github.com/temoki/TortoiseGraphics.git`, branch `develop`)
+
+EXTERNAL SOURCES:
+  TortoiseGraphics:
+    :branch: develop
+    :git: https://github.com/temoki/TortoiseGraphics.git
+
+CHECKOUT OPTIONS:
+  TortoiseGraphics:
+    :commit: 3b70ee764b96c2704138b4fa3feb24f2bc7d672f
+    :git: https://github.com/temoki/TortoiseGraphics.git
 
 SPEC CHECKSUMS:
-  TortoiseGraphics: 88babd1d757fb88eb27f6026299777b593706007
+  TortoiseGraphics: e98b3e82dbf2db4ac0eaa85b2e9423d297b8d25a
 
-PODFILE CHECKSUM: b98aceb991d8d4fd0cecc350729baa50af7205f7
+PODFILE CHECKSUM: 3e7376a9111f97a81b3cd77a4769246969e019ff
 
 COCOAPODS: 1.2.0
