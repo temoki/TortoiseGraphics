@@ -40,13 +40,6 @@ final public class Canvas {
         self.context = Context(canvasSize: size, tortoise: image)
     }
 
-    /// Initializer
-    /// - parameter size: Canvas size
-    /// - parameter tortoise: Tortoise icon image
-    public required init(context: CGContext, size: CGSize, tortoise image: CGImage? = nil) {
-        self.context = Context(cgContext: context, canvasSize: size, tortoise: image)
-    }
-
     // MARK: - Methods
 
     /// Clear canvas

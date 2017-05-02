@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14A170AA1EB81FD6009DF3D9 /* CGContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A170A91EB81FD6009DF3D9 /* CGContext+.swift */; };
 		14E7866E1EAA6AEA0074FC37 /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786441EAA6AEA0074FC37 /* +Canvas.swift */; };
 		14E7866F1EAA6AEA0074FC37 /* +CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786451EAA6AEA0074FC37 /* +CanvasView.swift */; };
 		14E786701EAA6AEA0074FC37 /* +Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786461EAA6AEA0074FC37 /* +Procedure.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14A170A91EB81FD6009DF3D9 /* CGContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+.swift"; sourceTree = "<group>"; };
 		14E786441EAA6AEA0074FC37 /* +Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Canvas.swift"; sourceTree = "<group>"; };
 		14E786451EAA6AEA0074FC37 /* +CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+CanvasView.swift"; sourceTree = "<group>"; };
 		14E786461EAA6AEA0074FC37 /* +Procedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure.swift"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				14E7866B1EAA6AEA0074FC37 /* CommandShowTurtle.swift */,
 				14E7866C1EAA6AEA0074FC37 /* CommandWhile.swift */,
 				14E7866D1EAA6AEA0074FC37 /* Context.swift */,
+				14A170A91EB81FD6009DF3D9 /* CGContext+.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -304,6 +307,7 @@
 				14E786741EAA6AEA0074FC37 /* +Procedure+PenCommands.swift in Sources */,
 				14E786831EAA6AEA0074FC37 /* CommandIf.swift in Sources */,
 				14E7867B1EAA6AEA0074FC37 /* CommandBack.swift in Sources */,
+				14A170AA1EB81FD6009DF3D9 /* CGContext+.swift in Sources */,
 				14E786701EAA6AEA0074FC37 /* +Procedure.swift in Sources */,
 				14E786771EAA6AEA0074FC37 /* Color.swift in Sources */,
 				14E786841EAA6AEA0074FC37 /* CommandLeft.swift in Sources */,

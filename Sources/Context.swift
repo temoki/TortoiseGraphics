@@ -69,11 +69,13 @@ class Context {
 
     // MARK: - Initializer
 
-    init(cgContext: CGContext, canvasSize: CGSize, tortoise image: CGImage? = nil) {
+    init(canvasSize: CGSize, tortoise image: CGImage? = nil) {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
-        self.bitmapContext = Context.convertCoordinate(cgContext)
+        self.bitmapContext = Context.createBitmapCGContext(canvasSize: canvasSize)
+        self.bitmapContext.tg_moveOriginToCenter()
+        self.bitmapContext.tg_convertCoordinateSystem()
 
         self.colorPalette = ColorPalette()
 
@@ -91,11 +93,6 @@ class Context {
         self.procedures = Context.defaultProcedures
 
         self.reset()
-    }
-
-    convenience init(canvasSize: CGSize, tortoise image: CGImage? = nil) {
-        let cgContext = Context.createCGContext(canvasSize: canvasSize)
-        self.init(cgContext: cgContext, canvasSize: canvasSize, tortoise: image)
     }
 
     // MARK: - Methods
@@ -133,15 +130,16 @@ class Context {
     func render() -> CGImage? {
         bitmapContext.flush()
         guard let image = bitmapContext.makeImage() else { return nil }
-        let newContext = Context.convertCoordinate(Context.createCGContext(canvasSize: canvasRect.size))
-        newContext.draw(image, in: canvasRect)
+        let newCGContext = Context.createBitmapCGContext(canvasSize: canvasRect.size)
+        newCGContext.tg_moveOriginToCenter()
+        newCGContext.draw(image, in: canvasRect)
         if showTortoise {
-            Context.drawTortoise(newContext,
+            Context.drawTortoise(newCGContext,
                                  position: position,
                                  heading: heading,
                                  tortoiseImage: tortoiseImage)
         }
-        return newContext.makeImage()
+        return newCGContext.makeImage()
     }
 
     func drawTortoise() {
@@ -154,7 +152,7 @@ class Context {
 
     // MARK: - Private
 
-    private static func createCGContext(canvasSize: CGSize) -> CGContext {
+    private static func createBitmapCGContext(canvasSize: CGSize) -> CGContext {
         return CGContext(data: nil,
                          width: canvasSize.width.integer,
                          height: canvasSize.height.integer,
@@ -163,21 +161,6 @@ class Context {
                          space: CGColorSpaceCreateDeviceRGB(),
                          bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
         // swiftlint:disable:previous force_unwrapping
-    }
-
-    private static func convertCoordinate(_ cgContext: CGContext) -> CGContext {
-        #if os(iOS)
-            // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
-            // The default coordinate system for views in iOS and OS X
-            // differ in the orientation of the vertical axis:
-            cgContext.translateBy(x: 0, y: CGFloat(cgContext.height))
-            cgContext.scaleBy(x: 1, y: -1)
-        #endif
-
-        // Convert bitmap origin
-        cgContext.translateBy(x: CGFloat(cgContext.width) * 0.5, y: CGFloat(cgContext.height) * 0.5)
-
-        return cgContext
     }
 
     static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, tortoiseImage: CGImage?) {
