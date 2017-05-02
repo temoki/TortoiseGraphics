@@ -120,9 +120,9 @@
         }
         #elseif os(iOS)
         public override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        guard let cgContext = UIGraphicsGetCurrentContext() else { return }
-        draw(with: cgContext)
+            super.draw(rect)
+            guard let cgContext = UIGraphicsGetCurrentContext() else { return }
+            draw(with: cgContext)
         }
         #endif
 
