@@ -3,13 +3,18 @@ import XCTest
 import CoreGraphics
 
 class TortoiseGraphicsTests: XCTestCase {
-
-    func testOutputExample() {
+    
+    func loadTortoise(scale: CGFloat) -> CGImage? {
         let url = URL(fileURLWithPath: "./Assets/Tortoise.pdf")
         let image = NSImage(byReferencing: url)
-        var rect = CGRect(origin: .zero, size: image.size)
-        let cgImage = NSImage(byReferencing: url).cgImage(forProposedRect: &rect, context: nil, hints: nil)
-        let canvas = Canvas(size: CGSize(width: 300, height: 300), scale: 2, tortoise: cgImage)
+        var rect = CGRect(origin: .zero, size: image.size).applying(CGAffineTransform(scaleX: scale, y: scale))
+        return image.cgImage(forProposedRect: &rect, context: nil, hints: nil)
+    }
+
+    func testOutputExample() {
+        let scale: CGFloat = 2
+        let image = loadTortoise(scale: scale)
+        let canvas = Canvas(size: CGSize(width: 300, height: 300), scale: scale, tortoise: image)
 
         canvas.🐢
             .setRGB(0, [0.8, 0.8, 0.8])

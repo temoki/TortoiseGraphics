@@ -186,7 +186,7 @@ class Context {
         cgContext.saveGState()
         if let image = tortoiseImage {
             // Draw tortoise image
-            let imageSize = CGSize(width: image.width, height: image.height)
+            let imageSize = CGSize(width: CGFloat(image.width) / scale, height: CGFloat(image.height) / scale)
             let drawRect = CGRect(origin: CGPoint.zero, size: imageSize)
             cgContext.translateBy(x: position.x, y: position.y)
             cgContext.scaleBy(x: scale, y: scale)
