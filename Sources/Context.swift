@@ -160,15 +160,6 @@ class Context {
         return newCGContext.makeImage()
     }
 
-    func drawTortoise() {
-        guard showTortoise else { return }
-        Context.drawTortoise(bitmapContext,
-                             position: position,
-                             heading: heading,
-                             scale: canvasScale,
-                             tortoiseImage: tortoiseImage)
-    }
-
     // MARK: - Private
 
     private static func createBitmapCGContext(size: CGSize) -> CGContext {
