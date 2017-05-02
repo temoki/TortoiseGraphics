@@ -10,8 +10,9 @@ import CoreGraphics
 
 extension CGContext {
     
-    func tg_moveOriginToCenter() {
-        translateBy(x: CGFloat(width) * 0.5, y: CGFloat(height) * 0.5)
+    func tg_helloTortoiseGraphicsWorld() {
+        tg_convertCoordinateSystem()
+        tg_moveOriginToCenter()
     }
     
     func tg_convertCoordinateSystem() {
@@ -22,6 +23,10 @@ extension CGContext {
             translateBy(x: 0, y: CGFloat(height))
             scaleBy(x: 1, y: -1)
         #endif
+    }
+
+    func tg_moveOriginToCenter() {
+        translateBy(x: CGFloat(width) * 0.5, y: CGFloat(height) * 0.5)
     }
     
 }

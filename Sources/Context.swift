@@ -74,8 +74,7 @@ class Context {
         let halfHeight = canvasSize.height * 0.5
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
         self.bitmapContext = Context.createBitmapCGContext(canvasSize: canvasSize)
-        self.bitmapContext.tg_moveOriginToCenter()
-        self.bitmapContext.tg_convertCoordinateSystem()
+        self.bitmapContext.tg_helloTortoiseGraphicsWorld()
 
         self.colorPalette = ColorPalette()
 
@@ -131,13 +130,22 @@ class Context {
         bitmapContext.flush()
         guard let image = bitmapContext.makeImage() else { return nil }
         let newCGContext = Context.createBitmapCGContext(canvasSize: canvasRect.size)
+
+        // Draw rendered image
+        newCGContext.saveGState()
         newCGContext.tg_moveOriginToCenter()
         newCGContext.draw(image, in: canvasRect)
+        newCGContext.restoreGState()
+        
+        // Draw tortoise
         if showTortoise {
+            newCGContext.saveGState()
+            newCGContext.tg_helloTortoiseGraphicsWorld()
             Context.drawTortoise(newCGContext,
                                  position: position,
                                  heading: heading,
                                  tortoiseImage: tortoiseImage)
+            newCGContext.restoreGState()
         }
         return newCGContext.makeImage()
     }
