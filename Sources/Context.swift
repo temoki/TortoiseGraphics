@@ -26,13 +26,13 @@ class Context {
     // MARK: - Properties
 
     let canvasRect: CGRect
-    
+
     var scaledCanvasRect: CGRect {
         return canvasRect.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
     }
 
     let bitmapContext: CGContext
-    
+
     let canvasScale: CGFloat
 
     let colorPalette: ColorPalette
@@ -79,7 +79,7 @@ class Context {
         let halfWidth = canvasSize.width * 0.5
         let halfHeight = canvasSize.height * 0.5
         let bitmapSize = canvasSize.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
-        
+
         self.canvasScale = canvasScale
         self.canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: canvasSize)
         self.bitmapContext = Context.createBitmapCGContext(size: bitmapSize)

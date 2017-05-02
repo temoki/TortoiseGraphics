@@ -3,7 +3,7 @@ import XCTest
 import CoreGraphics
 
 class TortoiseGraphicsTests: XCTestCase {
-    
+
     func testOutputExample() {
         let canvas = Canvas(size: CGSize(width: 300, height: 300))
 
