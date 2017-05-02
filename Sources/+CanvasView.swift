@@ -51,18 +51,14 @@
     }
 #endif
 
-private func cgImage(from image: Image?, scale: CGFloat? = nil) -> CGImage? {
-    guard let image = image else { return nil }
-    #if os(OSX)
-        let imageScale = scale ?? 1
-        var rect = CGRect(origin: .zero, size: image.size).applying(CGAffineTransform(scaleX: imageScale, y: imageScale))
-        return image.cgImage(forProposedRect: &rect, context: nil, hints: nil)
-    #elseif os(iOS)
-        return image.cgImage
-    #else
-        return nil
-    #endif
+#if os(macOS)
+fileprivate extension Image {
+    var cgImage: CGImage? {
+        var rect = CGRect(origin: .zero, size: size)
+        return cgImage(forProposedRect: &rect, context: nil, hints: nil)
+    }
 }
+#endif
 
 #if os(OSX) || os(iOS)
     /// Canvas View
@@ -84,7 +80,7 @@ private func cgImage(from image: Image?, scale: CGFloat? = nil) -> CGImage? {
             #else
                 let scale = NSScreen.main()?.backingScaleFactor ?? 1
             #endif
-            self.canvas = Canvas(size: canvasSize, scale: scale, tortoise: cgImage(from: image, scale: scale))
+            self.canvas = Canvas(size: canvasSize, scale: scale, tortoise: image?.cgImage)
             super.init(frame: CGRect(origin: .zero, size: canvasSize))
         }
 
