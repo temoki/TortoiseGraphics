@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let view = CanvasView(canvasSize: self.view.bounds.size)
+        let view = CanvasView(canvasSize: self.view.bounds.size, tortoise: #imageLiteral(resourceName: "Tortoise"))
         self.view.addSubview(view)
         view.canvas.🐢
             .repeat(36) { $0
