@@ -9,12 +9,12 @@
 import CoreGraphics
 
 extension CGContext {
-    
+
     func tg_helloTortoiseGraphicsWorld() {
         tg_convertCoordinateSystem()
         tg_moveOriginToCenter()
     }
-    
+
     func tg_convertCoordinateSystem() {
         #if os(iOS)
             // https://developer.apple.com/library/content/documentation/General/Conceptual/Devpedia-CocoaApp/CoordinateSystem.html
@@ -28,5 +28,5 @@ extension CGContext {
     func tg_moveOriginToCenter() {
         translateBy(x: CGFloat(width) * 0.5, y: CGFloat(height) * 0.5)
     }
-    
+
 }

@@ -136,7 +136,7 @@ class Context {
         newCGContext.tg_moveOriginToCenter()
         newCGContext.draw(image, in: canvasRect)
         newCGContext.restoreGState()
-        
+
         // Draw tortoise
         if showTortoise {
             newCGContext.saveGState()
