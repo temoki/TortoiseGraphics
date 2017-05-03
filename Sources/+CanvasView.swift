@@ -128,7 +128,7 @@ fileprivate extension Image {
         
         public override var frame: CGRect {
             didSet {
-                canvas.setCanvas(size: frame.size, scale: CanvasView.screenScale)
+                canvas.size = frame.size
             }
         }
 

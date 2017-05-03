@@ -30,6 +30,15 @@ class Context {
     var scaledCanvasRect: CGRect {
         return canvasRect.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
     }
+    
+    var canvasSize: CGSize {
+        get {
+            return canvasRect.size
+        }
+        set {
+            setCanvasSize(newValue)
+        }
+    }
 
     var bitmapContext: CGContext
 
@@ -103,12 +112,11 @@ class Context {
 
     // MARK: - Methods
     
-    func setCanvas(size: CGSize, scale: CGFloat = 1) {
+    func setCanvasSize(_ size: CGSize) {
         let halfWidth = size.width * 0.5
         let halfHeight = size.height * 0.5
-        let bitmapSize = size.applying(CGAffineTransform(scaleX: scale, y: scale))
+        let bitmapSize = size.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
         
-        canvasScale = scale
         canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: size)
         bitmapContext = Context.createBitmapCGContext(size: bitmapSize)
         bitmapContext.tg_helloTortoiseGraphicsWorld()
@@ -117,7 +125,7 @@ class Context {
         didSetPenColor()
         didSetPenWidth()
         
-        //clean()
+        clean()
     }
 
     func reset() {

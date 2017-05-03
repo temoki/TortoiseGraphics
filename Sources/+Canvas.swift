@@ -28,7 +28,12 @@ final public class Canvas {
 
     /// Canvas size
     public var size: CGSize {
-        return context.canvasRect.size
+        get {
+            return context.canvasSize
+        }
+        set {
+            context.canvasSize = newValue
+        }
     }
 
     // MARK: - Initializer
@@ -47,13 +52,6 @@ final public class Canvas {
     public func clear() {
         context.reset()
         tortoise.clear()
-    }
-    
-    /// Set canvas size/scale
-    /// - parameter size: Canvas size
-    /// - parameter scale: Canvas scale
-    public func setCanvas(size: CGSize, scale: CGFloat = 1) {
-        context.setCanvas(size: size, scale: scale)
     }
     
     /// Set tortoise image
