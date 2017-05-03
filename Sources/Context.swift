@@ -113,19 +113,35 @@ class Context {
     // MARK: - Methods
     
     func setCanvasSize(_ size: CGSize) {
+        // Save current image before re-create canvas
+        let currentRect = scaledCanvasRect
+        let currentShowTortoise = self.showTortoise
+        self.showTortoise = false
+        let currentImage = render()
+        self.showTortoise = currentShowTortoise
+        
+        // Re-create canvas
         let halfWidth = size.width * 0.5
         let halfHeight = size.height * 0.5
         let bitmapSize = size.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
-        
         canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: size)
         bitmapContext = Context.createBitmapCGContext(size: bitmapSize)
         bitmapContext.tg_helloTortoiseGraphicsWorld()
         
+        // Re-set properties
         didSetPosition()
         didSetPenColor()
         didSetPenWidth()
         
+        // Clean
         clean()
+        
+        // Restore canvas bitmap
+        if let image = currentImage {
+            bitmapContext.saveGState()
+            bitmapContext.draw(image, in: currentRect)
+            bitmapContext.restoreGState()
+        }
     }
 
     func reset() {
