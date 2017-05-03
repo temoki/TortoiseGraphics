@@ -222,9 +222,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		OBJ_102 /* TortoiseGraphics-macOS-Tests */ = {
+		OBJ_102 /* TortoiseGraphicsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphics-macOS-Tests" */;
+			buildConfigurationList = OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */;
 			buildPhases = (
 				OBJ_106 /* Sources */,
 				OBJ_108 /* Frameworks */,
@@ -234,14 +234,14 @@
 			dependencies = (
 				OBJ_110 /* PBXTargetDependency */,
 			);
-			name = "TortoiseGraphics-macOS-Tests";
+			name = TortoiseGraphicsTests;
 			productName = TortoiseGraphicsTests;
 			productReference = OBJ_54 /* TortoiseGraphicsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		OBJ_55 /* TortoiseGraphics-macOS */ = {
+		OBJ_55 /* TortoiseGraphics */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics-macOS" */;
+			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */;
 			buildPhases = (
 				OBJ_59 /* Sources */,
 				OBJ_101 /* Frameworks */,
@@ -250,7 +250,7 @@
 			);
 			dependencies = (
 			);
-			name = "TortoiseGraphics-macOS";
+			name = TortoiseGraphics;
 			productName = TortoiseGraphics;
 			productReference = OBJ_53 /* TortoiseGraphics.framework */;
 			productType = "com.apple.product-type.framework";
@@ -280,8 +280,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				OBJ_55 /* TortoiseGraphics-macOS */,
-				OBJ_102 /* TortoiseGraphics-macOS-Tests */,
+				OBJ_55 /* TortoiseGraphics */,
+				OBJ_102 /* TortoiseGraphicsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -350,7 +350,7 @@
 /* Begin PBXTargetDependency section */
 		OBJ_110 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = OBJ_55 /* TortoiseGraphics-macOS */;
+			target = OBJ_55 /* TortoiseGraphics */;
 			targetProxy = 14B0E9501EA38438007FBC3D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,12 +448,14 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphics_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = TortoiseGraphics;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -473,12 +475,14 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = TortoiseGraphics.xcodeproj/TortoiseGraphics_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = TortoiseGraphics;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGET_NAME = TortoiseGraphics;
@@ -488,7 +492,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphics-macOS-Tests" */ = {
+		OBJ_103 /* Build configuration list for PBXNativeTarget "TortoiseGraphicsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_104 /* Debug */,
@@ -506,7 +510,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics-macOS" */ = {
+		OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_57 /* Debug */,
