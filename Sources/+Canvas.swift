@@ -53,7 +53,7 @@ final public class Canvas {
         context.reset()
         tortoise.clear()
     }
-    
+
     /// Set tortoise image
     /// - parameter tortoise: Tortoise icon image
     public func setTortoise(image: CGImage?) {

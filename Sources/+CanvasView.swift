@@ -125,7 +125,7 @@ fileprivate extension Image {
             draw(with: cgContext)
         }
         #endif
-        
+
         public override var frame: CGRect {
             didSet {
                 canvas.size = frame.size
@@ -133,7 +133,7 @@ fileprivate extension Image {
         }
 
         // MARK: - Private
-        
+
         private static var screenScale: CGFloat {
             #if os(iOS)
                 return UIScreen.main.scale
