@@ -75,12 +75,7 @@ fileprivate extension Image {
         /// - parameter canvasSize: Canvas size
         /// - parameter tortoise: Tortoise icon image
         public init(canvasSize: CGSize, tortoise image: Image? = nil) {
-            #if os(iOS)
-                let scale = UIScreen.main.scale
-            #else
-                let scale = NSScreen.main()?.backingScaleFactor ?? 1
-            #endif
-            self.canvas = Canvas(size: canvasSize, scale: scale, tortoise: image?.cgImage)
+            self.canvas = Canvas(size: canvasSize, scale: CanvasView.screenScale, tortoise: image?.cgImage)
             super.init(frame: CGRect(origin: .zero, size: canvasSize))
         }
 
@@ -130,8 +125,23 @@ fileprivate extension Image {
             draw(with: cgContext)
         }
         #endif
+        
+        public override var frame: CGRect {
+            didSet {
+                canvas.setCanvas(size: frame.size, scale: CanvasView.screenScale)
+            }
+        }
 
         // MARK: - Private
+        
+        private static var screenScale: CGFloat {
+            #if os(iOS)
+                return UIScreen.main.scale
+            #else
+                return NSScreen.main()?.backingScaleFactor ?? 1
+            #endif
+
+        }
 
         private func draw(with cgContext: CGContext) {
             guard let image = drawingStack.pop() else { return }

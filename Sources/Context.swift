@@ -25,19 +25,19 @@ class Context {
 
     // MARK: - Properties
 
-    let canvasRect: CGRect
+    var canvasRect: CGRect
 
     var scaledCanvasRect: CGRect {
         return canvasRect.applying(CGAffineTransform(scaleX: canvasScale, y: canvasScale))
     }
 
-    let bitmapContext: CGContext
+    var bitmapContext: CGContext
 
-    let canvasScale: CGFloat
+    var canvasScale: CGFloat
 
     let colorPalette: ColorPalette
 
-    let tortoiseImage: CGImage?
+    var tortoiseImage: CGImage?
 
     var showTortoise: Bool
 
@@ -45,7 +45,7 @@ class Context {
 
     var position: CGPoint {
         didSet {
-            bitmapContext.move(to: position)
+            didSetPosition()
         }
     }
 
@@ -55,15 +55,13 @@ class Context {
 
     var penColor: Int {
         didSet {
-            let color = colorPalette.color(number: penColor)
-            bitmapContext.setStrokeColor(color.cgColor)
-            bitmapContext.setFillColor(color.cgColor)
+            didSetPenColor()
         }
     }
 
     var penWidth: Number {
         didSet {
-            bitmapContext.setLineWidth(penWidth * canvasScale)
+            didSetPenWidth()
         }
     }
 
@@ -104,6 +102,23 @@ class Context {
     }
 
     // MARK: - Methods
+    
+    func setCanvas(size: CGSize, scale: CGFloat = 1) {
+        let halfWidth = size.width * 0.5
+        let halfHeight = size.height * 0.5
+        let bitmapSize = size.applying(CGAffineTransform(scaleX: scale, y: scale))
+        
+        canvasScale = scale
+        canvasRect = CGRect(origin: CGPoint(x: -halfWidth, y: -halfHeight), size: size)
+        bitmapContext = Context.createBitmapCGContext(size: bitmapSize)
+        bitmapContext.tg_helloTortoiseGraphicsWorld()
+        
+        didSetPosition()
+        didSetPenColor()
+        didSetPenWidth()
+        
+        //clean()
+    }
 
     func reset() {
         backgroundColor = Context.defaultBackgroundColor
@@ -161,6 +176,20 @@ class Context {
     }
 
     // MARK: - Private
+    
+    private func didSetPosition() {
+        bitmapContext.move(to: position)
+    }
+    
+    private func didSetPenColor() {
+        let color = colorPalette.color(number: penColor)
+        bitmapContext.setStrokeColor(color.cgColor)
+        bitmapContext.setFillColor(color.cgColor)
+    }
+    
+    private func didSetPenWidth() {
+        bitmapContext.setLineWidth(penWidth * canvasScale)
+    }
 
     private static func createBitmapCGContext(size: CGSize) -> CGContext {
         return CGContext(data: nil,
@@ -173,7 +202,7 @@ class Context {
         // swiftlint:disable:previous force_unwrapping
     }
 
-    static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, scale: CGFloat, tortoiseImage: CGImage?) {
+    private static func drawTortoise(_ cgContext: CGContext, position: CGPoint, heading: Number, scale: CGFloat, tortoiseImage: CGImage?) {
         cgContext.saveGState()
         if let image = tortoiseImage {
             // Draw tortoise image

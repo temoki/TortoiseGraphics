@@ -48,6 +48,19 @@ final public class Canvas {
         context.reset()
         tortoise.clear()
     }
+    
+    /// Set canvas size/scale
+    /// - parameter size: Canvas size
+    /// - parameter scale: Canvas scale
+    public func setCanvas(size: CGSize, scale: CGFloat = 1) {
+        context.setCanvas(size: size, scale: scale)
+    }
+    
+    /// Set tortoise image
+    /// - parameter tortoise: Tortoise icon image
+    public func setTortoise(image: CGImage?) {
+        context.tortoiseImage = image
+    }
 
     /// Draw by executing all commands
     public func draw() -> CGImage? {
