@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/temoki/Documents/GIT-HOME/GitHub/TortoiseGraphics/Playground-macOS.playground">
+      location = "group:/Users/temoki/Documents/GIT-HOME/GitHub/TortoiseGraphics/Playground.playground">
    </FileRef>
    <FileRef
       location = "container:TortoiseGraphics.xcodeproj">
