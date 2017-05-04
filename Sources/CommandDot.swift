@@ -26,7 +26,8 @@ class CommandDot: Command {
                                  y: posY - (context.penWidth / 2),
                                  width: context.penWidth,
                                  height: context.penWidth)
-            context.bitmapContext.fill(dotRect)
+                .applying(CGAffineTransform(scaleX: context.canvasScale, y: context.canvasScale))
+            context.bitmapContext.fillEllipse(in: dotRect)
         }
     }
 
