@@ -77,6 +77,9 @@ fileprivate extension Image {
         public init(canvasSize: CGSize, tortoise image: Image? = nil) {
             self.canvas = Canvas(size: canvasSize, scale: CanvasView.screenScale, tortoise: image?.cgImage)
             super.init(frame: CGRect(origin: .zero, size: canvasSize))
+            #if os(iOS)
+                self.backgroundColor = UIColor.white
+            #endif
         }
 
         public required init?(coder: NSCoder) {
