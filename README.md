@@ -85,6 +85,23 @@ view.animate(atTimeInterval: 0.1) {
 
 ```
 
+## Playgrounds
+
+### On Xcode
+
+1. Open `TortoiseGraphics.xcworkspace` in Xcode.
+1. Build `TortoiseGraphics` scheme.
+1. Select `Playground` in project navigator.
+1. Let's play!
+
+### On Playgrounds iPad app
+
+1. Download `TortoisePlayground.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
+1. Unarchive the downloaded zip file.
+1. Send the unarchvied `TortoisePlayground.playgroundbook` file to your iPad by AirDrop.
+1. Open it with Playgrounds app.
+1. Let's play!
+
 ## Commands
 
 ### Move and Draw
