@@ -20,4 +20,8 @@ class CommandShowTortoise: Command {
         context.showTortoise = show
     }
 
+    var isGraphicsCommand: Bool {
+        return true
+    }
+
 }
