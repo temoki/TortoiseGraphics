@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146C35C01EC0B76F00157769 /* +TortoisePlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */; };
 		14A170AA1EB81FD6009DF3D9 /* CGContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A170A91EB81FD6009DF3D9 /* CGContext+.swift */; };
 		14E7866E1EAA6AEA0074FC37 /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786441EAA6AEA0074FC37 /* +Canvas.swift */; };
 		14E7866F1EAA6AEA0074FC37 /* +CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786451EAA6AEA0074FC37 /* +CanvasView.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+TortoisePlayground.swift"; sourceTree = "<group>"; };
 		14A170A91EB81FD6009DF3D9 /* CGContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+.swift"; sourceTree = "<group>"; };
 		14E786441EAA6AEA0074FC37 /* +Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Canvas.swift"; sourceTree = "<group>"; };
 		14E786451EAA6AEA0074FC37 /* +CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+CanvasView.swift"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				14E786491EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift */,
 				14E7864A1EAA6AEA0074FC37 /* +Procedure+PenCommands.swift */,
 				14E7864B1EAA6AEA0074FC37 /* +Properties.swift */,
+				146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */,
 				14E7864C1EAA6AEA0074FC37 /* +Type.swift */,
 				14A170A91EB81FD6009DF3D9 /* CGContext+.swift */,
 				14E7864D1EAA6AEA0074FC37 /* Color.swift */,
@@ -316,6 +319,7 @@
 				14E786801EAA6AEA0074FC37 /* CommandDot.swift in Sources */,
 				14E786811EAA6AEA0074FC37 /* CommandForward.swift in Sources */,
 				14E786921EAA6AEA0074FC37 /* CommandSetRGB.swift in Sources */,
+				146C35C01EC0B76F00157769 /* +TortoisePlayground.swift in Sources */,
 				14E786821EAA6AEA0074FC37 /* CommandHome.swift in Sources */,
 				14E786761EAA6AEA0074FC37 /* +Type.swift in Sources */,
 				14E786751EAA6AEA0074FC37 /* +Properties.swift in Sources */,

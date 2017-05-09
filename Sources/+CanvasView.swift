@@ -17,7 +17,7 @@
 #endif
 
 #if os(OSX) || os(iOS)
-    fileprivate class DrawingStack {
+    class DrawingStack {
 
         private var images: [CGImage] = []
 
@@ -91,8 +91,7 @@ fileprivate extension Image {
         /// Draw
         public func draw() {
             guard let image = canvas.draw() else { return }
-            drawingStack.set(image)
-            updateDisplay()
+            draw(image: image)
         }
 
         /// Draw with animation
@@ -111,6 +110,12 @@ fileprivate extension Image {
                     completion?()
                 }
             }
+        }
+
+        /// Draw image
+        internal func draw(image: CGImage) {
+            drawingStack.set(image)
+            updateDisplay()
         }
 
         // MARK: - Override

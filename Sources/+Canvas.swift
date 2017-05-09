@@ -12,7 +12,7 @@ import CoreGraphics
 final public class Canvas {
 
     /// Context
-    private let context: Context
+    internal let context: Context
 
     // MARK: - Properties
 
