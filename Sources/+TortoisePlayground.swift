@@ -26,7 +26,7 @@ public class TortoisePlayground {
     public func start(withTimeInterval interval: TimeInterval) {
         guard timer == nil else { return }
         finished = false
-        timer = Timer.scheduledTimer(timeInterval: interval,
+        timer = Timer.scheduledTimer(timeInterval: max(interval, 0.01),
                                      target: self,
                                      selector: #selector(onTimer(timer:)),
                                      userInfo: nil,

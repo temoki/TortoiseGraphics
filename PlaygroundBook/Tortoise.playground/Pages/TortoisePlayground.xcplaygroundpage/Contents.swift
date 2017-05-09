@@ -8,6 +8,7 @@ PlaygroundPage.current.liveView = TortoisePlayground.main.liveView
 //#-end-hidden-code
 //: Hello, TortoiseGraphics! 🐢
 start(withTimeInterval: /*#-editable-code*/0.1/*#-end-editable-code*/)
+
 //#-editable-code
 setPenColor(random(max: 18) + 1)
 right(234)
@@ -17,5 +18,7 @@ for i in 1...100 {
     right(144.3)
 }
 home()
+
 //#-end-editable-code
+
 finish()
