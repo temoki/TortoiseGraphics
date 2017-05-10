@@ -66,16 +66,8 @@ public func showTortoise() {
     TortoisePlayground.main.execute(command: CommandShowTortoise(show: true))
 }
 
-public func st() {
-    showTortoise()
-}
-
 public func hideTortoise() {
     TortoisePlayground.main.execute(command: CommandShowTortoise(show: false))
-}
-
-public func ht() {
-    hideTortoise()
 }
 
 // MARK: - Draw Commands
@@ -102,10 +94,6 @@ public func forward(_ distance: Number) {
     TortoisePlayground.main.execute(command: CommandForward(distance: {_ in distance}))
 }
 
-public func fd(_ distance: Number) {
-    forward(distance)
-}
-
 public func back(_ distance: Number) {
     TortoisePlayground.main.execute(command: CommandBack(distance: {_ in distance}))
 }
@@ -114,16 +102,8 @@ public func right(_ angle: Number) {
     TortoisePlayground.main.execute(command: CommandRight(angle: {_ in angle}))
 }
 
-public func rt(_ angle: Number) {
-    right(angle)
-}
-
 public func left(_ angle: Number) {
     TortoisePlayground.main.execute(command: CommandLeft(angle: {_ in angle}))
-}
-
-public func lt(_ angle: Number) {
-    left(angle)
 }
 
 public func home() {
@@ -164,16 +144,8 @@ public func penDown() {
     TortoisePlayground.main.execute(command: CommandPenDown(true))
 }
 
-public func pd() {
-    penDown()
-}
-
 public func penUp() {
     TortoisePlayground.main.execute(command: CommandPenDown(false))
-}
-
-public func pu() {
-    penUp()
 }
 
 public func setPenWidth(_ width: Number) {
