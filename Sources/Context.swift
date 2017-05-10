@@ -128,13 +128,13 @@ class Context {
         bitmapContext = Context.createBitmapCGContext(size: bitmapSize)
         bitmapContext.tg_helloTortoiseGraphicsWorld()
 
+        // Clean
+        clean()
+
         // Re-set properties
         didSetPosition()
         didSetPenColor()
         didSetPenWidth()
-
-        // Clean
-        clean()
 
         // Restore canvas bitmap
         if let image = currentImage {
