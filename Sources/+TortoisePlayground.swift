@@ -166,6 +166,6 @@ public var penColor: Number {
 
 // MARK: - Other Commands
 
-public func random(max: Number) -> Number {
+public func random(_ max: Number) -> Number {
     return Properties(context: TortoisePlayground.main.liveView.canvas.context).random(max)
 }
