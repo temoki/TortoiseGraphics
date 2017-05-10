@@ -9,7 +9,7 @@ TortoisePlayground.main.start(withTimeInterval: 0.01)
 //#-code-completion(identifier, hide, TortoisePlayground)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: ### Hello, Tortoise Graphics! 🐢
+//: # 🐢🐢 Hello, Tortoise Graphics! 🐢🐢
 //#-editable-code
 
 setPenColor(random(18) + 1)
@@ -23,7 +23,7 @@ home()
 //#-end-editable-code
 //#-hidden-code
 TortoisePlayground.main.finish {
-    // !!UNCOMMENT NEXT LINE BEFORE BUILD!!
-    //PlaygroundPage.current.assessmentStatus = .pass(message: "🐢> Finished!")
+    // !!UNCOMMENT NEXT A LINE BEFORE BUILD!!
+    //PlaygroundPage.current.assessmentStatus = .pass(message: "# 🐢 Finished!")
 }
 //#-end-hidden-code
