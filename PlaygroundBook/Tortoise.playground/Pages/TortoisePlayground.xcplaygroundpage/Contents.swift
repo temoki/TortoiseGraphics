@@ -6,9 +6,7 @@ PlaygroundPage.current.liveView = TortoisePlayground.main.liveView
 //#-code-completion(identifier, hide, view)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: Hello, TortoiseGraphics! 🐢
-start(withTimeInterval: /*#-editable-code*/0.1/*#-end-editable-code*/)
-
+//: ### Hello, Tortoise Graphics! 🐢
 //#-editable-code
 setPenColor(random(max: 18) + 1)
 right(234)
@@ -20,5 +18,9 @@ for i in 1...100 {
 home()
 
 //#-end-editable-code
-
-finish()
+//#-hidden-code
+TortoisePlayground.main.finish {
+    // !!UNCOMMENT NEXT LINE BEFORE BUILD!!
+    //PlaygroundPage.current.assessmentStatus = .pass(message: "🐢> Finished!")
+}
+//#-end-hidden-code

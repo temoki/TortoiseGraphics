@@ -19,13 +19,13 @@ public class TortoisePlayground {
 
     private var timer: Timer?
 
-    private var finished: Bool = false
+    private var completionHandler: (() -> Void)?
 
     private var drawingStack = DrawingStack()
 
     public func start(withTimeInterval interval: TimeInterval) {
         guard timer == nil else { return }
-        finished = false
+        completionHandler = nil
         timer = Timer.scheduledTimer(timeInterval: max(interval, 0.01),
                                      target: self,
                                      selector: #selector(onTimer(timer:)),
@@ -33,8 +33,8 @@ public class TortoisePlayground {
                                      repeats: true)
     }
 
-    public func finish() {
-        finished = true
+    public func finish(competion: @escaping () -> Void) {
+        completionHandler = competion
     }
 
     @objc func onTimer(timer: Timer) {
@@ -43,9 +43,11 @@ public class TortoisePlayground {
             return
         }
 
-        if finished {
+        if let handler = completionHandler {
             self.timer?.invalidate()
             self.timer = nil
+            handler()
+            self.completionHandler = nil
         }
     }
 
@@ -56,14 +58,6 @@ public class TortoisePlayground {
         drawingStack.push(image)
     }
 
-}
-
-public func start(withTimeInterval interval: TimeInterval) {
-    TortoisePlayground.main.start(withTimeInterval: interval)
-}
-
-public func finish() {
-    TortoisePlayground.main.finish()
 }
 
 // MARK: - Control Commands
