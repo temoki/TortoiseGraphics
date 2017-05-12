@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TortoiseGraphics'
-  s.version          = '0.8.1'
+  s.version          = '0.8.2'
   s.summary          = 'A turtle graphics (a key feature of the Logo) engine written in Swift.'
   s.description      = 'A turtle graphics (a key feature of the Logo) engine written in Swift. The commands were implemented with reference to ACSLogo.'
   s.homepage         = 'https://github.com/temoki/TortoiseGraphics'
