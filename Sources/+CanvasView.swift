@@ -17,7 +17,7 @@
 #endif
 
 #if os(OSX) || os(iOS)
-    class DrawingStack {
+    private class DrawingStack {
 
         private var images: [CGImage] = []
 

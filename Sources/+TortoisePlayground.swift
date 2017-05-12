@@ -21,7 +21,32 @@ public class TortoisePlayground {
 
     private var completionHandler: (() -> Void)?
 
-    private var drawingStack = DrawingStack()
+    private class CommandStack {
+
+        private var commands: [Command] = []
+
+        func clear() {
+            objc_sync_enter(self)
+            commands.removeAll(keepingCapacity: false)
+            objc_sync_exit(self)
+        }
+
+        func push(_ command: Command) {
+            objc_sync_enter(self)
+            commands.append(command)
+            objc_sync_exit(self)
+        }
+
+        func pop() -> Command? {
+            guard !commands.isEmpty else { return nil }
+            objc_sync_enter(self)
+            let command = commands.removeFirst()
+            objc_sync_exit(self)
+            return command
+        }
+
+    }
+    private var commandStack = CommandStack()
 
     public func start(withTimeInterval interval: TimeInterval) {
         guard timer == nil else { return }
@@ -38,24 +63,24 @@ public class TortoisePlayground {
     }
 
     @objc func onTimer(timer: Timer) {
-        if let image = drawingStack.pop() {
-            liveView.draw(image: image)
+        guard let command = commandStack.pop() else {
+            if let handler = completionHandler {
+                self.timer?.invalidate()
+                self.timer = nil
+                handler()
+                completionHandler = nil
+            }
             return
         }
 
-        if let handler = completionHandler {
-            self.timer?.invalidate()
-            self.timer = nil
-            handler()
-            self.completionHandler = nil
-        }
-    }
-
-    func execute(command: Command) {
         command.execute(context: liveView.canvas.context)
         guard command.isGraphicsCommand else { return }
         guard let image = liveView.canvas.context.render() else { return }
-        drawingStack.push(image)
+        liveView.draw(image: image)
+    }
+
+    func execute(command: Command) {
+        commandStack.push(command)
     }
 
 }
