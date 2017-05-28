@@ -1,11 +1,3 @@
-//
-//  Tortoise.swift
-//  TortoiseGraphics
-//
-//  Created by temoki on 2017/05/26.
-//
-//
-
 import Foundation
 import CoreGraphics
 
@@ -15,13 +7,16 @@ public class Tortoise {
     
     var commands: [Command] = []
     
+    var commandedHandler: ((Tortoise) -> Void)?
+    
     func add(command: Command) {
         state = command.test(in: state)
         commands.append(command)
+        commandedHandler?(self)
     }
     
     @discardableResult
-    func run(with context: GraphicsContext, toFrame index: Int? = nil) -> Int? {
+    func draw(with context: GraphicsContext, toFrame index: Int?) -> Int {
         let endIndex = commands.count - 1
         let toIndex = min(max((index ?? endIndex), 0), endIndex)
         
@@ -33,8 +28,14 @@ public class Tortoise {
         }
         
         context.tearDown()
-        return toIndex < endIndex ? toIndex + 1 : nil
+        return min(toIndex + 1, endIndex)
     }
+    
+}
+
+public extension Tortoise {
+    
+    // TODO: crate UIImage/NSImage or Gif
     
 }
 

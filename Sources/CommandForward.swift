@@ -1,11 +1,3 @@
-//
-//  CommandForward.swift
-//  TortoiseGraphics
-//
-//  Created by temoki on 2017/05/27.
-//  Copyright © 2017 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandForward: Command {

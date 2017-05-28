@@ -1,11 +1,3 @@
-//
-//  Canvas.swift
-//  TortoiseGraphics
-//
-//  Created by temoki on 2017/05/29.
-//  Copyright © 2017 temoki. All rights reserved.
-//
-
 #if os(OSX)
 import AppKit
 public typealias View = NSView
@@ -16,17 +8,8 @@ public typealias View = UIView
 
 public class Canvas: View {
     
-    public let tortoise = Tortoise()
-    
-    public var 🐢: Tortoise { return self.tortoise }
-    
     public var animationInterval: TimeInterval = 1.0 / 30.0 // 30 FPS
-    
-    public func draw(animated: Bool) {
-        drawingFrameIndex = animated ? 0 : nil
-        updateDisplay()
-    }
-    
+
     // MARK: - Override
     
     #if os(OSX)
@@ -45,20 +28,30 @@ public class Canvas: View {
     }
     #endif
     
+    public func play(block: @escaping (Tortoise) -> Void) {
+        tortoise.commandedHandler = { [weak self] (tortoise) in
+            guard !Thread.isMainThread else { return }
+            guard let interval = self?.animationInterval else { return }
+            Thread.sleep(forTimeInterval: interval)
+        }
+            
+        DispatchQueue.global().async { [weak self] in
+            guard let tortoise = self?.tortoise else { return }
+            block(tortoise)
+            tortoise.commandedHandler = nil
+        }
+    }
+    
     // MARK: - Private
     
-    private var drawingFrameIndex: Int? = nil
+    private let tortoise: Tortoise = Tortoise()
+    
+    private var drawingFrameIndex: Int = 0
     
     private var drawingTimer: Timer? = nil
     
     private func draw(with context: GraphicsContext) {
-        guard let nextIndex = tortoise.run(with: context, toFrame: drawingFrameIndex) else {
-            drawingFrameIndex = nil
-            drawingTimer = nil
-            return
-        }
-        
-        drawingFrameIndex = nextIndex
+        drawingFrameIndex = tortoise.draw(with: context, toFrame: drawingFrameIndex)
         drawingTimer = Timer.scheduledTimer(timeInterval: animationInterval,
                                             target: self,
                                             selector: #selector(self.onAnimaitionTimer(timer:)),
@@ -68,7 +61,9 @@ public class Canvas: View {
     
     @objc private func onAnimaitionTimer(timer: Timer) {
         drawingTimer = nil
-        updateDisplay()
+        DispatchQueue.main.async { [unowned self] in
+            self.updateDisplay()
+        }
     }
     
     private func updateDisplay() {
