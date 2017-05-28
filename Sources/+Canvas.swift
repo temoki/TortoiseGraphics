@@ -7,11 +7,11 @@
 //
 
 #if os(OSX)
-    import AppKit
-    public typealias View = NSView
+import AppKit
+public typealias View = NSView
 #elseif os(iOS)
-    import UIKit
-    public typealias View = UIView
+import UIKit
+public typealias View = UIView
 #endif
 
 public class Canvas: View {
@@ -20,6 +20,13 @@ public class Canvas: View {
     
     public var 🐢: Tortoise { return self.tortoise }
     
+    public var animationInterval: TimeInterval = 1.0 / 30.0 // 30 FPS
+    
+    public func draw(animated: Bool) {
+        drawingFrameIndex = animated ? 0 : nil
+        updateDisplay()
+    }
+    
     // MARK: - Override
     
     #if os(OSX)
@@ -27,181 +34,49 @@ public class Canvas: View {
         super.draw(dirtyRect)
         guard let cgContext = NSGraphicsContext.current()?.cgContext else { return }
         let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: false)
-        tortoise.run(with: context)
+        draw(with: context)
     }
     #elseif os(iOS)
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let cgContext = UIGraphicsGetCurrentContext() else { return }
         let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: true)
-        tortoise.run(with: context)
+        draw(with: context)
     }
     #endif
     
-}
-
-/*
-#if os(OSX)
-    import AppKit
-    public typealias View = NSView
-    public typealias Image = NSImage
-#elseif os(iOS)
-    import UIKit
-    public typealias View = UIView
-    public typealias Image = UIImage
-#endif
-
-#if os(OSX) || os(iOS)
-    private class DrawingStack {
-
-        private var images: [CGImage] = []
-
-        func set(_ image: CGImage) {
-            objc_sync_enter(self)
-            images.removeAll(keepingCapacity: false)
-            images.append(image)
-            objc_sync_exit(self)
+    // MARK: - Private
+    
+    private var drawingFrameIndex: Int? = nil
+    
+    private var drawingTimer: Timer? = nil
+    
+    private func draw(with context: GraphicsContext) {
+        guard let nextIndex = tortoise.run(with: context, toFrame: drawingFrameIndex) else {
+            drawingFrameIndex = nil
+            drawingTimer = nil
+            return
         }
-
-        func clear() {
-            objc_sync_enter(self)
-            images.removeAll(keepingCapacity: false)
-            objc_sync_exit(self)
-        }
-
-        func push(_ image: CGImage) {
-            objc_sync_enter(self)
-            images.append(image)
-            objc_sync_exit(self)
-        }
-
-        func pop() -> CGImage? {
-            guard !images.isEmpty else { return nil }
-            objc_sync_enter(self)
-            let image = images.removeFirst()
-            objc_sync_exit(self)
-            return image
-        }
-
+        
+        drawingFrameIndex = nextIndex
+        drawingTimer = Timer.scheduledTimer(timeInterval: animationInterval,
+                                            target: self,
+                                            selector: #selector(self.onAnimaitionTimer(timer:)),
+                                            userInfo: nil,
+                                            repeats: false)
     }
-#endif
-
-#if os(macOS)
-fileprivate extension Image {
-    var cgImage: CGImage? {
-        var rect = CGRect(origin: .zero, size: size)
-        return cgImage(forProposedRect: &rect, context: nil, hints: nil)
+    
+    @objc private func onAnimaitionTimer(timer: Timer) {
+        drawingTimer = nil
+        updateDisplay()
     }
-}
-#endif
-
-#if os(OSX) || os(iOS)
-    /// Canvas View
-    public class CanvasView: View {
-
-        // MARK: - Properties
-
-        /// Canvas
-        public let canvas: Canvas
-
-        private var drawingStack = DrawingStack()
-
-        /// Initializer
-        /// - parameter canvasSize: Canvas size
-        /// - parameter tortoise: Tortoise icon image
-        public init(canvasSize: CGSize, tortoise image: Image? = nil) {
-            self.canvas = Canvas(size: canvasSize, scale: CanvasView.screenScale, tortoise: image?.cgImage)
-            super.init(frame: CGRect(origin: .zero, size: canvasSize))
-            #if os(iOS)
-                self.backgroundColor = UIColor.white
-            #endif
-        }
-
-        public required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-        // MARK: - Draw
-
-        /// Draw
-        public func draw() {
-            guard let image = canvas.draw() else { return }
-            draw(image: image)
-        }
-
-        /// Draw with animation
-        /// - parameter atTimeInterval : time interval of animation
-        public func animate(atTimeInterval interval: TimeInterval, completion: (() -> Void)? = nil) {
-            drawingStack.clear()
-            DispatchQueue.global().async { [unowned self] in
-                self.canvas.draw(oneByOne: { (image) in
-                    Thread.sleep(forTimeInterval: interval)
-                    self.drawingStack.push(image)
-                    DispatchQueue.main.async {
-                        self.updateDisplay()
-                    }
-                })
-                DispatchQueue.main.async {
-                    completion?()
-                }
-            }
-        }
-
-        /// Draw image
-        internal func draw(image: CGImage) {
-            drawingStack.set(image)
-            updateDisplay()
-        }
-
-        // MARK: - Override
-
+    
+    private func updateDisplay() {
         #if os(OSX)
-        public override func draw(_ dirtyRect: NSRect) {
-            super.draw(dirtyRect)
-            guard let cgContext = NSGraphicsContext.current()?.cgContext else { return }
-            draw(with: cgContext)
-        }
+            display()
         #elseif os(iOS)
-        public override func draw(_ rect: CGRect) {
-            super.draw(rect)
-            guard let cgContext = UIGraphicsGetCurrentContext() else { return }
-            draw(with: cgContext)
-        }
+            setNeedsDisplay()
         #endif
-
-        public override var frame: CGRect {
-            didSet {
-                canvas.size = frame.size
-            }
-        }
-
-        // MARK: - Private
-
-        private static var screenScale: CGFloat {
-            #if os(iOS)
-                return UIScreen.main.scale
-            #else
-                return NSScreen.main()?.backingScaleFactor ?? 1
-            #endif
-
-        }
-
-        private func draw(with cgContext: CGContext) {
-            guard let image = drawingStack.pop() else { return }
-            cgContext.saveGState()
-            cgContext.draw(image, in: self.bounds)
-            cgContext.restoreGState()
-
-        }
-
-        private func updateDisplay() {
-            #if os(OSX)
-                display()
-            #elseif os(iOS)
-                setNeedsDisplay()
-            #endif
-        }
-
     }
-#endif
-*/
+    
+}

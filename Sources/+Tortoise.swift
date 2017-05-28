@@ -20,13 +20,20 @@ public class Tortoise {
         commands.append(command)
     }
     
-    func run(with context: GraphicsContext) {
+    @discardableResult
+    func run(with context: GraphicsContext, toFrame index: Int? = nil) -> Int? {
+        let endIndex = commands.count - 1
+        let toIndex = min(max((index ?? endIndex), 0), endIndex)
+        
         var state = State()
         context.setup(in: state)
-        commands.forEach {
-            state = $0.exexute(in: state, with: context.cgContext)
+        
+        for (index, command) in commands.enumerated() where index <= toIndex {
+            state = command.exexute(in: state, with: context.cgContext)
         }
+        
         context.tearDown()
+        return toIndex < endIndex ? toIndex + 1 : nil
     }
     
 }
