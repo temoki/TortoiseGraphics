@@ -2,76 +2,206 @@
 //  Canvas.swift
 //  TortoiseGraphics
 //
-//  Created by temoki on 2016/08/10.
-//  Copyright © 2016 temoki. All rights reserved.
+//  Created by temoki on 2017/05/29.
+//  Copyright © 2017 temoki. All rights reserved.
 //
 
-import CoreGraphics
+#if os(OSX)
+    import AppKit
+    public typealias View = NSView
+#elseif os(iOS)
+    import UIKit
+    public typealias View = UIView
+#endif
 
-/// Tortoise
-final public class Canvas {
-
-    /// Context
-    internal let context: Context
-
-    // MARK: - Properties
-
-    /// Tortoise
-    public var tortoise: Tortoise {
-        return context.procedures[Context.defaultProcedureName]!
+public class Canvas: View {
+    
+    public let tortoise = Tortoise()
+    
+    public var 🐢: Tortoise { return self.tortoise }
+    
+    // MARK: - Override
+    
+    #if os(OSX)
+    public override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        guard let cgContext = NSGraphicsContext.current()?.cgContext else { return }
+        let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: false)
+        tortoise.run(with: context)
     }
-
-    /// Tortoise
-    public var 🐢: Tortoise {
-        return tortoise
+    #elseif os(iOS)
+    public override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        guard let cgContext = UIGraphicsGetCurrentContext() else { return }
+        let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: true)
+        tortoise.run(with: context)
     }
-
-    /// Canvas size
-    public var size: CGSize {
-        get {
-            return context.canvasSize
-        }
-        set {
-            context.canvasSize = newValue
-        }
-    }
-
-    // MARK: - Initializer
-
-    /// Initializer
-    /// - parameter size: Canvas size
-    /// - parameter scale: Canvas scale
-    /// - parameter tortoise: Tortoise icon image
-    public required init(size: CGSize, scale: CGFloat = 1, tortoise image: CGImage? = nil) {
-        self.context = Context(canvasSize: size, canvasScale: scale, tortoise: image)
-    }
-
-    // MARK: - Methods
-
-    /// Clear canvas
-    public func clear() {
-        context.reset()
-        tortoise.clear()
-    }
-
-    /// Set tortoise image
-    /// - parameter tortoise: Tortoise icon image
-    public func setTortoise(image: CGImage?) {
-        context.tortoiseImage = image
-    }
-
-    /// Draw by executing all commands
-    public func draw() -> CGImage? {
-        context.drawingHandler = nil
-        tortoise.doExecute(context: context)
-        return context.render()
-    }
-
-    /// Draw by executing commands one by one
-    public func draw(oneByOne handler: @escaping DrawingHandler) {
-        context.drawingHandler = handler
-        tortoise.doExecute(context: context)
-        context.drawingHandler = nil
-    }
-
+    #endif
+    
 }
+
+/*
+#if os(OSX)
+    import AppKit
+    public typealias View = NSView
+    public typealias Image = NSImage
+#elseif os(iOS)
+    import UIKit
+    public typealias View = UIView
+    public typealias Image = UIImage
+#endif
+
+#if os(OSX) || os(iOS)
+    private class DrawingStack {
+
+        private var images: [CGImage] = []
+
+        func set(_ image: CGImage) {
+            objc_sync_enter(self)
+            images.removeAll(keepingCapacity: false)
+            images.append(image)
+            objc_sync_exit(self)
+        }
+
+        func clear() {
+            objc_sync_enter(self)
+            images.removeAll(keepingCapacity: false)
+            objc_sync_exit(self)
+        }
+
+        func push(_ image: CGImage) {
+            objc_sync_enter(self)
+            images.append(image)
+            objc_sync_exit(self)
+        }
+
+        func pop() -> CGImage? {
+            guard !images.isEmpty else { return nil }
+            objc_sync_enter(self)
+            let image = images.removeFirst()
+            objc_sync_exit(self)
+            return image
+        }
+
+    }
+#endif
+
+#if os(macOS)
+fileprivate extension Image {
+    var cgImage: CGImage? {
+        var rect = CGRect(origin: .zero, size: size)
+        return cgImage(forProposedRect: &rect, context: nil, hints: nil)
+    }
+}
+#endif
+
+#if os(OSX) || os(iOS)
+    /// Canvas View
+    public class CanvasView: View {
+
+        // MARK: - Properties
+
+        /// Canvas
+        public let canvas: Canvas
+
+        private var drawingStack = DrawingStack()
+
+        /// Initializer
+        /// - parameter canvasSize: Canvas size
+        /// - parameter tortoise: Tortoise icon image
+        public init(canvasSize: CGSize, tortoise image: Image? = nil) {
+            self.canvas = Canvas(size: canvasSize, scale: CanvasView.screenScale, tortoise: image?.cgImage)
+            super.init(frame: CGRect(origin: .zero, size: canvasSize))
+            #if os(iOS)
+                self.backgroundColor = UIColor.white
+            #endif
+        }
+
+        public required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        // MARK: - Draw
+
+        /// Draw
+        public func draw() {
+            guard let image = canvas.draw() else { return }
+            draw(image: image)
+        }
+
+        /// Draw with animation
+        /// - parameter atTimeInterval : time interval of animation
+        public func animate(atTimeInterval interval: TimeInterval, completion: (() -> Void)? = nil) {
+            drawingStack.clear()
+            DispatchQueue.global().async { [unowned self] in
+                self.canvas.draw(oneByOne: { (image) in
+                    Thread.sleep(forTimeInterval: interval)
+                    self.drawingStack.push(image)
+                    DispatchQueue.main.async {
+                        self.updateDisplay()
+                    }
+                })
+                DispatchQueue.main.async {
+                    completion?()
+                }
+            }
+        }
+
+        /// Draw image
+        internal func draw(image: CGImage) {
+            drawingStack.set(image)
+            updateDisplay()
+        }
+
+        // MARK: - Override
+
+        #if os(OSX)
+        public override func draw(_ dirtyRect: NSRect) {
+            super.draw(dirtyRect)
+            guard let cgContext = NSGraphicsContext.current()?.cgContext else { return }
+            draw(with: cgContext)
+        }
+        #elseif os(iOS)
+        public override func draw(_ rect: CGRect) {
+            super.draw(rect)
+            guard let cgContext = UIGraphicsGetCurrentContext() else { return }
+            draw(with: cgContext)
+        }
+        #endif
+
+        public override var frame: CGRect {
+            didSet {
+                canvas.size = frame.size
+            }
+        }
+
+        // MARK: - Private
+
+        private static var screenScale: CGFloat {
+            #if os(iOS)
+                return UIScreen.main.scale
+            #else
+                return NSScreen.main()?.backingScaleFactor ?? 1
+            #endif
+
+        }
+
+        private func draw(with cgContext: CGContext) {
+            guard let image = drawingStack.pop() else { return }
+            cgContext.saveGState()
+            cgContext.draw(image, in: self.bounds)
+            cgContext.restoreGState()
+
+        }
+
+        private func updateDisplay() {
+            #if os(OSX)
+                display()
+            #elseif os(iOS)
+                setNeedsDisplay()
+            #endif
+        }
+
+    }
+#endif
+*/

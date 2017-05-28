@@ -7,50 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		146C35C01EC0B76F00157769 /* +TortoisePlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */; };
-		14A170AA1EB81FD6009DF3D9 /* CGContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A170A91EB81FD6009DF3D9 /* CGContext+.swift */; };
-		14E7866E1EAA6AEA0074FC37 /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786441EAA6AEA0074FC37 /* +Canvas.swift */; };
-		14E7866F1EAA6AEA0074FC37 /* +CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786451EAA6AEA0074FC37 /* +CanvasView.swift */; };
-		14E786701EAA6AEA0074FC37 /* +Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786461EAA6AEA0074FC37 /* +Procedure.swift */; };
-		14E786711EAA6AEA0074FC37 /* +Procedure+ControlCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786471EAA6AEA0074FC37 /* +Procedure+ControlCommands.swift */; };
-		14E786721EAA6AEA0074FC37 /* +Procedure+DrawCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786481EAA6AEA0074FC37 /* +Procedure+DrawCommands.swift */; };
-		14E786731EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786491EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift */; };
-		14E786741EAA6AEA0074FC37 /* +Procedure+PenCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864A1EAA6AEA0074FC37 /* +Procedure+PenCommands.swift */; };
-		14E786751EAA6AEA0074FC37 /* +Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864B1EAA6AEA0074FC37 /* +Properties.swift */; };
-		14E786761EAA6AEA0074FC37 /* +Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864C1EAA6AEA0074FC37 /* +Type.swift */; };
-		14E786771EAA6AEA0074FC37 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864D1EAA6AEA0074FC37 /* Color.swift */; };
-		14E786781EAA6AEA0074FC37 /* ColorPallete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864E1EAA6AEA0074FC37 /* ColorPallete.swift */; };
-		14E786791EAA6AEA0074FC37 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7864F1EAA6AEA0074FC37 /* Command.swift */; };
-		14E7867A1EAA6AEA0074FC37 /* CommandArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786501EAA6AEA0074FC37 /* CommandArc.swift */; };
-		14E7867B1EAA6AEA0074FC37 /* CommandBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786511EAA6AEA0074FC37 /* CommandBack.swift */; };
-		14E7867C1EAA6AEA0074FC37 /* CommandCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786521EAA6AEA0074FC37 /* CommandCall.swift */; };
-		14E7867D1EAA6AEA0074FC37 /* CommandClean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786531EAA6AEA0074FC37 /* CommandClean.swift */; };
-		14E7867E1EAA6AEA0074FC37 /* CommandClearScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786541EAA6AEA0074FC37 /* CommandClearScreen.swift */; };
-		14E7867F1EAA6AEA0074FC37 /* CommandDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786551EAA6AEA0074FC37 /* CommandDefine.swift */; };
-		14E786801EAA6AEA0074FC37 /* CommandDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786561EAA6AEA0074FC37 /* CommandDot.swift */; };
-		14E786811EAA6AEA0074FC37 /* CommandForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786571EAA6AEA0074FC37 /* CommandForward.swift */; };
-		14E786821EAA6AEA0074FC37 /* CommandHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786581EAA6AEA0074FC37 /* CommandHome.swift */; };
-		14E786831EAA6AEA0074FC37 /* CommandIf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786591EAA6AEA0074FC37 /* CommandIf.swift */; };
-		14E786841EAA6AEA0074FC37 /* CommandLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865A1EAA6AEA0074FC37 /* CommandLeft.swift */; };
-		14E786851EAA6AEA0074FC37 /* CommandLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865B1EAA6AEA0074FC37 /* CommandLocal.swift */; };
-		14E786861EAA6AEA0074FC37 /* CommandMake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865C1EAA6AEA0074FC37 /* CommandMake.swift */; };
-		14E786871EAA6AEA0074FC37 /* CommandPenDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865D1EAA6AEA0074FC37 /* CommandPenDown.swift */; };
-		14E786881EAA6AEA0074FC37 /* CommandPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865E1EAA6AEA0074FC37 /* CommandPrint.swift */; };
-		14E786891EAA6AEA0074FC37 /* CommandRepeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7865F1EAA6AEA0074FC37 /* CommandRepeat.swift */; };
-		14E7868A1EAA6AEA0074FC37 /* CommandRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786601EAA6AEA0074FC37 /* CommandRight.swift */; };
-		14E7868B1EAA6AEA0074FC37 /* CommandSetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786611EAA6AEA0074FC37 /* CommandSetBackground.swift */; };
-		14E7868C1EAA6AEA0074FC37 /* CommandSetHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786621EAA6AEA0074FC37 /* CommandSetHeading.swift */; };
-		14E7868D1EAA6AEA0074FC37 /* CommandSetLineCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786631EAA6AEA0074FC37 /* CommandSetLineCap.swift */; };
-		14E7868E1EAA6AEA0074FC37 /* CommandSetLineDash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786641EAA6AEA0074FC37 /* CommandSetLineDash.swift */; };
-		14E7868F1EAA6AEA0074FC37 /* CommandSetPenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786651EAA6AEA0074FC37 /* CommandSetPenColor.swift */; };
-		14E786901EAA6AEA0074FC37 /* CommandSetPenWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786661EAA6AEA0074FC37 /* CommandSetPenWidth.swift */; };
-		14E786911EAA6AEA0074FC37 /* CommandSetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786671EAA6AEA0074FC37 /* CommandSetPosition.swift */; };
-		14E786921EAA6AEA0074FC37 /* CommandSetRGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786681EAA6AEA0074FC37 /* CommandSetRGB.swift */; };
-		14E786931EAA6AEA0074FC37 /* CommandSetX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E786691EAA6AEA0074FC37 /* CommandSetX.swift */; };
-		14E786941EAA6AEA0074FC37 /* CommandSetY.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7866A1EAA6AEA0074FC37 /* CommandSetY.swift */; };
-		14E786951EAA6AEA0074FC37 /* CommandShowTurtle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7866B1EAA6AEA0074FC37 /* CommandShowTurtle.swift */; };
-		14E786961EAA6AEA0074FC37 /* CommandWhile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7866C1EAA6AEA0074FC37 /* CommandWhile.swift */; };
-		14E786971EAA6AEA0074FC37 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E7866D1EAA6AEA0074FC37 /* Context.swift */; };
+		1451BF661ED872C200D200DD /* +Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1451BF651ED872C200D200DD /* +Tortoise.swift */; };
+		1456248B1ED99CE500173B9A /* CommandBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624891ED99CE500173B9A /* CommandBack.swift */; };
+		1456248C1ED99CE500173B9A /* CommandForward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1456248A1ED99CE500173B9A /* CommandForward.swift */; };
+		1456248E1ED99D1900173B9A /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1456248D1ED99D1900173B9A /* Command.swift */; };
+		145624901ED99D8600173B9A /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1456248F1ED99D8600173B9A /* State.swift */; };
+		145624921ED99E4800173B9A /* GraphicsContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624911ED99E4800173B9A /* GraphicsContext.swift */; };
+		145624941EDA4FDA00173B9A /* CommandRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624931EDA4FDA00173B9A /* CommandRight.swift */; };
+		145624961EDA507000173B9A /* CommandLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624951EDA507000173B9A /* CommandLeft.swift */; };
+		145624981EDAA48D00173B9A /* +Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624971EDAA48D00173B9A /* +Canvas.swift */; };
 		OBJ_107 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* TortoiseGraphicsTests.swift */; };
 		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
 /* End PBXBuildFile section */
@@ -66,50 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+TortoisePlayground.swift"; sourceTree = "<group>"; };
-		14A170A91EB81FD6009DF3D9 /* CGContext+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGContext+.swift"; sourceTree = "<group>"; };
-		14E786441EAA6AEA0074FC37 /* +Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Canvas.swift"; sourceTree = "<group>"; };
-		14E786451EAA6AEA0074FC37 /* +CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+CanvasView.swift"; sourceTree = "<group>"; };
-		14E786461EAA6AEA0074FC37 /* +Procedure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure.swift"; sourceTree = "<group>"; };
-		14E786471EAA6AEA0074FC37 /* +Procedure+ControlCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure+ControlCommands.swift"; sourceTree = "<group>"; };
-		14E786481EAA6AEA0074FC37 /* +Procedure+DrawCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure+DrawCommands.swift"; sourceTree = "<group>"; };
-		14E786491EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure+MoveCommands.swift"; sourceTree = "<group>"; };
-		14E7864A1EAA6AEA0074FC37 /* +Procedure+PenCommands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Procedure+PenCommands.swift"; sourceTree = "<group>"; };
-		14E7864B1EAA6AEA0074FC37 /* +Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Properties.swift"; sourceTree = "<group>"; };
-		14E7864C1EAA6AEA0074FC37 /* +Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Type.swift"; sourceTree = "<group>"; };
-		14E7864D1EAA6AEA0074FC37 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		14E7864E1EAA6AEA0074FC37 /* ColorPallete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPallete.swift; sourceTree = "<group>"; };
-		14E7864F1EAA6AEA0074FC37 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		14E786501EAA6AEA0074FC37 /* CommandArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandArc.swift; sourceTree = "<group>"; };
-		14E786511EAA6AEA0074FC37 /* CommandBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBack.swift; sourceTree = "<group>"; };
-		14E786521EAA6AEA0074FC37 /* CommandCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandCall.swift; sourceTree = "<group>"; };
-		14E786531EAA6AEA0074FC37 /* CommandClean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandClean.swift; sourceTree = "<group>"; };
-		14E786541EAA6AEA0074FC37 /* CommandClearScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandClearScreen.swift; sourceTree = "<group>"; };
-		14E786551EAA6AEA0074FC37 /* CommandDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDefine.swift; sourceTree = "<group>"; };
-		14E786561EAA6AEA0074FC37 /* CommandDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandDot.swift; sourceTree = "<group>"; };
-		14E786571EAA6AEA0074FC37 /* CommandForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandForward.swift; sourceTree = "<group>"; };
-		14E786581EAA6AEA0074FC37 /* CommandHome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandHome.swift; sourceTree = "<group>"; };
-		14E786591EAA6AEA0074FC37 /* CommandIf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandIf.swift; sourceTree = "<group>"; };
-		14E7865A1EAA6AEA0074FC37 /* CommandLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLeft.swift; sourceTree = "<group>"; };
-		14E7865B1EAA6AEA0074FC37 /* CommandLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLocal.swift; sourceTree = "<group>"; };
-		14E7865C1EAA6AEA0074FC37 /* CommandMake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandMake.swift; sourceTree = "<group>"; };
-		14E7865D1EAA6AEA0074FC37 /* CommandPenDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandPenDown.swift; sourceTree = "<group>"; };
-		14E7865E1EAA6AEA0074FC37 /* CommandPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandPrint.swift; sourceTree = "<group>"; };
-		14E7865F1EAA6AEA0074FC37 /* CommandRepeat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRepeat.swift; sourceTree = "<group>"; };
-		14E786601EAA6AEA0074FC37 /* CommandRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRight.swift; sourceTree = "<group>"; };
-		14E786611EAA6AEA0074FC37 /* CommandSetBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetBackground.swift; sourceTree = "<group>"; };
-		14E786621EAA6AEA0074FC37 /* CommandSetHeading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetHeading.swift; sourceTree = "<group>"; };
-		14E786631EAA6AEA0074FC37 /* CommandSetLineCap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetLineCap.swift; sourceTree = "<group>"; };
-		14E786641EAA6AEA0074FC37 /* CommandSetLineDash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetLineDash.swift; sourceTree = "<group>"; };
-		14E786651EAA6AEA0074FC37 /* CommandSetPenColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetPenColor.swift; sourceTree = "<group>"; };
-		14E786661EAA6AEA0074FC37 /* CommandSetPenWidth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetPenWidth.swift; sourceTree = "<group>"; };
-		14E786671EAA6AEA0074FC37 /* CommandSetPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetPosition.swift; sourceTree = "<group>"; };
-		14E786681EAA6AEA0074FC37 /* CommandSetRGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetRGB.swift; sourceTree = "<group>"; };
-		14E786691EAA6AEA0074FC37 /* CommandSetX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetX.swift; sourceTree = "<group>"; };
-		14E7866A1EAA6AEA0074FC37 /* CommandSetY.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetY.swift; sourceTree = "<group>"; };
-		14E7866B1EAA6AEA0074FC37 /* CommandShowTurtle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandShowTurtle.swift; sourceTree = "<group>"; };
-		14E7866C1EAA6AEA0074FC37 /* CommandWhile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandWhile.swift; sourceTree = "<group>"; };
-		14E7866D1EAA6AEA0074FC37 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		1451BF651ED872C200D200DD /* +Tortoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Tortoise.swift"; sourceTree = "<group>"; };
+		145624891ED99CE500173B9A /* CommandBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBack.swift; sourceTree = "<group>"; };
+		1456248A1ED99CE500173B9A /* CommandForward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandForward.swift; sourceTree = "<group>"; };
+		1456248D1ED99D1900173B9A /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		1456248F1ED99D8600173B9A /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		145624911ED99E4800173B9A /* GraphicsContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsContext.swift; sourceTree = "<group>"; };
+		145624931EDA4FDA00173B9A /* CommandRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandRight.swift; sourceTree = "<group>"; };
+		145624951EDA507000173B9A /* CommandLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLeft.swift; sourceTree = "<group>"; };
+		145624971EDAA48D00173B9A /* +Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+Canvas.swift"; sourceTree = "<group>"; };
 		OBJ_51 /* TortoiseGraphicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseGraphicsTests.swift; sourceTree = "<group>"; };
 		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_54 /* TortoiseGraphicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TortoiseGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,50 +104,15 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				14E786441EAA6AEA0074FC37 /* +Canvas.swift */,
-				14E786451EAA6AEA0074FC37 /* +CanvasView.swift */,
-				14E786461EAA6AEA0074FC37 /* +Procedure.swift */,
-				14E786471EAA6AEA0074FC37 /* +Procedure+ControlCommands.swift */,
-				14E786481EAA6AEA0074FC37 /* +Procedure+DrawCommands.swift */,
-				14E786491EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift */,
-				14E7864A1EAA6AEA0074FC37 /* +Procedure+PenCommands.swift */,
-				14E7864B1EAA6AEA0074FC37 /* +Properties.swift */,
-				146C35BF1EC0B76F00157769 /* +TortoisePlayground.swift */,
-				14E7864C1EAA6AEA0074FC37 /* +Type.swift */,
-				14A170A91EB81FD6009DF3D9 /* CGContext+.swift */,
-				14E7864D1EAA6AEA0074FC37 /* Color.swift */,
-				14E7864E1EAA6AEA0074FC37 /* ColorPallete.swift */,
-				14E7864F1EAA6AEA0074FC37 /* Command.swift */,
-				14E786501EAA6AEA0074FC37 /* CommandArc.swift */,
-				14E786511EAA6AEA0074FC37 /* CommandBack.swift */,
-				14E786521EAA6AEA0074FC37 /* CommandCall.swift */,
-				14E786531EAA6AEA0074FC37 /* CommandClean.swift */,
-				14E786541EAA6AEA0074FC37 /* CommandClearScreen.swift */,
-				14E786551EAA6AEA0074FC37 /* CommandDefine.swift */,
-				14E786561EAA6AEA0074FC37 /* CommandDot.swift */,
-				14E786571EAA6AEA0074FC37 /* CommandForward.swift */,
-				14E786581EAA6AEA0074FC37 /* CommandHome.swift */,
-				14E786591EAA6AEA0074FC37 /* CommandIf.swift */,
-				14E7865A1EAA6AEA0074FC37 /* CommandLeft.swift */,
-				14E7865B1EAA6AEA0074FC37 /* CommandLocal.swift */,
-				14E7865C1EAA6AEA0074FC37 /* CommandMake.swift */,
-				14E7865D1EAA6AEA0074FC37 /* CommandPenDown.swift */,
-				14E7865E1EAA6AEA0074FC37 /* CommandPrint.swift */,
-				14E7865F1EAA6AEA0074FC37 /* CommandRepeat.swift */,
-				14E786601EAA6AEA0074FC37 /* CommandRight.swift */,
-				14E786611EAA6AEA0074FC37 /* CommandSetBackground.swift */,
-				14E786621EAA6AEA0074FC37 /* CommandSetHeading.swift */,
-				14E786631EAA6AEA0074FC37 /* CommandSetLineCap.swift */,
-				14E786641EAA6AEA0074FC37 /* CommandSetLineDash.swift */,
-				14E786651EAA6AEA0074FC37 /* CommandSetPenColor.swift */,
-				14E786661EAA6AEA0074FC37 /* CommandSetPenWidth.swift */,
-				14E786671EAA6AEA0074FC37 /* CommandSetPosition.swift */,
-				14E786681EAA6AEA0074FC37 /* CommandSetRGB.swift */,
-				14E786691EAA6AEA0074FC37 /* CommandSetX.swift */,
-				14E7866A1EAA6AEA0074FC37 /* CommandSetY.swift */,
-				14E7866B1EAA6AEA0074FC37 /* CommandShowTurtle.swift */,
-				14E7866C1EAA6AEA0074FC37 /* CommandWhile.swift */,
-				14E7866D1EAA6AEA0074FC37 /* Context.swift */,
+				1451BF651ED872C200D200DD /* +Tortoise.swift */,
+				145624971EDAA48D00173B9A /* +Canvas.swift */,
+				145624911ED99E4800173B9A /* GraphicsContext.swift */,
+				1456248D1ED99D1900173B9A /* Command.swift */,
+				1456248A1ED99CE500173B9A /* CommandForward.swift */,
+				145624891ED99CE500173B9A /* CommandBack.swift */,
+				145624931EDA4FDA00173B9A /* CommandRight.swift */,
+				145624951EDA507000173B9A /* CommandLeft.swift */,
+				1456248F1ED99D8600173B9A /* State.swift */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -302,50 +197,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				14E786731EAA6AEA0074FC37 /* +Procedure+MoveCommands.swift in Sources */,
-				14E786931EAA6AEA0074FC37 /* CommandSetX.swift in Sources */,
-				14E786951EAA6AEA0074FC37 /* CommandShowTurtle.swift in Sources */,
-				14E786971EAA6AEA0074FC37 /* Context.swift in Sources */,
-				14E786901EAA6AEA0074FC37 /* CommandSetPenWidth.swift in Sources */,
-				14E786741EAA6AEA0074FC37 /* +Procedure+PenCommands.swift in Sources */,
-				14E786831EAA6AEA0074FC37 /* CommandIf.swift in Sources */,
-				14E7867B1EAA6AEA0074FC37 /* CommandBack.swift in Sources */,
-				14A170AA1EB81FD6009DF3D9 /* CGContext+.swift in Sources */,
-				14E786701EAA6AEA0074FC37 /* +Procedure.swift in Sources */,
-				14E786771EAA6AEA0074FC37 /* Color.swift in Sources */,
-				14E786841EAA6AEA0074FC37 /* CommandLeft.swift in Sources */,
-				14E786851EAA6AEA0074FC37 /* CommandLocal.swift in Sources */,
-				14E7866F1EAA6AEA0074FC37 /* +CanvasView.swift in Sources */,
-				14E786801EAA6AEA0074FC37 /* CommandDot.swift in Sources */,
-				14E786811EAA6AEA0074FC37 /* CommandForward.swift in Sources */,
-				14E786921EAA6AEA0074FC37 /* CommandSetRGB.swift in Sources */,
-				146C35C01EC0B76F00157769 /* +TortoisePlayground.swift in Sources */,
-				14E786821EAA6AEA0074FC37 /* CommandHome.swift in Sources */,
-				14E786761EAA6AEA0074FC37 /* +Type.swift in Sources */,
-				14E786751EAA6AEA0074FC37 /* +Properties.swift in Sources */,
-				14E786911EAA6AEA0074FC37 /* CommandSetPosition.swift in Sources */,
-				14E7868F1EAA6AEA0074FC37 /* CommandSetPenColor.swift in Sources */,
-				14E786891EAA6AEA0074FC37 /* CommandRepeat.swift in Sources */,
-				14E786781EAA6AEA0074FC37 /* ColorPallete.swift in Sources */,
-				14E7868A1EAA6AEA0074FC37 /* CommandRight.swift in Sources */,
-				14E786881EAA6AEA0074FC37 /* CommandPrint.swift in Sources */,
-				14E786711EAA6AEA0074FC37 /* +Procedure+ControlCommands.swift in Sources */,
-				14E7867C1EAA6AEA0074FC37 /* CommandCall.swift in Sources */,
-				14E786961EAA6AEA0074FC37 /* CommandWhile.swift in Sources */,
-				14E786871EAA6AEA0074FC37 /* CommandPenDown.swift in Sources */,
-				14E786721EAA6AEA0074FC37 /* +Procedure+DrawCommands.swift in Sources */,
-				14E7867A1EAA6AEA0074FC37 /* CommandArc.swift in Sources */,
-				14E7866E1EAA6AEA0074FC37 /* +Canvas.swift in Sources */,
-				14E7867E1EAA6AEA0074FC37 /* CommandClearScreen.swift in Sources */,
-				14E7868D1EAA6AEA0074FC37 /* CommandSetLineCap.swift in Sources */,
-				14E786791EAA6AEA0074FC37 /* Command.swift in Sources */,
-				14E7867F1EAA6AEA0074FC37 /* CommandDefine.swift in Sources */,
-				14E7868E1EAA6AEA0074FC37 /* CommandSetLineDash.swift in Sources */,
-				14E786861EAA6AEA0074FC37 /* CommandMake.swift in Sources */,
-				14E7868C1EAA6AEA0074FC37 /* CommandSetHeading.swift in Sources */,
-				14E7868B1EAA6AEA0074FC37 /* CommandSetBackground.swift in Sources */,
-				14E786941EAA6AEA0074FC37 /* CommandSetY.swift in Sources */,
-				14E7867D1EAA6AEA0074FC37 /* CommandClean.swift in Sources */,
+				145624941EDA4FDA00173B9A /* CommandRight.swift in Sources */,
+				1456248B1ED99CE500173B9A /* CommandBack.swift in Sources */,
+				145624961EDA507000173B9A /* CommandLeft.swift in Sources */,
+				1456248C1ED99CE500173B9A /* CommandForward.swift in Sources */,
+				1451BF661ED872C200D200DD /* +Tortoise.swift in Sources */,
+				145624921ED99E4800173B9A /* GraphicsContext.swift in Sources */,
+				145624981EDAA48D00173B9A /* +Canvas.swift in Sources */,
+				145624901ED99D8600173B9A /* State.swift in Sources */,
+				1456248E1ED99D1900173B9A /* Command.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

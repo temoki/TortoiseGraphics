@@ -1,17 +1,17 @@
 //
 //  CommandBack.swift
-// TortoiseGraphics
+//  TortoiseGraphics
 //
-//  Created by temoki on 2016/08/10.
-//  Copyright © 2016 temoki. All rights reserved.
+//  Created by temoki on 2017/05/27.
+//  Copyright © 2017 temoki. All rights reserved.
 //
 
 import CoreGraphics
 
 class CommandBack: CommandForward {
-
-    override func distanceOutput(context: Context) -> Number {
-        return -super.distanceOutput(context: context)
+    
+    override init(distance: CGFloat) {
+        super.init(distance: -distance)
     }
-
+    
 }
