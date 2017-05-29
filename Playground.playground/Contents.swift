@@ -3,14 +3,21 @@ import TortoiseGraphics
 import CoreGraphics
 
 let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+canvas.animationInterval = 0.1
 PlaygroundPage.current.liveView = canvas
 
 canvas.play { 🐢 in
-    for _ in 1...36 {
-        for _ in 1...4 {
-            🐢.forward(100)
+    
+    func square(_ side: Double) {
+        🐢.repeat(4) {
+            🐢.forward(side)
             🐢.right(90)
         }
+    }
+    
+    🐢.repeat(36) {
+        square(50)
         🐢.right(10)
     }
+
 }

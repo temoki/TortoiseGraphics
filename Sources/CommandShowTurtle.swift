@@ -1,16 +1,16 @@
 import CoreGraphics
 
-class CommandRight: Command {
+class CommandShowTortoise: Command {
 
-    private let angle: CGFloat
+    private let show: Bool
 
-    init(angle: CGFloat) {
-        self.angle = angle
+    init(_ show: Bool) {
+        self.show = show
     }
 
     func test(in state: State) -> State {
         var newState = state
-        newState.heading += angle
+        newState.isVisible = show
         return newState
     }
 

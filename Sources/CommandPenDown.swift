@@ -1,16 +1,16 @@
 import CoreGraphics
 
-class CommandRight: Command {
+class CommandPenDown: Command {
 
-    private let angle: CGFloat
+    private let penDown: Bool
 
-    init(angle: CGFloat) {
-        self.angle = angle
+    init(_ penDown: Bool) {
+        self.penDown = penDown
     }
 
     func test(in state: State) -> State {
         var newState = state
-        newState.heading += angle
+        newState.isPenDown = penDown
         return newState
     }
 

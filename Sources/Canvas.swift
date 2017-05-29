@@ -7,11 +7,11 @@ public typealias View = UIView
 #endif
 
 public class Canvas: View {
-    
-    public var animationInterval: TimeInterval = 1.0 / 30.0 // 30 FPS
+
+    public var animationInterval: TimeInterval = 0.01
 
     // MARK: - Override
-    
+
     #if os(OSX)
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -27,29 +27,29 @@ public class Canvas: View {
         draw(with: context)
     }
     #endif
-    
+
     public func play(block: @escaping (Tortoise) -> Void) {
         tortoise.commandedHandler = { [weak self] (tortoise) in
             guard !Thread.isMainThread else { return }
             guard let interval = self?.animationInterval else { return }
             Thread.sleep(forTimeInterval: interval)
         }
-            
+
         DispatchQueue.global().async { [weak self] in
             guard let tortoise = self?.tortoise else { return }
             block(tortoise)
             tortoise.commandedHandler = nil
         }
     }
-    
+
     // MARK: - Private
-    
+
     private let tortoise: Tortoise = Tortoise()
-    
+
     private var drawingFrameIndex: Int = 0
-    
-    private var drawingTimer: Timer? = nil
-    
+
+    private var drawingTimer: Timer?
+
     private func draw(with context: GraphicsContext) {
         drawingFrameIndex = tortoise.draw(with: context, toFrame: drawingFrameIndex)
         drawingTimer = Timer.scheduledTimer(timeInterval: animationInterval,
@@ -58,14 +58,14 @@ public class Canvas: View {
                                             userInfo: nil,
                                             repeats: false)
     }
-    
+
     @objc private func onAnimaitionTimer(timer: Timer) {
         drawingTimer = nil
         DispatchQueue.main.async { [unowned self] in
             self.updateDisplay()
         }
     }
-    
+
     private func updateDisplay() {
         #if os(OSX)
             display()
@@ -73,5 +73,5 @@ public class Canvas: View {
             setNeedsDisplay()
         #endif
     }
-    
+
 }

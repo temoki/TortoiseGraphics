@@ -1,16 +1,16 @@
 import CoreGraphics
 
-class CommandRight: Command {
+class CommandSetHeading: Command {
 
-    private let angle: CGFloat
+    private let heading: CGFloat
 
-    init(angle: CGFloat) {
-        self.angle = angle
+    init(heading: CGFloat) {
+        self.heading = heading
     }
 
     func test(in state: State) -> State {
         var newState = state
-        newState.heading += angle
+        newState.heading = heading
         return newState
     }
 
