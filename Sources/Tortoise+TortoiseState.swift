@@ -13,7 +13,10 @@ public extension Tortoise {
         return position
     }
 
-    // TODO: towards(x,y) - eturn the angle between the line from turtle position to position specified by (x,y), the vector or the other turtle.
+    public func towards(_ x: Double, y: Double) -> Double {
+        let tan = (y - Double(state.position.y)) / (x - Double(state.position.x))
+        return 90 - (atan(tan) * 180 / .pi)
+    }
 
     public var xcor: Double {
         return Double(state.position.x)
@@ -27,6 +30,15 @@ public extension Tortoise {
         return Double(state.heading)
     }
 
-    // TODO: distance(x,y) - Return the distance from the turtle to (x,y), the given vector, or the given other turtle, in turtle step units.
+    public func distance(_ x: Double, y: Double) -> Double {
+        let distanceX = x - Double(state.position.x)
+        let distanceY = y - Double(state.position.y)
+        return sqrt(pow(distanceX, 2) + pow(distanceY, 2))
+    }
+
+    public func random(_ max: Double) -> Double {
+        let upperBound = UInt32(Swift.min(Swift.max(Int64(max), 0), Int64(UInt32.max)))
+        return Double(arc4random_uniform(upperBound))
+    }
 
 }

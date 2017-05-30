@@ -54,11 +54,11 @@ public extension Tortoise {
     }
 
     public func setX(_ x: Double) {
-        add(command: CommandSetX(x: CGFloat(x)))
+        add(command: CommandSetPosition(position: CGPoint(x: CGFloat(x), y: state.position.y)))
     }
 
     public func setY(_ y: Double) {
-        add(command: CommandSetY(y: CGFloat(y)))
+        add(command: CommandSetPosition(position: CGPoint(x: state.position.x, y: CGFloat(y))))
     }
 
     public func setHeading(_ heading: Double) {
@@ -77,6 +77,6 @@ public extension Tortoise {
         add(command: CommandDot(size: size.map { CGFloat($0) }))
     }
 
-    // TODO: circle
+    // TODO: circle()
 
 }

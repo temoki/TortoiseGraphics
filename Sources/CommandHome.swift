@@ -2,18 +2,17 @@ import CoreGraphics
 
 class CommandHome: Command {
 
+    let setPosition = CommandSetPosition(position: .zero)
+    let setHeading = CommandSetHeading(heading: 0)
+
     func test(in state: State) -> State {
-        var newState = state
-        let defaultState = State()
-        newState.position = defaultState.position
-        newState.heading = defaultState.heading
-        return newState
+        let newState = setPosition.test(in: state)
+        return setHeading.test(in: newState)
     }
 
     func exexute(in state: State, with context: CGContext) -> State {
-        let newState = test(in: state)
-        context.move(to: newState.position)
-        return newState
+        let newState = setPosition.exexute(in: state, with: context)
+        return setPosition.exexute(in: newState, with: context)
     }
 
 }
