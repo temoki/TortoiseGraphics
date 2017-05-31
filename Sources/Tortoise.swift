@@ -35,7 +35,7 @@ public class Tortoise {
         return min(toIndex + 1, endIndex)
     }
 
-    private func drawTortoise(_ cgContext: CGContext, state: State, icon: CGImage?) {
+    func drawTortoise(_ cgContext: CGContext, state: State, icon: CGImage?) {
         cgContext.saveGState()
         if let icon = icon {
             // Draw tortoise icon
@@ -50,12 +50,13 @@ public class Tortoise {
             // Dras triangle's 3 points.
             let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
                 .rotated(by: -state.heading * .pi / 180)
-            cgContext.move(to: CGPoint(x:  0, y:  10).applying(transform))
-            cgContext.addLine(to: CGPoint(x:  5, y: -10).applying(transform))
-            cgContext.addLine(to: CGPoint(x: -5, y: -10).applying(transform))
+            cgContext.move(to: CGPoint(x:  0, y:  5).applying(transform))
+            cgContext.addLine(to: CGPoint(x:  5, y: -5).applying(transform))
+            cgContext.addLine(to: CGPoint(x:  0, y: -3).applying(transform))
+            cgContext.addLine(to: CGPoint(x: -5, y: -5).applying(transform))
             cgContext.closePath()
+            cgContext.setFillColor(state.penColor)
             cgContext.fillPath()
-            // TODO: Fill with pen color
         }
         cgContext.restoreGState()
     }

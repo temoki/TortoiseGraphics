@@ -3,7 +3,7 @@ import TortoiseGraphics
 import CoreGraphics
 
 let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-canvas.animationInterval = 0.1
+canvas.animationInterval = 0.01
 PlaygroundPage.current.liveView = canvas
 
 canvas.play { 🐢 in
@@ -15,6 +15,7 @@ canvas.play { 🐢 in
         }
     }
     
+    🐢.penColor(.red)
     🐢.repeat(36) {
         square(50)
         🐢.right(10)

@@ -27,6 +27,10 @@ class GraphicsContext {
 
         // Setup state
         cgContext.move(to: state.position)
+
+        // Setup pen
+        cgContext.setLineWidth(state.penSize)
+        cgContext.setStrokeColor(state.penColor)
     }
 
     func tearDown() {
