@@ -70,8 +70,12 @@ public extension Tortoise {
 
     // MARK: - More drawing control    
 
-    // TODO: reset() - Delete the turtle’s drawings from the screen, re-center the turtle and set variables to the default values.
+    public func reset() {
+        add(command: CommandReset())
+    }
 
-    // TODO: clear() - Delete the turtle’s drawings from the screen. Do not move turtle. State and position of the turtle as well as drawings of other turtles are not affected.
+    public func clear() {
+        add(command: CommandClear())
+    }
 
 }

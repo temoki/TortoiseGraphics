@@ -12,7 +12,7 @@ class GraphicsContext {
         self.isUIViewContext = isUIViewContext
     }
 
-    func setup(in state: State) {
+    func setup() {
         cgContext.saveGState()
 
         // Setup coordinate
@@ -24,13 +24,6 @@ class GraphicsContext {
             cgContext.scaleBy(x: 1, y: -1)
         }
         cgContext.translateBy(x: size.width * 0.5, y: size.height * 0.5)
-
-        // Setup state
-        cgContext.move(to: state.position)
-
-        // Setup pen
-        cgContext.setLineWidth(state.penSize)
-        cgContext.setStrokeColor(state.penColor)
     }
 
     func tearDown() {

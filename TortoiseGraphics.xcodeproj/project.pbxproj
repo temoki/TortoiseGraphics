@@ -28,6 +28,9 @@
 		14588D141EDEFF1100922BE4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D131EDEFF1100922BE4 /* Color.swift */; };
 		14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D151EDF03D700922BE4 /* Color+CGColor.swift */; };
 		14588D181EDF042300922BE4 /* CommandPenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D171EDF042300922BE4 /* CommandPenColor.swift */; };
+		14588D1A1EDF0D8900922BE4 /* CommandReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D191EDF0D8900922BE4 /* CommandReset.swift */; };
+		14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D1B1EDF11AC00922BE4 /* CommandClear.swift */; };
+		14588D1E1EDF12B700922BE4 /* Tortoise+DrawImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D1D1EDF12B700922BE4 /* Tortoise+DrawImage.swift */; };
 		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		14588D131EDEFF1100922BE4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		14588D151EDF03D700922BE4 /* Color+CGColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+CGColor.swift"; sourceTree = "<group>"; };
 		14588D171EDF042300922BE4 /* CommandPenColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandPenColor.swift; sourceTree = "<group>"; };
+		14588D191EDF0D8900922BE4 /* CommandReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandReset.swift; sourceTree = "<group>"; };
+		14588D1B1EDF11AC00922BE4 /* CommandClear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandClear.swift; sourceTree = "<group>"; };
+		14588D1D1EDF12B700922BE4 /* Tortoise+DrawImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+DrawImage.swift"; sourceTree = "<group>"; };
 		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_54 /* TortoiseGraphicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TortoiseGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -104,6 +110,8 @@
 				142F5C931EDC6077008BEFAB /* CommandPenDown.swift */,
 				142F5C991EDC6246008BEFAB /* CommandPenSize.swift */,
 				14588D171EDF042300922BE4 /* CommandPenColor.swift */,
+				14588D191EDF0D8900922BE4 /* CommandReset.swift */,
+				14588D1B1EDF11AC00922BE4 /* CommandClear.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 				142F5C821EDC5683008BEFAB /* Tortoise+Motion.swift */,
 				142F5C971EDC6165008BEFAB /* Tortoise+PenControl.swift */,
 				142F5C9B1EDC63DA008BEFAB /* Tortoise+TortoiseState.swift */,
+				14588D1D1EDF12B700922BE4 /* Tortoise+DrawImage.swift */,
 				142F5C841EDC5688008BEFAB /* Internal */,
 			);
 			path = Sources;
@@ -245,14 +254,17 @@
 				14588D181EDF042300922BE4 /* CommandPenColor.swift in Sources */,
 				14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */,
 				142F5C961EDC6077008BEFAB /* CommandShowTurtle.swift in Sources */,
+				14588D1E1EDF12B700922BE4 /* Tortoise+DrawImage.swift in Sources */,
 				142F5C9A1EDC6246008BEFAB /* CommandPenSize.swift in Sources */,
 				145624941EDA4FDA00173B9A /* CommandRight.swift in Sources */,
 				142F5C901EDC5B31008BEFAB /* CommandHome.swift in Sources */,
 				142F5C881EDC58D6008BEFAB /* CommandSetPosition.swift in Sources */,
 				142F5C831EDC5683008BEFAB /* Tortoise+Motion.swift in Sources */,
+				14588D1A1EDF0D8900922BE4 /* CommandReset.swift in Sources */,
 				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,
 				1456248C1ED99CE500173B9A /* CommandForward.swift in Sources */,
 				1451BF661ED872C200D200DD /* Tortoise.swift in Sources */,
+				14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */,
 				145624921ED99E4800173B9A /* GraphicsContext.swift in Sources */,
 				145624981EDAA48D00173B9A /* Canvas.swift in Sources */,
 				145624901ED99D8600173B9A /* State.swift in Sources */,

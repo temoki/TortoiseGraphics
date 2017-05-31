@@ -5,7 +5,7 @@ public class Tortoise {
 
     var state = State()
 
-    var commands: [Command] = []
+    var commands: [Command] = [CommandReset()]
 
     var commandedHandler: ((Tortoise) -> Void)?
 
@@ -20,8 +20,11 @@ public class Tortoise {
         let endIndex = commands.count - 1
         let toIndex = min(max((index ?? endIndex), 0), endIndex)
 
+        context.setup()
+
         var state = State()
-        context.setup(in: state)
+        state.canvasSize = context.size
+        state.apply(to: context.cgContext)
 
         for (index, command) in commands.enumerated() where index <= toIndex {
             state = command.exexute(in: state, with: context.cgContext)
@@ -60,8 +63,5 @@ public class Tortoise {
         }
         cgContext.restoreGState()
     }
-
-    // TODO: create image (NSImage/UIImage)
-    // TODO: create animation gif (Data)
 
 }

@@ -14,4 +14,15 @@ struct State {
 
     var isVisible: Bool = true
 
+    var canvasSize: CGSize = .zero
+
+    var canvasColor: CGColor = Color.white.cgColor
+
+    func apply(to cgContext: CGContext) {
+        cgContext.move(to: position)
+        cgContext.setLineWidth(penSize)
+        cgContext.setStrokeColor(penColor)
+        cgContext.setFillColor(canvasColor)
+    }
+
 }
