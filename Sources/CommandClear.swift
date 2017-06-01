@@ -8,11 +8,13 @@ class CommandClear: Command {
 
     func exexute(in state: State, with context: CGContext) -> State {
         let newState = test(in: state)
-        context.setFillColor(newState.canvasColor)
+        context.saveGState()
+        context.setBlendMode(.clear)
         context.fill(CGRect(x: -newState.canvasSize.width*0.5,
                             y: -newState.canvasSize.height*0.5,
                             width: newState.canvasSize.width,
                             height: newState.canvasSize.height))
+        context.restoreGState()
         newState.apply(to: context)
         return newState
     }
