@@ -41,7 +41,7 @@ public class Tortoise {
     func drawTortoise(_ cgContext: CGContext, state: State) {
         cgContext.saveGState()
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
-            .rotated(by: Degree(-state.heading).radian)
+            .rotated(by: -state.heading.radian.value)
         cgContext.move(to: CGPoint(x:  0, y:  5).applying(transform))
         cgContext.addLine(to: CGPoint(x:  5, y: -5).applying(transform))
         cgContext.addLine(to: CGPoint(x:  0, y: -3).applying(transform))

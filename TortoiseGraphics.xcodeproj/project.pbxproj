@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		141772771EE2930600C0CBC7 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141772761EE2930600C0CBC7 /* AngleUnit.swift */; };
+		141772771EE2930600C0CBC7 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141772761EE2930600C0CBC7 /* Angle.swift */; };
 		142F5C831EDC5683008BEFAB /* Tortoise+Motion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F5C821EDC5683008BEFAB /* Tortoise+Motion.swift */; };
 		142F5C881EDC58D6008BEFAB /* CommandSetPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F5C871EDC58D6008BEFAB /* CommandSetPosition.swift */; };
 		142F5C8E1EDC5A94008BEFAB /* CommandSetHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 142F5C8D1EDC5A94008BEFAB /* CommandSetHeading.swift */; };
@@ -47,7 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		141772761EE2930600C0CBC7 /* AngleUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleUnit.swift; sourceTree = "<group>"; };
+		141772761EE2930600C0CBC7 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		142F5C821EDC5683008BEFAB /* Tortoise+Motion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+Motion.swift"; sourceTree = "<group>"; };
 		142F5C871EDC58D6008BEFAB /* CommandSetPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetPosition.swift; sourceTree = "<group>"; };
 		142F5C8D1EDC5A94008BEFAB /* CommandSetHeading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSetHeading.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				145624911ED99E4800173B9A /* GraphicsContext.swift */,
+				141772761EE2930600C0CBC7 /* Angle.swift */,
 				1456248F1ED99D8600173B9A /* State.swift */,
 				14588D151EDF03D700922BE4 /* Color+CGColor.swift */,
 				1456248D1ED99D1900173B9A /* Command.swift */,
@@ -117,7 +118,6 @@
 				14588D171EDF042300922BE4 /* CommandPenColor.swift */,
 				14588D191EDF0D8900922BE4 /* CommandReset.swift */,
 				14588D1B1EDF11AC00922BE4 /* CommandClear.swift */,
-				141772761EE2930600C0CBC7 /* AngleUnit.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 				142F5C831EDC5683008BEFAB /* Tortoise+Motion.swift in Sources */,
 				14588D1A1EDF0D8900922BE4 /* CommandReset.swift in Sources */,
 				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,
-				141772771EE2930600C0CBC7 /* AngleUnit.swift in Sources */,
+				141772771EE2930600C0CBC7 /* Angle.swift in Sources */,
 				1456248C1ED99CE500173B9A /* CommandForward.swift in Sources */,
 				1451BF661ED872C200D200DD /* Tortoise.swift in Sources */,
 				14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */,

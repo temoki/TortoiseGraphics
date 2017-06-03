@@ -100,7 +100,7 @@ public extension Tortoise {
 
     public func towards(_ x: Double, y: Double) -> Double {
         let tan = CGFloat((y - Double(state.position.y)) / (x - Double(state.position.x)))
-        return 90 - Double(Radian(atan(tan)).degree)
+        return 90 - Double(Radian(atan(tan)).degree.value)
     }
 
     public var xcor: Double {
@@ -112,7 +112,7 @@ public extension Tortoise {
     }
 
     public var heading: Double {
-        return Double(state.heading)
+        return Double(state.heading.value)
     }
 
     public func distance(_ x: Double, y: Double) -> Double {

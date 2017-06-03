@@ -17,7 +17,7 @@ class CommandCircle: Command {
         self.extent = max(-360, min(extent, 360))
 
         // Step
-        let arcLength = radius * Degree(abs(self.extent)).radian
+        let arcLength = radius * Degree(abs(self.extent)).radian.value
         let justSteps = max(Int(arcLength / 3), 1)
         self.steps = steps <= 0 ? justSteps : min(steps, justSteps)
 
@@ -25,7 +25,7 @@ class CommandCircle: Command {
         let baseAngle = (180 - self.extent / CGFloat(self.steps)) * 0.5
         let leftAngle1 = 90 - baseAngle
         let leftAngleN = 2 * leftAngle1
-        let distance = 2 * radius * cos(Degree(baseAngle).radian)
+        let distance = 2 * radius * cos(Degree(baseAngle).radian.value)
         self.commandRight1 = CommandRight(angle: -leftAngle1)
         self.commandRightN = CommandRight(angle: -leftAngleN)
         self.commandForward = CommandForward(distance: distance)

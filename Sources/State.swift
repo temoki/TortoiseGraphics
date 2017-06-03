@@ -4,7 +4,7 @@ struct State {
 
     var position: CGPoint = .zero
 
-    var heading: CGFloat = 0
+    var heading: Degree = Degree(0)
 
     var isPenDown: Bool = true
 

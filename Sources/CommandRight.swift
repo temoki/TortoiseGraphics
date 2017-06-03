@@ -10,7 +10,7 @@ class CommandRight: Command {
 
     func test(in state: State) -> State {
         var newState = state
-        newState.heading += angle
+        newState.heading = Degree(state.heading.value + angle)
         return newState
     }
 

@@ -10,7 +10,7 @@ class CommandSetHeading: Command {
 
     func test(in state: State) -> State {
         var newState = state
-        newState.heading = heading
+        newState.heading = Degree(heading)
         return newState
     }
 
