@@ -7,18 +7,21 @@ canvas.animationInterval = 0.01
 PlaygroundPage.current.liveView = canvas
 
 canvas.play { 🐢 in
-    
-    func square(_ side: Double) {
-        🐢.repeat(4) {
+
+    🐢.penColor(.blue)
+
+    func hexagon(_ side: Double) {
+        🐢.repeat(6) {
             🐢.forward(side)
-            🐢.right(90)
+            🐢.right(60)
         }
     }
     
-    🐢.penColor(.red)
-    🐢.repeat(36) {
-        square(50)
-        🐢.right(10)
+    var side: Double = 0
+    🐢.repeat(24) {
+        side += 3
+        hexagon(side)
+        🐢.right(15)
     }
 
 }

@@ -3,7 +3,7 @@ import CoreGraphics
 
 public extension Tortoise {
 
-    // MARK: - Drawing State
+    // MARK: - Drawing state
 
     public func penDown() {
         add(command: CommandPenDown(true))
