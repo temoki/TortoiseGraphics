@@ -13,7 +13,7 @@ class CommandForward: Command {
     func test(in state: State) -> State {
         var newState = state
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
-            .rotated(by: -state.heading * .pi / 180)
+            .rotated(by: Degree(-state.heading).radian)
         newState.position = CGPoint(x: 0, y: distance).applying(transform)
         return newState
     }

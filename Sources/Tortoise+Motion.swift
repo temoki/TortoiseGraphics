@@ -78,7 +78,9 @@ public extension Tortoise {
         add(command: CommandDot(size: size.map { CGFloat($0) }))
     }
 
-    // TODO: circle()
+    public func circle(_ radius: Double, _ extent: Double = 360, _ steps: Int = 0) {
+        add(command: CommandCircle(radius: CGFloat(radius), extent: CGFloat(extent), steps: steps))
+    }
 
     public func `repeat`(_ times: Int, _ block: () -> Void) {
         for _ in 1...times {
@@ -97,8 +99,8 @@ public extension Tortoise {
     }
 
     public func towards(_ x: Double, y: Double) -> Double {
-        let tan = (y - Double(state.position.y)) / (x - Double(state.position.x))
-        return 90 - (atan(tan) * 180 / .pi)
+        let tan = CGFloat((y - Double(state.position.y)) / (x - Double(state.position.x)))
+        return 90 - Double(Radian(atan(tan)).degree)
     }
 
     public var xcor: Double {

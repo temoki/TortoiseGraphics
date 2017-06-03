@@ -31,36 +31,24 @@ public class Tortoise {
         }
 
         if state.isVisible {
-            drawTortoise(context.cgContext, state: state, icon: nil)
+            drawTortoise(context.cgContext, state: state)
         }
 
         context.tearDown()
         return min(toIndex + 1, endIndex)
     }
 
-    func drawTortoise(_ cgContext: CGContext, state: State, icon: CGImage?) {
+    func drawTortoise(_ cgContext: CGContext, state: State) {
         cgContext.saveGState()
-        if let icon = icon {
-            // Draw tortoise icon
-            let size = CGSize(width: CGFloat(icon.width), height: CGFloat(icon.height))
-            let drawRect = CGRect(origin: .zero, size: size)
-            cgContext.translateBy(x: state.position.x, y: state.position.y)
-            cgContext.rotate(by: -state.heading * .pi / 180)
-            cgContext.translateBy(x: -size.width*0.5, y: -size.height*0.5)
-            cgContext.draw(icon, in: drawRect)
-
-        } else {
-            // Dras triangle's 3 points.
-            let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
-                .rotated(by: -state.heading * .pi / 180)
-            cgContext.move(to: CGPoint(x:  0, y:  5).applying(transform))
-            cgContext.addLine(to: CGPoint(x:  5, y: -5).applying(transform))
-            cgContext.addLine(to: CGPoint(x:  0, y: -3).applying(transform))
-            cgContext.addLine(to: CGPoint(x: -5, y: -5).applying(transform))
-            cgContext.closePath()
-            cgContext.setFillColor(state.penColor)
-            cgContext.fillPath()
-        }
+        let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
+            .rotated(by: Degree(-state.heading).radian)
+        cgContext.move(to: CGPoint(x:  0, y:  5).applying(transform))
+        cgContext.addLine(to: CGPoint(x:  5, y: -5).applying(transform))
+        cgContext.addLine(to: CGPoint(x:  0, y: -3).applying(transform))
+        cgContext.addLine(to: CGPoint(x: -5, y: -5).applying(transform))
+        cgContext.closePath()
+        cgContext.setFillColor(state.penColor)
+        cgContext.fillPath()
         cgContext.restoreGState()
     }
 
