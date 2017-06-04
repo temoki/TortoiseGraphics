@@ -14,23 +14,19 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 ## Example
 
 ```swift
-canvas.play { 🐢 in
-
-    func hexagon(_ side: Double) {
-        🐢.repeat(6) {
-            🐢.forward(side)
-            🐢.right(60)
-        }
+func hexagon(_ side: Double) {
+    🐢.repeat(6) {
+        🐢.forward(side)
+        🐢.right(60)
     }
+}
 
-    var side: Double = 0
-    🐢.penColor(.blue)
-    🐢.repeat(24) {
-        side += 3
-        hexagon(side)
-        🐢.right(15)
-    }
-
+var side: Double = 0
+🐢.penColor(.blue)
+🐢.repeat(24) {
+    side += 3
+    hexagon(side)
+    🐢.right(15)
 }
 ```
 
