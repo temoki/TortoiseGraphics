@@ -1,8 +1,37 @@
 import CoreGraphics
 
+#if os(macOS)
+import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
+
 public extension Tortoise {
 
-    // TODO: create image (NSImage/UIImage)
-    // TODO: create animation gif (Data)
+    #if os(macOS)
+    public func makeImage(of size: CGSize) -> NSImage? {
+        guard let cgImage = makeCGImage(of: size) else { return nil }
+        return NSImage(cgImage: cgImage, size: size)
+    }
+    #endif
+
+    #if os(iOS)
+    public func makeImage(of size: CGSize) -> UIImage? {
+        guard let cgImage = makeCGImage(of: size) else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
+    #endif
+
+    public func writePNG(of size: CGSize, to fileURL: URL) -> Bool {
+        return writeImage(size: size, type: kUTTypePNG, fileURL: fileURL as CFURL)
+    }
+
+    public func writeJPEG(of size: CGSize, to fileURL: URL) -> Bool {
+        return writeImage(size: size, type: kUTTypeJPEG, fileURL: fileURL as CFURL)
+    }
+
+    public func writeGIF(of size: CGSize, to fileURL: URL) -> Bool {
+        return writeAnimationImage(size: size, type: kUTTypeGIF, fileURL: fileURL as CFURL)
+    }
 
 }

@@ -30,4 +30,16 @@ class GraphicsContext {
         cgContext.restoreGState()
     }
 
+    static func createBitmapContext(size: CGSize) -> GraphicsContext {
+        let cgContext = CGContext(data: nil,
+                                  width: Int(size.width),
+                                  height: Int(size.height),
+                                  bitsPerComponent: 8,
+                                  bytesPerRow: Int(size.width) * 4,
+                                  space: CGColorSpaceCreateDeviceRGB(),
+                                  bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+        // swiftlint:disable:previous force_unwrapping
+        return GraphicsContext(size: size, cgContext: cgContext, isUIViewContext: false)
+    }
+
 }

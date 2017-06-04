@@ -55,9 +55,24 @@ canvas.play { 🐢 in
     🐢.forward(100)
 }
 ```
-### Draw image
+### Make or Write image
 
 ```swift
+// Instantiate 🐢.
+let 🐢 = Tortoise()
+
+// Command 🐢
+🐢.right(90)
+🐢.forward(100)
+
+// Make NSImage or UIImage
+let size = CGSize(width: 300, height: 300)
+let image = 🐢.makeImage(of: size)
+
+// Write PNG/JPEG/GIF
+🐢.writePNG(of: size, to: URL(fileURLWithPath: "./image.png"))
+🐢.writeJPEG(of: size, to: URL(fileURLWithPath: "./image.jpeg"))
+🐢.writeGIF(of: size, to: URL(fileURLWithPath: "./image.gif"))
 ```
 
 ## Playgrounds
@@ -136,9 +151,16 @@ canvas.play { 🐢 in
 * `hideTortoise()`, `ht()`
 * `isVisible`
 
+### Make or Write image
+
+* `makeImage()`
+* `writePNG()`
+* `writeJPEG()`
+* `writeGIF()`
+
 ## Requirements
 
-* Swift 3.1 (Xcode 8.3.1)
+* Swift 3.1 (Xcode 8.3)
 * macOS 10.10 or later
 * iOS 10.0 or later
 

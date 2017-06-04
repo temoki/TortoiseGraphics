@@ -1,4 +1,4 @@
-#if os(OSX)
+#if os(macOS)
 import AppKit
 public typealias View = NSView
 #elseif os(iOS)
