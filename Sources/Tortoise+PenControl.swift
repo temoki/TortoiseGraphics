@@ -38,11 +38,11 @@ public extension Tortoise {
     }
 
     public var isDown: Bool {
-        return state.isPenDown
+        return testState.isPenDown
     }
 
     public var penSize: Double {
-        return Double(state.penSize)
+        return Double(testState.penSize)
     }
 
     public var width: Double {
@@ -64,7 +64,7 @@ public extension Tortoise {
     }
 
     public var penColor: (r: Double, g: Double, b: Double) {
-        let rgb = state.penColor.rgb
+        let rgb = testState.penColor.rgb
         return (r: Double(rgb.0*255), g: Double(rgb.1*255), b: Double(rgb.2*255))
     }
 

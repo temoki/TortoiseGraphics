@@ -21,7 +21,7 @@ public extension Tortoise {
     }
 
     public var isVisible: Bool {
-        return state.isVisible
+        return testState.isVisible
     }
 
 }

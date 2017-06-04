@@ -55,11 +55,11 @@ public extension Tortoise {
     }
 
     public func setX(_ x: Double) {
-        add(command: CommandSetPosition(position: CGPoint(x: CGFloat(x), y: state.position.y)))
+        add(command: CommandSetPosition(position: CGPoint(x: CGFloat(x), y: testState.position.y)))
     }
 
     public func setY(_ y: Double) {
-        add(command: CommandSetPosition(position: CGPoint(x: state.position.x, y: CGFloat(y))))
+        add(command: CommandSetPosition(position: CGPoint(x: testState.position.x, y: CGFloat(y))))
     }
 
     public func setHeading(_ heading: Double) {
@@ -91,7 +91,7 @@ public extension Tortoise {
     // MARK: - Tell tortoise's state
 
     public var position: (x: Double, y: Double) {
-        return (x: Double(state.position.x), y: Double(state.position.y))
+        return (x: Double(testState.position.x), y: Double(testState.position.y))
     }
 
     public var pos: (x: Double, y: Double) {
@@ -99,25 +99,25 @@ public extension Tortoise {
     }
 
     public func towards(_ x: Double, y: Double) -> Double {
-        let tan = CGFloat((y - Double(state.position.y)) / (x - Double(state.position.x)))
+        let tan = CGFloat((y - Double(testState.position.y)) / (x - Double(testState.position.x)))
         return 90 - Double(Radian(atan(tan)).degree.value)
     }
 
     public var xcor: Double {
-        return Double(state.position.x)
+        return Double(testState.position.x)
     }
 
     public var ycor: Double {
-        return Double(state.position.y)
+        return Double(testState.position.y)
     }
 
     public var heading: Double {
-        return Double(state.heading.value)
+        return Double(testState.heading.value)
     }
 
     public func distance(_ x: Double, y: Double) -> Double {
-        let distanceX = x - Double(state.position.x)
-        let distanceY = y - Double(state.position.y)
+        let distanceX = x - Double(testState.position.x)
+        let distanceY = y - Double(testState.position.y)
         return sqrt(pow(distanceX, 2) + pow(distanceY, 2))
     }
 

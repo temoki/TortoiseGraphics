@@ -3,16 +3,22 @@ import CoreGraphics
 
 public class Tortoise {
 
-    var state = State()
+    var testState = State()
 
     var commands: [Command] = [CommandReset()]
 
     var commandedHandler: ((Tortoise) -> Void)?
 
     func add(command: Command) {
-        state = command.test(in: state)
+        testState = command.test(in: testState)
         commands.append(command)
         commandedHandler?(self)
+    }
+
+    func initialize() {
+        testState = State()
+        commands = [CommandReset()]
+        commandedHandler = nil
     }
 
     @discardableResult

@@ -28,7 +28,9 @@ public class Canvas: View {
     }
     #endif
 
-    public func play(block: @escaping (Tortoise) -> Void) {
+    public func play(_ block: @escaping (Tortoise) -> Void) {
+        tortoise.initialize()
+
         tortoise.commandedHandler = { [weak self] (tortoise) in
             guard !Thread.isMainThread else { return }
             guard let interval = self?.animationInterval else { return }
