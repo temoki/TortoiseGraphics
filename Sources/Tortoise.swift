@@ -9,6 +9,8 @@ public class Tortoise {
 
     var commandedHandler: ((Tortoise) -> Void)?
 
+    public init() {}
+
     func add(command: Command) {
         testState = command.test(in: testState)
         commands.append(command)
