@@ -66,6 +66,7 @@ public class Tortoise {
         return context.cgContext.makeImage()
     }
 
+    #if os(macOS)
     func writeImage(size: CGSize, type: CFString, fileURL: CFURL) -> Bool {
         guard let cgImage = makeCGImage(of: size) else { return false }
         guard let destination = CGImageDestinationCreateWithURL(fileURL, type, 1, nil) else { return false }
@@ -83,5 +84,6 @@ public class Tortoise {
         }
         return CGImageDestinationFinalize(destination)
     }
+    #endif
 
 }

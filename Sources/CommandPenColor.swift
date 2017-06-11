@@ -9,7 +9,7 @@ class CommandPenColor: Command {
     }
 
     init(red: CGFloat, green: CGFloat, blue: CGFloat) {
-        self.color = CGColor(red: red, green: green, blue: blue, alpha: 1)
+        self.color = CGColor.rgb(red, green, blue)
     }
 
     func test(in state: State) -> State {

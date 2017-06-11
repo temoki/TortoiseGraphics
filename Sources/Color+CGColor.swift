@@ -1,5 +1,8 @@
 import Foundation
 import CoreGraphics
+#if os(iOS)
+import UIKit
+#endif
 
 extension Color {
 
@@ -10,14 +13,22 @@ extension Color {
             let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
             let g = CGFloat((color & 0x00FF00) >> 8) / 255.0
             let b = CGFloat(color & 0x0000FF) / 255.0
-            return CGColor(red: r, green: g, blue: b, alpha: 1)
+            return CGColor.rgb(r, g, b)
         }
-        return CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        return CGColor.rgb(0, 0, 0)
     }
 
 }
 
 extension CGColor {
+
+    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> CGColor {
+        #if os(iOS)
+        return UIColor(red: red, green: green, blue: blue, alpha: 1).cgColor
+        #elseif os(macOS)
+        return CGColor(red: red, green: green, blue: blue, alpha: 1)
+        #endif
+    }
 
     var rgb: (CGFloat, CGFloat, CGFloat) {
         var rgb: (CGFloat, CGFloat, CGFloat) = (0, 0, 0)
