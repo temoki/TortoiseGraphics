@@ -2,26 +2,36 @@
 import UIKit
 import PlaygroundSupport
 
-let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 512, height: 768))
+let baseVC = UIViewController()
+//baseVC.view.frame = CGRect(x: 0, y: 0, width: 512, height: 768)
+baseVC.view.translatesAutoresizingMaskIntoConstraints = false
 
-let backView = UIView(frame: baseView.bounds)
+let backView = UIView(frame: baseVC.view.bounds)
 backView.backgroundColor = .white
-backView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
-baseView.addSubview(backView)
+baseVC.view.addSubview(backView)
+backView.translatesAutoresizingMaskIntoConstraints = false
+backView.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
+backView.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
+backView.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
+backView.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
 
-let canvas = Canvas(frame: baseView.bounds)
+let canvas = Canvas(frame: baseVC.view.bounds)
 canvas.backgroundColor = .clear
-canvas.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
-baseView.addSubview(canvas)
+baseVC.view.addSubview(canvas)
+canvas.translatesAutoresizingMaskIntoConstraints = false
+canvas.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
+canvas.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
+canvas.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
+canvas.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
 
-PlaygroundPage.current.liveView = baseView
+PlaygroundPage.current.liveView = baseVC
 
-canvas.play { (tortoise) in
-    let 🐢 = tortoise
-//#-code-completion(identifier, hide, Canvas, TortoisePlayground, baseView, backView, canvas)
+canvas
+//#-code-completion(identifier, hide, Canvas, View, Tortoise, baseVC, backView, canvas)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: # Let's play with 🐢!
+//: # Let's play with 🐢
+.play { 🐢 in
 //#-editable-code
     🐢.penColor(.blue)
     
@@ -39,6 +49,4 @@ canvas.play { (tortoise) in
         🐢.right(15)
     }
 //#-end-editable-code
-//#-hidden-code
-} // end of play
-//#-end-hidden-code
+}
