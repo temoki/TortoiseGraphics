@@ -1,29 +1,44 @@
 //#-hidden-code
 import UIKit
 import PlaygroundSupport
-TortoisePlayground.main.liveView.frame = CGRect(x: 0, y: 0, width: 512, height: 768)
-PlaygroundPage.current.liveView = TortoisePlayground.main.liveView
-TortoisePlayground.main.start(withTimeInterval: 0.01)
-//#-code-completion(identifier, hide, Canvas, CanvasView, Image, View, Procedure, Properties)
-//#-code-completion(identifier, hide, Tortoise, NumberOutput, BoolOutput, DrawingHandler)
-//#-code-completion(identifier, hide, TortoisePlayground)
+
+let baseView = UIView(frame: CGRect(x: 0, y: 0, width: 512, height: 768))
+
+let backView = UIView(frame: baseView.bounds)
+backView.backgroundColor = .white
+backView.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+baseView.addSubview(backView)
+
+let canvas = Canvas(frame: baseView.bounds)
+canvas.backgroundColor = .clear
+canvas.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleRightMargin]
+baseView.addSubview(canvas)
+
+PlaygroundPage.current.liveView = baseView
+
+canvas.play { (tortoise) in
+    let 🐢 = tortoise
+//#-code-completion(identifier, hide, Canvas, TortoisePlayground, baseView, backView, canvas)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: # 🐢🐢 Hello, Tortoise Graphics! 🐢🐢
+//: # Let's play with 🐢!
 //#-editable-code
-
-setPenColor(random(18) + 1)
-right(234)
-for i in 1...100 {
-    forward(Number(i * 5) * 0.9)
-    right(144.3)
-}
-home()
-
+    🐢.penColor(.blue)
+    
+    func hexagon(_ side: Double) {
+        🐢.repeat(6) {
+            🐢.forward(side)
+            🐢.right(60)
+        }
+    }
+    
+    var side: Double = 0
+    🐢.repeat(24) {
+        side += 3
+        hexagon(side)
+        🐢.right(15)
+    }
 //#-end-editable-code
 //#-hidden-code
-TortoisePlayground.main.finish {
-    // !!UNCOMMENT NEXT A LINE BEFORE BUILD!!
-    //PlaygroundPage.current.assessmentStatus = .pass(message: "# 🐢 Finished!")
-}
+} // end of play
 //#-end-hidden-code
