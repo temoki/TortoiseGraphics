@@ -1,27 +1,21 @@
-//
-//  CommandShowTortoise.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/20.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandShowTortoise: Command {
 
     private let show: Bool
 
-    init(show: Bool) {
+    init(_ show: Bool) {
         self.show = show
     }
 
-    func execute(context: Context) {
-        context.showTortoise = show
+    func test(in state: State) -> State {
+        var newState = state
+        newState.isVisible = show
+        return newState
     }
 
-    var isGraphicsCommand: Bool {
-        return true
+    func exexute(in state: State, with context: CGContext) -> State {
+        return test(in: state)
     }
 
 }

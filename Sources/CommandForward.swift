@@ -1,39 +1,31 @@
-//
-//  CommandForward.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/10.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandForward: Command {
 
-    private let distance: NumberOutput
+    private let distance: CGFloat
 
-    func distanceOutput(context: Context) -> Number {
-        return distance(Properties(context: context))
-    }
-
-    init(distance: @escaping NumberOutput) {
+    init(distance: CGFloat) {
         self.distance = distance
     }
 
-    func execute(context: Context) {
-        let transform = CGAffineTransform(translationX: context.position.x, y: context.position.y)
-            .scaledBy(x: context.canvasScale, y: context.canvasScale)
-            .rotated(by: context.heading.radian)
-        let newPos = CGPoint(x: distanceOutput(context: context), y: 0).applying(transform)
-        if context.penDown {
-            context.bitmapContext.addLine(to: newPos)
-            context.bitmapContext.strokePath()
-        }
-        context.position = newPos
+    // MARK: - TortoiseCommand protocol
+
+    func test(in state: State) -> State {
+        var newState = state
+        let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
+            .rotated(by: -state.heading.radian.value)
+        newState.position = CGPoint(x: 0, y: distance).applying(transform)
+        return newState
     }
 
-    var isGraphicsCommand: Bool {
-        return true
+    func exexute(in state: State, with context: CGContext) -> State {
+        let newState = test(in: state)
+        if newState.isPenDown {
+            context.addLine(to: newState.position)
+            context.strokePath()
+        }
+        context.move(to: newState.position)
+        return newState
     }
 
 }

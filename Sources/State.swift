@@ -1,0 +1,25 @@
+import CoreGraphics
+
+struct State {
+
+    var position: CGPoint = .zero
+
+    var heading: Degree = Degree(0)
+
+    var isPenDown: Bool = true
+
+    var penSize: CGFloat = 1
+
+    var penColor: CGColor = Color.black.cgColor
+
+    var isVisible: Bool = true
+
+    var canvasSize: CGSize = .zero
+
+    func apply(to cgContext: CGContext) {
+        cgContext.move(to: position)
+        cgContext.setLineWidth(penSize)
+        cgContext.setStrokeColor(penColor)
+    }
+
+}

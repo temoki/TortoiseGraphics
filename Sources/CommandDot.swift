@@ -10,29 +10,25 @@ import CoreGraphics
 
 class CommandDot: Command {
 
-    private let x: NumberOutput
-    private let y: NumberOutput
+    private let size: CGFloat?
 
-    init(x: @escaping NumberOutput, y: @escaping NumberOutput) {
-        self.x = x
-        self.y = y
+    init(size: CGFloat? = nil) {
+        self.size = size
     }
 
-    func execute(context: Context) {
-        if context.penDown {
-            let posX = x(Properties(context: context))
-            let posY = y(Properties(context: context))
-            let dotRect = CGRect(x: posX - (context.penWidth / 2),
-                                 y: posY - (context.penWidth / 2),
-                                 width: context.penWidth,
-                                 height: context.penWidth)
-                .applying(CGAffineTransform(scaleX: context.canvasScale, y: context.canvasScale))
-            context.bitmapContext.fillEllipse(in: dotRect)
-        }
+    func test(in state: State) -> State {
+        return state
     }
 
-    var isGraphicsCommand: Bool {
-        return true
+    func exexute(in state: State, with context: CGContext) -> State {
+        let newState = test(in: state)
+        let dotSize = size ?? max(newState.penSize + 4, 2 * newState.penSize)
+        let dotRect = CGRect(x: newState.position.x - (dotSize / 2),
+                             y: newState.position.y - (dotSize / 2),
+                             width: dotSize,
+                             height: dotSize)
+        context.fillEllipse(in: dotRect)
+        return newState
     }
 
 }

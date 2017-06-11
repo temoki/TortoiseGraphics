@@ -1,11 +1,3 @@
-//
-//  CommandPenDown.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/10.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandPenDown: Command {
@@ -16,8 +8,14 @@ class CommandPenDown: Command {
         self.penDown = penDown
     }
 
-    func execute(context: Context) {
-        context.penDown = penDown
+    func test(in state: State) -> State {
+        var newState = state
+        newState.isPenDown = penDown
+        return newState
+    }
+
+    func exexute(in state: State, with context: CGContext) -> State {
+        return test(in: state)
     }
 
 }

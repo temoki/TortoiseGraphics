@@ -1,29 +1,52 @@
 //#-hidden-code
 import UIKit
 import PlaygroundSupport
-TortoisePlayground.main.liveView.frame = CGRect(x: 0, y: 0, width: 512, height: 768)
-PlaygroundPage.current.liveView = TortoisePlayground.main.liveView
-TortoisePlayground.main.start(withTimeInterval: 0.01)
-//#-code-completion(identifier, hide, Canvas, CanvasView, Image, View, Procedure, Properties)
-//#-code-completion(identifier, hide, Tortoise, NumberOutput, BoolOutput, DrawingHandler)
-//#-code-completion(identifier, hide, TortoisePlayground)
+
+let baseVC = UIViewController()
+//baseVC.view.frame = CGRect(x: 0, y: 0, width: 512, height: 768)
+baseVC.view.translatesAutoresizingMaskIntoConstraints = false
+
+let backView = UIView(frame: baseVC.view.bounds)
+backView.backgroundColor = .white
+baseVC.view.addSubview(backView)
+backView.translatesAutoresizingMaskIntoConstraints = false
+backView.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
+backView.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
+backView.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
+backView.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
+
+let canvas = Canvas(frame: baseVC.view.bounds)
+canvas.backgroundColor = .clear
+baseVC.view.addSubview(canvas)
+canvas.translatesAutoresizingMaskIntoConstraints = false
+canvas.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
+canvas.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
+canvas.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
+canvas.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
+
+PlaygroundPage.current.liveView = baseVC
+
+canvas
+//#-code-completion(identifier, hide, Canvas, View, Tortoise, baseVC, backView, canvas)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: # 🐢🐢 Hello, Tortoise Graphics! 🐢🐢
+//: # Let's play with 🐢
+.play { 🐢 in
 //#-editable-code
-
-setPenColor(random(18) + 1)
-right(234)
-for i in 1...100 {
-    forward(Number(i * 5) * 0.9)
-    right(144.3)
-}
-home()
-
+    🐢.penColor(.blue)
+    
+    func hexagon(_ side: Double) {
+        🐢.repeat(6) {
+            🐢.forward(side)
+            🐢.right(60)
+        }
+    }
+    
+    var side: Double = 0
+    🐢.repeat(24) {
+        side += 3
+        hexagon(side)
+        🐢.right(15)
+    }
 //#-end-editable-code
-//#-hidden-code
-TortoisePlayground.main.finish {
-    // !!UNCOMMENT NEXT A LINE BEFORE BUILD!!
-    //PlaygroundPage.current.assessmentStatus = .pass(message: "# 🐢 Finished!")
 }
-//#-end-hidden-code

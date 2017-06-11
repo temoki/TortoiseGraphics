@@ -1,28 +1,21 @@
-//
-//  CommandSetHeading.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/11.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandSetHeading: Command {
 
-    private let angle: NumberOutput
+    private let heading: CGFloat
 
-    init(angle: @escaping NumberOutput) {
-        self.angle = angle
+    init(heading: CGFloat) {
+        self.heading = heading
     }
 
-    func execute(context: Context) {
-        let angle = self.angle(Properties(context: context))
-        context.heading = Context.defaultHeading - angle
+    func test(in state: State) -> State {
+        var newState = state
+        newState.heading = Degree(heading)
+        return newState
     }
 
-    var isGraphicsCommand: Bool {
-        return true
+    func exexute(in state: State, with context: CGContext) -> State {
+        return test(in: state)
     }
 
 }

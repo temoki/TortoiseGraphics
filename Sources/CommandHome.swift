@@ -1,22 +1,18 @@
-//
-//  CommandHome.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/10.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
-import Foundation
+import CoreGraphics
 
 class CommandHome: Command {
 
-    func execute(context: Context) {
-        context.position = Context.defaultPosition
-        context.heading = Context.defaultHeading
+    let setPosition = CommandSetPosition(position: .zero)
+    let setHeading = CommandSetHeading(heading: 0)
+
+    func test(in state: State) -> State {
+        let newState = setPosition.test(in: state)
+        return setHeading.test(in: newState)
     }
 
-    var isGraphicsCommand: Bool {
-        return true
+    func exexute(in state: State, with context: CGContext) -> State {
+        let newState = setPosition.exexute(in: state, with: context)
+        return setPosition.exexute(in: newState, with: context)
     }
 
 }

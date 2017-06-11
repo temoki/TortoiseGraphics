@@ -1,9 +1,5 @@
 # TortoiseGraphics 🐢
 
-A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key feature of the [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)) ) engine written in Swift.
-
-The commands were implemented with reference to [ACSLogo](http://www.alancsmith.co.uk/logo).
-
 [![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](https://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -11,31 +7,27 @@ The commands were implemented with reference to [ACSLogo](http://www.alancsmith.
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![Platform](https://img.shields.io/cocoapods/p/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 
+A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key feature of the [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)) ) engine written in Swift 3.
+
+The commands were implemented with reference to the [turtle in Python 3 standard libraries](https://docs.python.org/3/library/turtle.html).
+
 ## Example
 
 ```swift
-canvas.🐢
-    .setRGB(0, [0.8, 0.8, 0.8])
-    .make("color", 0)
-    .repeat(12) { $0
-        .setPenWidth(2)
-        .right(15)
-        .repeat(6) { $0
-            .setPenColor { $0.penColor + 1 }
-            .forward(50)
-            .right(60)
-        }
-        .setPenWidth(1)
-        .right(15)
-        .repeat(6) { $0
-            .make("color") { $0["color"] + 1 }
-            .setPenColor { $0["color"] }
-            .forward(20)
-            .right(60)
-        }
+func hexagon(_ side: Double) {
+    🐢.repeat(6) {
+        🐢.forward(side)
+        🐢.right(60)
     }
-    .setPenColor(1)
-    .home()
+}
+
+var side: Double = 0
+🐢.penColor(.blue)
+🐢.repeat(24) {
+    side += 3
+    hexagon(side)
+    🐢.right(15)
+}
 ```
 
 ### Drawn image
@@ -48,41 +40,35 @@ canvas.🐢
 
 ## Usage
 
-### Draw CGImage
-
-```swift
-// Instantiate a canvas.
-let canvas = Canvas(size: CGSize(width: 300, height: 300))
-
-// Command 🐢 on canvas.
-canvas.🐢.right(90).forward(100)
-
-// Draw image (CGImage) by executing all commands
-let image = canvas.draw()
-
-// Draw by executing commands one by one
-canvas.draw(oneByOne: { (image) in
-    // an image (CGImage) in drawing process
-})
-```
-
 ### Draw in view (macOS/iOS)
-
 ```swift
-// Instantiate a view.
-let view = CanvasView(canvasSize: CGSize(width: 300, height: 300))
+// Instantiate a Canvas that is a subclass of NSView/UIView.
+let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
 // Command 🐢 on canvas.
-view.canvas.🐢.right(90).forward(100)
-
-// Draw in view
-view.draw()
-
-// Draw in view with animation
-view.animate(atTimeInterval: 0.1) {
-    // animation finished
+canvas.play { 🐢 in
+    🐢.right(90)
+    🐢.forward(100)
 }
+```
+### Make or Write image
 
+```swift
+// Instantiate 🐢.
+let 🐢 = Tortoise()
+
+// Command 🐢
+🐢.right(90)
+🐢.forward(100)
+
+// Make NSImage or UIImage
+let size = CGSize(width: 300, height: 300)
+let image = 🐢.makeImage(of: size)
+
+// Write PNG/JPEG/GIF
+🐢.writePNG(of: size, to: URL(fileURLWithPath: "./image.png"))
+🐢.writeJPEG(of: size, to: URL(fileURLWithPath: "./image.jpeg"))
+🐢.writeGIF(of: size, to: URL(fileURLWithPath: "./image.gif"))
 ```
 
 ## Playgrounds
@@ -104,63 +90,73 @@ view.animate(atTimeInterval: 0.1) {
 
 ## Commands
 
-### Move and Draw
+### Motion
 
-* `clearScreen`
-* `clean`
-* `forward`
-* `back`
-* `right`
-* `left`
-* `home`
-* `setHeading`
-* `setPosition`
-* `setX`
-* `setY`
-* `dot`
-* `arc`
+#### Move and Draw
 
-### Pen and Canvas state
+* `forward()`, `fd()`
+* `backword()`, `back()`, `bk()`
+* `right()`, `rt()`
+* `left()`, `lt()`
+* `setPosition()`, `setPos()`, `goto()`
+* `setX()`
+* `setY()`
+* `setHeading()`, `setH()`
+* `home()`
+* `dot()`
+* `circle()`
+* `repeat() {}`
 
-* `penDown`
-* `penUp`
-* `setPenColor`
-* `setPenWidth`
-* `setLineCap`
-* `setLineDash`
-* `setBackground`
-* `setRGB`
+#### Tell tortoise's state
 
-### Control
-
-* `showTortoise`
-* `hideTortoise`
-* `define`
-* `call`
-* `repeat`
-* `while`
-* `if`
-* `make`
-* `local`
-* `print`
-
-### Output
-
-* `random`
-* `towards`
-* `shown`
+* `position`, `pos`
+* `towards()`
+* `xcor`
+* `ycor`
 * `heading`
-* `position`
-* `penColor`
-* `penWidth`
-* `background`
-* `rgb`
-* `canvasSize`
+* `distance()`
+* `random()`
 
+### Pen Control
+
+#### Drawing state
+
+* `penDown()`, `pd()`, `down()`
+* `penUp()`, `pu()`, `up()`
+* `penSize()`
+* `width()`
+* `isDown`
+* `penSize`
+* `width`
+
+#### Color control
+
+* `penColor()`
+* `penColor`
+
+#### More drawing control
+
+* `reset()`
+* `clear()`
+
+### Tortoise state
+
+#### Visiblity
+
+* `showTortoise()`, `st()`
+* `hideTortoise()`, `ht()`
+* `isVisible`
+
+### Make or Write image
+
+* `makeImage()`
+* `writePNG()`
+* `writeJPEG()`
+* `writeGIF()`
 
 ## Requirements
 
-* Swift 3.1 (Xcode 8.3.1)
+* Swift 3.1 (Xcode 8.3)
 * macOS 10.10 or later
 * iOS 10.0 or later
 

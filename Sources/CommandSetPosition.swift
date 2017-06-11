@@ -1,35 +1,27 @@
-//
-//  CommandSetPosition.swift
-// TortoiseGraphics
-//
-//  Created by temoki on 2016/08/11.
-//  Copyright © 2016 temoki. All rights reserved.
-//
-
 import CoreGraphics
 
 class CommandSetPosition: Command {
 
-    private let x: NumberOutput
-    private let y: NumberOutput
+    private let position: CGPoint
 
-    init(x: @escaping NumberOutput, y: @escaping NumberOutput) {
-        self.x = x
-        self.y = y
+    init(position: CGPoint) {
+        self.position = position
     }
 
-    func execute(context: Context) {
-        let pos = CGPoint(x: x(Properties(context: context)),
-                          y: y(Properties(context: context)))
-        if context.penDown {
-            context.bitmapContext.addLine(to: pos)
-            context.bitmapContext.strokePath()
+    func test(in state: State) -> State {
+        var newState = state
+        newState.position = position
+        return newState
+    }
+
+    func exexute(in state: State, with context: CGContext) -> State {
+        let newState = test(in: state)
+        if newState.isPenDown {
+            context.addLine(to: newState.position)
+            context.strokePath()
         }
-        context.bitmapContext.move(to: pos)
-    }
-
-    var isGraphicsCommand: Bool {
-        return true
+        context.move(to: newState.position)
+        return newState
     }
 
 }
