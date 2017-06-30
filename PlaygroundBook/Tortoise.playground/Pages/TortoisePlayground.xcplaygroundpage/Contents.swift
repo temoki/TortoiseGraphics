@@ -2,37 +2,44 @@
 import UIKit
 import PlaygroundSupport
 
-let baseVC = UIViewController()
-//baseVC.view.frame = CGRect(x: 0, y: 0, width: 512, height: 768)
-baseVC.view.translatesAutoresizingMaskIntoConstraints = false
+class PlaygroundLiveViewController: UIViewController {
+    
+    var backView: UIView!
+    var canvas: Canvas!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.backView = UIView(frame: self.view.bounds)
+        self.backView.backgroundColor = .white
+        self.view.addSubview(self.backView)
+        self.backView.translatesAutoresizingMaskIntoConstraints = false
+        self.backView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.backView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.backView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.backView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        
+        self.canvas = Canvas(frame: self.view.bounds)
+        self.canvas.backgroundColor = .clear
+        self.view.addSubview(canvas)
+        self.canvas.translatesAutoresizingMaskIntoConstraints = false
+        self.canvas.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.canvas.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.canvas.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.canvas.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+    }
+    
+}
+let liveView = PlaygroundLiveViewController()
+PlaygroundPage.current.liveView = liveView
 
-let backView = UIView(frame: baseVC.view.bounds)
-backView.backgroundColor = .white
-baseVC.view.addSubview(backView)
-backView.translatesAutoresizingMaskIntoConstraints = false
-backView.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
-backView.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
-backView.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
-backView.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
-
-let canvas = Canvas(frame: baseVC.view.bounds)
-canvas.backgroundColor = .clear
-baseVC.view.addSubview(canvas)
-canvas.translatesAutoresizingMaskIntoConstraints = false
-canvas.topAnchor.constraint(equalTo: baseVC.view.topAnchor).isActive = true
-canvas.bottomAnchor.constraint(equalTo: baseVC.view.bottomAnchor).isActive = true
-canvas.leftAnchor.constraint(equalTo: baseVC.view.leftAnchor).isActive = true
-canvas.rightAnchor.constraint(equalTo: baseVC.view.rightAnchor).isActive = true
-
-PlaygroundPage.current.liveView = baseVC
-
-canvas
-//#-code-completion(identifier, hide, Canvas, View, Tortoise, baseVC, backView, canvas)
+liveView.canvas.play { 🐢 in
+//#-code-completion(identifier, hide, Canvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
 //: # Let's play with 🐢
-.play { 🐢 in
-//#-editable-code
     🐢.penColor(.blue)
     
     func hexagon(_ side: Double) {
@@ -48,5 +55,5 @@ canvas
         hexagon(side)
         🐢.right(15)
     }
-//#-end-editable-code
+//#-hidden-code
 }
