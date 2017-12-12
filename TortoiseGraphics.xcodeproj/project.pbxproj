@@ -177,6 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_56 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */;
 			buildPhases = (
+				144B453B1FDF793F00F711EB /* Run SwiftLint */,
 				OBJ_59 /* Sources */,
 				OBJ_101 /* Frameworks */,
 			);
@@ -219,6 +220,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		144B453B1FDF793F00F711EB /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SWIFTLINT_DIR=${PROJECT_DIR}/Tools/portable_swiftlint\nSWIFTLINT=${SWIFTLINT_DIR}/swiftlint\necho \"warning: Run SwiftLint $($SWIFTLINT version) in ${SWIFTLINT_DIR}\"\n$SWIFTLINT autocorrect\n$SWIFTLINT lint";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		OBJ_106 /* Sources */ = {
