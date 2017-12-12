@@ -234,7 +234,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "SWIFTLINT=${PROJECT_DIR}/Tools/portable_swiftlint/swiftlint\necho \"warning: SwiftLint $($SWIFTLINT version)\"\n$SWIFTLINT autocorrect\n$SWIFTLINT lint";
+			shellScript = "SWIFTLINT_DIR=${PROJECT_DIR}/Tools/portable_swiftlint\nSWIFTLINT=${SWIFTLINT_DIR}/swiftlint\necho \"warning: Run SwiftLint $($SWIFTLINT version) in ${SWIFTLINT_DIR}\"\n$SWIFTLINT autocorrect\n$SWIFTLINT lint";
 		};
 /* End PBXShellScriptBuildPhase section */
 
