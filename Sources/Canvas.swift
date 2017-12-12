@@ -15,7 +15,7 @@ public class Canvas: View {
     #if os(OSX)
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        guard let cgContext = NSGraphicsContext.current()?.cgContext else { return }
+        guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
         let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: false)
         draw(with: context)
     }
