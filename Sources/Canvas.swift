@@ -12,7 +12,7 @@ public class Canvas: View {
 
     // MARK: - Override
 
-    #if os(OSX)
+    #if os(macOS)
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
@@ -69,7 +69,7 @@ public class Canvas: View {
     }
 
     private func updateDisplay() {
-        #if os(OSX)
+        #if os(macOS)
             display()
         #elseif os(iOS)
             setNeedsDisplay()
