@@ -4,7 +4,6 @@ import CoreGraphics
 import AppKit
 #elseif os(iOS)
 import UIKit
-import MobileCoreServices
 #endif
 
 public extension Tortoise {
