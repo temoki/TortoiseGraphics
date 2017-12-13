@@ -7,21 +7,20 @@ class TortoiseGraphicsTests: XCTestCase {
     func testExample() {
         let 🐢 = Tortoise()
 
-        🐢.penColor(.blue)
+        🐢.penColor(.red)
+        🐢.fillColor(.yellow)
 
-        func hexagon(_ side: Double) {
-            🐢.repeat(6) {
-                🐢.forward(side)
-                🐢.right(60)
-            }
+        🐢.penUp()
+        🐢.back(100)
+        🐢.penDown()
+ 
+        // Turtle Star!
+        🐢.beginFill()
+        🐢.repeat(36) {
+            🐢.forward(200)
+            🐢.left(170)
         }
-
-        var side: Double = 0
-        🐢.repeat(24) {
-            side += 3
-            hexagon(side)
-            🐢.right(15)
-        }
+        🐢.endFill()
 
         let size = CGSize(width: 300, height: 300)
         let pngURL = URL(fileURLWithPath: "./example.png")
