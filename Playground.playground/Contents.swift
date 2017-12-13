@@ -7,21 +7,20 @@ canvas.animationInterval = 0.01
 PlaygroundPage.current.liveView = canvas
 
 canvas.play { 🐢 in
+    🐢.penColor(.red)
+    🐢.fillColor(.yellow)
 
-    🐢.penColor(.blue)
-
-    func hexagon(_ side: Double) {
-        🐢.repeat(6) {
-            🐢.forward(side)
-            🐢.right(60)
-        }
+    🐢.penUp()
+    🐢.back(100)
+    🐢.penDown()
+ 
+    // Turtle Star!
+    🐢.beginFill()
+    🐢.repeat(36) {
+        🐢.forward(200)
+        🐢.left(170)
     }
-    
-    var side: Double = 0
-    🐢.repeat(24) {
-        side += 3
-        hexagon(side)
-        🐢.right(15)
-    }
+    🐢.endFill()
+    🐢.home()
 
 }
