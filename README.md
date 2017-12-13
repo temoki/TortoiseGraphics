@@ -14,20 +14,13 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 ## Example
 
 ```swift
-func hexagon(_ side: Double) {
-    🐢.repeat(6) {
-        🐢.forward(side)
-        🐢.right(60)
-    }
+// Turtle Star!
+🐢.beginFill()
+🐢.repeat(36) {
+    🐢.forward(200)
+    🐢.left(170)
 }
-
-var side: Double = 0
-🐢.penColor(.blue)
-🐢.repeat(24) {
-    side += 3
-    hexagon(side)
-    🐢.right(15)
-}
+🐢.endFill()
 ```
 
 ### Drawn image
@@ -87,6 +80,12 @@ let image = 🐢.makeImage(of: size)
 1. Send the unarchvied `TortoisePlayground.playgroundbook` file to your iPad by AirDrop.
 1. Open it with Playgrounds app.
 1. Let's play!
+
+## Classes
+
+* `Canvas`
+* `Tortoise`
+* `Vec2D`
 
 ## Commands
 

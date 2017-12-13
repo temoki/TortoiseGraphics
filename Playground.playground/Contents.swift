@@ -21,6 +21,4 @@ canvas.play { 🐢 in
         🐢.left(170)
     }
     🐢.endFill()
-    🐢.home()
-
 }
