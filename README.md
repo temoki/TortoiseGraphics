@@ -133,6 +133,14 @@ let image = 🐢.makeImage(of: size)
 
 * `penColor()`
 * `penColor`
+* `fillColor()`
+* `fillColor`
+
+#### Filling
+
+* `filling`
+* `beginFill()`
+* `endFill()`
 
 #### More drawing control
 

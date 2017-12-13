@@ -22,6 +22,7 @@ class CommandForward: Command {
         let newState = test(in: state)
         if newState.isPenDown {
             context.addLine(to: newState.position)
+            state.fillPath?.addLine(to: newState.position)
             context.strokePath()
         }
         context.move(to: newState.position)

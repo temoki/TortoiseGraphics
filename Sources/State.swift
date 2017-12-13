@@ -12,7 +12,11 @@ struct State {
 
     var penColor: CGColor = Color.black.cgColor
 
+    var fillColor: CGColor = Color.black.cgColor
+
     var isVisible: Bool = true
+
+    var fillPath: CGMutablePath?
 
     var canvasSize: CGSize = .zero
 

@@ -28,10 +28,11 @@
 		145624981EDAA48D00173B9A /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145624971EDAA48D00173B9A /* Canvas.swift */; };
 		14588D141EDEFF1100922BE4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D131EDEFF1100922BE4 /* Color.swift */; };
 		14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D151EDF03D700922BE4 /* Color+CGColor.swift */; };
-		14588D181EDF042300922BE4 /* CommandPenColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D171EDF042300922BE4 /* CommandPenColor.swift */; };
+		14588D181EDF042300922BE4 /* CommandColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D171EDF042300922BE4 /* CommandColor.swift */; };
 		14588D1A1EDF0D8900922BE4 /* CommandReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D191EDF0D8900922BE4 /* CommandReset.swift */; };
 		14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D1B1EDF11AC00922BE4 /* CommandClear.swift */; };
 		14588D1E1EDF12B700922BE4 /* Tortoise+DrawImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D1D1EDF12B700922BE4 /* Tortoise+DrawImage.swift */; };
+		14D753A91FE173C80038F931 /* CommandFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D753A81FE173C80038F931 /* CommandFill.swift */; };
 		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +68,11 @@
 		145624971EDAA48D00173B9A /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		14588D131EDEFF1100922BE4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		14588D151EDF03D700922BE4 /* Color+CGColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+CGColor.swift"; sourceTree = "<group>"; };
-		14588D171EDF042300922BE4 /* CommandPenColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandPenColor.swift; sourceTree = "<group>"; };
+		14588D171EDF042300922BE4 /* CommandColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandColor.swift; sourceTree = "<group>"; };
 		14588D191EDF0D8900922BE4 /* CommandReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandReset.swift; sourceTree = "<group>"; };
 		14588D1B1EDF11AC00922BE4 /* CommandClear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandClear.swift; sourceTree = "<group>"; };
 		14588D1D1EDF12B700922BE4 /* Tortoise+DrawImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+DrawImage.swift"; sourceTree = "<group>"; };
+		14D753A81FE173C80038F931 /* CommandFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandFill.swift; sourceTree = "<group>"; };
 		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_54 /* TortoiseGraphicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = TortoiseGraphicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -113,9 +115,10 @@
 				142F5C941EDC6077008BEFAB /* CommandShowTurtle.swift */,
 				142F5C931EDC6077008BEFAB /* CommandPenDown.swift */,
 				142F5C991EDC6246008BEFAB /* CommandPenSize.swift */,
-				14588D171EDF042300922BE4 /* CommandPenColor.swift */,
+				14588D171EDF042300922BE4 /* CommandColor.swift */,
 				14588D191EDF0D8900922BE4 /* CommandReset.swift */,
 				14588D1B1EDF11AC00922BE4 /* CommandClear.swift */,
+				14D753A81FE173C80038F931 /* CommandFill.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -253,12 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14D753A91FE173C80038F931 /* CommandFill.swift in Sources */,
 				142F5C981EDC6165008BEFAB /* Tortoise+PenControl.swift in Sources */,
 				1442EC7C1EE05EFA00B03BCC /* CommandCircle.swift in Sources */,
 				142F5C921EDC5C30008BEFAB /* CommandDot.swift in Sources */,
 				142F5C8E1EDC5A94008BEFAB /* CommandSetHeading.swift in Sources */,
 				142F5C951EDC6077008BEFAB /* CommandPenDown.swift in Sources */,
-				14588D181EDF042300922BE4 /* CommandPenColor.swift in Sources */,
+				14588D181EDF042300922BE4 /* CommandColor.swift in Sources */,
 				14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */,
 				142F5C961EDC6077008BEFAB /* CommandShowTurtle.swift in Sources */,
 				14588D1E1EDF12B700922BE4 /* Tortoise+DrawImage.swift in Sources */,
