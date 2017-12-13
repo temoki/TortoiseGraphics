@@ -35,6 +35,7 @@ class CommandFill: Command {
                 context.addPath(fillPath)
                 context.fillPath(using: .evenOdd)
                 newState.fillPath = nil
+                context.move(to: newState.position)
             }
         }
         return newState

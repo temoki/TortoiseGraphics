@@ -12,7 +12,7 @@ class CommandHome: Command {
 
     func exexute(in state: State, with context: CGContext) -> State {
         let newState = setPosition.exexute(in: state, with: context)
-        return setPosition.exexute(in: newState, with: context)
+        return setHeading.exexute(in: newState, with: context)
     }
 
 }
