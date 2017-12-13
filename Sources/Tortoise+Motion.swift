@@ -90,17 +90,21 @@ public extension Tortoise {
 
     // MARK: - Tell tortoise's state
 
-    public var position: (x: Double, y: Double) {
-        return (x: Double(testState.position.x), y: Double(testState.position.y))
+    public var position: Vec2D {
+        return Vec2D(Double(testState.position.x), Double(testState.position.y))
     }
 
-    public var pos: (x: Double, y: Double) {
+    public var pos: Vec2D {
         return position
     }
 
-    public func towards(_ x: Double, y: Double) -> Double {
+    public func towards(_ x: Double, _ y: Double) -> Double {
         let tan = CGFloat((y - Double(testState.position.y)) / (x - Double(testState.position.x)))
         return 90 - Double(Radian(atan(tan)).degree.value)
+    }
+
+    public func towards(_ position: Vec2D) -> Double {
+        return towards(position.x, position.y)
     }
 
     public var xcor: Double {
@@ -115,10 +119,14 @@ public extension Tortoise {
         return Double(testState.heading.value)
     }
 
-    public func distance(_ x: Double, y: Double) -> Double {
+    public func distance(_ x: Double, _ y: Double) -> Double {
         let distanceX = x - Double(testState.position.x)
         let distanceY = y - Double(testState.position.y)
         return sqrt(pow(distanceX, 2) + pow(distanceY, 2))
+    }
+
+    public func distance(_ position: Vec2D) -> Double {
+        return distance(position.x, position.y)
     }
 
     public func random(_ max: Double) -> Double {
