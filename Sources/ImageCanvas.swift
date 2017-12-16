@@ -3,6 +3,7 @@ import AppKit
 public typealias Image = NSImage
 #elseif os(iOS)
 import UIKit
+import MobileCoreServices
 public typealias Image = UIImage
 #endif
 

@@ -1,4 +1,4 @@
-import Foundation
+import CoreGraphics
 
 public struct Vec2D {
     var x: Double
