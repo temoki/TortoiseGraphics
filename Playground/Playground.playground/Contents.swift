@@ -2,11 +2,11 @@ import PlaygroundSupport
 import TortoiseGraphics
 import CoreGraphics
 
-let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-canvas.animationInterval = 0.01
+let canvas = PlaygroundCanvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+canvas.frameRate = 30
 PlaygroundPage.current.liveView = canvas
 
-canvas.play { 🐢 in
+canvas.drawing { 🐢 in
     🐢.penColor(.red)
     🐢.fillColor(.yellow)
 

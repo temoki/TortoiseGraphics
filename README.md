@@ -34,34 +34,51 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 ## Usage
 
 ### Draw in view (macOS/iOS)
-```swift
-// Instantiate a Canvas that is a subclass of NSView/UIView.
-let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
-// Command 🐢 on canvas.
-canvas.play { 🐢 in
-    🐢.right(90)
-    🐢.forward(100)
+```swift
+class CanvasView: UIView {
+
+    override func draw(_ rect: CGRect) {
+        // Get current context
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+
+        // Instantiate a GraphicsCanvas
+        let canvas = GraphicsCanvas(size: self.bounds.size, context: context)
+
+        // Command 🐢 on canvas.
+        canvas.drawing { 🐢 in
+            🐢.right(90)
+            🐢.forward(100)
+        }
+    }
+
 }
+
 ```
+
 ### Make or Write image
 
 ```swift
-// Instantiate 🐢.
-let 🐢 = Tortoise()
+// Instantiate a ImageCanvas
+let canvas = ImageCanvas(size: CGSize(width: 300, height: 300))
 
-// Command 🐢
-🐢.right(90)
-🐢.forward(100)
+// Command 🐢 on canvas
+canvas.drawing { 🐢 in
+    🐢.right(90)
+    🐢.forward(100)
+}
 
-// Make NSImage or UIImage
-let size = CGSize(width: 300, height: 300)
-let image = 🐢.makeImage(of: size)
+// Get drawn CGImage
+let cgImage = canvas.cgImage
 
-// Write PNG/JPEG/GIF
-🐢.writePNG(of: size, to: URL(fileURLWithPath: "./image.png"))
-🐢.writeJPEG(of: size, to: URL(fileURLWithPath: "./image.jpeg"))
-🐢.writeGIF(of: size, to: URL(fileURLWithPath: "./image.gif"))
+// Get drawn NSImage or UIImage
+let image = canvas.image
+
+// Write to image file (PNG, JPEG, TIFF, GIF)
+canvas.writePNG(to: URL(fileURLWithPath: "./image.png")
+canvas.writeJPEG(to: URL(fileURLWithPath: "./image.jpeg")
+canvas.writeTIFF(to: URL(fileURLWithPath: "./image.tiff")
+canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 ```
 
 ## Playgrounds
@@ -83,11 +100,12 @@ let image = 🐢.makeImage(of: size)
 
 ## Classes
 
-* `Canvas`
+* `ImageCanvas`
+* `GraphicsCanvas`
 * `Tortoise`
 * `Vec2D`
 
-## Commands
+## Tortoise Commands
 
 ### Motion
 
@@ -154,16 +172,9 @@ let image = 🐢.makeImage(of: size)
 * `hideTortoise()`, `ht()`
 * `isVisible`
 
-### Make or Write image
-
-* `makeImage()`
-* `writePNG()`
-* `writeJPEG()`
-* `writeGIF()`
-
 ## Requirements
 
-* Swift 3.1 (Xcode 8.3)
+* Swift 4 (Xcode 9)
 * macOS 10.10 or later
 * iOS 10.0 or later
 
