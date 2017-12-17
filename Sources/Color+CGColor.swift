@@ -1,8 +1,5 @@
 import Foundation
 import CoreGraphics
-#if os(iOS)
-import UIKit
-#endif
 
 extension Color {
 
@@ -24,7 +21,8 @@ extension CGColor {
 
     static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> CGColor {
         #if os(iOS)
-        return UIColor(red: red, green: green, blue: blue, alpha: 1).cgColor
+        // swiftlint:disable:next force_unwrapping
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, 1])!
         #elseif os(macOS)
         return CGColor(red: red, green: green, blue: blue, alpha: 1)
         #endif

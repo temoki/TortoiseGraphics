@@ -1,33 +1,26 @@
 # TortoiseGraphics 🐢
 
-[![Swift](https://img.shields.io/badge/Swift-3.1-blue.svg)](https://swift.org)
+[![Swift](https://img.shields.io/badge/Swift-4.0-blue.svg)](https://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![Platform](https://img.shields.io/cocoapods/p/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 
-A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key feature of the [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)) ) engine written in Swift 3.
+A  [turtle graphics](https://en.wikipedia.org/wiki/Turtle_graphics) (a key feature of the [Logo](https://en.wikipedia.org/wiki/Logo_(programming_language)) ) engine written in Swift.
 
 The commands were implemented with reference to the [turtle in Python 3 standard libraries](https://docs.python.org/3/library/turtle.html).
 
 ## Example
 
 ```swift
-func hexagon(_ side: Double) {
-    🐢.repeat(6) {
-        🐢.forward(side)
-        🐢.right(60)
-    }
+// Turtle Star!
+🐢.beginFill()
+🐢.repeat(36) {
+    🐢.forward(200)
+    🐢.left(170)
 }
-
-var side: Double = 0
-🐢.penColor(.blue)
-🐢.repeat(24) {
-    side += 3
-    hexagon(side)
-    🐢.right(15)
-}
+🐢.endFill()
 ```
 
 ### Drawn image
@@ -41,34 +34,51 @@ var side: Double = 0
 ## Usage
 
 ### Draw in view (macOS/iOS)
-```swift
-// Instantiate a Canvas that is a subclass of NSView/UIView.
-let canvas = Canvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
 
-// Command 🐢 on canvas.
-canvas.play { 🐢 in
-    🐢.right(90)
-    🐢.forward(100)
+```swift
+class CanvasView: UIView {
+
+    override func draw(_ rect: CGRect) {
+        // Get current context
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+
+        // Instantiate a GraphicsCanvas
+        let canvas = GraphicsCanvas(size: self.bounds.size, context: context)
+
+        // Command 🐢 on canvas.
+        canvas.drawing { 🐢 in
+            🐢.right(90)
+            🐢.forward(100)
+        }
+    }
+
 }
+
 ```
+
 ### Make or Write image
 
 ```swift
-// Instantiate 🐢.
-let 🐢 = Tortoise()
+// Instantiate a ImageCanvas
+let canvas = ImageCanvas(size: CGSize(width: 300, height: 300))
 
-// Command 🐢
-🐢.right(90)
-🐢.forward(100)
+// Command 🐢 on canvas
+canvas.drawing { 🐢 in
+    🐢.right(90)
+    🐢.forward(100)
+}
 
-// Make NSImage or UIImage
-let size = CGSize(width: 300, height: 300)
-let image = 🐢.makeImage(of: size)
+// Get drawn CGImage
+let cgImage = canvas.cgImage
 
-// Write PNG/JPEG/GIF
-🐢.writePNG(of: size, to: URL(fileURLWithPath: "./image.png"))
-🐢.writeJPEG(of: size, to: URL(fileURLWithPath: "./image.jpeg"))
-🐢.writeGIF(of: size, to: URL(fileURLWithPath: "./image.gif"))
+// Get drawn NSImage or UIImage
+let image = canvas.image
+
+// Write to image file (PNG, JPEG, TIFF, GIF)
+canvas.writePNG(to: URL(fileURLWithPath: "./image.png")
+canvas.writeJPEG(to: URL(fileURLWithPath: "./image.jpeg")
+canvas.writeTIFF(to: URL(fileURLWithPath: "./image.tiff")
+canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 ```
 
 ## Playgrounds
@@ -88,7 +98,14 @@ let image = 🐢.makeImage(of: size)
 1. Open it with Playgrounds app.
 1. Let's play!
 
-## Commands
+## Classes
+
+* `ImageCanvas`
+* `GraphicsCanvas`
+* `Tortoise`
+* `Vec2D`
+
+## Tortoise Commands
 
 ### Motion
 
@@ -133,6 +150,14 @@ let image = 🐢.makeImage(of: size)
 
 * `penColor()`
 * `penColor`
+* `fillColor()`
+* `fillColor`
+
+#### Filling
+
+* `filling`
+* `beginFill()`
+* `endFill()`
 
 #### More drawing control
 
@@ -147,16 +172,9 @@ let image = 🐢.makeImage(of: size)
 * `hideTortoise()`, `ht()`
 * `isVisible`
 
-### Make or Write image
-
-* `makeImage()`
-* `writePNG()`
-* `writeJPEG()`
-* `writeGIF()`
-
 ## Requirements
 
-* Swift 3.1 (Xcode 8.3)
+* Swift 4 (Xcode 9)
 * macOS 10.10 or later
 * iOS 10.0 or later
 

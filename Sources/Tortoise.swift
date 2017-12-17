@@ -50,42 +50,17 @@ public class Tortoise {
         cgContext.saveGState()
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
             .rotated(by: -state.heading.radian.value)
-        cgContext.move(to: CGPoint(x:  0, y:  0).applying(transform))
-        cgContext.addLine(to: CGPoint(x:  5, y: -10).applying(transform))
-        cgContext.addLine(to: CGPoint(x:  0, y: -7.5).applying(transform))
-        cgContext.addLine(to: CGPoint(x: -5, y: -10).applying(transform))
-        cgContext.closePath()
-        cgContext.setFillColor(state.penColor)
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: 0, y: 0).applying(transform))
+        path.addLine(to: CGPoint(x: 5, y: -10).applying(transform))
+        path.addLine(to: CGPoint(x: 0, y: -7.5).applying(transform))
+        path.addLine(to: CGPoint(x: -5, y: -10).applying(transform))
+        path.closeSubpath()
+        cgContext.addPath(path)
+        cgContext.strokePath()
+        cgContext.addPath(path)
         cgContext.fillPath()
         cgContext.restoreGState()
     }
-
-    // MARK: - Image
-
-    func makeCGImage(of size: CGSize) -> CGImage? {
-        let context = GraphicsContext.createBitmapContext(size: size)
-        draw(with: context, toFrame: nil)
-        return context.cgContext.makeImage()
-    }
-
-    #if os(macOS)
-    func writeImage(size: CGSize, type: CFString, fileURL: CFURL) -> Bool {
-        guard let cgImage = makeCGImage(of: size) else { return false }
-        guard let destination = CGImageDestinationCreateWithURL(fileURL, type, 1, nil) else { return false }
-        CGImageDestinationAddImage(destination, cgImage, nil)
-        return CGImageDestinationFinalize(destination)
-    }
-
-    func writeAnimationImage(size: CGSize, type: CFString, fileURL: CFURL) -> Bool {
-        guard let destination = CGImageDestinationCreateWithURL(fileURL, type, commands.count, nil) else { return false }
-        for frameIndex in 0 ..< commands.count {
-            let context = GraphicsContext.createBitmapContext(size: size)
-            draw(with: context, toFrame: frameIndex)
-            guard let cgImage = context.cgContext.makeImage() else { return false }
-            CGImageDestinationAddImage(destination, cgImage, nil)
-        }
-        return CGImageDestinationFinalize(destination)
-    }
-    #endif
 
 }
