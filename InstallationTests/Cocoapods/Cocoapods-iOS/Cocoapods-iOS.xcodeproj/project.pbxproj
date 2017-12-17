@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14688B531FE5F85100C7801A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14688B521FE5F85100C7801A /* CanvasView.swift */; };
 		14EC288E1EB7780A0074A2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC288D1EB7780A0074A2F0 /* AppDelegate.swift */; };
 		14EC28901EB7780A0074A2F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EC288F1EB7780A0074A2F0 /* ViewController.swift */; };
 		14EC28931EB7780A0074A2F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14EC28911EB7780A0074A2F0 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14688B521FE5F85100C7801A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		14EC288A1EB7780A0074A2F0 /* Cocoapods-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cocoapods-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14EC288D1EB7780A0074A2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14EC288F1EB7780A0074A2F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				14EC288D1EB7780A0074A2F0 /* AppDelegate.swift */,
 				14EC288F1EB7780A0074A2F0 /* ViewController.swift */,
+				14688B521FE5F85100C7801A /* CanvasView.swift */,
 				14EC28911EB7780A0074A2F0 /* Main.storyboard */,
 				14EC28941EB7780A0074A2F0 /* Assets.xcassets */,
 				14EC28961EB7780A0074A2F0 /* LaunchScreen.storyboard */,
@@ -165,13 +168,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cocoapods-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3D35D11C4446E59914B78E2E /* [CP] Embed Pods Frameworks */ = {
@@ -180,9 +186,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cocoapods-iOS/Pods-Cocoapods-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TortoiseGraphics/TortoiseGraphics.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TortoiseGraphics.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -213,6 +222,7 @@
 			files = (
 				14EC28901EB7780A0074A2F0 /* ViewController.swift in Sources */,
 				14EC288E1EB7780A0074A2F0 /* AppDelegate.swift in Sources */,
+				14688B531FE5F85100C7801A /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
