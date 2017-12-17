@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -669,6 +670,9 @@
                         <rect key="contentRect" x="196" y="240" width="480" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="480" height="480"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="fhV-i8-T7s"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -685,6 +689,17 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="S5x-g6-25t" customClass="CanvasView" customModule="Cocoapods_macOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="S5x-g6-25t" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="7br-wg-I82"/>
+                            <constraint firstItem="S5x-g6-25t" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="klM-Xe-rpA"/>
+                            <constraint firstAttribute="trailing" secondItem="S5x-g6-25t" secondAttribute="trailing" id="vhr-ch-eeS"/>
+                            <constraint firstAttribute="bottom" secondItem="S5x-g6-25t" secondAttribute="bottom" id="zHn-IZ-CTq"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
