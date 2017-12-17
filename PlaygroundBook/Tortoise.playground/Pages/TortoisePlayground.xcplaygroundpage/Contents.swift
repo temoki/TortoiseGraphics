@@ -5,55 +5,58 @@ import PlaygroundSupport
 class PlaygroundLiveViewController: UIViewController {
     
     var backView: UIView!
-    var canvas: Canvas!
+    var canvas: PlaygroundCanvas!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.translatesAutoresizingMaskIntoConstraints = false
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        self.backView = UIView(frame: self.view.bounds)
-        self.backView.backgroundColor = .white
-        self.view.addSubview(self.backView)
-        self.backView.translatesAutoresizingMaskIntoConstraints = false
-        self.backView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        self.backView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        self.backView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.backView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        backView = UIView(frame: view.bounds)
+        backView.backgroundColor = .white
+        view.addSubview(backView)
+        backView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            backView.topAnchor.constraint(equalTo: view.topAnchor),
+            backView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            backView.rightAnchor.constraint(equalTo: view.rightAnchor)
+            ])
         
-        self.canvas = Canvas(frame: self.view.bounds)
-        self.canvas.backgroundColor = .clear
-        self.view.addSubview(canvas)
-        self.canvas.translatesAutoresizingMaskIntoConstraints = false
-        self.canvas.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        self.canvas.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        self.canvas.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.canvas.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        canvas = PlaygroundCanvas(frame: view.bounds)
+        canvas.backgroundColor = .clear
+        view.addSubview(canvas)
+        canvas.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            canvas.topAnchor.constraint(equalTo: view.topAnchor),
+            canvas.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            canvas.leftAnchor.constraint(equalTo: view.leftAnchor),
+            canvas.rightAnchor.constraint(equalTo: view.rightAnchor)
+            ])
     }
     
 }
 let liveView = PlaygroundLiveViewController()
 PlaygroundPage.current.liveView = liveView
 
-liveView.canvas.play { 🐢 in
-//#-code-completion(identifier, hide, Canvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas)
+liveView.canvas.drawing { 🐢 in
+//#-code-completion(identifier, hide, Canvas, ImageCanvas, PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas)
 //#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
 //: # Let's play with 🐢
-    🐢.penColor(.blue)
+    🐢.penColor(.red)
+    🐢.fillColor(.yellow)
     
-    func hexagon(_ side: Double) {
-        🐢.repeat(6) {
-            🐢.forward(side)
-            🐢.right(60)
-        }
-    }
+    🐢.penUp()
+    🐢.back(100)
+    🐢.penDown()
     
-    var side: Double = 0
-    🐢.repeat(24) {
-        side += 3
-        hexagon(side)
-        🐢.right(15)
+    // Turtle Star!
+    🐢.beginFill()
+    🐢.repeat(36) {
+        🐢.forward(200)
+        🐢.left(170)
     }
+    🐢.endFill()
 //#-hidden-code
 }
