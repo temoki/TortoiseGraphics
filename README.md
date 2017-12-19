@@ -25,8 +25,8 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 
 ### Result
 
-<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example1.png" width="300" />
-<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example1.gif" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.png" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.gif" width="300" />
 
 ## Usage
 
@@ -132,8 +132,8 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 }
 ```
 
-<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example2.png" width="300" />
-<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example2.gif" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.png" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.gif" width="300" />
 
 ## Playgrounds
 
