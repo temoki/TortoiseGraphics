@@ -1,3 +1,5 @@
+//: # With a tortoise 🐢
+//: [👉 With 2 tortoises 🐢🐢](@next)
 import PlaygroundSupport
 import TortoiseGraphics
 import CoreGraphics
@@ -8,7 +10,7 @@ PlaygroundPage.current.liveView = canvas
 
 canvas.drawing { 🐢 in
     🐢.penColor(.red)
-    🐢.fillColor(.yellow)
+    🐢.fillColor(.orange)
 
     🐢.penUp()
     🐢.back(100)

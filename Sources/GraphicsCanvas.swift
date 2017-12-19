@@ -2,11 +2,10 @@ import CoreGraphics
 
 public class GraphicsCanvas {
 
-    private let 🐢: Tortoise
+    private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 0)
     private let graphicsContext: GraphicsContext
 
     public init(size: CGSize, context: CGContext) {
-        self.🐢 = Tortoise()
         #if os(iOS)
             let isUIViewContext = true
         #else
@@ -19,10 +18,16 @@ public class GraphicsCanvas {
 
     // MARK: - Canvas Protocol
 
-    public func drawing(_ block: @escaping (Tortoise) -> Void) {
-        🐢.initialize()
-        block(🐢)
-        🐢.draw(with: graphicsContext, toFrame: nil)
+    public func drawing(drawingBlock: @escaping (Tortoise) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: 1)
+        drawingBlock(tortoiseCharmer.tortoises[0])
+        tortoiseCharmer.charm(with: graphicsContext, toFrame: nil)
+    }
+
+    public func drawingWithTortoises(count: Int, drawingBlock: @escaping ([Tortoise]) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: count)
+        drawingBlock(tortoiseCharmer.tortoises)
+        tortoiseCharmer.charm(with: graphicsContext, toFrame: nil)
     }
 
 }

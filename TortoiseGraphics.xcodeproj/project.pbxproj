@@ -34,6 +34,7 @@
 		14588D1A1EDF0D8900922BE4 /* CommandReset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D191EDF0D8900922BE4 /* CommandReset.swift */; };
 		14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D1B1EDF11AC00922BE4 /* CommandClear.swift */; };
 		14B44CDF1FE557C300E0144B /* GraphicsCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B44CDE1FE557C300E0144B /* GraphicsCanvas.swift */; };
+		14B509101FE7FDF700ABA1E2 /* TortoiseCharmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B5090F1FE7FDF700ABA1E2 /* TortoiseCharmer.swift */; };
 		14D753A91FE173C80038F931 /* CommandFill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D753A81FE173C80038F931 /* CommandFill.swift */; };
 		14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D753AA1FE17D290038F931 /* Vec2D.swift */; };
 		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
@@ -77,6 +78,7 @@
 		14588D191EDF0D8900922BE4 /* CommandReset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandReset.swift; sourceTree = "<group>"; };
 		14588D1B1EDF11AC00922BE4 /* CommandClear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandClear.swift; sourceTree = "<group>"; };
 		14B44CDE1FE557C300E0144B /* GraphicsCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicsCanvas.swift; sourceTree = "<group>"; };
+		14B5090F1FE7FDF700ABA1E2 /* TortoiseCharmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseCharmer.swift; sourceTree = "<group>"; };
 		14D753A81FE173C80038F931 /* CommandFill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandFill.swift; sourceTree = "<group>"; };
 		14D753AA1FE17D290038F931 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
 		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 		142F5C841EDC5688008BEFAB /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				14B5090F1FE7FDF700ABA1E2 /* TortoiseCharmer.swift */,
 				145624911ED99E4800173B9A /* GraphicsContext.swift */,
 				141772761EE2930600C0CBC7 /* Angle.swift */,
 				1456248F1ED99D8600173B9A /* State.swift */,
@@ -296,6 +299,7 @@
 				141772771EE2930600C0CBC7 /* Angle.swift in Sources */,
 				1456248C1ED99CE500173B9A /* CommandForward.swift in Sources */,
 				1451BF661ED872C200D200DD /* Tortoise.swift in Sources */,
+				14B509101FE7FDF700ABA1E2 /* TortoiseCharmer.swift in Sources */,
 				14588D1C1EDF11AC00922BE4 /* CommandClear.swift in Sources */,
 				145624921ED99E4800173B9A /* GraphicsContext.swift in Sources */,
 				145624981EDAA48D00173B9A /* ImageCanvas.swift in Sources */,

@@ -17,11 +17,14 @@ class CommandSetPosition: Command {
     func exexute(in state: State, with context: CGContext) -> State {
         let newState = test(in: state)
         if newState.isPenDown {
+            context.saveGState()
+            context.setStrokeColor(newState.penColor)
+            context.move(to: state.position)
             context.addLine(to: newState.position)
-            state.fillPath?.addLine(to: newState.position)
             context.strokePath()
+            context.restoreGState()
+            state.fillPath?.addLine(to: newState.position)
         }
-        context.move(to: newState.position)
         return newState
     }
 

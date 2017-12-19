@@ -20,10 +20,4 @@ struct State {
 
     var canvasSize: CGSize = .zero
 
-    func apply(to cgContext: CGContext) {
-        cgContext.move(to: position)
-        cgContext.setLineWidth(penSize)
-        cgContext.setStrokeColor(penColor)
-    }
-
 }

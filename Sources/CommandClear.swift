@@ -15,7 +15,6 @@ class CommandClear: Command {
                             width: newState.canvasSize.width,
                             height: newState.canvasSize.height))
         context.restoreGState()
-        newState.apply(to: context)
         return newState
     }
 
