@@ -1,15 +1,13 @@
-//#-hidden-code
+#if os(iOS)
 import UIKit
-import PlaygroundSupport
 
-class PlaygroundLiveViewController: UIViewController {
+public class PlaygroundLiveViewController: UIViewController {
     
-    var backView: UIView!
-    var canvas: PlaygroundCanvas!
+    private var backView: UIView!
+    public var canvas: PlaygroundCanvas!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         
         backView = UIView(frame: view.bounds)
@@ -36,27 +34,4 @@ class PlaygroundLiveViewController: UIViewController {
     }
     
 }
-let liveView = PlaygroundLiveViewController()
-PlaygroundPage.current.liveView = liveView
-
-liveView.canvas.drawing { 🐢 in
-//#-code-completion(identifier, hide, Canvas, ImageCanvas, PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas)
-//#-code-completion(module, hide, UIKit, PlaygroundSupport)
-//#-end-hidden-code
-//: # Let's play with 🐢
-    🐢.penColor(.red)
-    🐢.fillColor(.yellow)
-    
-    🐢.penUp()
-    🐢.back(100)
-    🐢.penDown()
-    
-    // Turtle Star!
-    🐢.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(200)
-        🐢.left(170)
-    }
-    🐢.endFill()
-//#-hidden-code
-}
+#endif

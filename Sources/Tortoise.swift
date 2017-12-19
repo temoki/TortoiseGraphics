@@ -3,6 +3,8 @@ import CoreGraphics
 
 public class Tortoise {
 
+    var tag: Int = 0
+
     var testState = State()
 
     var commands: [Command] = [CommandReset()]
@@ -32,7 +34,6 @@ public class Tortoise {
 
         var state = State()
         state.canvasSize = context.size
-        state.apply(to: context.cgContext)
 
         for (index, command) in commands.enumerated() where index <= toIndex {
             state = command.exexute(in: state, with: context.cgContext)
@@ -48,6 +49,8 @@ public class Tortoise {
 
     func drawTortoise(_ cgContext: CGContext, state: State) {
         cgContext.saveGState()
+        cgContext.setStrokeColor(state.penColor)
+        cgContext.setFillColor(state.fillColor)
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
             .rotated(by: -state.heading.radian.value)
         let path = CGMutablePath()

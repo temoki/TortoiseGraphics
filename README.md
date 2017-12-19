@@ -23,27 +23,26 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 🐢.endFill()
 ```
 
-### Drawn image
+### Result
 
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/example.png" width="300" />
-
-### Drawing animation
-
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/example.gif" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example1.png" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example1.gif" width="300" />
 
 ## Usage
 
-### Draw in view (macOS/iOS)
+### Draw in NSView (macOS)
 
 ```swift
-class CanvasView: UIView {
+class CanvasView: NSView {
 
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+
         // Get current context
-        guard let context = UIGraphicsGetCurrentContext() else { return }
+        guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
 
         // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: self.bounds.size, context: context)
+        let canvas = GraphicsCanvas(size: bounds.size, context: context)
 
         // Command 🐢 on canvas.
         canvas.drawing { 🐢 in
@@ -53,7 +52,30 @@ class CanvasView: UIView {
     }
 
 }
+```
 
+### Draw in UIView (iOS)
+
+```swift
+class CanvasView: UIView {
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        // Get current context
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+
+        // Instantiate a GraphicsCanvas
+        let canvas = GraphicsCanvas(size: bounds.size, context: context)
+
+        // Command 🐢 on canvas.
+        canvas.drawing { 🐢 in
+            🐢.right(90)
+            🐢.forward(100)
+        }
+    }
+
+}
 ```
 
 ### Make or Write image
@@ -80,6 +102,38 @@ canvas.writeJPEG(to: URL(fileURLWithPath: "./image.jpeg")
 canvas.writeTIFF(to: URL(fileURLWithPath: "./image.tiff")
 canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 ```
+
+### With multiple tortoises
+
+```swift
+canvas.drawingWithTortoises(count: 2) { tortoises in
+    let 🐢 = tortoises[0]
+    let 🐇 = tortoises[1]
+    
+    🐢.penColor(.red)
+    🐢.fillColor(.orange)
+    🐢.left(90)
+
+    🐇.penColor(.purple)
+    🐇.fillColor(.lightBlue)
+    🐇.right(90)
+
+    // Turtle Star!
+    🐢.beginFill()
+    🐇.beginFill()
+    🐢.repeat(36) {
+        🐢.forward(120)
+        🐇.forward(120)
+        🐢.left(170)
+        🐇.right(170)
+    }
+    🐢.endFill()
+    🐇.endFill()
+}
+```
+
+<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example2.png" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/OutputExamples/blob/master/example2.gif" width="300" />
 
 ## Playgrounds
 

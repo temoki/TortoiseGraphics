@@ -9,28 +9,32 @@ public typealias Image = UIImage
 
 public class ImageCanvas {
 
-    private let 🐢: Tortoise
+    private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 1)
     private let size: CGSize
     private let scale: CGFloat
 
     init(size: CGSize, scale: CGFloat = 1) {
-        self.🐢 = Tortoise()
         self.size = size
         self.scale = scale
     }
 
     // MARK: - Canvas Protocol
 
-    public func drawing(_ block: @escaping (Tortoise) -> Void) {
-        🐢.initialize()
-        block(🐢)
+    public func drawing(drawingBlock: @escaping (Tortoise) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: 1)
+        drawingBlock(tortoiseCharmer.tortoises[0])
+    }
+
+    public func drawingWithTortoises(count: Int, drawingBlock: @escaping ([Tortoise]) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: count)
+        drawingBlock(tortoiseCharmer.tortoises)
     }
 
     // MARK: - Make Image
 
     public var cgImage: CGImage? {
         let context = GraphicsContext.createBitmapContext(size: size, scale: scale)
-        🐢.draw(with: context, toFrame: nil)
+        tortoiseCharmer.charm(with: context, toFrame: nil)
         return context.cgContext.makeImage()
     }
 
@@ -73,11 +77,12 @@ public class ImageCanvas {
     }
 
     private func writeAnimationImage(to fileURL: URL, type: CFString, frameDelay: Float64) -> Bool {
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, type, 🐢.commands.count, nil) else { return false }
+        guard let destination = CGImageDestinationCreateWithURL(
+            fileURL as CFURL, type, tortoiseCharmer.commandHistories.count - 1, nil) else { return false }
 
-        for frameIndex in 0 ..< 🐢.commands.count {
+        for frameIndex in 0 ..< tortoiseCharmer.commandHistories.count {
             let context = GraphicsContext.createBitmapContext(size: size, scale: scale)
-            🐢.draw(with: context, toFrame: frameIndex)
+            tortoiseCharmer.charm(with: context, toFrame: frameIndex)
             guard let cgImage = context.cgContext.makeImage() else { return false }
 
             let frameProperties: [String: Any] = [

@@ -30,25 +30,41 @@ public class PlaygroundCanvas: View {
     
     // MARK: - Canvas Protocol
 
-    public func drawing(_ block: @escaping (Tortoise) -> Void) {
-        tortoise.initialize()
+    public func drawing(drawingBlock: @escaping (Tortoise) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: 1)
         
-        tortoise.commandedHandler = { [weak self] (tortoise) in
+        tortoiseCharmer.commandedHandler = { [weak self] (_) in
             guard !Thread.isMainThread else { return }
             guard let interval = self?.animationInterval else { return }
             Thread.sleep(forTimeInterval: interval)
         }
         
         DispatchQueue.global().async { [weak self] in
-            guard let tortoise = self?.tortoise else { return }
-            block(tortoise)
-            tortoise.commandedHandler = nil
+            guard let tortoiseCharmer = self?.tortoiseCharmer else { return }
+            drawingBlock(tortoiseCharmer.tortoises[0])
+            tortoiseCharmer.commandedHandler = nil
+        }
+    }
+    
+    public func drawingWithTortoises(count: Int, drawingBlock: @escaping ([Tortoise]) -> Void) {
+        tortoiseCharmer.initialize(tortoiseCount: count)
+        
+        tortoiseCharmer.commandedHandler = { [weak self] (_) in
+            guard !Thread.isMainThread else { return }
+            guard let interval = self?.animationInterval else { return }
+            Thread.sleep(forTimeInterval: interval)
+        }
+        
+        DispatchQueue.global().async { [weak self] in
+            guard let tortoiseCharmer = self?.tortoiseCharmer else { return }
+            drawingBlock(tortoiseCharmer.tortoises)
+            tortoiseCharmer.commandedHandler = nil
         }
     }
 
     // MARK: - Private
 
-    private let tortoise: Tortoise = Tortoise()
+    private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 1)
 
     private var drawingFrameIndex: Int = 0
 
@@ -59,7 +75,7 @@ public class PlaygroundCanvas: View {
     }
 
     private func draw(with context: GraphicsContext) {
-        drawingFrameIndex = tortoise.draw(with: context, toFrame: drawingFrameIndex)
+        drawingFrameIndex = tortoiseCharmer.charm(with: context, toFrame: drawingFrameIndex)
         drawingTimer = Timer.scheduledTimer(timeInterval: animationInterval,
                                             target: self,
                                             selector: #selector(self.onAnimaitionTimer(timer:)),

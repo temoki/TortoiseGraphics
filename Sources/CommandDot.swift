@@ -27,7 +27,10 @@ class CommandDot: Command {
                              y: newState.position.y - (dotSize / 2),
                              width: dotSize,
                              height: dotSize)
+        context.saveGState()
+        context.setFillColor(newState.penColor)
         context.fillEllipse(in: dotRect)
+        context.restoreGState()
         return newState
     }
 

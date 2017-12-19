@@ -32,10 +32,13 @@ class CommandFill: Command {
             newState.fillPath?.move(to: newState.position)
         case .end:
             if let fillPath = newState.fillPath {
+                context.saveGState()
+                context.setFillColor(newState.fillColor)
+                context.move(to: state.position)
                 context.addPath(fillPath)
                 context.fillPath(using: .evenOdd)
                 newState.fillPath = nil
-                context.move(to: newState.position)
+                context.restoreGState()
             }
         }
         return newState

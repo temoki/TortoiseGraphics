@@ -22,8 +22,9 @@ fi
 cp $FROM_SOURCES_DIR/* $TO_SOURCES_DIR
 
 # Copy Contents.swift
-echo "Copy Contents.swift"
-CONTENTS_SWIFT=$SELF_DIR/Tortoise.playground/Pages/TortoisePlayground.xcplaygroundpage/Contents.swift
-cp -f $CONTENTS_SWIFT $BOOK_DIR/Contents/Chapters/Main.playgroundchapter/Pages/TortoisePlayground.playgroundpage
+echo "[Page1] Copy Contents.swift"
+cp -f $SELF_DIR/Tortoise.playground/Pages/Page1.xcplaygroundpage/Contents.swift $BOOK_DIR/Contents/Chapters/Main.playgroundchapter/Pages/Page1.playgroundpage
+echo "[Page2] Copy Contents.swift"
+cp -f $SELF_DIR/Tortoise.playground/Pages/Page2.xcplaygroundpage/Contents.swift $BOOK_DIR/Contents/Chapters/Main.playgroundchapter/Pages/Page2.playgroundpage
 
 echo "Done."

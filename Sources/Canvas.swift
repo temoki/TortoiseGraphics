@@ -1,5 +1,7 @@
 public protocol Canvas {
 
-    func drawing(_ block: @escaping (Tortoise) -> Void)
+    func drawing(drawingBlock: @escaping (Tortoise) -> Void)
+
+    func drawingWithTortoises(count: Int, drawingBlock: @escaping ([Tortoise]) -> Void)
 
 }
