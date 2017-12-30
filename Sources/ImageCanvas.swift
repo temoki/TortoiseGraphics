@@ -13,7 +13,7 @@ public class ImageCanvas: Canvas {
     private let size: CGSize
     private let scale: CGFloat
 
-    init(size: CGSize, scale: CGFloat = 1) {
+    public init(size: CGSize, scale: CGFloat = 1) {
         self.size = size
         self.scale = scale
     }
