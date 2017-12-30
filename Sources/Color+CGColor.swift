@@ -19,12 +19,16 @@ extension Color {
 
 extension CGColor {
 
-    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat) -> CGColor {
+    static var clear: CGColor {
+        return rgb(1, 1, 1, 0)
+    }
+
+    static func rgb(_ red: CGFloat, _ green: CGFloat, _ blue: CGFloat, _ alpha: CGFloat = 1) -> CGColor {
         #if os(iOS)
         // swiftlint:disable:next force_unwrapping
-        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, 1])!
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [red, green, blue, alpha])!
         #elseif os(macOS)
-        return CGColor(red: red, green: green, blue: blue, alpha: 1)
+        return CGColor(red: red, green: green, blue: blue, alpha: alpha)
         #endif
     }
 

@@ -22,7 +22,7 @@ public class PlaygroundLiveViewController: UIViewController {
             ])
         
         canvas = PlaygroundCanvas(frame: view.bounds)
-        canvas.backgroundColor = .clear
+        canvas.color = .white
         view.addSubview(canvas)
         canvas.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

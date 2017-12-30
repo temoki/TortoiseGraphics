@@ -7,7 +7,7 @@ import MobileCoreServices
 public typealias Image = UIImage
 #endif
 
-public class ImageCanvas {
+public class ImageCanvas: Canvas {
 
     private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 1)
     private let size: CGSize
@@ -30,10 +30,14 @@ public class ImageCanvas {
         drawingBlock(tortoiseCharmer.tortoises)
     }
 
+    public var color: Color?
+
     // MARK: - Make Image
 
     public var cgImage: CGImage? {
-        let context = GraphicsContext.createBitmapContext(size: size, scale: scale)
+        let context = GraphicsContext.createBitmapContext(size: size,
+                                                          scale: scale,
+                                                          backgroundColor: color?.cgColor)
         tortoiseCharmer.charm(with: context, toFrame: nil)
         return context.cgContext.makeImage()
     }
@@ -81,7 +85,9 @@ public class ImageCanvas {
             fileURL as CFURL, type, tortoiseCharmer.commandHistories.count - 1, nil) else { return false }
 
         for frameIndex in 0 ..< tortoiseCharmer.commandHistories.count {
-            let context = GraphicsContext.createBitmapContext(size: size, scale: scale)
+            let context = GraphicsContext.createBitmapContext(size: size,
+                                                              scale: scale,
+                                                              backgroundColor: color?.cgColor)
             tortoiseCharmer.charm(with: context, toFrame: frameIndex)
             guard let cgImage = context.cgContext.makeImage() else { return false }
 

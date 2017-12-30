@@ -1,6 +1,6 @@
 import CoreGraphics
 
-public class GraphicsCanvas {
+public class GraphicsCanvas: Canvas {
 
     private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 0)
     private let graphicsContext: GraphicsContext
@@ -13,6 +13,7 @@ public class GraphicsCanvas {
         #endif
         self.graphicsContext = GraphicsContext(size: size,
                                                cgContext: context,
+                                               backgroundColor: color?.cgColor,
                                                isUIViewContext: isUIViewContext)
     }
 
@@ -29,5 +30,7 @@ public class GraphicsCanvas {
         drawingBlock(tortoiseCharmer.tortoises)
         tortoiseCharmer.charm(with: graphicsContext, toFrame: nil)
     }
+
+    public var color: Color?
 
 }
