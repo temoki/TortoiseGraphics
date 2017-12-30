@@ -6,7 +6,7 @@ import UIKit
 public typealias View = UIView
 #endif
 
-public class PlaygroundCanvas: View {
+public class PlaygroundCanvas: View, Canvas {
 
     public var frameRate: Int = 30
 
@@ -16,14 +16,20 @@ public class PlaygroundCanvas: View {
     public override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
-        let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: false)
+        let context = GraphicsContext(size: self.frame.size,
+                                      cgContext: cgContext,
+                                      backgroundColor: color?.cgColor,
+                                      isUIViewContext: false)
         draw(with: context)
     }
     #elseif os(iOS)
     public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard let cgContext = UIGraphicsGetCurrentContext() else { return }
-        let context = GraphicsContext(size: self.frame.size, cgContext: cgContext, isUIViewContext: true)
+        let context = GraphicsContext(size: self.frame.size,
+                                      cgContext: cgContext,
+                                      backgroundColor: color?.cgColor,
+                                      isUIViewContext: true)
         draw(with: context)
     }
     #endif
@@ -61,6 +67,8 @@ public class PlaygroundCanvas: View {
             tortoiseCharmer.commandedHandler = nil
         }
     }
+    
+    public var color: Color?
 
     // MARK: - Private
 

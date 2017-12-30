@@ -8,6 +8,7 @@ class TortoiseGraphicsTests: XCTestCase {
         let size = CGSize(width: 300, height: 300)
         let scale = NSScreen.main()?.backingScaleFactor ?? 1
         let canvas = ImageCanvas(size: size, scale: scale)
+        canvas.color = .white
 
         canvas.drawing { 🐢 in
             🐢.penColor(.red)
@@ -34,6 +35,7 @@ class TortoiseGraphicsTests: XCTestCase {
         let size = CGSize(width: 300, height: 300)
         let scale = NSScreen.main()?.backingScaleFactor ?? 1
         let canvas = ImageCanvas(size: size, scale: scale)
+        canvas.color = .white
 
         canvas.drawingWithTortoises(count: 2) { tortoises in
             let 🐢 = tortoises[0]

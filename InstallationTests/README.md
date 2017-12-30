@@ -31,5 +31,6 @@ open Cocoapods-macOS.xcworkspace
 
 ```shell
 cd ./SwiftPM
+swift package update
 swift build
 ```

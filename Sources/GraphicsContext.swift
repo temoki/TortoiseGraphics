@@ -4,16 +4,24 @@ class GraphicsContext {
 
     let size: CGSize
     let cgContext: CGContext
+    let backgroundColor: CGColor
     let isUIViewContext: Bool
 
-    init(size: CGSize, cgContext: CGContext, isUIViewContext: Bool = false) {
+    init(size: CGSize, cgContext: CGContext, backgroundColor: CGColor?, isUIViewContext: Bool = false) {
         self.size = size
         self.cgContext = cgContext
+        self.backgroundColor = backgroundColor ?? .clear
         self.isUIViewContext = isUIViewContext
     }
 
     func setup() {
         cgContext.saveGState()
+
+        // Fill background
+        cgContext.saveGState()
+        cgContext.setFillColor(backgroundColor)
+        cgContext.fill((CGRect(x: 0, y: 0, width: size.width, height: size.height)))
+        cgContext.restoreGState()
 
         // Setup coordinate
         if isUIViewContext {
@@ -30,7 +38,7 @@ class GraphicsContext {
         cgContext.restoreGState()
     }
 
-    static func createBitmapContext(size: CGSize, scale: CGFloat) -> GraphicsContext {
+    static func createBitmapContext(size: CGSize, scale: CGFloat, backgroundColor: CGColor?) -> GraphicsContext {
         let cgContext = CGContext(data: nil,
                                   width: Int(size.width * scale),
                                   height: Int(size.height * scale),
@@ -40,7 +48,7 @@ class GraphicsContext {
                                   bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
         // swiftlint:disable:previous force_unwrapping
         cgContext.scaleBy(x: scale, y: scale)
-        return GraphicsContext(size: size, cgContext: cgContext, isUIViewContext: false)
+        return GraphicsContext(size: size, cgContext: cgContext, backgroundColor: backgroundColor, isUIViewContext: false)
     }
 
 }

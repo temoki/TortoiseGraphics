@@ -1,5 +1,10 @@
 import Foundation
 import TortoiseGraphics
-let 🐢 = Tortoise()
-🐢.fd(100)
-🐢.writePNG(of: CGSize(width: 300, height: 300), to: URL(fileURLWithPath: "./output.png"))
+
+let canvas = ImageCanvas(size: CGSize(width: 300, height: 300))
+canvas.color = .white
+canvas.drawing { 🐢 in
+    🐢.right(90)
+    🐢.forward(100)
+}
+canvas.writePNG(to: URL(fileURLWithPath: "./output.png"))
