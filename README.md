@@ -108,7 +108,9 @@ canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 canvas.drawingWithTortoises(count: 2) { tortoises in
     let 🐢 = tortoises[0]
     let 🐇 = tortoises[1]
-    
+    🐢.shape(.tortoise)
+    🐇.shape(.classic)
+
     🐢.penColor(.red)
     🐢.fillColor(.orange)
     🐢.left(90)
@@ -223,6 +225,8 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 * `showTortoise()`, `st()`
 * `hideTortoise()`, `ht()`
 * `isVisible`
+* `shape()`
+* `shape`
 
 ## Requirements
 
