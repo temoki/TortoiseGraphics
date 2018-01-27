@@ -24,4 +24,12 @@ public extension Tortoise {
         return testState.isVisible
     }
 
+    public func shape(_ shape: Shape) {
+        add(command: CommandShape(shape))
+    }
+
+    public var shape: String {
+        return testState.shape.name
+    }
+
 }
