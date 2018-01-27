@@ -20,4 +20,6 @@ struct State {
 
     var canvasSize: CGSize = .zero
 
+    var shape: Shape = .tortoise
+
 }
