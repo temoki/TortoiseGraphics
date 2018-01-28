@@ -140,7 +140,7 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 ### On Xcode
 
 1. Open `TortoiseGraphics.xcworkspace` in Xcode.
-1. Build `TortoiseGraphics` scheme.
+1. Build `TortoiseGraphics` scheme for _My Mac_.
 1. Select `Playground` in project navigator.
 1. Let's play!
 
@@ -157,6 +157,7 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 * `ImageCanvas`
 * `GraphicsCanvas`
 * `Tortoise`
+* `Shape`
 * `Vec2D`
 
 ## Tortoise Commands
