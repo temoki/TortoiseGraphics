@@ -49,6 +49,7 @@ public class Tortoise {
 
     func drawTortoise(_ cgContext: CGContext, state: State) {
         cgContext.saveGState()
+        cgContext.setLineWidth(state.penSize)
         cgContext.setStrokeColor(state.penColor)
         cgContext.setFillColor(state.fillColor)
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)

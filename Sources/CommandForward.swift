@@ -23,6 +23,7 @@ class CommandForward: Command {
         if newState.isPenDown {
             context.saveGState()
             context.setStrokeColor(newState.penColor)
+            context.setLineWidth(newState.penSize)
             context.move(to: state.position)
             context.addLine(to: newState.position)
             context.strokePath()

@@ -32,14 +32,7 @@ class CommandColor: Command {
     }
 
     func exexute(in state: State, with context: CGContext) -> State {
-        let newState = test(in: state)
-        switch type {
-        case .pen:
-            context.setStrokeColor(newState.penColor)
-        case .fill:
-            context.setFillColor(newState.fillColor)
-        }
-        return newState
+        return test(in: state)
     }
 
 }
