@@ -15,9 +15,7 @@ class CommandPenSize: Command {
     }
 
     func exexute(in state: State, with context: CGContext) -> State {
-        let newState = test(in: state)
-        context.setLineWidth(newState.penSize)
-        return newState
+        return test(in: state)
     }
 
 }

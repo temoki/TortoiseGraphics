@@ -11,7 +11,7 @@
 	<key>ContentIdentifier</key>
 	<string>com.temoki.playgroundbook.TortoiseGraphics</string>
 	<key>ContentVersion</key>
-	<string>0.13.0</string>
+	<string>0.13.1</string>
 	<key>ImageReference</key>
 	<string>icon.png</string>
 	<key>DeploymentTarget</key>
