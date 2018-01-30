@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Version</key>
-	<string>1.0</string>
+	<string>3.0</string>
 	<key>DevelopmentRegion</key>
 	<string>en</string>
 	<key>Name</key>
@@ -15,7 +15,7 @@
 	<key>ImageReference</key>
 	<string>icon.png</string>
 	<key>DeploymentTarget</key>
-	<string>ios10.0</string>
+	<string>ios11.0</string>
 	<key>SwiftVersion</key>
 	<string>4.0</string>
 	<key>Chapters</key>
