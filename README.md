@@ -1,4 +1,6 @@
-# TortoiseGraphics 🐢
+# Tortoise Graphics 🐢
+
+<img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-4.0-blue.svg)](https://swift.org)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
@@ -144,12 +146,21 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 1. Select `Playground` in project navigator.
 1. Let's play!
 
-### On Playgrounds iPad app
+### On Swift Playgrounds (iPad app)
+
+#### Subscription
+
+1. Launch Safari on your iPad and browse this page.
+1. Tap the following link to subscribe.
+  * [Subscribe in Swift Playgrounds](https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/locales.json)
+1. You can get _Tortoise Graphics_ playground book on Swift Playgrounds app.
+
+#### Download
 
 1. Download `TortoisePlayground.playgroundbook.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
 1. Unarchive the downloaded zip file.
 1. Send the unarchvied `TortoisePlayground.playgroundbook` file to your iPad by AirDrop.
-1. Open it with Playgrounds app.
+1. Open it with Swift Playgrounds app.
 1. Let's play!
 
 ## Classes
