@@ -1,5 +1,3 @@
-# Tortoise Graphics 🐢
-
 <img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-4.0-blue.svg)](https://swift.org)
@@ -152,7 +150,7 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 
 1. Launch Safari on your iPad and browse this page.
 1. Tap the following link to subscribe.
-  * [Subscribe in Swift Playgrounds](https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/locales.json)
+    * [Subscribe in Swift Playgrounds](https://developer.apple.com/ul/sp0?url=https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/locales.json)
 1. You can get _Tortoise Graphics_ playground book on Swift Playgrounds app.
 
 #### Download
