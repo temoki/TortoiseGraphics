@@ -9,7 +9,7 @@
 	<key>Name</key>
 	<string>TortoiseGraphics</string>
 	<key>ContentIdentifier</key>
-	<string>com.temoki.playgroundbook.TortoiseGraphics</string>
+	<string>com.temoki.playgroundbook.TortoiseGraphics.main</string>
 	<key>ContentVersion</key>
 	<string>0.13.1</string>
 	<key>ImageReference</key>
