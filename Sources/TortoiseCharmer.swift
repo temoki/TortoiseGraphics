@@ -35,21 +35,21 @@ class TortoiseCharmer {
         context.setup()
 
         var states = [State](repeating: State(), count: tortoises.count)
-        for i in 0..<tortoises.count {
-            states[i].canvasSize = context.size
+        for index in 0..<tortoises.count {
+            states[index].canvasSize = context.size
         }
 
-        for (i, history) in commandHistories.enumerated() where i <= toIndex {
+        for (index, history) in commandHistories.enumerated() where index <= toIndex {
             states[history.tortoiseTag] =
                 tortoises[history.tortoiseTag]
                     .commands[history.commandIndex]
                     .exexute(in: states[history.tortoiseTag], with: context.cgContext)
         }
 
-        for i in 0..<tortoises.count {
-            let state = states[i]
+        for index in 0..<tortoises.count {
+            let state = states[index]
             if state.isVisible {
-                tortoises[i].drawTortoise(context.cgContext, state: state)
+                tortoises[index].drawTortoise(context.cgContext, state: state)
             }
         }
 

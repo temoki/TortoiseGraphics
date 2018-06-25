@@ -11,6 +11,7 @@ included:
 identifier_name:
   excluded:
     - 🐢
+    - 🐇
     - x
     - y
     - r

@@ -33,8 +33,8 @@ class CommandCircle: Command {
 
     func test(in state: State) -> State {
         var newState = state
-        for i in 1 ... self.steps {
-            let commandRight = i == 1 ? commandRight1 : commandRightN
+        for index in 1 ... self.steps {
+            let commandRight = index == 1 ? commandRight1 : commandRightN
             newState = commandRight.test(in: newState)
             newState = commandForward.test(in: newState)
         }
@@ -43,8 +43,8 @@ class CommandCircle: Command {
 
     func exexute(in state: State, with context: CGContext) -> State {
         var newState = state
-        for i in 1 ... self.steps {
-            let commandRight = i == 1 ? commandRight1 : commandRightN
+        for index in 1 ... self.steps {
+            let commandRight = index == 1 ? commandRight1 : commandRightN
             newState = commandRight.exexute(in: newState, with: context)
             newState = commandForward.exexute(in: newState, with: context)
         }
