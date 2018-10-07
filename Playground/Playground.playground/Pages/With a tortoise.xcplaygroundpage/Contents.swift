@@ -9,7 +9,7 @@ canvas.frameRate = 30
 canvas.color = .white
 PlaygroundPage.current.liveView = canvas
 
-canvas.drawing { 🐢 in
+canvas.drawing { 🐢 in 
     🐢.penColor(.red)
     🐢.fillColor(.orange)
 
