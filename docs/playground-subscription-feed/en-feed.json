@@ -7,14 +7,14 @@
   "documents": [
     {
       "title": "Tortoise Graphics",
-      "overviewSubtitle": "Swift 4 Edition",
+      "overviewSubtitle": "Swift 4.2 Edition",
       "detailSubtitle": "Let's draw with 🐢",
       "description": "A turtle graphics (a key feature of the Logo) engine written in Swift.",
       "contentIdentifier": "com.temoki.playgroundbook.TortoiseGraphics.main",
-      "contentVersion": "0.13.1",
+      "contentVersion": "0.14.0",
       "url": "https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/TortoisePlayground.playgroundbook.zip",
-      "publishedDate": "2018-01-30T15:00:00+00:00",
-      "lastUpdatedDate": "2018-01-30T15:00:00+00:00",
+      "publishedDate": "2018-02-01T00:00:00+00:00",
+      "lastUpdatedDate": "2018-10-08T00:00:00+00:00",
       "thumbnailURL": "main/thumbnail.png",
       "bannerImageURL": "main/banner.png",
       "additionalInformation": [
@@ -24,16 +24,16 @@
         },
         {
           "name": "Version:",
-          "value": "0.13.1"
+          "value": "0.14.0"
         },
         {
           "type": "date",
           "name": "Released:",
-          "value": "2018-01-30T15:00:00+00:00"
+          "value": "2018-02-01T00:00:00+00:00"
         },
         {
           "name": "Edition:",
-          "value": "Swift 4 Edition"
+          "value": "Swift 4.2 Edition"
         },
         {
           "name": "Languages:",

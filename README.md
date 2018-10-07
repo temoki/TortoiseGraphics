@@ -240,7 +240,7 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 
 ## Requirements
 
-* Swift 4 (Xcode 9)
+* Swift 4.2 (Xcode 10)
 * macOS 10.10 or later
 * iOS 10.0 or later
 
