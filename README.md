@@ -41,7 +41,7 @@ class CanvasView: NSView {
         guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
 
         // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: bounds.size, context: context)
+        let canvas = GraphicsCanvas(size: bounds.size, context: cgContext)
 
         // Command 🐢 on canvas.
         canvas.drawing { 🐢 in
