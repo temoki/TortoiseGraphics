@@ -11,13 +11,13 @@
 	<key>ContentIdentifier</key>
 	<string>com.temoki.playgroundbook.TortoiseGraphics.main</string>
 	<key>ContentVersion</key>
-	<string>0.15.0</string>
+	<string>0.16.0</string>
 	<key>ImageReference</key>
 	<string>icon.png</string>
 	<key>DeploymentTarget</key>
 	<string>ios11.0</string>
 	<key>SwiftVersion</key>
-	<string>4.2</string>
+	<string>5.0</string>
 	<key>Chapters</key>
 	<array>
 		<string>Main.playgroundchapter</string>
