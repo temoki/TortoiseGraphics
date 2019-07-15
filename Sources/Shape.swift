@@ -2,7 +2,7 @@ import CoreGraphics
 
 public struct Shape {
 
-    var name: String
+    let name: String
 
     public static var arrow: Shape {
         return Shape("arrow", points: [(0, 0), (0.5, -0.7), (0, -0.7), (0, -1), (0, -0.7), (-0.5, -0.7)])
@@ -34,7 +34,7 @@ public struct Shape {
 
     // MARK: - Internal
 
-    var path: CGPath
+    let path: CGPath
 
     init(_ name: String, path: CGPath) {
         self.name = name

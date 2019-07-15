@@ -1,3 +1,4 @@
+/*
 import CoreGraphics
 
 public class GraphicsCanvas: Canvas {
@@ -34,3 +35,4 @@ public class GraphicsCanvas: Canvas {
     public var color: Color?
 
 }
+*/

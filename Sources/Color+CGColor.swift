@@ -3,8 +3,36 @@ import CoreGraphics
 
 extension Color {
 
+    // https://material.io/guidelines/style/color.html
+    var hexString: String {
+        switch self {
+        case .black: return "000000"
+        case .white: return "FFFFFF"
+        case .red: return "F44336"
+        case .pink: return "E91E63"
+        case .purple: return "9C27B0"
+        case .deepPurple: return "673AB7"
+        case .indigo: return "3F51B5"
+        case .blue: return "2196F3"
+        case .lightBlue: return "03A9F4"
+        case .cyan: return "00BCD4"
+        case .teal: return "009688"
+        case .green: return "4CAF50"
+        case .lightGreen: return "8BC34A"
+        case .lime: return "CDDC39"
+        case .yellow: return "FFEB3B"
+        case .amber: return "FFC107"
+        case .orange: return "FF9800"
+        case .deepOrange: return "FF5722"
+        case .brown: return "795548"
+        case .grey: return "9E9E9E"
+        case .blueGrey: return "607D8B"
+        case .hex(let hexString): return hexString
+        }
+    }
+
     var cgColor: CGColor {
-        let scanner = Scanner(string: self.rawValue)
+        let scanner = Scanner(string: self.hexString)
         var color: UInt32 = 0
         if scanner.scanHexInt32(&color) {
             let r = CGFloat((color & 0xFF0000) >> 16) / 255.0

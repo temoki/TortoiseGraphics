@@ -1,3 +1,4 @@
+/*
 public protocol Canvas {
 
     func drawing(drawingBlock: @escaping (Tortoise) -> Void)
@@ -7,3 +8,4 @@ public protocol Canvas {
     var color: Color? {get set}
 
 }
+*/

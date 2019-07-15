@@ -1,27 +1,20 @@
 //: # With a tortoise 🐢
 //: [👉 With 2 tortoises 🐢🐢](@next)
 import PlaygroundSupport
+import AppKit
 import TortoiseGraphics
 import CoreGraphics
 
-let canvas = PlaygroundCanvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-canvas.frameRate = 30
-canvas.color = .white
-PlaygroundPage.current.liveView = canvas
+let size = CGSize(width: 300, height: 300)
+let canvas = ImageCanvas(size: size, scale: 2)
+let t = Tortoise(name: "", canvas: canvas)
+t.forward(100)
 
-canvas.drawing { 🐢 in 
-    🐢.penColor(.red)
-    🐢.fillColor(.orange)
+let imageView = NSImageView(frame: NSRect(origin: .zero, size: size))
+PlaygroundPage.current.liveView = imageView
+imageView.image = canvas.cgImage.map { NSImage(cgImage: $0, size: size) }
 
-    🐢.penUp()
-    🐢.back(100)
-    🐢.penDown()
- 
-    // Turtle Star!
-    🐢.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(200)
-        🐢.left(170)
-    }
-    🐢.endFill()
-}
+t.forward(-200)
+imageView.image = canvas.cgImage.map { NSImage(cgImage: $0, size: size) }
+
+

@@ -1,3 +1,4 @@
+/*
 #if os(macOS)
 import AppKit
 public typealias View = NSView
@@ -107,4 +108,4 @@ public class PlaygroundCanvas: View, Canvas {
     }
 
 }
-
+*/

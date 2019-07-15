@@ -1,56 +1,49 @@
-#if os(macOS)
-import AppKit
-public typealias Image = NSImage
-#elseif os(iOS)
-import UIKit
-import MobileCoreServices
-public typealias Image = UIImage
-#endif
+import Foundation
+import CoreGraphics
 
-public class ImageCanvas: Canvas {
+public class ImageCanvas {
 
-    private var tortoiseCharmer = TortoiseCharmer(tortoiseCount: 1)
-    private let size: CGSize
-    private let scale: CGFloat
+    public let size: CGSize
 
-    public init(size: CGSize, scale: CGFloat = 1) {
+    public let scale: CGFloat
+
+    public var backgroundColor: CGColor
+
+    public init(size: CGSize, scale: CGFloat = 1, backgroundColor: CGColor? = nil) {
         self.size = size
         self.scale = scale
+        self.backgroundColor = backgroundColor ?? Color.white.cgColor
+        self.context = createBitmapContext(size: size, scale: scale)
+        self.context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     }
 
-    // MARK: - Canvas Protocol
-
-    public func drawing(drawingBlock: @escaping (Tortoise) -> Void) {
-        tortoiseCharmer.initialize(tortoiseCount: 1)
-        drawingBlock(tortoiseCharmer.tortoises[0])
+    public func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
+        context.saveGState()
+        context.setStrokeColor(color)
+        context.setFillColor(CGColor.clear)
+        context.setLineWidth(lineWidth)
+        context.addPath(path)
+        context.strokePath()
+        context.restoreGState()
     }
 
-    public func drawingWithTortoises(count: Int, drawingBlock: @escaping ([Tortoise]) -> Void) {
-        tortoiseCharmer.initialize(tortoiseCount: count)
-        drawingBlock(tortoiseCharmer.tortoises)
+    public func fillPath(path: CGPath, color: CGColor) {
+        context.saveGState()
+        context.setStrokeColor(CGColor.clear)
+        context.setFillColor(color)
+        context.addPath(path)
+        context.fillPath()
+        context.restoreGState()
     }
-
-    public var color: Color?
-
-    // MARK: - Make Image
 
     public var cgImage: CGImage? {
-        let context = GraphicsContext.createBitmapContext(size: size,
-                                                          scale: scale,
-                                                          backgroundColor: color?.cgColor)
-        tortoiseCharmer.charm(with: context, toFrame: nil)
-        return context.cgContext.makeImage()
-    }
-
-    public var image: Image? {
-        guard let cgImage = cgImage else { return nil }
-        #if os(macOS)
-            return NSImage(cgImage: cgImage, size: size)
-        #elseif os(iOS)
-            return UIImage(cgImage: cgImage)
-        #else
-            return nil
-        #endif
+        let bgContext = createBitmapContext(size: size, scale: scale)
+        bgContext.setFillColor(backgroundColor)
+        bgContext.fill(CGRect(origin: .zero, size: size))
+        if let fgImage = context.makeImage() {
+            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
+        }
+        return bgContext.makeImage()
     }
 
     @discardableResult
@@ -68,10 +61,9 @@ public class ImageCanvas: Canvas {
         return writeImage(to: fileURL, type: kUTTypeTIFF)
     }
 
-    @discardableResult
-    public func writeGIF(to fileURL: URL, frameRate: Int = 30) -> Bool {
-        return writeAnimationImage(to: fileURL, type: kUTTypeGIF, frameDelay: 1 / Float64(frameRate))
-    }
+    // MARK: - Internal
+
+    let context: CGContext
 
     private func writeImage(to fileURL: URL, type: CFString) -> Bool {
         guard let cgImage = cgImage else { return false }
@@ -80,27 +72,9 @@ public class ImageCanvas: Canvas {
         return CGImageDestinationFinalize(destination)
     }
 
-    private func writeAnimationImage(to fileURL: URL, type: CFString, frameDelay: Float64) -> Bool {
-        guard let destination = CGImageDestinationCreateWithURL(
-            fileURL as CFURL, type, tortoiseCharmer.commandHistories.count - 1, nil) else { return false }
-
-        for frameIndex in 0 ..< tortoiseCharmer.commandHistories.count {
-            let context = GraphicsContext.createBitmapContext(size: size,
-                                                              scale: scale,
-                                                              backgroundColor: color?.cgColor)
-            tortoiseCharmer.charm(with: context, toFrame: frameIndex)
-            guard let cgImage = context.cgContext.makeImage() else { return false }
-
-            let frameProperties: [String: Any] = [
-                kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: frameDelay]
-            ]
-            CGImageDestinationAddImage(destination, cgImage, frameProperties as CFDictionary)
-        }
-        return CGImageDestinationFinalize(destination)
-    }
+    private let defaultDPI: CGFloat = 72
 
     private var imageProperties: [String: Any] {
-        let defaultDPI: CGFloat = 72
         return [
             kCGImagePropertyPixelWidth as String: Int(size.width * scale),
             kCGImagePropertyPixelHeight as String: Int(size.height * scale),
@@ -109,4 +83,19 @@ public class ImageCanvas: Canvas {
         ]
     }
 
+}
+
+private func createBitmapContext(size: CGSize, scale: CGFloat) -> CGContext {
+    let width = Int(size.width * scale)
+    let height = Int(size.height * scale)
+    let context = CGContext(data: nil,
+                            width: width,
+                            height: height,
+                            bitsPerComponent: 8,
+                            bytesPerRow: width * 4,
+                            space: CGColorSpaceCreateDeviceRGB(),
+                            bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
+    // swiftlint:disable:previous force_unwrapping
+    context.scaleBy(x: scale, y: scale)
+    return context
 }
