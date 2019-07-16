@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140876C222DE10D000DCFC59 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C122DE10D000DCFC59 /* Canvas.swift */; };
+		140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */; };
+		140876C622DE18AB00DCFC59 /* PathDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C522DE18AB00DCFC59 /* PathDrawable.swift */; };
 		1417716122DB71A000BC1A34 /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716022DB71A000BC1A34 /* TortoiseState.swift */; };
-		1417716322DB720C00BC1A34 /* CanvasState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716222DB720C00BC1A34 /* CanvasState.swift */; };
 		1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716422DB73F900BC1A34 /* ImageCanvas.swift */; };
 		1417716822DCAC8B00BC1A34 /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716722DCAC8B00BC1A34 /* Tortoise.swift */; };
 		141772771EE2930600C0CBC7 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141772761EE2930600C0CBC7 /* Angle.swift */; };
@@ -30,8 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140876C122DE10D000DCFC59 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPlaygroundCanvas.swift; sourceTree = "<group>"; };
+		140876C522DE18AB00DCFC59 /* PathDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDrawable.swift; sourceTree = "<group>"; };
 		1417716022DB71A000BC1A34 /* TortoiseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseState.swift; sourceTree = "<group>"; };
-		1417716222DB720C00BC1A34 /* CanvasState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasState.swift; sourceTree = "<group>"; };
 		1417716422DB73F900BC1A34 /* ImageCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCanvas.swift; sourceTree = "<group>"; };
 		1417716722DCAC8B00BC1A34 /* Tortoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tortoise.swift; sourceTree = "<group>"; };
 		141772761EE2930600C0CBC7 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
@@ -68,7 +72,7 @@
 			children = (
 				14588D151EDF03D700922BE4 /* Color+CGColor.swift */,
 				1417716022DB71A000BC1A34 /* TortoiseState.swift */,
-				1417716222DB720C00BC1A34 /* CanvasState.swift */,
+				140876C522DE18AB00DCFC59 /* PathDrawable.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -99,7 +103,9 @@
 				14D753AA1FE17D290038F931 /* Vec2D.swift */,
 				14C3A09C201CA62000C7A28C /* Shape.swift */,
 				1417716722DCAC8B00BC1A34 /* Tortoise.swift */,
+				140876C122DE10D000DCFC59 /* Canvas.swift */,
 				1417716422DB73F900BC1A34 /* ImageCanvas.swift */,
+				140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */,
 				1417716622DCAC2000BC1A34 /* Internal */,
 			);
 			path = Sources;
@@ -206,13 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				140876C622DE18AB00DCFC59 /* PathDrawable.swift in Sources */,
+				140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */,
 				14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */,
 				14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */,
 				1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */,
+				140876C222DE10D000DCFC59 /* Canvas.swift in Sources */,
 				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,
 				141772771EE2930600C0CBC7 /* Angle.swift in Sources */,
 				14C3A09D201CA62000C7A28C /* Shape.swift in Sources */,
-				1417716322DB720C00BC1A34 /* CanvasState.swift in Sources */,
 				1417716122DB71A000BC1A34 /* TortoiseState.swift in Sources */,
 				1417716822DCAC8B00BC1A34 /* Tortoise.swift in Sources */,
 			);

@@ -1,44 +1,19 @@
 import Foundation
 import CoreGraphics
 
-public class ImageCanvas {
+public class ImageCanvas: Canvas, PathDrawable {
 
-    public let size: CGSize
-
-    public let scale: CGFloat
-
-    public var backgroundColor: CGColor
-
-    public init(size: CGSize, scale: CGFloat = 1, backgroundColor: CGColor? = nil) {
+    public init(size: CGSize, scale: CGFloat = 1, backgroundColor: Color? = nil) {
         self.size = size
         self.scale = scale
-        self.backgroundColor = backgroundColor ?? Color.white.cgColor
+        self.backgroundColor = backgroundColor ?? Color.white
         self.context = createBitmapContext(size: size, scale: scale)
         self.context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     }
 
-    public func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
-        context.saveGState()
-        context.setStrokeColor(color)
-        context.setFillColor(CGColor.clear)
-        context.setLineWidth(lineWidth)
-        context.addPath(path)
-        context.strokePath()
-        context.restoreGState()
-    }
-
-    public func fillPath(path: CGPath, color: CGColor) {
-        context.saveGState()
-        context.setStrokeColor(CGColor.clear)
-        context.setFillColor(color)
-        context.addPath(path)
-        context.fillPath()
-        context.restoreGState()
-    }
-
     public var cgImage: CGImage? {
         let bgContext = createBitmapContext(size: size, scale: scale)
-        bgContext.setFillColor(backgroundColor)
+        bgContext.setFillColor(backgroundColor.cgColor)
         bgContext.fill(CGRect(origin: .zero, size: size))
         if let fgImage = context.makeImage() {
             bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
@@ -61,9 +36,44 @@ public class ImageCanvas {
         return writeImage(to: fileURL, type: kUTTypeTIFF)
     }
 
-    // MARK: - Internal
+    // MARK: - Canvas
 
-    let context: CGContext
+    public let size: CGSize
+
+    public let scale: CGFloat
+
+    public var backgroundColor: Color
+
+    public func drawing(_ block: @escaping (Tortoise) -> Void) {
+        block(Tortoise(pathDrawable: self))
+    }
+
+    // MARK: - PathDrawable
+
+    func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
+        context.saveGState()
+        context.setStrokeColor(color)
+        context.setFillColor(CGColor.clear)
+        context.setLineWidth(lineWidth)
+        context.addPath(path)
+        context.strokePath()
+        context.restoreGState()
+    }
+
+    func fillPath(path: CGPath, color: CGColor) {
+        context.saveGState()
+        context.setStrokeColor(CGColor.clear)
+        context.setFillColor(color)
+        context.addPath(path)
+        context.fillPath()
+        context.restoreGState()
+    }
+
+    // MARK: - Private
+
+    private let context: CGContext
+
+    private let defaultDPI: CGFloat = 72
 
     private func writeImage(to fileURL: URL, type: CFString) -> Bool {
         guard let cgImage = cgImage else { return false }
@@ -71,8 +81,6 @@ public class ImageCanvas {
         CGImageDestinationAddImage(destination, cgImage, imageProperties as CFDictionary)
         return CGImageDestinationFinalize(destination)
     }
-
-    private let defaultDPI: CGFloat = 72
 
     private var imageProperties: [String: Any] {
         return [

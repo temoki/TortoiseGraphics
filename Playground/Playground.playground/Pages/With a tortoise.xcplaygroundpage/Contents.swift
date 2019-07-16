@@ -5,16 +5,19 @@ import AppKit
 import TortoiseGraphics
 import CoreGraphics
 
-let size = CGSize(width: 300, height: 300)
-let canvas = ImageCanvas(size: size, scale: 2)
-let t = Tortoise(name: "", canvas: canvas)
-t.forward(100)
+let size = CGRect(x: 0, y: 0, width: 300, height: 300)
+let canvas = XCPlaygroundCanvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300),
+                                backgroundColor: Color.blueGrey)
 
-let imageView = NSImageView(frame: NSRect(origin: .zero, size: size))
-PlaygroundPage.current.liveView = imageView
-imageView.image = canvas.cgImage.map { NSImage(cgImage: $0, size: size) }
+PlaygroundPage.current.liveView = canvas
 
-t.forward(-200)
-imageView.image = canvas.cgImage.map { NSImage(cgImage: $0, size: size) }
-
+canvas.drawing { 🐢 in
+    🐢.forward(10)
+    Thread.sleep(forTimeInterval: 1)
+    🐢.forward(10)
+    canvas.backgroundColor = Color.red
+    Thread.sleep(forTimeInterval: 1)
+    🐢.forward(10)
+    Thread.sleep(forTimeInterval: 1)
+}
 
