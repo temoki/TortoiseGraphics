@@ -5,18 +5,19 @@
 //  Created by Tomoki Kobayashi on 2019/07/16.
 //
 
-import AppKit
+import UIKit
 
-public class XCPlaygroundCanvas: NSView, Canvas, PathDrawable {
+public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
 
-    public init(frame: CGRect, backgroundColor: Color? = nil) {
-        self.backgroundColor = backgroundColor ?? Color.white
+    public init(frame: CGRect, color: Color? = nil) {
+        self.color = color ?? Color.white
         super.init(frame: frame)
     }
 
     required init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Canvas
 
     public var size: CGSize {
@@ -24,12 +25,12 @@ public class XCPlaygroundCanvas: NSView, Canvas, PathDrawable {
     }
 
     public var scale: CGFloat {
-        return NSScreen.main?.backingScaleFactor ?? 1
+        return UIScreen.main.scale
     }
 
-    public var backgroundColor: Color {
+    public var color: Color {
         didSet {
-            imageCanvas?.backgroundColor = backgroundColor
+            imageCanvas?.color = color
         }
     }
 
@@ -38,7 +39,7 @@ public class XCPlaygroundCanvas: NSView, Canvas, PathDrawable {
             guard let self = self else { return }
             self.imageCanvas = ImageCanvas(size: self.size,
                                            scale: self.scale,
-                                           backgroundColor: self.backgroundColor)
+                                           color: self.color)
             block(Tortoise(pathDrawable: self))
             self.imageCanvas = nil
         }
@@ -47,13 +48,37 @@ public class XCPlaygroundCanvas: NSView, Canvas, PathDrawable {
     // MARK: - Path Drawable
 
     func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
-        guard let imageCanvas = self.imageCanvas else { return }
-        imageCanvas.strokePath(path: path, color: color, lineWidth: lineWidth)
-        if let cgImage = imageCanvas.cgImage {
-            DispatchQueue.main.async { [weak self] in
-                self?.layer?.contents = cgImage
+        let semaphore = DispatchSemaphore(value: 0)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+
+            let shapeLayer = CAShapeLayer()
+            self.layer.addSublayer(shapeLayer)
+            shapeLayer.frame = self.bounds
+
+            let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
+            animation.toValue = path
+            animation.duration = 1
+            animation.timingFunction = CAMediaTimingFunction(name: .linear)
+            animation.autoreverses = false
+
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { [weak self] in
+                self?.imageCanvas?.strokePath(path: path, color: color, lineWidth: lineWidth)
+                if let cgImage = self?.imageCanvas?.cgImage {
+                    self?.layer.contents = cgImage
+                }
+                shapeLayer.removeFromSuperlayer()
+                semaphore.signal()
             }
+            shapeLayer.backgroundColor = UIColor.clear.cgColor
+            shapeLayer.strokeColor = color
+            shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.lineWidth = lineWidth
+            shapeLayer.add(animation, forKey: "animation")
+            CATransaction.commit()
         }
+        _ = semaphore.wait(timeout: .distantFuture)
     }
 
     func fillPath(path: CGPath, color: CGColor) {

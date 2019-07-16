@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 public protocol Canvas {
 
@@ -13,7 +14,7 @@ public protocol Canvas {
 
     var scale: CGFloat { get }
 
-    var backgroundColor: Color { get set }
+    var color: Color { get set }
 
     func drawing(_ block: @escaping (Tortoise) -> Void)
 

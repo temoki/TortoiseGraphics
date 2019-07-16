@@ -1,19 +1,20 @@
 import Foundation
 import CoreGraphics
+//import MobileCoreServices
 
 public class ImageCanvas: Canvas, PathDrawable {
 
-    public init(size: CGSize, scale: CGFloat = 1, backgroundColor: Color? = nil) {
+    public init(size: CGSize, scale: CGFloat = 1, color: Color? = nil) {
         self.size = size
         self.scale = scale
-        self.backgroundColor = backgroundColor ?? Color.white
+        self.color = color ?? Color.white
         self.context = createBitmapContext(size: size, scale: scale)
         self.context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     }
 
     public var cgImage: CGImage? {
         let bgContext = createBitmapContext(size: size, scale: scale)
-        bgContext.setFillColor(backgroundColor.cgColor)
+        bgContext.setFillColor(color.cgColor)
         bgContext.fill(CGRect(origin: .zero, size: size))
         if let fgImage = context.makeImage() {
             bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
@@ -21,20 +22,20 @@ public class ImageCanvas: Canvas, PathDrawable {
         return bgContext.makeImage()
     }
 
-    @discardableResult
-    public func writePNG(to fileURL: URL) -> Bool {
-        return writeImage(to: fileURL, type: kUTTypePNG)
-    }
-
-    @discardableResult
-    public func writeJPEG(to fileURL: URL) -> Bool {
-        return writeImage(to: fileURL, type: kUTTypePNG)
-    }
-
-    @discardableResult
-    public func writeTIFF(to fileURL: URL) -> Bool {
-        return writeImage(to: fileURL, type: kUTTypeTIFF)
-    }
+//    @discardableResult
+//    public func writePNG(to fileURL: URL) -> Bool {
+//        return writeImage(to: fileURL, type: kUTTypePNG)
+//    }
+//
+//    @discardableResult
+//    public func writeJPEG(to fileURL: URL) -> Bool {
+//        return writeImage(to: fileURL, type: kUTTypePNG)
+//    }
+//
+//    @discardableResult
+//    public func writeTIFF(to fileURL: URL) -> Bool {
+//        return writeImage(to: fileURL, type: kUTTypeTIFF)
+//    }
 
     // MARK: - Canvas
 
@@ -42,7 +43,7 @@ public class ImageCanvas: Canvas, PathDrawable {
 
     public let scale: CGFloat
 
-    public var backgroundColor: Color
+    public var color: Color
 
     public func drawing(_ block: @escaping (Tortoise) -> Void) {
         block(Tortoise(pathDrawable: self))
@@ -73,23 +74,23 @@ public class ImageCanvas: Canvas, PathDrawable {
 
     private let context: CGContext
 
-    private let defaultDPI: CGFloat = 72
+//    private let defaultDPI: CGFloat = 72
 
-    private func writeImage(to fileURL: URL, type: CFString) -> Bool {
-        guard let cgImage = cgImage else { return false }
-        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, type, 1, nil) else { return false }
-        CGImageDestinationAddImage(destination, cgImage, imageProperties as CFDictionary)
-        return CGImageDestinationFinalize(destination)
-    }
-
-    private var imageProperties: [String: Any] {
-        return [
-            kCGImagePropertyPixelWidth as String: Int(size.width * scale),
-            kCGImagePropertyPixelHeight as String: Int(size.height * scale),
-            kCGImagePropertyDPIWidth as String: Int(defaultDPI * scale),
-            kCGImagePropertyDPIHeight as String: Int(defaultDPI * scale)
-        ]
-    }
+//    private func writeImage(to fileURL: URL, type: CFString) -> Bool {
+//        guard let cgImage = cgImage else { return false }
+//        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, type, 1, nil) else { return false }
+//        CGImageDestinationAddImage(destination, cgImage, imageProperties as CFDictionary)
+//        return CGImageDestinationFinalize(destination)
+//    }
+//
+//    private var imageProperties: [String: Any] {
+//        return [
+//            kCGImagePropertyPixelWidth as String: Int(size.width * scale),
+//            kCGImagePropertyPixelHeight as String: Int(size.height * scale),
+//            kCGImagePropertyDPIWidth as String: Int(defaultDPI * scale),
+//            kCGImagePropertyDPIHeight as String: Int(defaultDPI * scale)
+//        ]
+//    }
 
 }
 
