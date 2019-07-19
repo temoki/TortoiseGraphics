@@ -39,15 +39,11 @@ public class ImageCanvas: Canvas, PathDrawable {
 
     // MARK: - Canvas
 
-    public let size: CGSize
+    public var size: CGSize
 
-    public let scale: CGFloat
+    public var scale: CGFloat
 
     public var color: Color
-
-    public func drawing(_ block: @escaping (Tortoise) -> Void) {
-        block(Tortoise(pathDrawable: self))
-    }
 
     // MARK: - PathDrawable
 

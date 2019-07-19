@@ -16,6 +16,4 @@ public protocol Canvas {
 
     var color: Color { get set }
 
-    func drawing(_ block: @escaping (Tortoise) -> Void)
-
 }

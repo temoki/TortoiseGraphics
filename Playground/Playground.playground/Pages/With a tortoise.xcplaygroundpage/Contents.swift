@@ -5,14 +5,12 @@ import TortoiseGraphics
 import CoreGraphics
 
 let size = CGRect(x: 0, y: 0, width: 300, height: 300)
-let canvas = XCPlaygroundCanvas(frame: CGRect(x: 0, y: 0, width: 300, height: 300),
-                                backgroundColor: Color.white)
+let canvas = XCPlaygroundCanvas(frame: size, color: Color.white)
 
 PlaygroundPage.current.liveView = canvas
+PlaygroundPage.current.needsIndefiniteExecution = true
 
-canvas.drawing { 🐢 in
-    🐢.forward(10)
-    🐢.forward(10)
-    🐢.forward(10)
-}
-
+let t = Tortoise(canvas: canvas)
+t.forward(20)
+t.forward(20)
+t.forward(20)
