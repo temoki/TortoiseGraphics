@@ -11,6 +11,14 @@ PlaygroundPage.current.liveView = canvas
 PlaygroundPage.current.needsIndefiniteExecution = true
 
 let t = Tortoise(canvas: canvas)
-t.forward(20)
-t.forward(20)
-t.forward(20)
+
+t.beginFill()
+t.forward(30)
+t.right(90)
+t.forward(30)
+t.right(90)
+t.forward(30)
+t.right(90)
+t.forward(30)
+t.right(90)
+t.endFill()

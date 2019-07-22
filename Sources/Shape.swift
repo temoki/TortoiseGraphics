@@ -1,6 +1,6 @@
 import CoreGraphics
 
-public struct Shape {
+public struct Shape: CustomStringConvertible {
 
     let name: String
 
@@ -30,6 +30,12 @@ public struct Shape {
 
     public static var classic: Shape {
         return Shape("classic", points: [(0, 0), (0.5, -1), (0, -0.75), (-0.5, -1)])
+    }
+
+    // MARK: - CustomStringConvertible
+
+    public var description: String {
+        return name
     }
 
     // MARK: - Internal

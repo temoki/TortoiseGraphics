@@ -10,8 +10,8 @@ import CoreGraphics
 
 protocol PathDrawable {
 
-    func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat)
+    func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat)
 
-    func fillPath(path: CGPath, color: CGColor)
+    func fillPath(path: [CGPoint], color: CGColor)
 
 }

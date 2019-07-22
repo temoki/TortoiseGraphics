@@ -1,6 +1,5 @@
 import Foundation
 import CoreGraphics
-//import MobileCoreServices
 
 public class ImageCanvas: Canvas, PathDrawable {
 
@@ -22,21 +21,6 @@ public class ImageCanvas: Canvas, PathDrawable {
         return bgContext.makeImage()
     }
 
-//    @discardableResult
-//    public func writePNG(to fileURL: URL) -> Bool {
-//        return writeImage(to: fileURL, type: kUTTypePNG)
-//    }
-//
-//    @discardableResult
-//    public func writeJPEG(to fileURL: URL) -> Bool {
-//        return writeImage(to: fileURL, type: kUTTypePNG)
-//    }
-//
-//    @discardableResult
-//    public func writeTIFF(to fileURL: URL) -> Bool {
-//        return writeImage(to: fileURL, type: kUTTypeTIFF)
-//    }
-
     // MARK: - Canvas
 
     public var size: CGSize
@@ -47,21 +31,21 @@ public class ImageCanvas: Canvas, PathDrawable {
 
     // MARK: - PathDrawable
 
-    func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
+    func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat) {
         context.saveGState()
         context.setStrokeColor(color)
         context.setFillColor(CGColor.clear)
         context.setLineWidth(lineWidth)
-        context.addPath(path)
+        context.addPath(path.toCGPath())
         context.strokePath()
         context.restoreGState()
     }
 
-    func fillPath(path: CGPath, color: CGColor) {
+    func fillPath(path: [CGPoint], color: CGColor) {
         context.saveGState()
         context.setStrokeColor(CGColor.clear)
         context.setFillColor(color)
-        context.addPath(path)
+        context.addPath(path.toCGPath())
         context.fillPath()
         context.restoreGState()
     }
@@ -69,24 +53,6 @@ public class ImageCanvas: Canvas, PathDrawable {
     // MARK: - Private
 
     private let context: CGContext
-
-//    private let defaultDPI: CGFloat = 72
-
-//    private func writeImage(to fileURL: URL, type: CFString) -> Bool {
-//        guard let cgImage = cgImage else { return false }
-//        guard let destination = CGImageDestinationCreateWithURL(fileURL as CFURL, type, 1, nil) else { return false }
-//        CGImageDestinationAddImage(destination, cgImage, imageProperties as CFDictionary)
-//        return CGImageDestinationFinalize(destination)
-//    }
-//
-//    private var imageProperties: [String: Any] {
-//        return [
-//            kCGImagePropertyPixelWidth as String: Int(size.width * scale),
-//            kCGImagePropertyPixelHeight as String: Int(size.height * scale),
-//            kCGImagePropertyDPIWidth as String: Int(defaultDPI * scale),
-//            kCGImagePropertyDPIHeight as String: Int(defaultDPI * scale)
-//        ]
-//    }
 
 }
 

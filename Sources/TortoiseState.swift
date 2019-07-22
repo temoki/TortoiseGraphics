@@ -24,7 +24,7 @@ struct TortoiseState {
 
     var isVisible: Bool = true
 
-    var fillPath: CGMutablePath?
+    var fillPath: [CGPoint]?
 
     var shape: Shape = .tortoise
 

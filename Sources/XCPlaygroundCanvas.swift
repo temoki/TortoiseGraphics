@@ -38,17 +38,17 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
 
     // MARK: - Path Drawable
 
-    func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat) {
+    func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat) {
         addCommand(.stroke(path: path, color: color, lineWidth: lineWidth))
     }
 
-    func fillPath(path: CGPath, color: CGColor) {
+    func fillPath(path: [CGPoint], color: CGColor) {
         addCommand(.fill(path: path, color: color))
     }
 
     private enum DrawCommand {
-        case stroke(path: CGPath, color: CGColor, lineWidth: CGFloat)
-        case fill(path: CGPath, color: CGColor)
+        case stroke(path: [CGPoint], color: CGColor, lineWidth: CGFloat)
+        case fill(path: [CGPoint], color: CGColor)
         case background(color: Color)
     }
 
@@ -99,40 +99,19 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
         }
     }
 
-    private func strokePath(path: CGPath, color: CGColor, lineWidth: CGFloat, completion: @escaping () -> Void) {
+    private func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat, completion: @escaping () -> Void) {
+        var pathTransform = CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
+        let toPath = path.toCGPath().copy(using: &pathTransform)
+        let fromPath = path.first?.toCGPath().copy(using: &pathTransform)
+
         let shapeLayer = CAShapeLayer()
         self.layer.addSublayer(shapeLayer)
         shapeLayer.frame = CGRect(origin: .zero, size: self.size)
+        shapeLayer.path = fromPath
         shapeLayer.backgroundColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = color
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = lineWidth
-
-        var pathTransform = CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5)
-        .scaledBy(x: 1, y: -1)
-
-        let toPath = path.copy(using: &pathTransform)
-
-        var pathPoints: [CGPoint] = []
-        path.applyWithBlock { (elementPointer) in
-            let element = elementPointer.pointee
-            let pointCount: Int
-            switch element.type {
-            case .moveToPoint: pointCount = 1
-            case .addLineToPoint: pointCount = 1
-            case .addQuadCurveToPoint: pointCount = 2
-            case .addCurveToPoint: pointCount = 3
-            case .closeSubpath: pointCount = 0
-            }
-            pathPoints.append(contentsOf: Array(UnsafeBufferPointer(start: element.points, count: pointCount)))
-        }
-
-        let fromPoint = (pathPoints.first ?? .zero).applying(pathTransform)
-        print(fromPoint)
-        let fromPath = CGMutablePath()
-        fromPath.move(to: fromPoint)
-        fromPath.addLine(to: fromPoint)
-        shapeLayer.path = fromPath
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
@@ -147,11 +126,37 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
         animation.duration = 1
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.autoreverses = false
-        shapeLayer.add(animation, forKey: "animation")
+        shapeLayer.add(animation, forKey: "stroke-animation")
         CATransaction.commit()
     }
 
-    private func fillPath(path: CGPath, color: CGColor, completion: () -> Void) {
+    private func fillPath(path: [CGPoint], color: CGColor, completion: @escaping () -> Void) {
+        var pathTransform = CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
+        let cgPath = path.toCGPath().copy(using: &pathTransform)
+
+        let shapeLayer = CAShapeLayer()
+        self.layer.addSublayer(shapeLayer)
+        shapeLayer.frame = CGRect(origin: .zero, size: self.size)
+        shapeLayer.path = cgPath
+        shapeLayer.backgroundColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = UIColor.clear.cgColor
+        shapeLayer.fillColor = UIColor.clear.cgColor
+
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            self?.imageCanvas.fillPath(path: path, color: color)
+            self?.layer.contents = self?.imageCanvas.cgImage
+            shapeLayer.removeFromSuperlayer()
+            completion()
+        }
+
+        let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
+        animation.toValue = color
+        animation.duration = 1
+        animation.timingFunction = CAMediaTimingFunction(name: .linear)
+        animation.autoreverses = false
+        shapeLayer.add(animation, forKey: "fill-animation")
+        CATransaction.commit()
     }
 
 }
