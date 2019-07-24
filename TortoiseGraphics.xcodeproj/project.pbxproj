@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407A92722E8A0EA006D96F9 /* Pen.swift */; };
 		140876C222DE10D000DCFC59 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C122DE10D000DCFC59 /* Canvas.swift */; };
 		140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */; };
 		140876C622DE18AB00DCFC59 /* PathDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C522DE18AB00DCFC59 /* PathDrawable.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1407A92722E8A0EA006D96F9 /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		140876C122DE10D000DCFC59 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPlaygroundCanvas.swift; sourceTree = "<group>"; };
 		140876C522DE18AB00DCFC59 /* PathDrawable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDrawable.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		1417716622DCAC2000BC1A34 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				1407A92722E8A0EA006D96F9 /* Pen.swift */,
 				141772761EE2930600C0CBC7 /* Angle.swift */,
 				14588D151EDF03D700922BE4 /* Color+CGColor.swift */,
 				1417716022DB71A000BC1A34 /* TortoiseState.swift */,
@@ -223,6 +226,7 @@
 				14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */,
 				1409A78B22E5A7E500DE0610 /* Tortoise+Alias.swift in Sources */,
 				14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */,
+				1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */,
 				1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */,
 				140876C222DE10D000DCFC59 /* Canvas.swift in Sources */,
 				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,

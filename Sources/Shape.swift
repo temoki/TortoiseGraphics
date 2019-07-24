@@ -2,7 +2,9 @@ import CoreGraphics
 
 public struct Shape: CustomStringConvertible {
 
-    let name: String
+    public let name: String
+
+    public var isVisible: Bool = true
 
     public static var arrow: Shape {
         return Shape("arrow", points: [(0, 0), (0.5, -0.7), (0, -0.7), (0, -1), (0, -0.7), (-0.5, -0.7)])

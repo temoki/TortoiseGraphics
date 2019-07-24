@@ -14,18 +14,11 @@ struct TortoiseState {
 
     var heading: Degree = Degree(0)
 
-    var isPenDown: Bool = true
-
-    var penSize: CGFloat = 1
-
-    var penColor: CGColor = Color.black.cgColor
-
-    var fillColor: CGColor = Color.black.cgColor
-
-    var isVisible: Bool = true
-
-    var fillPath: [CGPoint]?
+    var pen: Pen = Pen()
 
     var shape: Shape = .tortoise
 
+    var fillPath: [CGPoint]?
+
+    // TODO: SPEED
 }

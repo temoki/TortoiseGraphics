@@ -21,9 +21,9 @@ public class Tortoise {
             .rotated(by: -state.heading.radian.value)
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
 
-        if state.isPenDown {
+        if state.pen.isDown {
             let path = [state.position, newPosition]
-            pathDrawable?.strokePath(path: path, color: state.penColor, lineWidth: state.penSize)
+            pathDrawable?.strokePath(path: path, color: state.pen.color, lineWidth: state.pen.width)
             state.fillPath?.append(newPosition)
         }
 
@@ -147,11 +147,11 @@ public class Tortoise {
     }
 
     public var isDown: Bool {
-        return state.isPenDown
+        return state.pen.isDown
     }
 
     public var penSize: Double {
-        return Double(state.penSize)
+        return Double(state.pen.width)
     }
 
     // MARK: - [Pen control] Color control
@@ -170,7 +170,7 @@ public class Tortoise {
     }
 
     public var penColor: (r: Double, g: Double, b: Double) {
-        let rgb = state.penColor.rgb
+        let rgb = state.pen.color.rgb
         return (r: Double(rgb.0*255), g: Double(rgb.1*255), b: Double(rgb.2*255))
     }
 
@@ -190,7 +190,7 @@ public class Tortoise {
     }
 
     public var fillColor: (r: Double, g: Double, b: Double) {
-        let rgb = state.fillColor.rgb
+        let rgb = state.pen.fillColor.rgb
         return (r: Double(rgb.0*255), g: Double(rgb.1*255), b: Double(rgb.2*255))
     }
 
@@ -206,7 +206,7 @@ public class Tortoise {
 
     public func endFill() {
         if let path = state.fillPath {
-            pathDrawable?.fillPath(path: path, color: state.fillColor)
+            pathDrawable?.fillPath(path: path, color: state.pen.fillColor)
         }
         state.fillPath = nil
     }
@@ -232,7 +232,7 @@ public class Tortoise {
     }
 
     public var isVisible: Bool {
-        return state.isVisible
+        return state.shape.isVisible
     }
 
     public func shape(_ shape: Shape) {
