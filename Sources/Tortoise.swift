@@ -12,22 +12,19 @@ public class Tortoise {
 
     public init(canvas: Canvas) {
         self.canvas = canvas
+        delegate?.initialized(self.state)
     }
 
     // MARK: - [Motion] Move and Draw
 
     public func forward(_ distance: Double) {
+        let oldPosition = state.position
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
             .rotated(by: -state.heading.radian.value)
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
-
-        if state.pen.isDown {
-            let path = [state.position, newPosition]
-            pathDrawable?.strokePath(path: path, color: state.pen.color, lineWidth: state.pen.width)
-            state.fillPath?.append(newPosition)
-        }
-
         state.position = newPosition
+        state.fillPath?.append(newPosition)
+        delegate?.positionChanged(state, from: oldPosition)
     }
 
     public func backword(_ distance: Double) {
@@ -205,9 +202,7 @@ public class Tortoise {
     }
 
     public func endFill() {
-        if let path = state.fillPath {
-            pathDrawable?.fillPath(path: path, color: state.pen.fillColor)
-        }
+        delegate?.fillRequested(state)
         state.fillPath = nil
     }
 
@@ -249,8 +244,8 @@ public class Tortoise {
 
     let canvas: Canvas
 
-    var pathDrawable: PathDrawable? {
-        return canvas as? PathDrawable
+    var delegate: TortoiseDelegate? {
+        return canvas as? TortoiseDelegate
     }
 
 }

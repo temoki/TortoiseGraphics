@@ -1,7 +1,7 @@
 import Foundation
 import CoreGraphics
 
-public class ImageCanvas: Canvas, PathDrawable {
+public class ImageCanvas: Canvas, TortoiseDelegate {
 
     public init(size: CGSize, scale: CGFloat = 1, color: Color? = nil) {
         self.size = size
@@ -29,23 +29,37 @@ public class ImageCanvas: Canvas, PathDrawable {
 
     public var color: Color
 
-    // MARK: - PathDrawable
+    // MARK: - TortoiseDelegate
 
-    func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat) {
+    func initialized(_ state: TortoiseState) {
+    }
+
+    func positionChanged(_ state: TortoiseState, from position: CGPoint) {
+        guard state.pen.isDown else { return }
         context.saveGState()
-        context.setStrokeColor(color)
+        context.setStrokeColor(state.pen.color)
         context.setFillColor(CGColor.clear)
-        context.setLineWidth(lineWidth)
-        context.addPath(path.toCGPath())
+        context.setLineWidth(state.pen.width)
+        context.addPath([position, state.position].toCGPath())
         context.strokePath()
         context.restoreGState()
     }
 
-    func fillPath(path: [CGPoint], color: CGColor) {
+    func headingChanged(_ state: TortoiseState, from heading: Degree) {
+    }
+
+    func penChanged(_ state: TortoiseState, from pen: Pen) {
+    }
+
+    func shapeChanged(_ state: TortoiseState, from shape: Shape) {
+    }
+
+    func fillRequested(_ state: TortoiseState) {
+        guard let fillPath = state.fillPath else { return }
         context.saveGState()
         context.setStrokeColor(CGColor.clear)
-        context.setFillColor(color)
-        context.addPath(path.toCGPath())
+        context.setFillColor(state.pen.fillColor)
+        context.addPath(fillPath.toCGPath())
         context.fillPath()
         context.restoreGState()
     }

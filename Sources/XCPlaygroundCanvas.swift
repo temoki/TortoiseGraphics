@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
+public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public init(frame: CGRect, color: Color? = nil) {
         self.color = color ?? Color.white
@@ -32,75 +32,115 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
 
     public var color: Color {
         didSet {
-            addCommand(.background(color: color))
+            addEvent(.backgroundChanged(color))
         }
     }
 
-    // MARK: - Path Drawable
+    // MARK: - TortoiseDelegate
 
-    func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat) {
-        addCommand(.stroke(path: path, color: color, lineWidth: lineWidth))
+    func initialized(_ state: TortoiseState) {
+        addEvent(.initialized(state))
+    }
+    
+    func positionChanged(_ state: TortoiseState, from position: CGPoint) {
+        addEvent(.positionChanged(state, position))
+    }
+    
+    func headingChanged(_ state: TortoiseState, from heading: Degree) {
+        addEvent(.headingChanged(state, heading))
+    }
+    
+    func penChanged(_ state: TortoiseState, from pen: Pen) {
+        addEvent(.penChanged(state, pen))
+    }
+    
+    func shapeChanged(_ state: TortoiseState, from shape: Shape) {
+        addEvent(.shapeChanged(state, shape))
+    }
+    
+    func fillRequested(_ state: TortoiseState) {
+        addEvent(.fillRequested(state))
     }
 
-    func fillPath(path: [CGPoint], color: CGColor) {
-        addCommand(.fill(path: path, color: color))
-    }
-
-    private enum DrawCommand {
-        case stroke(path: [CGPoint], color: CGColor, lineWidth: CGFloat)
-        case fill(path: [CGPoint], color: CGColor)
-        case background(color: Color)
+    private enum Event {
+        case initialized(TortoiseState)
+        case positionChanged(TortoiseState, CGPoint)
+        case headingChanged(TortoiseState, Degree)
+        case penChanged(TortoiseState, Pen)
+        case shapeChanged(TortoiseState, Shape)
+        case fillRequested(TortoiseState)
+        case backgroundChanged(Color)
     }
 
     private let lock = NSLock()
-    private var commandQueue: [DrawCommand] = []
-    private var isDrawing: Bool = false
+    private var eventQueue: [Event] = []
+    private var isHandling: Bool = false
 
     private let imageCanvas: ImageCanvas
 
-    private func addCommand(_ command: DrawCommand) {
+    private func addEvent(_ event: Event) {
         print(#function)
         lock.lock()
-        commandQueue.append(command)
-        if isDrawing {
+        eventQueue.append(event)
+        if isHandling {
             lock.unlock()
         } else {
-            isDrawing = true
+            isHandling = true
             lock.unlock()
-            doNextCommand()
+            handleNextEvent()
         }
     }
 
-    private func doNextCommand() {
+    private func handleNextEvent() {
         print(#function)
         lock.lock()
-        let popped = commandQueue.isEmpty ? nil : commandQueue.removeFirst()
+        let popped = eventQueue.isEmpty ? nil : eventQueue.removeFirst()
         if let popped = popped {
             lock.unlock()
-            doCommand(popped) { [weak self] in
-                self?.doNextCommand()
+            handleEvent(popped) { [weak self] in
+                self?.handleNextEvent()
             }
         } else {
-            isDrawing = false
+            isHandling = false
             lock.unlock()
         }
     }
 
-    private func doCommand(_ command: DrawCommand, completion: @escaping () -> Void) {
-        switch command {
-        case .stroke(let path, let color, let lineWidth):
-            strokePath(path: path, color: color, lineWidth: lineWidth, completion: completion)
-        case .fill(let path, let color):
-            fillPath(path: path, color: color, completion: completion)
-        case .background(let color):
-            imageCanvas.color = color
-            layer.contents = imageCanvas.cgImage
+    private func handleEvent(_ event: Event, completion: @escaping () -> Void) {
+        switch event {
+        case .initialized(let state):
             completion()
+            
+        case .positionChanged(let state, let position):
+            handlePositionChangedEvent(state: state, from: position, completion: completion)
+            
+        case .headingChanged(let state, let heading):
+            completion()
+
+        case .penChanged(let state, let pen):
+            completion()
+
+        case .shapeChanged(let state, let shape):
+            completion()
+
+        case .fillRequested(let state):
+            handleFillRequestedEvent(state: state, completion: completion)
+
+        case .backgroundChanged(let color):
+            handleBackgroundChangedEvent(color: color, completion: completion)
         }
     }
+    
+    private func handleBackgroundChangedEvent(color: Color, completion: () -> Void) {
+        imageCanvas.color = color
+        layer.contents = imageCanvas.cgImage
+        completion()
+    }
 
-    private func strokePath(path: [CGPoint], color: CGColor, lineWidth: CGFloat, completion: @escaping () -> Void) {
-        var pathTransform = CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
+    private func handlePositionChangedEvent(state: TortoiseState, from position: CGPoint, completion: @escaping () -> Void) {
+        var pathTransform = makeTransform()
+
+        let path = [position, state.position]
         let toPath = path.toCGPath().copy(using: &pathTransform)
         let fromPath = path.first?.toCGPath().copy(using: &pathTransform)
 
@@ -109,13 +149,13 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
         shapeLayer.frame = CGRect(origin: .zero, size: self.size)
         shapeLayer.path = fromPath
         shapeLayer.backgroundColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = color
+        shapeLayer.strokeColor = state.pen.color
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineWidth = state.pen.width
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
-            self?.imageCanvas.strokePath(path: path, color: color, lineWidth: lineWidth)
+            self?.imageCanvas.positionChanged(state, from: position)
             self?.layer.contents = self?.imageCanvas.cgImage
             shapeLayer.removeFromSuperlayer()
             completion()
@@ -130,9 +170,14 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
         CATransaction.commit()
     }
 
-    private func fillPath(path: [CGPoint], color: CGColor, completion: @escaping () -> Void) {
-        var pathTransform = CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
-        let cgPath = path.toCGPath().copy(using: &pathTransform)
+    private func handleFillRequestedEvent(state: TortoiseState, completion: @escaping () -> Void) {
+        guard let fillPath = state.fillPath else {
+            completion()
+            return
+        }
+        
+        var pathTransform = makeTransform()
+        let cgPath = fillPath.toCGPath().copy(using: &pathTransform)
 
         let shapeLayer = CAShapeLayer()
         self.layer.addSublayer(shapeLayer)
@@ -144,19 +189,23 @@ public class XCPlaygroundCanvas: UIView, Canvas, PathDrawable {
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
-            self?.imageCanvas.fillPath(path: path, color: color)
+            self?.imageCanvas.fillRequested(state)
             self?.layer.contents = self?.imageCanvas.cgImage
             shapeLayer.removeFromSuperlayer()
             completion()
         }
 
         let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
-        animation.toValue = color
-        animation.duration = 1
+        animation.toValue = state.pen.fillColor
+        animation.duration = 0.2
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.autoreverses = false
         shapeLayer.add(animation, forKey: "fill-animation")
         CATransaction.commit()
+    }
+    
+    private func makeTransform() -> CGAffineTransform {
+        return CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
     }
 
 }
