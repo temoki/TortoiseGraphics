@@ -12,7 +12,7 @@ struct TortoiseState {
 
     var position: CGPoint = .zero
 
-    var heading: Degree = Degree(0)
+    var heading: Angle = Degree(0)
 
     var pen: Pen = Pen()
 

@@ -20,7 +20,7 @@ public class Tortoise {
     public func forward(_ distance: Double) {
         let oldPosition = state.position
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
-            .rotated(by: -state.heading.radian.value)
+            .rotated(by: -state.heading.radian)
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
         state.position = newPosition
         state.fillPath?.append(newPosition)
@@ -32,7 +32,9 @@ public class Tortoise {
     }
 
     public func right(_ angle: Double) {
-        state.heading = Degree(state.heading.value + CGFloat(angle))
+        let oldHeading = state.heading
+        state.heading = Degree(state.heading.degree + CGFloat(angle))
+        delegate?.headingChanged(state, from: oldHeading)
     }
 
     public func left(_ angle: Double) {
@@ -95,7 +97,7 @@ public class Tortoise {
 
     public func towards(_ x: Double, _ y: Double) -> Double {
         let tan = CGFloat((y - Double(state.position.y)) / (x - Double(state.position.x)))
-        return 90 - Double(Radian(atan(tan)).degree.value)
+        return 90 - Double(Radian(atan(tan)).degree)
     }
 
     public func towards(_ position: Vec2D) -> Double {

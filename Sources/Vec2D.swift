@@ -38,7 +38,7 @@ public func abs(_ vec: Vec2D) -> Double {
 extension Vec2D {
 
     public func rotate(_ degree: Double) -> Vec2D {
-        let radian = Double(Degree(CGFloat(degree)).radian.value)
+        let radian = Double(Degree(CGFloat(degree)).radian)
         return Vec2D(x * cos(radian) - y * sin(radian),
                      x * sin(radian) + y * cos(radian))
     }

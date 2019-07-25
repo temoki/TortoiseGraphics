@@ -14,7 +14,7 @@ protocol TortoiseDelegate {
 
     func positionChanged(_ state: TortoiseState, from position: CGPoint)
 
-    func headingChanged(_ state: TortoiseState, from heading: Degree)
+    func headingChanged(_ state: TortoiseState, from heading: Angle)
 
     func penChanged(_ state: TortoiseState, from pen: Pen)
 

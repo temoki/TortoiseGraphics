@@ -45,7 +45,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         context.restoreGState()
     }
 
-    func headingChanged(_ state: TortoiseState, from heading: Degree) {
+    func headingChanged(_ state: TortoiseState, from heading: Angle) {
     }
 
     func penChanged(_ state: TortoiseState, from pen: Pen) {

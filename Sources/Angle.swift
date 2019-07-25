@@ -1,57 +1,35 @@
 import CoreGraphics
 
-struct Degree {
+protocol Angle {
 
-    var value: CGFloat {
-        didSet {
-            self.value = Degree.correct(self.value)
-        }
-    }
+    var value: CGFloat { get set }
 
-    init(_ degree: CGFloat) {
-        self.value = Degree.correct(degree)
-    }
+    var degree: CGFloat { get }
 
-    var radian: Radian {
-        return Radian(value * .pi / 180)
-    }
-
-    private static func correct(_ value: CGFloat) -> CGFloat {
-        let max: CGFloat = 360
-        if value < 0 {
-            return correct(value + max)
-        } else if value >= max {
-            return correct(value - max)
-        }
-        return value
-    }
+    var radian: CGFloat { get }
 
 }
 
-struct Radian {
+struct Degree: Angle {
 
-    var value: CGFloat {
-        didSet {
-            self.value = Radian.correct(self.value)
-        }
-    }
+    init(_ value: CGFloat) { self.value = value }
 
-    init(_ radian: CGFloat) {
-        self.value = Radian.correct(radian)
-    }
+    var value: CGFloat
 
-    var degree: Degree {
-        return Degree(value * 180 / .pi)
-    }
+    var degree: CGFloat { return value }
 
-    private static func correct(_ value: CGFloat) -> CGFloat {
-        let max: CGFloat = 2 * .pi
-        if value < 0 {
-            return correct(value + max)
-        } else if value >= max {
-            return correct(value - max)
-        }
-        return value
-    }
+    var radian: CGFloat { return value * (.pi / 180.0) }
+
+}
+
+struct Radian: Angle {
+
+    init(_ value: CGFloat) { self.value = value }
+
+    var value: CGFloat
+
+    var degree: CGFloat { return value * (180.0 / .pi) }
+
+    var radian: CGFloat { return value }
 
 }
