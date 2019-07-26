@@ -55,13 +55,14 @@ public class Tortoise {
 
     public func setHeading(_ heading: Double) {
         let oldHeading = state.heading
-        state.heading = Degree(state.heading.degree + CGFloat(heading))
+        state.heading = Degree(CGFloat(heading))
         delegate?.headingChanged(state, from: oldHeading)
 
     }
 
     public func home() {
-        // TODO: impl
+        setPosition(0, 0)
+        setHeading(0)
     }
 
     public func dot(_ size: Double? = nil) {
@@ -125,18 +126,21 @@ public class Tortoise {
     // MARK: - [Pen control] Drawing state
 
     public func penDown() {
+        guard state.pen.isDown != true else { return }
         let oldPen = state.pen
         state.pen.isDown = true
         delegate?.penChanged(state, from: oldPen)
     }
 
     public func penUp() {
+        guard state.pen.isDown != false else { return }
         let oldPen = state.pen
         state.pen.isDown = false
         delegate?.penChanged(state, from: oldPen)
     }
 
     public func penSize(_ size: Double) {
+        guard state.pen.width != CGFloat(size) else { return }
         let oldPen = state.pen
         state.pen.width = CGFloat(size)
         delegate?.penChanged(state, from: oldPen)
@@ -228,13 +232,15 @@ public class Tortoise {
     // MARK: - [Tortoise state] Visiblity
 
     public func showTortoise() {
-        var oldShape = state.shape
+        guard state.shape.isVisible != true else { return }
+        let oldShape = state.shape
         state.shape.isVisible = true
         delegate?.shapeChanged(state, from: oldShape)
     }
 
     public func hideTortoise() {
-        var oldShape = state.shape
+        guard state.shape.isVisible != false else { return }
+        let oldShape = state.shape
         state.shape.isVisible = false
         delegate?.shapeChanged(state, from: oldShape)
     }
@@ -244,7 +250,8 @@ public class Tortoise {
     }
 
     public func shape(_ shape: Shape) {
-        var oldShape = state.shape
+        guard state.shape.name != shape.name else { return }
+        let oldShape = state.shape
         state.shape = shape
         delegate?.shapeChanged(state, from: oldShape)
     }
