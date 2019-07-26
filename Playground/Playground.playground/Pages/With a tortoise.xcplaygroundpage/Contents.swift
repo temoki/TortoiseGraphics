@@ -12,13 +12,6 @@ PlaygroundPage.current.needsIndefiniteExecution = true
 
 let t = Tortoise(canvas: canvas)
 
-t.beginFill()
-t.forward(30)
-t.right(90)
-t.forward(30)
-t.right(90)
-t.forward(30)
-t.right(90)
-t.forward(30)
-t.right(90)
-t.endFill()
+t.fd(100)
+t.rt(90)
+t.fd(100)

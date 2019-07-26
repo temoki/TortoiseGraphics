@@ -185,6 +185,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             pathAnimation.duration = animationDuration
             pathAnimation.timingFunction = animationTimingF
             pathAnimation.autoreverses = false
+            pathAnimation.fillMode = .forwards
+            pathAnimation.isRemovedOnCompletion = false
             pathLayer.add(pathAnimation, forKey: "path-animation")
         }
 
@@ -193,6 +195,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         shapeAnimation.duration = animationDuration
         shapeAnimation.timingFunction = animationTimingF
         shapeAnimation.autoreverses = false
+        shapeAnimation.fillMode = .forwards
+        shapeAnimation.isRemovedOnCompletion = false
         shapeLayer.add(shapeAnimation, forKey: "shape-animation")
 
         CATransaction.commit()
@@ -206,21 +210,21 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             completion()
         }
 
-//        let animationDuration = CFTimeInterval(1)
-//        let animationTimingF = CAMediaTimingFunction(name: .linear)
-//
-//        let fromTransform = shapeLayer.transform
-//        var toTransform = CATransform3D()
-//        toTransform = CATransform3DTranslate(fromTransform, state.position.x, state.position.y, 0.0)
-//        toTransform = CATransform3DRotate(fromTransform, -state.heading.radian, 0.0, 0.0, 1.0)
-//        toTransform = CATransform3DTranslate(fromTransform, -state.position.x, state.position.y, 0.0)
-//
-//        let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
-//        shapeAnimation.toValue = toTransform
-//        shapeAnimation.duration = animationDuration
-//        shapeAnimation.timingFunction = animationTimingF
-//        shapeAnimation.autoreverses = false
-//        shapeLayer.add(shapeAnimation, forKey: "shape-animation")
+        let fromTransform = CATransform3DMakeRotation(heading.radian, 0, 0, 1)
+        let toTransform = CATransform3DMakeRotation(state.heading.radian, 0, 0, 1)
+
+        let animationDuration = CFTimeInterval(1)
+        let animationTimingF = CAMediaTimingFunction(name: .linear)
+
+        let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
+        shapeAnimation.fromValue = fromTransform
+        shapeAnimation.toValue = toTransform
+        shapeAnimation.duration = animationDuration
+        shapeAnimation.timingFunction = animationTimingF
+        shapeAnimation.autoreverses = false
+        shapeAnimation.fillMode = .forwards
+        shapeAnimation.isRemovedOnCompletion = false
+        shapeLayer.add(shapeAnimation, forKey: "shape-animation")
 
         CATransaction.commit()
     }
@@ -234,19 +238,19 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         var pathTransform = makePathTransform()
         let cgPath = fillPath.toCGPath().copy(using: &pathTransform)
 
-        let shapeLayer = CAShapeLayer()
+        let fillLayer = CAShapeLayer()
         self.layer.addSublayer(shapeLayer)
-        shapeLayer.frame = CGRect(origin: .zero, size: self.size)
-        shapeLayer.path = cgPath
-        shapeLayer.backgroundColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor.clear.cgColor
-        shapeLayer.fillColor = UIColor.clear.cgColor
+        fillLayer.frame = CGRect(origin: .zero, size: .zero)
+        fillLayer.path = cgPath
+        fillLayer.backgroundColor = UIColor.clear.cgColor
+        fillLayer.strokeColor = UIColor.clear.cgColor
+        fillLayer.fillColor = UIColor.clear.cgColor
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { [weak self] in
             self?.imageCanvas.fillRequested(state)
             self?.layer.contents = self?.imageCanvas.cgImage
-            shapeLayer.removeFromSuperlayer()
+            fillLayer.removeFromSuperlayer()
             completion()
         }
 
@@ -255,7 +259,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         animation.duration = 0.2
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.autoreverses = false
-        shapeLayer.add(animation, forKey: "fill-animation")
+        fillLayer.add(animation, forKey: "fill-animation")
         CATransaction.commit()
     }
 
