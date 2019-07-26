@@ -15,7 +15,6 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         self.shapeLayer = CAShapeLayer()
         super.init(frame: frame)
         layer.contents = imageCanvas.cgImage
-        shapeLayer.position = CGPoint.zero.applying(makePathTransform())
         layer.addSublayer(shapeLayer)
     }
 
@@ -122,7 +121,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleHeadingChangedEvent(state: state, from: heading, completion: completion)
 
         case .penChanged(let state, let pen):
-            completion()
+            handlePenChangedEvent(state: state, from: pen, completion: completion)
 
         case .shapeChanged(let state, let shape):
             completion()
@@ -135,98 +134,93 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         }
     }
 
-    private func handleInitializedEvent(state: TortoiseState, completion: () -> Void) {
-        let shapeSize = state.pen.width * 10
-        let shapePath = CGMutablePath()
-        shapePath.addPath(state.shape.scaledPath(by: shapeSize), transform: makeShapeTransform())
-        shapePath.closeSubpath()
-        shapeLayer.position = state.position.applying(makePathTransform())
-        shapeLayer.path = shapePath
-        shapeLayer.strokeColor = state.pen.color
-        shapeLayer.lineWidth = state.pen.width
-        shapeLayer.fillColor = state.pen.fillColor
-        shapeLayer.backgroundColor = UIColor.red.cgColor
-        completion()
+    private func handleInitializedEvent(state: TortoiseState, completion: @escaping () -> Void) {
+        CATransaction.transactionWithoutAnimation({
+            let shapeSize = state.pen.width * 10
+            let shapePath = CGMutablePath()
+            shapePath.addPath(state.shape.scaledPath(by: shapeSize), transform: makeShapeTransform())
+            shapePath.closeSubpath()
+            shapeLayer.position = state.position.applying(makePathTransform())
+            shapeLayer.transform = CATransform3DMakeRotation(state.heading.radian, 0, 0, 1)
+            shapeLayer.path = shapePath
+            shapeLayer.strokeColor = state.pen.color
+            shapeLayer.lineWidth = state.pen.width
+            shapeLayer.fillColor = state.pen.fillColor
+        }, completion: completion)
     }
 
     private func handlePositionChangedEvent(state: TortoiseState, from position: CGPoint, completion: @escaping () -> Void) {
         let pathTransform = makePathTransform()
-
         let fromPos = position.applying(pathTransform)
         let toPos = state.position.applying(pathTransform)
-
         let fromPath = fromPos.toCGPath()
         let toPath = [fromPos, toPos].toCGPath()
-
         let pathLayer: CAShapeLayer? = state.pen.isDown ? CAShapeLayer() : nil
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] in
+        CATransaction.transaction({
+            let animationDuration = CFTimeInterval(1)
+
+            if let pathLayer = pathLayer {
+                layer.addSublayer(pathLayer)
+                pathLayer.frame = CGRect(origin: .zero, size: self.size)
+                pathLayer.path = fromPath
+                pathLayer.backgroundColor = UIColor.clear.cgColor
+                pathLayer.strokeColor = state.pen.color
+                pathLayer.fillColor = UIColor.clear.cgColor
+                pathLayer.lineWidth = state.pen.width
+
+                let pathAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
+                pathAnimation.toValue = toPath
+                pathAnimation.duration = animationDuration
+                pathLayer.add(pathAnimation, forKey: "path")
+            }
+
+            let shapeAnimation = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.position))
+            shapeAnimation.path = toPath
+            shapeAnimation.duration = animationDuration
+            shapeLayer.add(shapeAnimation, forKey: "shape-move")
+
+        }, completion: { [weak self] in
             self?.imageCanvas.positionChanged(state, from: position)
             self?.layer.contents = self?.imageCanvas.cgImage
             pathLayer?.removeFromSuperlayer()
-            completion()
-        }
 
-        let animationDuration = CFTimeInterval(1)
-        let animationTimingF = CAMediaTimingFunction(name: .linear)
-
-        if let pathLayer = pathLayer {
-            layer.addSublayer(pathLayer)
-            pathLayer.frame = CGRect(origin: .zero, size: self.size)
-            pathLayer.path = fromPath
-            pathLayer.backgroundColor = UIColor.clear.cgColor
-            pathLayer.strokeColor = state.pen.color
-            pathLayer.fillColor = UIColor.clear.cgColor
-            pathLayer.lineWidth = state.pen.width
-
-            let pathAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
-            pathAnimation.toValue = toPath
-            pathAnimation.duration = animationDuration
-            pathAnimation.timingFunction = animationTimingF
-            pathAnimation.autoreverses = false
-            pathAnimation.fillMode = .forwards
-            pathAnimation.isRemovedOnCompletion = false
-            pathLayer.add(pathAnimation, forKey: "path-animation")
-        }
-
-        let shapeAnimation = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.position))
-        shapeAnimation.path = toPath
-        shapeAnimation.duration = animationDuration
-        shapeAnimation.timingFunction = animationTimingF
-        shapeAnimation.autoreverses = false
-        shapeAnimation.fillMode = .forwards
-        shapeAnimation.isRemovedOnCompletion = false
-        shapeLayer.add(shapeAnimation, forKey: "shape-animation")
-
-        CATransaction.commit()
+            CATransaction.transactionWithoutAnimation({ [weak self] in
+                self?.shapeLayer.position = toPos
+            }, completion: completion)
+        })
     }
 
     private func handleHeadingChangedEvent(state: TortoiseState, from heading: Angle, completion: @escaping () -> Void) {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] in
-            self?.imageCanvas.headingChanged(state, from: heading)
-            self?.layer.contents = self?.imageCanvas.cgImage
-            completion()
-        }
-
-        let fromTransform = CATransform3DMakeRotation(heading.radian, 0, 0, 1)
         let toTransform = CATransform3DMakeRotation(state.heading.radian, 0, 0, 1)
 
-        let animationDuration = CFTimeInterval(1)
-        let animationTimingF = CAMediaTimingFunction(name: .linear)
+        CATransaction.transaction({
+            let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
+            shapeAnimation.toValue = toTransform
+            shapeAnimation.duration = 0.2
+            shapeLayer.add(shapeAnimation, forKey: "shape-rotation")
 
-        let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
-        shapeAnimation.fromValue = fromTransform
-        shapeAnimation.toValue = toTransform
-        shapeAnimation.duration = animationDuration
-        shapeAnimation.timingFunction = animationTimingF
-        shapeAnimation.autoreverses = false
-        shapeAnimation.fillMode = .forwards
-        shapeAnimation.isRemovedOnCompletion = false
-        shapeLayer.add(shapeAnimation, forKey: "shape-animation")
+        }, completion: { [weak self] in
+            self?.imageCanvas.headingChanged(state, from: heading)
+            self?.layer.contents = self?.imageCanvas.cgImage
 
-        CATransaction.commit()
+            CATransaction.transactionWithoutAnimation({ [weak self] in
+                self?.shapeLayer.transform = toTransform
+            }, completion: completion)
+        })
+    }
+
+    private func handlePenChangedEvent(state: TortoiseState, from pen: Pen, completion: @escaping () -> Void) {
+        CATransaction.transaction({
+            shapeLayer.strokeColor = state.pen.color
+            shapeLayer.lineWidth = state.pen.width
+            shapeLayer.fillColor = state.pen.fillColor
+
+        }, completion: { [weak self] in
+            self?.imageCanvas.penChanged(state, from: pen)
+            self?.layer.contents = self?.imageCanvas.cgImage
+            completion()
+        })
     }
 
     private func handleFillRequestedEvent(state: TortoiseState, completion: @escaping () -> Void) {
@@ -246,21 +240,18 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         fillLayer.strokeColor = UIColor.clear.cgColor
         fillLayer.fillColor = UIColor.clear.cgColor
 
-        CATransaction.begin()
-        CATransaction.setCompletionBlock { [weak self] in
+        CATransaction.transaction({
+            let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
+            animation.toValue = state.pen.fillColor
+            animation.duration = 0.2
+            fillLayer.add(animation, forKey: "fill-path")
+
+        }, completion: { [weak self] in
             self?.imageCanvas.fillRequested(state)
             self?.layer.contents = self?.imageCanvas.cgImage
             fillLayer.removeFromSuperlayer()
             completion()
-        }
-
-        let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
-        animation.toValue = state.pen.fillColor
-        animation.duration = 0.2
-        animation.timingFunction = CAMediaTimingFunction(name: .linear)
-        animation.autoreverses = false
-        fillLayer.add(animation, forKey: "fill-animation")
-        CATransaction.commit()
+        })
     }
 
     private func handleBackgroundChangedEvent(color: Color, completion: () -> Void) {

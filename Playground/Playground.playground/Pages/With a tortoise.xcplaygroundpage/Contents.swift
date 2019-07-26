@@ -11,7 +11,5 @@ PlaygroundPage.current.liveView = canvas
 PlaygroundPage.current.needsIndefiniteExecution = true
 
 let t = Tortoise(canvas: canvas)
-
-t.fd(100)
-t.rt(90)
-t.fd(100)
+t.fd(90)
+t.hideTortoise()

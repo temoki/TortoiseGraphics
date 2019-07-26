@@ -34,6 +34,21 @@ extension Tortoise {
         left(angle)
     }
 
+    /// Alias to `setPosition()`
+    public func setPos(_ x: Double, _ y: Double) {
+        setPosition(x, y)
+    }
+
+    /// Alias to `setPosition()`
+    public func goto(_ x: Double, _ y: Double) {
+        setPosition(x, y)
+    }
+
+    // Alias to `setHeading()`
+    public func setH(_ heading: Double) {
+        setHeading(heading)
+    }
+
     /// Alias to `penDown()`
     public func pd() {
         penDown()

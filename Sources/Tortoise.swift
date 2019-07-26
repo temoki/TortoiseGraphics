@@ -18,13 +18,10 @@ public class Tortoise {
     // MARK: - [Motion] Move and Draw
 
     public func forward(_ distance: Double) {
-        let oldPosition = state.position
         let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
             .rotated(by: -state.heading.radian)
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
-        state.position = newPosition
-        state.fillPath?.append(newPosition)
-        delegate?.positionChanged(state, from: oldPosition)
+        setPosition(Double(newPosition.x), Double(newPosition.y))
     }
 
     public func backword(_ distance: Double) {
@@ -32,9 +29,8 @@ public class Tortoise {
     }
 
     public func right(_ angle: Double) {
-        let oldHeading = state.heading
-        state.heading = Degree(state.heading.degree + CGFloat(angle))
-        delegate?.headingChanged(state, from: oldHeading)
+        let newHeading = state.heading.degree + CGFloat(angle)
+        setHeading(Double(newHeading))
     }
 
     public func left(_ angle: Double) {
@@ -42,31 +38,26 @@ public class Tortoise {
     }
 
     public func setPosition(_ x: Double, _ y: Double) {
-        // TODO: impl
-    }
-
-    public func setPos(_ x: Double, _ y: Double) {
-        // TODO: impl
-    }
-
-    public func goto(_ x: Double, _ y: Double) {
-        // TODO: impl
+        let oldPosition = state.position
+        let newPosition = CGPoint(x: x, y: y)
+        state.position = newPosition
+        state.fillPath?.append(newPosition)
+        delegate?.positionChanged(state, from: oldPosition)
     }
 
     public func setX(_ x: Double) {
-        // TODO: impl
+        setPosition(x, Double(state.position.y))
     }
 
     public func setY(_ y: Double) {
-        // TODO: impl
+        setPosition(Double(state.position.x), y)
     }
 
     public func setHeading(_ heading: Double) {
-        // TODO: impl
-    }
+        let oldHeading = state.heading
+        state.heading = Degree(state.heading.degree + CGFloat(heading))
+        delegate?.headingChanged(state, from: oldHeading)
 
-    public func setH(_ heading: Double) {
-        // TODO: impl
     }
 
     public func home() {
@@ -82,7 +73,7 @@ public class Tortoise {
     }
 
     public func `repeat`(_ times: Int, _ block: () -> Void) {
-        // TODO: impl
+        (0 ..< times).forEach { _ in block() }
     }
 
     // MARK: - [Motion] Tell tortoise's state
@@ -134,15 +125,22 @@ public class Tortoise {
     // MARK: - [Pen control] Drawing state
 
     public func penDown() {
-        // TODO: impl
+        let oldPen = state.pen
+        state.pen.isDown = true
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public func penUp() {
-        // TODO: impl
+        let oldPen = state.pen
+        state.pen.isDown = false
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public func penSize(_ size: Double) {
-        // TODO: impl
+        let oldPen = state.pen
+        state.pen.width = CGFloat(size)
+        delegate?.penChanged(state, from: oldPen)
+
     }
 
     public var isDown: Bool {
@@ -156,16 +154,21 @@ public class Tortoise {
     // MARK: - [Pen control] Color control
 
     public func penColor(_ color: Color) {
-        // TODO: impl
+        let oldPen = state.pen
+        state.pen.color = color.cgColor
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
-        // TODO: impl
-        //add(command: CommandColor(.pen, red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255)))
+        let oldPen = state.pen
+        state.pen.color = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public func penColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        //add(command: CommandColor(.pen, red: CGFloat(rgb.r/255), green: CGFloat(rgb.g/255), blue: CGFloat(rgb.b/255)))
+        let oldPen = state.pen
+        state.pen.color = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public var penColor: (r: Double, g: Double, b: Double) {
@@ -174,18 +177,22 @@ public class Tortoise {
     }
 
     public func fillColor(_ color: Color) {
-        // TODO: impl
-        //add(command: CommandColor(.fill, color: color))
+        let oldPen = state.pen
+        state.pen.fillColor = color.cgColor
+        delegate?.penChanged(state, from: oldPen)
+
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
-        // TODO: impl
-        //add(command: CommandColor(.fill, red: CGFloat(r/255), green: CGFloat(g/255), blue: CGFloat(b/255)))
+        let oldPen = state.pen
+        state.pen.fillColor = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public func fillColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        // TODO: impl
-        //add(command: CommandColor(.fill, red: CGFloat(rgb.r/255), green: CGFloat(rgb.g/255), blue: CGFloat(rgb.b/255)))
+        let oldPen = state.pen
+        state.pen.fillColor = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
+        delegate?.penChanged(state, from: oldPen)
     }
 
     public var fillColor: (r: Double, g: Double, b: Double) {
@@ -221,11 +228,15 @@ public class Tortoise {
     // MARK: - [Tortoise state] Visiblity
 
     public func showTortoise() {
-        // TODO: impl
+        var oldShape = state.shape
+        state.shape.isVisible = true
+        delegate?.shapeChanged(state, from: oldShape)
     }
 
     public func hideTortoise() {
-        // TODO: impl
+        var oldShape = state.shape
+        state.shape.isVisible = false
+        delegate?.shapeChanged(state, from: oldShape)
     }
 
     public var isVisible: Bool {
@@ -233,7 +244,9 @@ public class Tortoise {
     }
 
     public func shape(_ shape: Shape) {
-        // TODO: impl
+        var oldShape = state.shape
+        state.shape = shape
+        delegate?.shapeChanged(state, from: oldShape)
     }
 
     public var shape: Shape {

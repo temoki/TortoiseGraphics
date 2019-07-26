@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14067E7E22EB2BFD00B96976 /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14067E7D22EB2BFD00B96976 /* CATransaction+.swift */; };
 		1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407A92722E8A0EA006D96F9 /* Pen.swift */; };
 		140876C222DE10D000DCFC59 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C122DE10D000DCFC59 /* Canvas.swift */; };
 		140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14067E7D22EB2BFD00B96976 /* CATransaction+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+.swift"; sourceTree = "<group>"; };
 		1407A92722E8A0EA006D96F9 /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		140876C122DE10D000DCFC59 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPlaygroundCanvas.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				1417716022DB71A000BC1A34 /* TortoiseState.swift */,
 				140876C522DE18AB00DCFC59 /* TortoiseDelegate.swift */,
 				1409A78822E5A28800DE0610 /* CGPoint+.swift */,
+				14067E7D22EB2BFD00B96976 /* CATransaction+.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14067E7E22EB2BFD00B96976 /* CATransaction+.swift in Sources */,
 				140876C622DE18AB00DCFC59 /* TortoiseDelegate.swift in Sources */,
 				140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */,
 				14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */,
