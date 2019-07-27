@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
+public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
 
     public init(frame: CGRect, color: Color? = nil) {
         self.color = color ?? Color.white
@@ -44,20 +44,20 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         addEvent(.initialized(state))
     }
 
-    func positionChanged(_ state: TortoiseState, from position: CGPoint) {
-        addEvent(.positionChanged(state, position))
+    func positionChanged(_ state: TortoiseState) {
+        addEvent(.positionChanged(state))
     }
 
-    func headingChanged(_ state: TortoiseState, from heading: Angle) {
-        addEvent(.headingChanged(state, heading))
+    func headingChanged(_ state: TortoiseState) {
+        addEvent(.headingChanged(state))
     }
 
-    func penChanged(_ state: TortoiseState, from pen: Pen) {
-        addEvent(.penChanged(state, pen))
+    func penChanged(_ state: TortoiseState) {
+        addEvent(.penChanged(state))
     }
 
-    func shapeChanged(_ state: TortoiseState, from shape: Shape) {
-        addEvent(.shapeChanged(state, shape))
+    func shapeChanged(_ state: TortoiseState) {
+        addEvent(.shapeChanged(state))
     }
 
     func fillRequested(_ state: TortoiseState) {
@@ -66,10 +66,10 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private enum Event {
         case initialized(TortoiseState)
-        case positionChanged(TortoiseState, CGPoint)
-        case headingChanged(TortoiseState, Angle)
-        case penChanged(TortoiseState, Pen)
-        case shapeChanged(TortoiseState, Shape)
+        case positionChanged(TortoiseState)
+        case headingChanged(TortoiseState)
+        case penChanged(TortoiseState)
+        case shapeChanged(TortoiseState)
         case fillRequested(TortoiseState)
         case backgroundChanged(Color)
     }
@@ -111,22 +111,16 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         switch event {
         case .initialized(let state):
             handleInitializedEvent(state: state, completion: completion)
-
-        case .positionChanged(let state, let position):
-            handlePositionChangedEvent(state: state, from: position, completion: completion)
-
-        case .headingChanged(let state, let heading):
-            handleHeadingChangedEvent(state: state, from: heading, completion: completion)
-
-        case .penChanged(let state, let pen):
-            handlePenChangedEvent(state: state, from: pen, completion: completion)
-
-        case .shapeChanged(let state, let shape):
-            handleShapeChangedEvent(state: state, from: shape, completion: completion)
-
+        case .positionChanged(let state):
+            handlePositionChangedEvent(state: state, completion: completion)
+        case .headingChanged(let state):
+            handleHeadingChangedEvent(state: state, completion: completion)
+        case .penChanged(let state):
+            handlePenChangedEvent(state: state, completion: completion)
+        case .shapeChanged(let state):
+            handleShapeChangedEvent(state: state, completion: completion)
         case .fillRequested(let state):
             handleFillRequestedEvent(state: state, completion: completion)
-
         case .backgroundChanged(let color):
             handleBackgroundChangedEvent(color: color, completion: completion)
         }
@@ -134,21 +128,22 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleInitializedEvent(state: TortoiseState, completion: @escaping () -> Void) {
         CATransaction.transactionWithoutAnimation({
-            shapeLayer.position = state.position.applying(makePositionTransform())
-            shapeLayer.transform = rotatedTransform(state)
-            shapeLayer.path = shapePath(state)
+            shapeLayer.position = translatedPosition(position: state.position)
+            shapeLayer.transform = rotatedTransform(angle: state.heading)
+            shapeLayer.path = makeShapePath(shape: state.shape, penSize: state.pen.width)
             shapeLayer.strokeColor = state.pen.color
             shapeLayer.lineWidth = state.pen.width
             shapeLayer.fillColor = state.pen.fillColor
         }, completion: completion)
     }
 
-    private func handlePositionChangedEvent(state: TortoiseState, from position: CGPoint, completion: @escaping () -> Void) {
-        let posTransform = makePositionTransform()
-        let fromPos = position.applying(posTransform)
-        let toPos = state.position.applying(posTransform)
+    private func handlePositionChangedEvent(state: TortoiseState, completion: @escaping () -> Void) {
+        let fromPos = shapeLayer.position
+        let toPos = translatedPosition(position: state.position)
+
         let fromPath = fromPos.toCGPath()
         let toPath = [fromPos, toPos].toCGPath()
+
         let pathLayer: CAShapeLayer? = state.pen.isDown ? CAShapeLayer() : nil
 
         CATransaction.transaction({
@@ -175,7 +170,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.add(shapeAnimation, forKey: "shape-position)")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.positionChanged(state, from: position)
+            self?.imageCanvas.positionChanged(state)
             self?.layer.contents = self?.imageCanvas.cgImage
             pathLayer?.removeFromSuperlayer()
 
@@ -185,8 +180,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         })
     }
 
-    private func handleHeadingChangedEvent(state: TortoiseState, from heading: Angle, completion: @escaping () -> Void) {
-        let toTransform = rotatedTransform(state)
+    private func handleHeadingChangedEvent(state: TortoiseState, completion: @escaping () -> Void) {
+        let toTransform = rotatedTransform(angle: state.heading)
 
         CATransaction.transaction({
             let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
@@ -195,7 +190,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.add(shapeAnimation, forKey: "shape-transform")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.headingChanged(state, from: heading)
+            self?.imageCanvas.headingChanged(state)
             self?.layer.contents = self?.imageCanvas.cgImage
 
             CATransaction.transactionWithoutAnimation({
@@ -204,15 +199,15 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         })
     }
 
-    private func handlePenChangedEvent(state: TortoiseState, from pen: Pen, completion: @escaping () -> Void) {
+    private func handlePenChangedEvent(state: TortoiseState, completion: @escaping () -> Void) {
         shapeLayer.strokeColor = state.pen.color
         shapeLayer.lineWidth = state.pen.width
         shapeLayer.fillColor = state.pen.fillColor
-        completion()
+        handleShapeChangedEvent(state: state, completion: completion)
     }
 
-    private func handleShapeChangedEvent(state: TortoiseState, from shape: Shape, completion: @escaping () -> Void) {
-        let toPath = shapePath(state)
+    private func handleShapeChangedEvent(state: TortoiseState, completion: @escaping () -> Void) {
+        let toPath = makeShapePath(shape: state.shape, penSize: state.pen.width)
         let toOpacity: Float = state.shape.isVisible ? 1 : 0
 
         CATransaction.transaction({
@@ -229,7 +224,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.add(anim2, forKey: "shape-opacity")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.shapeChanged(state, from: shape)
+            self?.imageCanvas.shapeChanged(state)
             self?.layer.contents = self?.imageCanvas.cgImage
 
             CATransaction.transactionWithoutAnimation({
@@ -245,13 +240,10 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             return
         }
 
-        var posTransform = makePositionTransform()
-        let cgPath = fillPath.toCGPath().copy(using: &posTransform)
-
         let fillLayer = CAShapeLayer()
         self.layer.addSublayer(shapeLayer)
         fillLayer.frame = CGRect(origin: .zero, size: .zero)
-        fillLayer.path = cgPath
+        fillLayer.path = translatedPath(path: fillPath.toCGPath())
         fillLayer.backgroundColor = UIColor.clear.cgColor
         fillLayer.strokeColor = UIColor.clear.cgColor
         fillLayer.fillColor = UIColor.clear.cgColor
@@ -280,20 +272,25 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         return CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
     }
 
-    private func makeShapeTransform() -> CGAffineTransform {
-        return CGAffineTransform(scaleX: 1, y: -1)
+    private func translatedPosition(position: CGPoint) -> CGPoint {
+        return position.applying(makePositionTransform())
     }
 
-    private func rotatedTransform(_ state: TortoiseState) -> CATransform3D {
-        return CATransform3DMakeRotation(state.heading.radian, 0, 0, 1)
+    private func translatedPath(path: CGPath) -> CGPath {
+        var transform = makePositionTransform()
+        return path.copy(using: &transform) ?? path
     }
 
-    private func shapePath(_ state: TortoiseState) -> CGPath {
-        let size = state.pen.width * 10
-        let path = CGMutablePath()
-        path.addPath(state.shape.scaledPath(by: size), transform: makeShapeTransform())
-        path.closeSubpath()
-        return path
+    private func rotatedTransform(angle: Angle) -> CATransform3D {
+        return CATransform3DMakeRotation(angle.radian, 0, 0, 1)
+    }
+
+    private func makeShapePath(shape: Shape, penSize: CGFloat) -> CGPath {
+        let transform = CGAffineTransform(scaleX: 1, y: -1)
+        let shapePath = CGMutablePath()
+        shapePath.addPath(shape.scaledPath(by: penSize*10), transform: transform)
+        shapePath.closeSubpath()
+        return shapePath
     }
 
 }

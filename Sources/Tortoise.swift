@@ -12,7 +12,7 @@ public class Tortoise {
 
     public init(canvas: Canvas) {
         self.canvas = canvas
-        delegate?.initialized(self.state)
+        eventListner?.initialized(self.state)
     }
 
     // MARK: - [Motion] Move and Draw
@@ -38,11 +38,10 @@ public class Tortoise {
     }
 
     public func setPosition(_ x: Double, _ y: Double) {
-        let oldPosition = state.position
         let newPosition = CGPoint(x: x, y: y)
         state.position = newPosition
         state.fillPath?.append(newPosition)
-        delegate?.positionChanged(state, from: oldPosition)
+        eventListner?.positionChanged(state)
     }
 
     public func setX(_ x: Double) {
@@ -54,9 +53,8 @@ public class Tortoise {
     }
 
     public func setHeading(_ heading: Double) {
-        let oldHeading = state.heading
         state.heading = Degree(CGFloat(heading))
-        delegate?.headingChanged(state, from: oldHeading)
+        eventListner?.headingChanged(state)
 
     }
 
@@ -126,25 +124,25 @@ public class Tortoise {
     // MARK: - [Pen control] Drawing state
 
     public func penDown() {
-        guard state.pen.isDown != true else { return }
-        let oldPen = state.pen
-        state.pen.isDown = true
-        delegate?.penChanged(state, from: oldPen)
+        if !state.pen.isDown {
+            state.pen.isDown = true
+            eventListner?.penChanged(state)
+        }
     }
 
     public func penUp() {
-        guard state.pen.isDown != false else { return }
-        let oldPen = state.pen
-        state.pen.isDown = false
-        delegate?.penChanged(state, from: oldPen)
+        if state.pen.isDown {
+            state.pen.isDown = false
+            eventListner?.penChanged(state)
+        }
     }
 
     public func penSize(_ size: Double) {
-        guard state.pen.width != CGFloat(size) else { return }
-        let oldPen = state.pen
-        state.pen.width = CGFloat(size)
-        delegate?.penChanged(state, from: oldPen)
-
+        let castedSize = CGFloat(size)
+        if state.pen.width != castedSize {
+            state.pen.width = castedSize
+            eventListner?.penChanged(state)
+        }
     }
 
     public var isDown: Bool {
@@ -158,21 +156,18 @@ public class Tortoise {
     // MARK: - [Pen control] Color control
 
     public func penColor(_ color: Color) {
-        let oldPen = state.pen
         state.pen.color = color.cgColor
-        delegate?.penChanged(state, from: oldPen)
+        eventListner?.penChanged(state)
     }
 
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
-        let oldPen = state.pen
         state.pen.color = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
-        delegate?.penChanged(state, from: oldPen)
+        eventListner?.penChanged(state)
     }
 
     public func penColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        let oldPen = state.pen
         state.pen.color = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
-        delegate?.penChanged(state, from: oldPen)
+        eventListner?.penChanged(state)
     }
 
     public var penColor: (r: Double, g: Double, b: Double) {
@@ -181,22 +176,18 @@ public class Tortoise {
     }
 
     public func fillColor(_ color: Color) {
-        let oldPen = state.pen
         state.pen.fillColor = color.cgColor
-        delegate?.penChanged(state, from: oldPen)
-
+        eventListner?.penChanged(state)
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
-        let oldPen = state.pen
         state.pen.fillColor = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
-        delegate?.penChanged(state, from: oldPen)
+        eventListner?.penChanged(state)
     }
 
     public func fillColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        let oldPen = state.pen
         state.pen.fillColor = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
-        delegate?.penChanged(state, from: oldPen)
+        eventListner?.penChanged(state)
     }
 
     public var fillColor: (r: Double, g: Double, b: Double) {
@@ -215,7 +206,7 @@ public class Tortoise {
     }
 
     public func endFill() {
-        delegate?.fillRequested(state)
+        eventListner?.fillRequested(state)
         state.fillPath = nil
     }
 
@@ -232,17 +223,17 @@ public class Tortoise {
     // MARK: - [Tortoise state] Visiblity
 
     public func showTortoise() {
-        guard state.shape.isVisible != true else { return }
-        let oldShape = state.shape
-        state.shape.isVisible = true
-        delegate?.shapeChanged(state, from: oldShape)
+        if !state.shape.isVisible {
+            state.shape.isVisible = true
+            eventListner?.shapeChanged(state)
+        }
     }
 
     public func hideTortoise() {
-        guard state.shape.isVisible != false else { return }
-        let oldShape = state.shape
-        state.shape.isVisible = false
-        delegate?.shapeChanged(state, from: oldShape)
+        if state.shape.isVisible {
+            state.shape.isVisible = false
+            eventListner?.shapeChanged(state)
+        }
     }
 
     public var isVisible: Bool {
@@ -250,10 +241,10 @@ public class Tortoise {
     }
 
     public func shape(_ shape: Shape) {
-        guard state.shape.name != shape.name else { return }
-        let oldShape = state.shape
-        state.shape = shape
-        delegate?.shapeChanged(state, from: oldShape)
+        if state.shape.name != shape.name {
+            state.shape = shape
+            eventListner?.shapeChanged(state)
+        }
     }
 
     public var shape: Shape {
@@ -266,8 +257,8 @@ public class Tortoise {
 
     let canvas: Canvas
 
-    var delegate: TortoiseDelegate? {
-        return canvas as? TortoiseDelegate
+    var eventListner: TortoiseEventListner? {
+        return canvas as? TortoiseEventListner
     }
 
 }

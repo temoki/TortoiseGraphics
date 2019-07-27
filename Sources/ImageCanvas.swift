@@ -1,7 +1,7 @@
 import Foundation
 import CoreGraphics
 
-public class ImageCanvas: Canvas, TortoiseDelegate {
+public class ImageCanvas: Canvas, TortoiseEventListner {
 
     public init(size: CGSize, scale: CGFloat = 1, color: Color? = nil) {
         self.size = size
@@ -32,26 +32,28 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     // MARK: - TortoiseDelegate
 
     func initialized(_ state: TortoiseState) {
+        currentPosition = state.position
     }
 
-    func positionChanged(_ state: TortoiseState, from position: CGPoint) {
+    func positionChanged(_ state: TortoiseState) {
         guard state.pen.isDown else { return }
         context.saveGState()
         context.setStrokeColor(state.pen.color)
         context.setFillColor(CGColor.clear)
         context.setLineWidth(state.pen.width)
-        context.addPath([position, state.position].toCGPath())
+        context.addPath([currentPosition, state.position].toCGPath())
         context.strokePath()
         context.restoreGState()
+        currentPosition = state.position
     }
 
-    func headingChanged(_ state: TortoiseState, from heading: Angle) {
+    func headingChanged(_ state: TortoiseState) {
     }
 
-    func penChanged(_ state: TortoiseState, from pen: Pen) {
+    func penChanged(_ state: TortoiseState) {
     }
 
-    func shapeChanged(_ state: TortoiseState, from shape: Shape) {
+    func shapeChanged(_ state: TortoiseState) {
     }
 
     func fillRequested(_ state: TortoiseState) {
@@ -67,6 +69,8 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     // MARK: - Private
 
     private let context: CGContext
+
+    private var currentPosition: CGPoint = .zero
 
 }
 
