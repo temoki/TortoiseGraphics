@@ -140,6 +140,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
     private func handlePositionChangedEvent(state: TortoiseState, completion: @escaping () -> Void) {
         let fromPos = shapeLayer.position
         let toPos = translatedPosition(position: state.position)
+        let distance = fromPos.distance(to: toPos)
 
         let fromPath = fromPos.toCGPath()
         let toPath = [fromPos, toPos].toCGPath()
@@ -147,7 +148,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
         let pathLayer: CAShapeLayer? = state.pen.isDown ? CAShapeLayer() : nil
 
         CATransaction.transaction({
-            let animationDuration = CFTimeInterval(1)
+            let animationDuration = state.speed.movementDuration(distance: distance)
+            print(animationDuration)
 
             if let pathLayer = pathLayer {
                 layer.addSublayer(pathLayer)
@@ -186,7 +188,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
         CATransaction.transaction({
             let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
             shapeAnimation.toValue = toTransform
-            shapeAnimation.duration = 0.2
+            shapeAnimation.duration = state.speed.animationDuration()
             shapeLayer.add(shapeAnimation, forKey: "shape-transform")
 
         }, completion: { [weak self] in
@@ -211,7 +213,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
         let toOpacity: Float = state.shape.isVisible ? 1 : 0
 
         CATransaction.transaction({
-            let animationDuration = CFTimeInterval(0.2)
+            let animationDuration = state.speed.animationDuration()
 
             let anim1 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
             anim1.toValue = toPath
@@ -251,7 +253,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
         CATransaction.transaction({
             let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
             animation.toValue = state.pen.fillColor
-            animation.duration = 0.2
+            animation.duration = state.speed.animationDuration()
             fillLayer.add(animation, forKey: "fill-path")
 
         }, completion: { [weak self] in

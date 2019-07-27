@@ -32,4 +32,10 @@ extension CGPoint {
         return cgPath
     }
 
+    func distance(to other: CGPoint) -> CGFloat {
+        let diffX = other.x - x
+        let diffY = other.y - y
+        return (diffX * diffX + diffY * diffY).squareRoot()
+    }
+
 }

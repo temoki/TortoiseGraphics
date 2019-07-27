@@ -71,8 +71,18 @@ public class Tortoise {
         // TODO: impl
     }
 
+    public func speed(_ speed: Speed) {
+        state.speed = speed
+    }
+
+    var speed: Speed {
+        return state.speed
+    }
+
     public func `repeat`(_ times: Int, _ block: () -> Void) {
-        (0 ..< times).forEach { _ in block() }
+        if times > 0 {
+            (0 ..< times).forEach { _ in block() }
+        }
     }
 
     // MARK: - [Motion] Tell tortoise's state

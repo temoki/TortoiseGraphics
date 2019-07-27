@@ -18,7 +18,8 @@ struct TortoiseState {
 
     var shape: Shape = .tortoise
 
+    var speed: Speed = .normal
+
     var fillPath: [CGPoint]?
 
-    // TODO: SPEED
 }

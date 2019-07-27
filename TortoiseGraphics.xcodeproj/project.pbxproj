@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14067E7E22EB2BFD00B96976 /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14067E7D22EB2BFD00B96976 /* CATransaction+.swift */; };
+		14067E8022EBB86900B96976 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14067E7F22EBB86900B96976 /* Speed.swift */; };
+		14067E8422EC13CB00B96976 /* Speed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14067E8322EC13CB00B96976 /* Speed+.swift */; };
 		1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407A92722E8A0EA006D96F9 /* Pen.swift */; };
 		140876C222DE10D000DCFC59 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C122DE10D000DCFC59 /* Canvas.swift */; };
 		140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		14067E7D22EB2BFD00B96976 /* CATransaction+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+.swift"; sourceTree = "<group>"; };
+		14067E7F22EBB86900B96976 /* Speed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
+		14067E8322EC13CB00B96976 /* Speed+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Speed+.swift"; sourceTree = "<group>"; };
 		1407A92722E8A0EA006D96F9 /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		140876C122DE10D000DCFC59 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPlaygroundCanvas.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 				140876C522DE18AB00DCFC59 /* TortoiseEventListner.swift */,
 				1409A78822E5A28800DE0610 /* CGPoint+.swift */,
 				14067E7D22EB2BFD00B96976 /* CATransaction+.swift */,
+				14067E8322EC13CB00B96976 /* Speed+.swift */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				14588D131EDEFF1100922BE4 /* Color.swift */,
+				14067E7F22EBB86900B96976 /* Speed.swift */,
 				14D753AA1FE17D290038F931 /* Vec2D.swift */,
 				14C3A09C201CA62000C7A28C /* Shape.swift */,
 				1417716722DCAC8B00BC1A34 /* Tortoise.swift */,
@@ -224,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				14067E8422EC13CB00B96976 /* Speed+.swift in Sources */,
 				14067E7E22EB2BFD00B96976 /* CATransaction+.swift in Sources */,
 				140876C622DE18AB00DCFC59 /* TortoiseEventListner.swift in Sources */,
 				140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */,
@@ -231,6 +238,7 @@
 				1409A78B22E5A7E500DE0610 /* Tortoise+Alias.swift in Sources */,
 				14588D161EDF03D700922BE4 /* Color+CGColor.swift in Sources */,
 				1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */,
+				14067E8022EBB86900B96976 /* Speed.swift in Sources */,
 				1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */,
 				140876C222DE10D000DCFC59 /* Canvas.swift in Sources */,
 				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,
