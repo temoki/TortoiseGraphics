@@ -13,7 +13,7 @@
 		1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407A92722E8A0EA006D96F9 /* Pen.swift */; };
 		140876C222DE10D000DCFC59 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C122DE10D000DCFC59 /* Canvas.swift */; };
 		140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */; };
-		140876C622DE18AB00DCFC59 /* TortoiseEventListner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C522DE18AB00DCFC59 /* TortoiseEventListner.swift */; };
+		140876C622DE18AB00DCFC59 /* TortoiseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140876C522DE18AB00DCFC59 /* TortoiseDelegate.swift */; };
 		1409A78922E5A28800DE0610 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409A78822E5A28800DE0610 /* CGPoint+.swift */; };
 		1409A78B22E5A7E500DE0610 /* Tortoise+Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1409A78A22E5A7E500DE0610 /* Tortoise+Alias.swift */; };
 		1417716122DB71A000BC1A34 /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716022DB71A000BC1A34 /* TortoiseState.swift */; };
@@ -44,7 +44,7 @@
 		1407A92722E8A0EA006D96F9 /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		140876C122DE10D000DCFC59 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		140876C322DE182800DCFC59 /* XCPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCPlaygroundCanvas.swift; sourceTree = "<group>"; };
-		140876C522DE18AB00DCFC59 /* TortoiseEventListner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseEventListner.swift; sourceTree = "<group>"; };
+		140876C522DE18AB00DCFC59 /* TortoiseDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseDelegate.swift; sourceTree = "<group>"; };
 		1409A78822E5A28800DE0610 /* CGPoint+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+.swift"; sourceTree = "<group>"; };
 		1409A78A22E5A7E500DE0610 /* Tortoise+Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tortoise+Alias.swift"; sourceTree = "<group>"; };
 		1417716022DB71A000BC1A34 /* TortoiseState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TortoiseState.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				141772761EE2930600C0CBC7 /* Angle.swift */,
 				14588D151EDF03D700922BE4 /* Color+CGColor.swift */,
 				1417716022DB71A000BC1A34 /* TortoiseState.swift */,
-				140876C522DE18AB00DCFC59 /* TortoiseEventListner.swift */,
+				140876C522DE18AB00DCFC59 /* TortoiseDelegate.swift */,
 				1409A78822E5A28800DE0610 /* CGPoint+.swift */,
 				14067E7D22EB2BFD00B96976 /* CATransaction+.swift */,
 				14067E8322EC13CB00B96976 /* Speed+.swift */,
@@ -232,7 +232,7 @@
 			files = (
 				14067E8422EC13CB00B96976 /* Speed+.swift in Sources */,
 				14067E7E22EB2BFD00B96976 /* CATransaction+.swift in Sources */,
-				140876C622DE18AB00DCFC59 /* TortoiseEventListner.swift in Sources */,
+				140876C622DE18AB00DCFC59 /* TortoiseDelegate.swift in Sources */,
 				140876C422DE182800DCFC59 /* XCPlaygroundCanvas.swift in Sources */,
 				14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */,
 				1409A78B22E5A7E500DE0610 /* Tortoise+Alias.swift in Sources */,
