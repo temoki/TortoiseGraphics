@@ -3,9 +3,9 @@ import CoreGraphics
 
 public class ImageCanvas: Canvas, TortoiseDelegate {
 
-    public init(size: Vec2D, scale: Double = 1, color: Color? = nil) {
+    public init(size: Vec2D, scale: Double = 1, color: RGB? = nil) {
         self.canvasSize = size
-        self.canvasColor = color ?? Color.white
+        self.canvasColor = color ?? Color.white.rgb
         self.bitmapScale = CGFloat(scale)
         self.bitmapContext = createForegroundContext(size: size.toCGSize(),
                                                      scale: self.bitmapScale)
@@ -26,7 +26,19 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     public var canvasSize: Vec2D
 
-    public var canvasColor: Color
+    public func canvasColor(_ color: Color) {
+        canvasColor = color.rgb
+    }
+
+    public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
+        canvasColor = RGB(r, g, b)
+    }
+
+    public func canvasColor(_ rgb: RGB) {
+        canvasColor = rgb
+    }
+
+    public private(set) var canvasColor: RGB
 
     // MARK: - TortoiseDelegate
 
@@ -37,7 +49,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     func tortoiseDidChangePosition(_ state: TortoiseState) {
         guard state.pen.isDown else { return }
         bitmapContext.saveGState()
-        bitmapContext.setStrokeColor(state.pen.color)
+        bitmapContext.setStrokeColor(state.pen.color.cgColor)
         bitmapContext.setFillColor(CGColor.clear)
         bitmapContext.setLineWidth(CGFloat(state.pen.width))
         bitmapContext.addPath([currentPosition, state.position].toCGPath())
@@ -62,7 +74,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         guard let fillPath = state.fillPath else { return }
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(CGColor.clear)
-        bitmapContext.setFillColor(state.pen.fillColor)
+        bitmapContext.setFillColor(state.pen.fillColor.cgColor)
         bitmapContext.addPath(fillPath.toCGPath())
         bitmapContext.fillPath()
         bitmapContext.restoreGState()

@@ -11,6 +11,12 @@ public protocol Canvas {
 
     var canvasSize: Vec2D { get }
 
-    var canvasColor: Color { get set }
+    func canvasColor(_ color: Color)
+
+    func canvasColor(_ r: Double, _ g: Double, _ b: Double)
+
+    func canvasColor(_ rgb: RGB)
+
+    var canvasColor: RGB { get }
 
 }

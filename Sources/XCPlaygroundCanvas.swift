@@ -9,8 +9,8 @@ import UIKit
 
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
-    public init(size: Vec2D, color: Color? = nil) {
-        self.canvasColor = color ?? Color.white
+    public init(size: Vec2D, color: RGB? = nil) {
+        self.canvasColor = color ?? Color.white.rgb
         self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
         self.shapeLayer = CAShapeLayer()
         self.frameObservation = nil
@@ -36,11 +36,22 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         return imageCanvas.canvasSize
     }
 
-    public var canvasColor: Color {
-        didSet {
-            addEvent(.canvasDidChangeBackground(canvasColor))
-        }
+    public func canvasColor(_ color: Color) {
+        canvasColor = color.rgb
+        addEvent(.canvasDidChangeBackground(canvasColor))
     }
+
+    public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
+        canvasColor = RGB(r, g, b)
+        addEvent(.canvasDidChangeBackground(canvasColor))
+    }
+
+    public func canvasColor(_ rgb: RGB) {
+        canvasColor = rgb
+        addEvent(.canvasDidChangeBackground(canvasColor))
+    }
+
+    public private(set) var canvasColor: RGB
 
     // MARK: - TortoiseDelegate
 
@@ -82,7 +93,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case tortoiseDidChangeShape(TortoiseState)
         case tortoiseDidRequestToFill(TortoiseState)
         case tortoiseDidRequestToClear(TortoiseState)
-        case canvasDidChangeBackground(Color)
+        case canvasDidChangeBackground(RGB)
         case canvasDidChangeSize(CGSize)
     }
 
@@ -149,9 +160,9 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.transform = rotatedTransform(angle: state.heading)
             shapeLayer.path = makeShapePath(shape: state.shape,
                                             penSize: CGFloat(state.pen.width))
-            shapeLayer.strokeColor = state.pen.color
+            shapeLayer.strokeColor = state.pen.color.cgColor
             shapeLayer.lineWidth = CGFloat(state.pen.width)
-            shapeLayer.fillColor = state.pen.fillColor
+            shapeLayer.fillColor = state.pen.fillColor.cgColor
         }, completion: completion)
     }
 
@@ -173,7 +184,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 pathLayer.frame = CGRect(origin: .zero, size: self.canvasSize.toCGSize())
                 pathLayer.path = fromPath
                 pathLayer.backgroundColor = UIColor.clear.cgColor
-                pathLayer.strokeColor = state.pen.color
+                pathLayer.strokeColor = state.pen.color.cgColor
                 pathLayer.fillColor = UIColor.clear.cgColor
                 pathLayer.lineWidth = CGFloat(state.pen.width)
 
@@ -219,9 +230,9 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangePenEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
-        shapeLayer.strokeColor = state.pen.color
+        shapeLayer.strokeColor = state.pen.color.cgColor
         shapeLayer.lineWidth = CGFloat(state.pen.width)
-        shapeLayer.fillColor = state.pen.fillColor
+        shapeLayer.fillColor = state.pen.fillColor.cgColor
         handleChangeShapeEvent(state, completion)
     }
 
@@ -288,8 +299,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         completion()
     }
 
-    private func handleChangeBackgroundEvent(_ color: Color, _ completion: () -> Void) {
-        imageCanvas.canvasColor = color
+    private func handleChangeBackgroundEvent(_ color: RGB, _ completion: () -> Void) {
+        imageCanvas.canvasColor(color)
         layer.contents = imageCanvas.cgImage
         completion()
     }

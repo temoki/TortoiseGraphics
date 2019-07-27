@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Color {
+public enum Color: String {
 
     case black
     case white
@@ -23,7 +23,5 @@ public enum Color {
     case brown
     case grey
     case blueGrey
-
-    case hex(String)
 
 }

@@ -185,43 +185,41 @@ public class Tortoise {
     // MARK: - [Pen control] Color control
 
     public func penColor(_ color: Color) {
-        state.pen.color = color.cgColor
+        state.pen.color = color.rgb
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
-        state.pen.color = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
+        state.pen.color = RGB(r, g, b)
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public func penColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        state.pen.color = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
+    public func penColor(_ rgb: RGB) {
+        state.pen.color = rgb
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public var penColor: (r: Double, g: Double, b: Double) {
-        let rgb = state.pen.color.rgb
-        return (r: Double(rgb.0*255), g: Double(rgb.1*255), b: Double(rgb.2*255))
+    public var penColor: RGB {
+        return state.pen.color
     }
 
     public func fillColor(_ color: Color) {
-        state.pen.fillColor = color.cgColor
+        state.pen.fillColor = color.rgb
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
-        state.pen.fillColor = CGColor.rgb(CGFloat(r/255), CGFloat(g/255), CGFloat(b/255))
+        state.pen.fillColor = RGB(r, g, b)
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public func fillColor(_ rgb: (r: Double, g: Double, b: Double)) {
-        state.pen.fillColor = CGColor.rgb(CGFloat(rgb.r/255), CGFloat(rgb.g/255), CGFloat(rgb.b/255))
+    public func fillColor(_ rgb: RGB) {
+        state.pen.fillColor = rgb
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public var fillColor: (r: Double, g: Double, b: Double) {
-        let rgb = state.pen.fillColor.rgb
-        return (r: Double(rgb.0*255), g: Double(rgb.1*255), b: Double(rgb.2*255))
+    public var fillColor: RGB {
+        return state.pen.fillColor
     }
 
     // MARK: - [Pen Control] Filling
