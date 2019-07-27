@@ -10,8 +10,8 @@ import UIKit
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public init(size: CGSize, color: Color? = nil) {
-        self.color = color ?? Color.white
-        self.imageCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: self.color)
+        self.canvasColor = color ?? Color.white
+        self.imageCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: self.canvasColor)
         self.shapeLayer = CAShapeLayer()
         super.init(frame: CGRect(origin: .zero, size: size))
         layer.contents = imageCanvas.cgImage
@@ -24,17 +24,13 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     // MARK: - Canvas
 
-    public var size: CGSize {
-        return imageCanvas.size
+    public var canvasSize: CGSize {
+        return imageCanvas.canvasSize
     }
 
-    public var scale: CGFloat {
-        return imageCanvas.scale
-    }
-
-    public var color: Color {
+    public var canvasColor: Color {
         didSet {
-            addEvent(.canvasDidChangeBackground(color))
+            addEvent(.canvasDidChangeBackground(canvasColor))
         }
     }
 
@@ -154,7 +150,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
             if let pathLayer = pathLayer {
                 layer.addSublayer(pathLayer)
-                pathLayer.frame = CGRect(origin: .zero, size: self.size)
+                pathLayer.frame = CGRect(origin: .zero, size: self.canvasSize)
                 pathLayer.path = fromPath
                 pathLayer.backgroundColor = UIColor.clear.cgColor
                 pathLayer.strokeColor = state.pen.color
@@ -266,13 +262,13 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangeBackgroundEvent(_ color: Color, _ completion: () -> Void) {
-        imageCanvas.color = color
+        imageCanvas.canvasColor = color
         layer.contents = imageCanvas.cgImage
         completion()
     }
 
     private func makePositionTransform() -> CGAffineTransform {
-        return CGAffineTransform(translationX: size.width * 0.5, y: size.height * 0.5).scaledBy(x: 1, y: -1)
+        return CGAffineTransform(translationX: canvasSize.width * 0.5, y: canvasSize.height * 0.5).scaledBy(x: 1, y: -1)
     }
 
     private func translatedPosition(position: CGPoint) -> CGPoint {

@@ -4,30 +4,28 @@ import CoreGraphics
 public class ImageCanvas: Canvas, TortoiseDelegate {
 
     public init(size: CGSize, scale: CGFloat = 1, color: Color? = nil) {
-        self.size = size
-        self.scale = scale
-        self.color = color ?? Color.white
-        self.context = createBitmapContext(size: size, scale: scale)
-        self.context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
+        self.canvasSize = size
+        self.canvasColor = color ?? Color.white
+        self.bitmapScale = scale
+        self.bitmapContext = createBitmapContext(size: size, scale: scale)
+        self.bitmapContext.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     }
 
     public var cgImage: CGImage? {
-        let bgContext = createBitmapContext(size: size, scale: scale)
-        bgContext.setFillColor(color.cgColor)
-        bgContext.fill(CGRect(origin: .zero, size: size))
-        if let fgImage = context.makeImage() {
-            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
+        let bgContext = createBitmapContext(size: canvasSize, scale: bitmapScale)
+        bgContext.setFillColor(canvasColor.cgColor)
+        bgContext.fill(CGRect(origin: .zero, size: canvasSize))
+        if let fgImage = bitmapContext.makeImage() {
+            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: canvasSize))
         }
         return bgContext.makeImage()
     }
 
     // MARK: - Canvas
 
-    public var size: CGSize
+    public var canvasSize: CGSize
 
-    public var scale: CGFloat
-
-    public var color: Color
+    public var canvasColor: Color
 
     // MARK: - TortoiseDelegate
 
@@ -37,14 +35,14 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     func tortoiseDidChangePosition(_ state: TortoiseState) {
         guard state.pen.isDown else { return }
-        context.saveGState()
-        context.setStrokeColor(state.pen.color)
-        context.setFillColor(CGColor.clear)
-        context.setLineWidth(state.pen.width)
-        context.addPath([currentPosition, state.position].toCGPath())
-        context.strokePath()
-        context.restoreGState()
+        bitmapContext.saveGState()
+        bitmapContext.setStrokeColor(state.pen.color)
+        bitmapContext.setFillColor(CGColor.clear)
+        bitmapContext.setLineWidth(state.pen.width)
+        bitmapContext.addPath([currentPosition, state.position].toCGPath())
         currentPosition = state.position
+        bitmapContext.strokePath()
+        bitmapContext.restoreGState()
     }
 
     func tortoiseDidChangeHeading(_ state: TortoiseState) {
@@ -61,17 +59,19 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     func tortoiseDidRequestFilling(_ state: TortoiseState) {
         guard let fillPath = state.fillPath else { return }
-        context.saveGState()
-        context.setStrokeColor(CGColor.clear)
-        context.setFillColor(state.pen.fillColor)
-        context.addPath(fillPath.toCGPath())
-        context.fillPath()
-        context.restoreGState()
+        bitmapContext.saveGState()
+        bitmapContext.setStrokeColor(CGColor.clear)
+        bitmapContext.setFillColor(state.pen.fillColor)
+        bitmapContext.addPath(fillPath.toCGPath())
+        bitmapContext.fillPath()
+        bitmapContext.restoreGState()
     }
 
     // MARK: - Private
 
-    private let context: CGContext
+    private let bitmapContext: CGContext
+
+    private let bitmapScale: CGFloat
 
     private var currentPosition: CGPoint = .zero
 

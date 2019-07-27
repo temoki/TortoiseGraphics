@@ -10,10 +10,8 @@ import CoreGraphics
 
 public protocol Canvas {
 
-    var size: CGSize { get }
+    var canvasSize: CGSize { get }
 
-    var scale: CGFloat { get }
-
-    var color: Color { get set }
+    var canvasColor: Color { get set }
 
 }
