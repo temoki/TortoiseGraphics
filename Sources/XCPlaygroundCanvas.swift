@@ -9,11 +9,11 @@ import UIKit
 
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseEventListner {
 
-    public init(frame: CGRect, color: Color? = nil) {
+    public init(size: CGSize, color: Color? = nil) {
         self.color = color ?? Color.white
-        self.imageCanvas = ImageCanvas(size: frame.size, scale: UIScreen.main.scale, color: self.color)
+        self.imageCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: self.color)
         self.shapeLayer = CAShapeLayer()
-        super.init(frame: frame)
+        super.init(frame: CGRect(origin: .zero, size: size))
         layer.contents = imageCanvas.cgImage
         layer.addSublayer(shapeLayer)
     }

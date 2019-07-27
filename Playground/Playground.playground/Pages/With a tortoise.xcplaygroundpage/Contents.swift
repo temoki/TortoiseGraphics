@@ -4,11 +4,8 @@ import PlaygroundSupport
 import TortoiseGraphics
 import CoreGraphics
 
-let size = CGRect(x: 0, y: 0, width: 300, height: 300)
-let canvas = XCPlaygroundCanvas(frame: size, color: Color.white)
-
+let canvas = XCPlaygroundCanvas(size: CGSize(width: 300, height: 300))
 PlaygroundPage.current.liveView = canvas
-PlaygroundPage.current.needsIndefiniteExecution = true
 
 let t = Tortoise(canvas: canvas)
 t.fd(90)
