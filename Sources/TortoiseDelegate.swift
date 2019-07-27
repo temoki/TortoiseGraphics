@@ -20,6 +20,8 @@ protocol TortoiseDelegate: class {
 
     func tortoiseDidChangeShape(_ state: TortoiseState)
 
-    func tortoiseDidRequestFilling(_ state: TortoiseState)
+    func tortoiseDidRequestToFill(_ state: TortoiseState)
+
+    func tortoiseDidRequestToClear(_ state: TortoiseState)
 
 }

@@ -7,12 +7,11 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         self.canvasSize = size
         self.canvasColor = color ?? Color.white
         self.bitmapScale = scale
-        self.bitmapContext = createBitmapContext(size: size, scale: scale)
-        self.bitmapContext.translateBy(x: size.width * 0.5, y: size.height * 0.5)
+        self.bitmapContext = createForegroundContext(size: size, scale: scale)
     }
 
     public var cgImage: CGImage? {
-        let bgContext = createBitmapContext(size: canvasSize, scale: bitmapScale)
+        let bgContext = createBackgroundContext(size: canvasSize, scale: bitmapScale)
         bgContext.setFillColor(canvasColor.cgColor)
         bgContext.fill(CGRect(origin: .zero, size: canvasSize))
         if let fgImage = bitmapContext.makeImage() {
@@ -57,7 +56,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         // Nothing to do
     }
 
-    func tortoiseDidRequestFilling(_ state: TortoiseState) {
+    func tortoiseDidRequestToFill(_ state: TortoiseState) {
         guard let fillPath = state.fillPath else { return }
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(CGColor.clear)
@@ -67,9 +66,13 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         bitmapContext.restoreGState()
     }
 
+    func tortoiseDidRequestToClear(_ state: TortoiseState) {
+        bitmapContext = createForegroundContext(size: canvasSize, scale: bitmapScale)
+    }
+
     // MARK: - Private
 
-    private let bitmapContext: CGContext
+    private var bitmapContext: CGContext
 
     private let bitmapScale: CGFloat
 
@@ -77,7 +80,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
 }
 
-private func createBitmapContext(size: CGSize, scale: CGFloat) -> CGContext {
+private func createBackgroundContext(size: CGSize, scale: CGFloat) -> CGContext {
     let width = Int(size.width * scale)
     let height = Int(size.height * scale)
     let context = CGContext(data: nil,
@@ -89,5 +92,11 @@ private func createBitmapContext(size: CGSize, scale: CGFloat) -> CGContext {
                             bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)!
     // swiftlint:disable:previous force_unwrapping
     context.scaleBy(x: scale, y: scale)
+    return context
+}
+
+private func createForegroundContext(size: CGSize, scale: CGFloat) -> CGContext {
+    let context = createBackgroundContext(size: size, scale: scale)
+    context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     return context
 }

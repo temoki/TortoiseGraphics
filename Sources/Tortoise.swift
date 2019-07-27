@@ -239,18 +239,20 @@ public class Tortoise {
     }
 
     public func endFill() {
-        delegate?.tortoiseDidRequestFilling(state)
+        delegate?.tortoiseDidRequestToFill(state)
         state.fillPath = nil
     }
 
     // MARK: - [Pen control] More drawing control
 
     public func reset() {
-        // TODO: impl
+        state = TortoiseState()
+        delegate?.tortoiseDidRequestToClear(state)
+        delegate?.tortoiseDidInitialized(state)
     }
 
     public func clear() {
-        // TODO: impl
+        delegate?.tortoiseDidRequestToClear(state)
     }
 
     // MARK: - [Tortoise state] Visiblity

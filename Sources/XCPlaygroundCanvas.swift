@@ -56,8 +56,12 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         addEvent(.tortoiseDidChangeShape(state))
     }
 
-    func tortoiseDidRequestFilling(_ state: TortoiseState) {
-        addEvent(.tortoiseDidRequestFilling(state))
+    func tortoiseDidRequestToFill(_ state: TortoiseState) {
+        addEvent(.tortoiseDidRequestToFill(state))
+    }
+
+    func tortoiseDidRequestToClear(_ state: TortoiseState) {
+        addEvent(.tortoiseDidRequestToClear(state))
     }
 
     // MARK: - Private
@@ -68,7 +72,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case tortoiseDidChangeHeading(TortoiseState)
         case tortoiseDidChangePen(TortoiseState)
         case tortoiseDidChangeShape(TortoiseState)
-        case tortoiseDidRequestFilling(TortoiseState)
+        case tortoiseDidRequestToFill(TortoiseState)
+        case tortoiseDidRequestToClear(TortoiseState)
         case canvasDidChangeBackground(Color)
     }
 
@@ -117,8 +122,10 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleChangePenEvent(state, completion)
         case .tortoiseDidChangeShape(let state):
             handleChangeShapeEvent(state, completion)
-        case .tortoiseDidRequestFilling(let state):
-            handleRequestFillingEvent(state, completion)
+        case .tortoiseDidRequestToFill(let state):
+            handleRequestToFillEvent(state, completion)
+        case .tortoiseDidRequestToClear(let state):
+            handleRequestToClearEvent(state, completion)
         case .canvasDidChangeBackground(let color):
             handleChangeBackgroundEvent(color, completion)
         }
@@ -233,7 +240,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         })
     }
 
-    private func handleRequestFillingEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+    private func handleRequestToFillEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
         guard let fillPath = state.fillPath else {
             completion()
             return
@@ -254,11 +261,17 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             fillLayer.add(animation, forKey: "fill-path")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.tortoiseDidRequestFilling(state)
+            self?.imageCanvas.tortoiseDidRequestToFill(state)
             self?.layer.contents = self?.imageCanvas.cgImage
             fillLayer.removeFromSuperlayer()
             completion()
         })
+    }
+
+    private func handleRequestToClearEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+        imageCanvas.tortoiseDidRequestToClear(state)
+        layer.contents = imageCanvas.cgImage
+        completion()
     }
 
     private func handleChangeBackgroundEvent(_ color: Color, _ completion: () -> Void) {
