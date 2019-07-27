@@ -5,7 +5,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     public init(size: Vec2D, scale: Double = 1, color: RGB? = nil) {
         self.canvasSize = size
-        self.canvasColor = color ?? Color.white.rgb
+        self.canvasColor = color ?? ColorPalette.white.rgb
         self.bitmapScale = CGFloat(scale)
         self.bitmapContext = createForegroundContext(size: size.toCGSize(),
                                                      scale: self.bitmapScale)
@@ -26,8 +26,8 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     public var canvasSize: Vec2D
 
-    public func canvasColor(_ color: Color) {
-        canvasColor = color.rgb
+    public func canvasColor(_ palette: ColorPalette) {
+        canvasColor = palette.rgb
     }
 
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {

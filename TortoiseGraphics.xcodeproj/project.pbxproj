@@ -24,8 +24,7 @@
 		1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716422DB73F900BC1A34 /* ImageCanvas.swift */; };
 		1417716822DCAC8B00BC1A34 /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417716722DCAC8B00BC1A34 /* Tortoise.swift */; };
 		141772771EE2930600C0CBC7 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141772761EE2930600C0CBC7 /* Angle.swift */; };
-		14588D141EDEFF1100922BE4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D131EDEFF1100922BE4 /* Color.swift */; };
-		14588D161EDF03D700922BE4 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D151EDF03D700922BE4 /* Color+.swift */; };
+		14588D141EDEFF1100922BE4 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14588D131EDEFF1100922BE4 /* ColorPalette.swift */; };
 		14C3A09D201CA62000C7A28C /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C3A09C201CA62000C7A28C /* Shape.swift */; };
 		14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D753AA1FE17D290038F931 /* Vec2D.swift */; };
 		OBJ_109 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_53 /* TortoiseGraphics.framework */; };
@@ -59,8 +58,7 @@
 		1417716422DB73F900BC1A34 /* ImageCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCanvas.swift; sourceTree = "<group>"; };
 		1417716722DCAC8B00BC1A34 /* Tortoise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tortoise.swift; sourceTree = "<group>"; };
 		141772761EE2930600C0CBC7 /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		14588D131EDEFF1100922BE4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		14588D151EDF03D700922BE4 /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		14588D131EDEFF1100922BE4 /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		14C3A09C201CA62000C7A28C /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		14D753AA1FE17D290038F931 /* Vec2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
 		OBJ_53 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +93,6 @@
 				1407A92722E8A0EA006D96F9 /* Pen.swift */,
 				141772761EE2930600C0CBC7 /* Angle.swift */,
 				14067E8B22EC86B500B96976 /* RGB+.swift */,
-				14588D151EDF03D700922BE4 /* Color+.swift */,
 				14067E8322EC13CB00B96976 /* Speed+.swift */,
 				14067E8722EC621800B96976 /* Vec2D+.swift */,
 				1409A78822E5A28800DE0610 /* CGPoint+.swift */,
@@ -126,7 +123,7 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				14588D131EDEFF1100922BE4 /* Color.swift */,
+				14588D131EDEFF1100922BE4 /* ColorPalette.swift */,
 				14067E8922EC738000B96976 /* RGB.swift */,
 				14067E7F22EBB86900B96976 /* Speed.swift */,
 				14D753AA1FE17D290038F931 /* Vec2D.swift */,
@@ -250,13 +247,12 @@
 				14067E8822EC621800B96976 /* Vec2D+.swift in Sources */,
 				14D753AB1FE17D290038F931 /* Vec2D.swift in Sources */,
 				1409A78B22E5A7E500DE0610 /* Tortoise+Alias.swift in Sources */,
-				14588D161EDF03D700922BE4 /* Color+.swift in Sources */,
 				1407A92822E8A0EA006D96F9 /* Pen.swift in Sources */,
 				14067E8022EBB86900B96976 /* Speed.swift in Sources */,
 				1417716522DB73F900BC1A34 /* ImageCanvas.swift in Sources */,
 				14067E8C22EC86B500B96976 /* RGB+.swift in Sources */,
 				140876C222DE10D000DCFC59 /* Canvas.swift in Sources */,
-				14588D141EDEFF1100922BE4 /* Color.swift in Sources */,
+				14588D141EDEFF1100922BE4 /* ColorPalette.swift in Sources */,
 				14067E8A22EC738000B96976 /* RGB.swift in Sources */,
 				141772771EE2930600C0CBC7 /* Angle.swift in Sources */,
 				1409A78922E5A28800DE0610 /* CGPoint+.swift in Sources */,

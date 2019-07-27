@@ -10,7 +10,7 @@ import UIKit
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public init(size: Vec2D, color: RGB? = nil) {
-        self.canvasColor = color ?? Color.white.rgb
+        self.canvasColor = color ?? ColorPalette.white.rgb
         self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
         self.shapeLayer = CAShapeLayer()
         self.frameObservation = nil
@@ -36,8 +36,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         return imageCanvas.canvasSize
     }
 
-    public func canvasColor(_ color: Color) {
-        canvasColor = color.rgb
+    public func canvasColor(_ palette: ColorPalette) {
+        canvasColor = palette.rgb
         addEvent(.canvasDidChangeBackground(canvasColor))
     }
 
