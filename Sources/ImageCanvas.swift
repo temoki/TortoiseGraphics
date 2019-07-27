@@ -80,7 +80,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         bitmapContext.setStrokeColor(CGColor.clear)
         bitmapContext.setFillColor(state.pen.fillColor.toCGColor())
         bitmapContext.addPath(fillPath.toCGPath())
-        bitmapContext.fillPath()
+        bitmapContext.fillPath(using: .evenOdd)
         bitmapContext.restoreGState()
     }
 

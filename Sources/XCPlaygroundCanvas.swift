@@ -284,6 +284,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         fillLayer.backgroundColor = CGColor.clear
         fillLayer.strokeColor = CGColor.clear
         fillLayer.fillColor = CGColor.clear
+        fillLayer.fillRule = .evenOdd
 
         CATransaction.transaction({
             let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.fillColor))
