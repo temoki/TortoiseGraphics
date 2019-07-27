@@ -194,6 +194,11 @@ public class Tortoise {
         delegate?.tortoiseDidChangePen(state)
     }
 
+    public func penColor(_ hex: String) {
+        state.pen.color = RGB(hex)
+        delegate?.tortoiseDidChangePen(state)
+    }
+
     public func penColor(_ rgb: RGB) {
         state.pen.color = rgb
         delegate?.tortoiseDidChangePen(state)
@@ -210,6 +215,11 @@ public class Tortoise {
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
         state.pen.fillColor = RGB(r, g, b)
+        delegate?.tortoiseDidChangePen(state)
+    }
+
+    public func fillColor(_ hex: String) {
+        state.pen.color = RGB(hex)
         delegate?.tortoiseDidChangePen(state)
     }
 

@@ -10,30 +10,23 @@ import Foundation
 public struct RGB: CustomStringConvertible {
 
     public var r: Double {
-        didSet { r = fit(r) }
+        didSet { r = RGB.componentToPresentationValue(r) }
     }
 
     public var g: Double {
-        didSet { r = fit(g) }
+        didSet { r = RGB.componentToPresentationValue(g) }
     }
 
     public var b: Double {
-        didSet { r = fit(b) }
+        didSet { r = RGB.componentToPresentationValue(b) }
     }
 
     public var name: String?
 
     public init(_ r: Double, _ g: Double, _ b: Double, name: String? = nil) {
-        self.r = fit(r)
-        self.g = fit(g)
-        self.b = fit(b)
-        self.name = name
-    }
-
-    public init(_ r: UInt8, _ g: UInt8, _ b: UInt8, name: String? = nil) {
-        self.r = fit(r)
-        self.g = fit(g)
-        self.b = fit(b)
+        self.r = RGB.componentToRawValue(r)
+        self.g = RGB.componentToRawValue(g)
+        self.b = RGB.componentToRawValue(b)
         self.name = name
     }
 
@@ -53,18 +46,31 @@ public struct RGB: CustomStringConvertible {
         }
     }
 
+    public enum Mode: Double {
+        case range0to1 = 1.0
+        case range0to255 = 255.0
+    }
+
+    public static var mode: Mode = .range0to255
+
     // MARK: - CustomStringConvertible
 
     public var description: String {
-        return name ?? "(\(r),\(g),\(b))"
+        if let name = self.name { return name }
+        let presenR = RGB.componentToPresentationValue(r)
+        let presenG = RGB.componentToPresentationValue(g)
+        let presenB = RGB.componentToPresentationValue(b)
+        return "(\(presenR),\(presenG),\(presenB))"
     }
 
-}
+    // MARK: - Private
 
-private func fit(_ component: Double) -> Double {
-    return max(0, min(component, 1))
-}
+    private static func componentToRawValue(_ component: Double) -> Double {
+        return max(0, min(component, mode.rawValue)) / mode.rawValue
+    }
 
-private func fit(_ component: UInt8) -> Double {
-    return Double(component) / Double(UInt8.max)
+    private static func componentToPresentationValue(_ component: Double) -> Double {
+        return component * mode.rawValue
+    }
+
 }

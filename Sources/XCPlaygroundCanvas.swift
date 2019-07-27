@@ -46,6 +46,11 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         addEvent(.canvasDidChangeBackground(canvasColor))
     }
 
+    public func canvasColor(_ hex: String) {
+        canvasColor = RGB(hex)
+        addEvent(.canvasDidChangeBackground(canvasColor))
+    }
+
     public func canvasColor(_ rgb: RGB) {
         canvasColor = rgb
         addEvent(.canvasDidChangeBackground(canvasColor))

@@ -34,6 +34,10 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         canvasColor = RGB(r, g, b)
     }
 
+    public func canvasColor(_ hex: String) {
+        canvasColor = RGB(hex)
+    }
+
     public func canvasColor(_ rgb: RGB) {
         canvasColor = rgb
     }
