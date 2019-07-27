@@ -13,7 +13,7 @@ struct Pen {
 
     var color: CGColor = Color.black.cgColor
 
-    var width: CGFloat = 1
+    var width: Double = 1
 
     var fillColor: CGColor = Color.black.cgColor
 

@@ -20,7 +20,7 @@ public class Tortoise {
     public func forward(_ distance: Double) {
         let transform = CGAffineTransform(translationX: CGFloat(state.position.x),
                                           y: CGFloat(state.position.y))
-            .rotated(by: -state.heading.radian)
+            .rotated(by: CGFloat(-state.heading.radian))
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
         setPosition(Double(newPosition.x), Double(newPosition.y))
     }
@@ -30,8 +30,8 @@ public class Tortoise {
     }
 
     public func right(_ angle: Double) {
-        let newHeading = state.heading.degree + CGFloat(angle)
-        setHeading(Double(newHeading))
+        let newHeading = state.heading.degree + angle
+        setHeading(newHeading)
     }
 
     public func left(_ angle: Double) {
@@ -54,7 +54,7 @@ public class Tortoise {
     }
 
     public func setHeading(_ heading: Double) {
-        state.heading = Degree(CGFloat(heading))
+        state.heading = Degree(heading)
         delegate?.tortoiseDidChangeHeading(state)
 
     }
@@ -69,21 +69,17 @@ public class Tortoise {
     }
 
     public func circle(_ radius: Double, _ extent: Double = 360, _ steps: Int = 0) {
-        // Radius
-        let radiusf = CGFloat(radius)
-
-        // Extent
-        let extentf = CGFloat(max(min(extent, 360), 1))
+        let checkedExtent = max(min(extent, 360), 1)
 
         // Step
-        let minSteps = max(Int(extentf / 10), 1)
+        let minSteps = max(Int(checkedExtent / 10), 1)
         let definedSteps = steps <= 0 ? minSteps : min(steps, minSteps)
 
         // Execute
-        let baseAngle = (180 - extentf / CGFloat(definedSteps)) * 0.5
-        let leftAngle1 = Double(90 - baseAngle)
-        let leftAngleN = Double(2 * leftAngle1)
-        let distance = Double(2 * radiusf * cos(Degree(baseAngle).radian))
+        let baseAngle = (180 - checkedExtent / Double(definedSteps)) * 0.5
+        let leftAngle1 = 90 - baseAngle
+        let leftAngleN = 2 * leftAngle1
+        let distance = 2 * radius * cos(Degree(baseAngle).radian)
         for index in 1 ... definedSteps {
             if index == 1 {
                 right(-leftAngle1)
@@ -120,8 +116,8 @@ public class Tortoise {
     }
 
     public func towards(_ x: Double, _ y: Double) -> Double {
-        let tan = CGFloat((y - Double(state.position.y)) / (x - Double(state.position.x)))
-        return 90 - Double(Radian(atan(tan)).degree)
+        let tan = (y - state.position.y) / (x - state.position.x)
+        return 90 - Radian(atan(tan)).degree
     }
 
     public func towards(_ position: Vec2D) -> Double {
@@ -172,9 +168,8 @@ public class Tortoise {
     }
 
     public func penSize(_ size: Double) {
-        let castedSize = CGFloat(size)
-        if state.pen.width != castedSize {
-            state.pen.width = castedSize
+        if state.pen.width != size {
+            state.pen.width = size
             delegate?.tortoiseDidChangePen(state)
         }
     }

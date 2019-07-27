@@ -39,7 +39,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(state.pen.color)
         bitmapContext.setFillColor(CGColor.clear)
-        bitmapContext.setLineWidth(state.pen.width)
+        bitmapContext.setLineWidth(CGFloat(state.pen.width))
         bitmapContext.addPath([currentPosition, state.position].toCGPath())
         currentPosition = state.position
         bitmapContext.strokePath()

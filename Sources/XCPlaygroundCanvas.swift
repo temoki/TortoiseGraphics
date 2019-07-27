@@ -147,9 +147,10 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         CATransaction.transactionWithoutAnimation({
             shapeLayer.position = translatedPosition(position: state.position.toCGPoint())
             shapeLayer.transform = rotatedTransform(angle: state.heading)
-            shapeLayer.path = makeShapePath(shape: state.shape, penSize: state.pen.width)
+            shapeLayer.path = makeShapePath(shape: state.shape,
+                                            penSize: CGFloat(state.pen.width))
             shapeLayer.strokeColor = state.pen.color
-            shapeLayer.lineWidth = state.pen.width
+            shapeLayer.lineWidth = CGFloat(state.pen.width)
             shapeLayer.fillColor = state.pen.fillColor
         }, completion: completion)
     }
@@ -174,7 +175,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 pathLayer.backgroundColor = UIColor.clear.cgColor
                 pathLayer.strokeColor = state.pen.color
                 pathLayer.fillColor = UIColor.clear.cgColor
-                pathLayer.lineWidth = state.pen.width
+                pathLayer.lineWidth = CGFloat(state.pen.width)
 
                 let pathAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
                 pathAnimation.toValue = toPath
@@ -219,13 +220,14 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleChangePenEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
         shapeLayer.strokeColor = state.pen.color
-        shapeLayer.lineWidth = state.pen.width
+        shapeLayer.lineWidth = CGFloat(state.pen.width)
         shapeLayer.fillColor = state.pen.fillColor
         handleChangeShapeEvent(state, completion)
     }
 
     private func handleChangeShapeEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let toPath = makeShapePath(shape: state.shape, penSize: state.pen.width)
+        let toPath = makeShapePath(shape: state.shape,
+                                   penSize: CGFloat(state.pen.width))
         let toOpacity: Float = state.shape.isVisible ? 1 : 0
 
         CATransaction.transaction({
@@ -326,7 +328,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func rotatedTransform(angle: Angle) -> CATransform3D {
-        return CATransform3DMakeRotation(angle.radian, 0, 0, 1)
+        return CATransform3DMakeRotation(CGFloat(angle.radian), 0, 0, 1)
     }
 
     private func makeShapePath(shape: Shape, penSize: CGFloat) -> CGPath {

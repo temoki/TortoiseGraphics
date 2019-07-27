@@ -2,34 +2,34 @@ import CoreGraphics
 
 protocol Angle {
 
-    var value: CGFloat { get set }
+    var value: Double { get set }
 
-    var degree: CGFloat { get }
+    var degree: Double { get }
 
-    var radian: CGFloat { get }
+    var radian: Double { get }
 
 }
 
 struct Degree: Angle {
 
-    init(_ value: CGFloat) { self.value = value }
+    init(_ value: Double) { self.value = value }
 
-    var value: CGFloat
+    var value: Double
 
-    var degree: CGFloat { return value }
+    var degree: Double { return value }
 
-    var radian: CGFloat { return value * (.pi / 180.0) }
+    var radian: Double { return value * (.pi / 180.0) }
 
 }
 
 struct Radian: Angle {
 
-    init(_ value: CGFloat) { self.value = value }
+    init(_ value: Double) { self.value = value }
 
-    var value: CGFloat
+    var value: Double
 
-    var degree: CGFloat { return value * (180.0 / .pi) }
+    var degree: Double { return value * (180.0 / .pi) }
 
-    var radian: CGFloat { return value }
+    var radian: Double { return value }
 
 }
