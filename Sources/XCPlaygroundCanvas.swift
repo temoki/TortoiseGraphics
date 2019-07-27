@@ -13,9 +13,17 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         self.canvasColor = color ?? Color.white
         self.imageCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: self.canvasColor)
         self.shapeLayer = CAShapeLayer()
+        self.frameObservation = nil
         super.init(frame: CGRect(origin: .zero, size: size))
+
         layer.contents = imageCanvas.cgImage
         layer.addSublayer(shapeLayer)
+
+        self.frameObservation = self.observe(\.frame, options: .new) { [weak self] (_, change) in
+            guard let newFrame = change.newValue else { return }
+            print(newFrame)
+            self?.addEvent(.canvasDidChangeSize(newFrame.size))
+        }
     }
 
     required init?(coder decoder: NSCoder) {
@@ -75,14 +83,16 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case tortoiseDidRequestToFill(TortoiseState)
         case tortoiseDidRequestToClear(TortoiseState)
         case canvasDidChangeBackground(Color)
+        case canvasDidChangeSize(CGSize)
     }
 
     private let lock = NSLock()
     private var eventQueue: [Event] = []
     private var isHandling: Bool = false
 
-    private let imageCanvas: ImageCanvas
+    private var imageCanvas: ImageCanvas
     private let shapeLayer: CAShapeLayer
+    private var frameObservation: NSKeyValueObservation?
 
     private func addEvent(_ event: Event) {
         lock.lock()
@@ -128,6 +138,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleRequestToClearEvent(state, completion)
         case .canvasDidChangeBackground(let color):
             handleChangeBackgroundEvent(color, completion)
+        case .canvasDidChangeSize(let size):
+            handleChangeSizeEvent(size, completion)
         }
     }
 
@@ -278,6 +290,21 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         imageCanvas.canvasColor = color
         layer.contents = imageCanvas.cgImage
         completion()
+    }
+
+    private func handleChangeSizeEvent(_ size: CGSize, _ completion: () -> Void) {
+        defer { completion() }
+        guard size != imageCanvas.canvasSize else { return }
+        let newCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: canvasColor)
+        if let oldImage = imageCanvas.cgImage {
+            let drawRect = CGRect(x: (size.width - imageCanvas.canvasSize.width) * 0.5,
+                                  y: (size.height - imageCanvas.canvasSize.height) * 0.5,
+                                  width: imageCanvas.canvasSize.width,
+                                  height: imageCanvas.canvasSize.height)
+            newCanvas.drawImage(oldImage, in: drawRect)
+        }
+        imageCanvas = newCanvas
+        layer.contents = imageCanvas.cgImage
     }
 
     private func makePositionTransform() -> CGAffineTransform {

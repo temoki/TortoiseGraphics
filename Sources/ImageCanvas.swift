@@ -70,6 +70,12 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         bitmapContext = createForegroundContext(size: canvasSize, scale: bitmapScale)
     }
 
+    // MARK: - Internal
+
+    func drawImage(_ image: CGImage, in rect: CGRect) {
+        bitmapContext.draw(image, in: rect)
+    }
+
     // MARK: - Private
 
     private var bitmapContext: CGContext
