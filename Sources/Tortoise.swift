@@ -68,7 +68,30 @@ public class Tortoise {
     }
 
     public func circle(_ radius: Double, _ extent: Double = 360, _ steps: Int = 0) {
-        // TODO: impl
+        // Radius
+        let radiusf = CGFloat(radius)
+
+        // Extent
+        let extentf = CGFloat(max(min(extent, 360), 1))
+
+        // Step
+        let minSteps = max(Int(extentf / 10), 1)
+        let definedSteps = steps <= 0 ? minSteps : min(steps, minSteps)
+
+        // Execute
+        let baseAngle = (180 - extentf / CGFloat(definedSteps)) * 0.5
+        let leftAngle1 = Double(90 - baseAngle)
+        let leftAngleN = Double(2 * leftAngle1)
+        let distance = Double(2 * radiusf * cos(Degree(baseAngle).radian))
+        for index in 1 ... definedSteps {
+            if index == 1 {
+                right(-leftAngle1)
+            } else {
+                right(-leftAngleN)
+            }
+            forward(distance)
+        }
+        right(-leftAngle1)
     }
 
     public func speed(_ speed: Speed) {
