@@ -22,7 +22,6 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
         self.frameObservation = self.observe(\.frame, options: .new) { [weak self] (_, change) in
             guard let newFrame = change.newValue else { return }
-            print(newFrame)
             self?.addEvent(.canvasDidChangeSize(newFrame.size))
         }
     }
