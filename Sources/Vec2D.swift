@@ -1,4 +1,4 @@
-import CoreGraphics
+import Foundation
 
 public struct Vec2D {
 

@@ -1,11 +1,4 @@
-//
-//  Pen.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/24.
-//
-
-import CoreGraphics
+import Foundation
 
 struct Pen {
 

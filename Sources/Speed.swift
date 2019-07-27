@@ -1,10 +1,3 @@
-//
-//  Speed.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/27.
-//
-
 import Foundation
 
 public enum Speed {

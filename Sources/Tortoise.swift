@@ -1,11 +1,3 @@
-//
-//  Tortoise.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/15.
-//
-
-import Foundation
 import CoreGraphics
 
 public class Tortoise {

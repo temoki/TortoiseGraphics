@@ -1,16 +1,8 @@
-//
-//  Speed+.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/27.
-//
-
 import Foundation
-import CoreGraphics
 
 extension Speed {
 
-    func movementDuration(distance: CGFloat) -> CFTimeInterval {
+    func movementDuration(distance: Double) -> CFTimeInterval {
         return CFTimeInterval(Double(distance) / (velocity * 100.0))
     }
 

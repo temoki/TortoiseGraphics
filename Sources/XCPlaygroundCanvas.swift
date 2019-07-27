@@ -5,6 +5,7 @@
 //  Created by Tomoki Kobayashi on 2019/07/16.
 //
 
+#if os (iOS)
 import UIKit
 
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
@@ -182,7 +183,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         let pathLayer: CAShapeLayer? = state.pen.isDown ? CAShapeLayer() : nil
 
         CATransaction.transaction({
-            let animationDuration = state.speed.movementDuration(distance: distance)
+            let animationDuration = state.speed.movementDuration(distance: Double(distance))
 
             if let pathLayer = pathLayer {
                 layer.addSublayer(pathLayer)
@@ -356,3 +357,4 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
 }
+#endif

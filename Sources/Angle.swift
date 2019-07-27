@@ -1,4 +1,4 @@
-import CoreGraphics
+import Foundation
 
 protocol Angle {
 

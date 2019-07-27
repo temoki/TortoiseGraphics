@@ -1,10 +1,3 @@
-//
-//  Tortoise+Alias.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/22.
-//
-
 import Foundation
 
 extension Tortoise {

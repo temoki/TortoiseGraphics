@@ -25,122 +25,30 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 
 ### Result
 
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.png" width="300" /> <img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.gif" width="300" />
+<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.png" width="300" />
 
 ## Usage
 
-### Draw in NSView (macOS)
-
 ```swift
-class CanvasView: NSView {
+// Instantiate a ImageCanvas and Tortoise
+let canvas = ImageCanvas(size: Vec2D(300, 300))
+let 🐢 = Tortoise(canvas: canvas)
 
-    public override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Get current context
-        guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
-
-        // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: bounds.size, context: cgContext)
-
-        // Command 🐢 on canvas.
-        canvas.drawing { 🐢 in
-            🐢.right(90)
-            🐢.forward(100)
-        }
-    }
-
-}
-```
-
-### Draw in UIView (iOS)
-
-```swift
-class CanvasView: UIView {
-
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-        // Get current context
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-
-        // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: bounds.size, context: context)
-
-        // Command 🐢 on canvas.
-        canvas.drawing { 🐢 in
-            🐢.right(90)
-            🐢.forward(100)
-        }
-    }
-
-}
-```
-
-### Make or Write image
-
-```swift
-// Instantiate a ImageCanvas
-let canvas = ImageCanvas(size: CGSize(width: 300, height: 300))
-
-// Command 🐢 on canvas
-canvas.drawing { 🐢 in
-    🐢.right(90)
-    🐢.forward(100)
-}
+// Command 🐢
+🐢.right(90)
+🐢.forward(100)
 
 // Get drawn CGImage
 let cgImage = canvas.cgImage
 
-// Get drawn NSImage or UIImage
-let image = canvas.image
-
-// Write to image file (PNG, JPEG, TIFF, GIF)
-canvas.writePNG(to: URL(fileURLWithPath: "./image.png")
-canvas.writeJPEG(to: URL(fileURLWithPath: "./image.jpeg")
-canvas.writeTIFF(to: URL(fileURLWithPath: "./image.tiff")
-canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 ```
-
-### With multiple tortoises
-
-```swift
-canvas.drawingWithTortoises(count: 2) { tortoises in
-    let 🐢 = tortoises[0]
-    let 🐇 = tortoises[1]
-    🐢.shape(.tortoise)
-    🐇.shape(.classic)
-
-    🐢.penColor(.red)
-    🐢.fillColor(.orange)
-    🐢.left(90)
-
-    🐇.penColor(.purple)
-    🐇.fillColor(.lightBlue)
-    🐇.right(90)
-
-    // Turtle Star!
-    🐢.beginFill()
-    🐇.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(120)
-        🐇.forward(120)
-        🐢.left(170)
-        🐇.right(170)
-    }
-    🐢.endFill()
-    🐇.endFill()
-}
-```
-
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.png" width="300" /> <img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.gif" width="300" />
 
 ## Playgrounds
 
 ### On Xcode
 
 1. Open `TortoiseGraphics.xcworkspace` in Xcode.
-1. Build `TortoiseGraphics` scheme for _My Mac_.
+1. Build `TortoiseGraphics` scheme for iOS Simulator.
 1. Select `Playground` in project navigator.
 1. Let's play!
 
@@ -164,10 +72,16 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 ## Classes
 
 * `ImageCanvas`
-* `GraphicsCanvas`
+* `XCPlaygroundCanvas` (iOS only)
 * `Tortoise`
 * `Shape`
+* `Color`
 * `Vec2D`
+
+## Enums
+
+* `ColorPalette`
+* `Speed`
 
 ## Tortoise Commands
 

@@ -1,10 +1,3 @@
-//
-//  CATransaction+.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/26.
-//
-
 import QuartzCore
 
 extension CATransaction {

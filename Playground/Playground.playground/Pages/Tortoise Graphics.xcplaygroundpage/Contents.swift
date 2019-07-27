@@ -1,5 +1,4 @@
-//: # With a tortoise 🐢
-//: [👉 With 2 tortoises 🐢🐢](@next)
+//: # 🐢 Tortoise Graphics
 import PlaygroundSupport
 import TortoiseGraphics
 

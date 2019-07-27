@@ -1,12 +1,4 @@
-//
-//  TortoiseDelegate.swift
-//  TortoiseGraphics
-//
-//  Created by Tomoki Kobayashi on 2019/07/16.
-//
-
 import Foundation
-import CoreGraphics
 
 protocol TortoiseDelegate: class {
 
