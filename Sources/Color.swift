@@ -1,5 +1,5 @@
 //
-//  RGB.swift
+//  Color.swift
 //  TortoiseGraphics
 //
 //  Created by Tomoki Kobayashi on 2019/07/27.
@@ -7,26 +7,26 @@
 
 import Foundation
 
-public struct RGB: CustomStringConvertible {
+public struct Color: CustomStringConvertible {
 
     public var r: Double {
-        didSet { r = RGB.componentToPresentationValue(r) }
+        didSet { r = Color.componentToPresentationValue(r) }
     }
 
     public var g: Double {
-        didSet { r = RGB.componentToPresentationValue(g) }
+        didSet { g = Color.componentToPresentationValue(g) }
     }
 
     public var b: Double {
-        didSet { r = RGB.componentToPresentationValue(b) }
+        didSet { b = Color.componentToPresentationValue(b) }
     }
 
     public var name: String?
 
     public init(_ r: Double, _ g: Double, _ b: Double, name: String? = nil) {
-        self.r = RGB.componentToRawValue(r)
-        self.g = RGB.componentToRawValue(g)
-        self.b = RGB.componentToRawValue(b)
+        self.r = Color.componentToRawValue(r)
+        self.g = Color.componentToRawValue(g)
+        self.b = Color.componentToRawValue(b)
         self.name = name
     }
 
@@ -57,9 +57,9 @@ public struct RGB: CustomStringConvertible {
 
     public var description: String {
         if let name = self.name { return name }
-        let presenR = RGB.componentToPresentationValue(r)
-        let presenG = RGB.componentToPresentationValue(g)
-        let presenB = RGB.componentToPresentationValue(b)
+        let presenR = Color.componentToPresentationValue(r)
+        let presenG = Color.componentToPresentationValue(g)
+        let presenB = Color.componentToPresentationValue(b)
         return "(\(presenR),\(presenG),\(presenB))"
     }
 

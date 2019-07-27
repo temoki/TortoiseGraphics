@@ -5,7 +5,7 @@
 //  Created by Tomoki Kobayashi on 2019/07/26.
 //
 
-import UIKit
+import QuartzCore
 
 extension CATransaction {
 

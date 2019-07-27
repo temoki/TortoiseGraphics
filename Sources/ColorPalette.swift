@@ -24,30 +24,30 @@ public enum ColorPalette: String {
     case grey
     case blueGrey
 
-    var rgb: RGB {
+    var color: Color {
         // https://material.io/guidelines/style/color.html
         switch self {
-        case .black: return RGB("000000", name: self.rawValue)
-        case .white: return RGB("FFFFFF", name: self.rawValue)
-        case .red: return RGB("F44336", name: self.rawValue)
-        case .pink: return RGB("E91E63", name: self.rawValue)
-        case .purple: return RGB("9C27B0", name: self.rawValue)
-        case .deepPurple: return RGB("673AB7", name: self.rawValue)
-        case .indigo: return RGB("3F51B5", name: self.rawValue)
-        case .blue: return RGB("2196F3", name: self.rawValue)
-        case .lightBlue: return RGB("03A9F4", name: self.rawValue)
-        case .cyan: return RGB("00BCD4", name: self.rawValue)
-        case .teal: return RGB("009688", name: self.rawValue)
-        case .green: return RGB("4CAF50", name: self.rawValue)
-        case .lightGreen: return RGB("8BC34A", name: self.rawValue)
-        case .lime: return RGB("CDDC39", name: self.rawValue)
-        case .yellow: return RGB("FFEB3B", name: self.rawValue)
-        case .amber: return RGB("FFC107", name: self.rawValue)
-        case .orange: return RGB("FF9800", name: self.rawValue)
-        case .deepOrange: return RGB("FF5722", name: self.rawValue)
-        case .brown: return RGB("795548", name: self.rawValue)
-        case .grey: return RGB("9E9E9E", name: self.rawValue)
-        case .blueGrey: return RGB("607D8B", name: self.rawValue)
+        case .black: return Color("000000", name: self.rawValue)
+        case .white: return Color("FFFFFF", name: self.rawValue)
+        case .red: return Color("F44336", name: self.rawValue)
+        case .pink: return Color("E91E63", name: self.rawValue)
+        case .purple: return Color("9C27B0", name: self.rawValue)
+        case .deepPurple: return Color("673AB7", name: self.rawValue)
+        case .indigo: return Color("3F51B5", name: self.rawValue)
+        case .blue: return Color("2196F3", name: self.rawValue)
+        case .lightBlue: return Color("03A9F4", name: self.rawValue)
+        case .cyan: return Color("00BCD4", name: self.rawValue)
+        case .teal: return Color("009688", name: self.rawValue)
+        case .green: return Color("4CAF50", name: self.rawValue)
+        case .lightGreen: return Color("8BC34A", name: self.rawValue)
+        case .lime: return Color("CDDC39", name: self.rawValue)
+        case .yellow: return Color("FFEB3B", name: self.rawValue)
+        case .amber: return Color("FFC107", name: self.rawValue)
+        case .orange: return Color("FF9800", name: self.rawValue)
+        case .deepOrange: return Color("FF5722", name: self.rawValue)
+        case .brown: return Color("795548", name: self.rawValue)
+        case .grey: return Color("9E9E9E", name: self.rawValue)
+        case .blueGrey: return Color("607D8B", name: self.rawValue)
         }
     }
 

@@ -11,10 +11,10 @@ struct Pen {
 
     var isDown: Bool = true
 
-    var color: RGB = ColorPalette.black.rgb
+    var color: Color = ColorPalette.black.color
 
     var width: Double = 1
 
-    var fillColor: RGB = ColorPalette.black.rgb
+    var fillColor: Color = ColorPalette.black.color
 
 }

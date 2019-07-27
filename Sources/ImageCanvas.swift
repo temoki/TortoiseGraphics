@@ -3,9 +3,9 @@ import CoreGraphics
 
 public class ImageCanvas: Canvas, TortoiseDelegate {
 
-    public init(size: Vec2D, scale: Double = 1, color: RGB? = nil) {
+    public init(size: Vec2D, scale: Double = 1, color: Color? = nil) {
         self.canvasSize = size
-        self.canvasColor = color ?? ColorPalette.white.rgb
+        self.canvasColor = color ?? ColorPalette.white.color
         self.bitmapScale = CGFloat(scale)
         self.bitmapContext = createForegroundContext(size: size.toCGSize(),
                                                      scale: self.bitmapScale)
@@ -14,7 +14,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     public var cgImage: CGImage? {
         let size = canvasSize.toCGSize()
         let bgContext = createBackgroundContext(size: size, scale: bitmapScale)
-        bgContext.setFillColor(canvasColor.cgColor)
+        bgContext.setFillColor(canvasColor.toCGColor())
         bgContext.fill(CGRect(origin: .zero, size: size))
         if let fgImage = bitmapContext.makeImage() {
             bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
@@ -27,22 +27,22 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     public var canvasSize: Vec2D
 
     public func canvasColor(_ palette: ColorPalette) {
-        canvasColor = palette.rgb
+        canvasColor = palette.color
     }
 
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
-        canvasColor = RGB(r, g, b)
+        canvasColor = Color(r, g, b)
     }
 
     public func canvasColor(_ hex: String) {
-        canvasColor = RGB(hex)
+        canvasColor = Color(hex)
     }
 
-    public func canvasColor(_ rgb: RGB) {
-        canvasColor = rgb
+    public func canvasColor(_ color: Color) {
+        canvasColor = color
     }
 
-    public private(set) var canvasColor: RGB
+    public private(set) var canvasColor: Color
 
     // MARK: - TortoiseDelegate
 
@@ -53,7 +53,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     func tortoiseDidChangePosition(_ state: TortoiseState) {
         guard state.pen.isDown else { return }
         bitmapContext.saveGState()
-        bitmapContext.setStrokeColor(state.pen.color.cgColor)
+        bitmapContext.setStrokeColor(state.pen.color.toCGColor())
         bitmapContext.setFillColor(CGColor.clear)
         bitmapContext.setLineWidth(CGFloat(state.pen.width))
         bitmapContext.addPath([currentPosition, state.position].toCGPath())
@@ -78,7 +78,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         guard let fillPath = state.fillPath else { return }
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(CGColor.clear)
-        bitmapContext.setFillColor(state.pen.fillColor.cgColor)
+        bitmapContext.setFillColor(state.pen.fillColor.toCGColor())
         bitmapContext.addPath(fillPath.toCGPath())
         bitmapContext.fillPath()
         bitmapContext.restoreGState()

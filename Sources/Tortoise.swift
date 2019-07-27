@@ -185,50 +185,50 @@ public class Tortoise {
     // MARK: - [Pen control] Color control
 
     public func penColor(_ palette: ColorPalette) {
-        state.pen.color = palette.rgb
+        state.pen.color = palette.color
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
-        state.pen.color = RGB(r, g, b)
+        state.pen.color = Color(r, g, b)
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func penColor(_ hex: String) {
-        state.pen.color = RGB(hex)
+        state.pen.color = Color(hex)
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public func penColor(_ rgb: RGB) {
-        state.pen.color = rgb
+    public func penColor(_ color: Color) {
+        state.pen.color = color
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public var penColor: RGB {
+    public var penColor: Color {
         return state.pen.color
     }
 
-    public func fillColor(_ color: ColorPalette) {
-        state.pen.fillColor = color.rgb
+    public func fillColor(_ palette: ColorPalette) {
+        state.pen.fillColor = palette.color
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
-        state.pen.fillColor = RGB(r, g, b)
+        state.pen.fillColor = Color(r, g, b)
         delegate?.tortoiseDidChangePen(state)
     }
 
     public func fillColor(_ hex: String) {
-        state.pen.color = RGB(hex)
+        state.pen.color = Color(hex)
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public func fillColor(_ rgb: RGB) {
-        state.pen.fillColor = rgb
+    public func fillColor(_ color: Color) {
+        state.pen.fillColor = color
         delegate?.tortoiseDidChangePen(state)
     }
 
-    public var fillColor: RGB {
+    public var fillColor: Color {
         return state.pen.fillColor
     }
 

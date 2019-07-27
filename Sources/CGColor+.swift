@@ -6,24 +6,19 @@
 //
 
 import Foundation
-import CoreGraphics
+#if os(iOS)
+import UIKit
+#elseif os(macOS)
+import AppKit
+#endif
 
 extension CGColor {
 
     static var clear: CGColor {
-        return fromRGB(0, 0, 0, 0)
-    }
-
-    static func fromRGB(_ rgb: RGB, _ alpha: CGFloat = 1) -> CGColor {
-        return fromRGB(CGFloat(rgb.r), CGFloat(rgb.g), CGFloat(rgb.b), alpha)
-    }
-
-    static func fromRGB(_ r: CGFloat, _ g: CGFloat, _ b: CGFloat, _ alpha: CGFloat = 1) -> CGColor {
         #if os(iOS)
-        // swiftlint:disable:next force_unwrapping
-        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [r, g, b, alpha])!
+        return UIColor.clear.cgColor
         #elseif os(macOS)
-        return CGColor(red: red, green: green, blue: blue, alpha: alpha)
+        return NSColor.clear.cgColor
         #endif
     }
 

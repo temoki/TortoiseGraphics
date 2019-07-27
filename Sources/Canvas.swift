@@ -17,8 +17,8 @@ public protocol Canvas {
 
     func canvasColor(_ hex: String)
 
-    func canvasColor(_ rgb: RGB)
+    func canvasColor(_ color: Color)
 
-    var canvasColor: RGB { get }
+    var canvasColor: Color { get }
 
 }
