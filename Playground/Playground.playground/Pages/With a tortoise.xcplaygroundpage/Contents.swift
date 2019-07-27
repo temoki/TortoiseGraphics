@@ -2,9 +2,8 @@
 //: [👉 With 2 tortoises 🐢🐢](@next)
 import PlaygroundSupport
 import TortoiseGraphics
-import UIKit
 
-let canvas = XCPlaygroundCanvas(size: CGSize(width: 300, height: 300))
+let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
 PlaygroundPage.current.liveView = canvas
 
 let 🐢 = Tortoise(canvas: canvas)

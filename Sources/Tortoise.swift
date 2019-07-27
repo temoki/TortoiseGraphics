@@ -18,7 +18,8 @@ public class Tortoise {
     // MARK: - [Motion] Move and Draw
 
     public func forward(_ distance: Double) {
-        let transform = CGAffineTransform(translationX: state.position.x, y: state.position.y)
+        let transform = CGAffineTransform(translationX: CGFloat(state.position.x),
+                                          y: CGFloat(state.position.y))
             .rotated(by: -state.heading.radian)
         let newPosition = CGPoint(x: 0, y: distance).applying(transform)
         setPosition(Double(newPosition.x), Double(newPosition.y))
@@ -38,7 +39,7 @@ public class Tortoise {
     }
 
     public func setPosition(_ x: Double, _ y: Double) {
-        let newPosition = CGPoint(x: x, y: y)
+        let newPosition = Vec2D(x, y)
         state.position = newPosition
         state.fillPath?.append(newPosition)
         delegate?.tortoiseDidChangePosition(state)

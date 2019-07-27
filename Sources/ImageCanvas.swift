@@ -3,26 +3,28 @@ import CoreGraphics
 
 public class ImageCanvas: Canvas, TortoiseDelegate {
 
-    public init(size: CGSize, scale: CGFloat = 1, color: Color? = nil) {
+    public init(size: Vec2D, scale: Double = 1, color: Color? = nil) {
         self.canvasSize = size
         self.canvasColor = color ?? Color.white
-        self.bitmapScale = scale
-        self.bitmapContext = createForegroundContext(size: size, scale: scale)
+        self.bitmapScale = CGFloat(scale)
+        self.bitmapContext = createForegroundContext(size: size.toCGSize(),
+                                                     scale: self.bitmapScale)
     }
 
     public var cgImage: CGImage? {
-        let bgContext = createBackgroundContext(size: canvasSize, scale: bitmapScale)
+        let size = canvasSize.toCGSize()
+        let bgContext = createBackgroundContext(size: size, scale: bitmapScale)
         bgContext.setFillColor(canvasColor.cgColor)
-        bgContext.fill(CGRect(origin: .zero, size: canvasSize))
+        bgContext.fill(CGRect(origin: .zero, size: size))
         if let fgImage = bitmapContext.makeImage() {
-            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: canvasSize))
+            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
         }
         return bgContext.makeImage()
     }
 
     // MARK: - Canvas
 
-    public var canvasSize: CGSize
+    public var canvasSize: Vec2D
 
     public var canvasColor: Color
 
@@ -67,7 +69,8 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     }
 
     func tortoiseDidRequestToClear(_ state: TortoiseState) {
-        bitmapContext = createForegroundContext(size: canvasSize, scale: bitmapScale)
+        bitmapContext = createForegroundContext(size: canvasSize.toCGSize(),
+                                                scale: bitmapScale)
     }
 
     // MARK: - Internal
@@ -82,7 +85,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     private let bitmapScale: CGFloat
 
-    private var currentPosition: CGPoint = .zero
+    private var currentPosition: Vec2D = Vec2D()
 
 }
 

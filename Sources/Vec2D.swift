@@ -1,10 +1,11 @@
 import CoreGraphics
 
 public struct Vec2D {
-    var x: Double
-    var y: Double
 
-    init(_ x: Double, _ y: Double) {
+    public var x: Double
+    public var y: Double
+
+    public init(_ x: Double = 0, _ y: Double = 0) {
         self.x = x
         self.y = y
     }

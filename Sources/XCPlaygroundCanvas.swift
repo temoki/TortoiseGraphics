@@ -9,12 +9,12 @@ import UIKit
 
 public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
-    public init(size: CGSize, color: Color? = nil) {
+    public init(size: Vec2D, color: Color? = nil) {
         self.canvasColor = color ?? Color.white
-        self.imageCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: self.canvasColor)
+        self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
         self.shapeLayer = CAShapeLayer()
         self.frameObservation = nil
-        super.init(frame: CGRect(origin: .zero, size: size))
+        super.init(frame: CGRect(origin: .zero, size: size.toCGSize()))
 
         layer.contents = imageCanvas.cgImage
         layer.addSublayer(shapeLayer)
@@ -32,7 +32,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     // MARK: - Canvas
 
-    public var canvasSize: CGSize {
+    public var canvasSize: Vec2D {
         return imageCanvas.canvasSize
     }
 
@@ -145,7 +145,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleInitializeEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
         CATransaction.transactionWithoutAnimation({
-            shapeLayer.position = translatedPosition(position: state.position)
+            shapeLayer.position = translatedPosition(position: state.position.toCGPoint())
             shapeLayer.transform = rotatedTransform(angle: state.heading)
             shapeLayer.path = makeShapePath(shape: state.shape, penSize: state.pen.width)
             shapeLayer.strokeColor = state.pen.color
@@ -156,7 +156,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleChangePositionEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
         let fromPos = shapeLayer.position
-        let toPos = translatedPosition(position: state.position)
+        let toPos = translatedPosition(position: state.position.toCGPoint())
         let distance = fromPos.distance(to: toPos)
 
         let fromPath = fromPos.toCGPath()
@@ -169,7 +169,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
             if let pathLayer = pathLayer {
                 layer.addSublayer(pathLayer)
-                pathLayer.frame = CGRect(origin: .zero, size: self.canvasSize)
+                pathLayer.frame = CGRect(origin: .zero, size: self.canvasSize.toCGSize())
                 pathLayer.path = fromPath
                 pathLayer.backgroundColor = UIColor.clear.cgColor
                 pathLayer.strokeColor = state.pen.color
@@ -294,13 +294,16 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleChangeSizeEvent(_ size: CGSize, _ completion: () -> Void) {
         defer { completion() }
-        guard size != imageCanvas.canvasSize else { return }
-        let newCanvas = ImageCanvas(size: size, scale: UIScreen.main.scale, color: canvasColor)
+        let oldSize = imageCanvas.canvasSize.toCGSize()
+        guard size != oldSize else { return }
+        let newCanvas = ImageCanvas(size: Vec2D(size: size),
+                                    scale: Double(UIScreen.main.scale),
+                                    color: canvasColor)
         if let oldImage = imageCanvas.cgImage {
-            let drawRect = CGRect(x: (size.width - imageCanvas.canvasSize.width) * 0.5,
-                                  y: (size.height - imageCanvas.canvasSize.height) * 0.5,
-                                  width: imageCanvas.canvasSize.width,
-                                  height: imageCanvas.canvasSize.height)
+            let drawRect = CGRect(x: (size.width - oldSize.width) * 0.5,
+                                  y: (size.height - oldSize.height) * 0.5,
+                                  width: oldSize.width,
+                                  height: oldSize.height)
             newCanvas.drawImage(oldImage, in: drawRect)
         }
         imageCanvas = newCanvas
@@ -308,7 +311,9 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func makePositionTransform() -> CGAffineTransform {
-        return CGAffineTransform(translationX: canvasSize.width * 0.5, y: canvasSize.height * 0.5).scaledBy(x: 1, y: -1)
+        return CGAffineTransform(
+            translationX: CGFloat(canvasSize.x * 0.5), y: CGFloat(canvasSize.y * 0.5)
+            ).scaledBy(x: 1, y: -1)
     }
 
     private func translatedPosition(position: CGPoint) -> CGPoint {

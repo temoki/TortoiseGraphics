@@ -6,11 +6,10 @@
 //
 
 import Foundation
-import CoreGraphics
 
 public protocol Canvas {
 
-    var canvasSize: CGSize { get }
+    var canvasSize: Vec2D { get }
 
     var canvasColor: Color { get set }
 

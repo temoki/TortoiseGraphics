@@ -10,7 +10,7 @@ import CoreGraphics
 
 struct TortoiseState {
 
-    var position: CGPoint = .zero
+    var position: Vec2D = Vec2D()
 
     var heading: Angle = Degree(0)
 
@@ -20,6 +20,6 @@ struct TortoiseState {
 
     var speed: Speed = .normal
 
-    var fillPath: [CGPoint]?
+    var fillPath: [Vec2D]?
 
 }
