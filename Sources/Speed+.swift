@@ -2,17 +2,23 @@ import Foundation
 
 extension Speed {
 
+    var isNoAnimation: Bool {
+        return velocity == 0
+    }
+
     func movementDuration(distance: Double) -> CFTimeInterval {
-        return CFTimeInterval(Double(distance) / (velocity * 100.0))
+        guard velocity != 0 else { return 0 }
+        return CFTimeInterval(Double(distance) / (Double(velocity) * 100.0))
     }
 
     func animationDuration() -> CFTimeInterval {
-        return CFTimeInterval(1.0 / velocity)
+        guard velocity != 0 else { return 0 }
+        return CFTimeInterval(1.0 / Double(velocity))
     }
 
-    private var velocity: Double {
+    private var velocity: UInt8 {
         switch self {
-        case .fastest: return 10
+        case .fastest: return 0
         case .fast: return 8
         case .normal: return 6
         case .slow: return 4

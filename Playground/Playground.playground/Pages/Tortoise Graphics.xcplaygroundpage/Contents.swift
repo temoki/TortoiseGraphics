@@ -8,7 +8,6 @@ let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
 canvas.add(🐢)
 PlaygroundPage.current.liveView = canvas
 
-
 // Turtle Star!
 🐢.penColor(.blue)
 🐢.fillColor(.deepPurple)
@@ -18,4 +17,3 @@ PlaygroundPage.current.liveView = canvas
     🐢.left(170)
 }
 🐢.endFill()
-
