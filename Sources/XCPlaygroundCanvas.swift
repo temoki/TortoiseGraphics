@@ -6,12 +6,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     public init(size: Vec2D, color: Color? = nil) {
         self.canvasColor = color ?? ColorPalette.white.color
         self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
-        self.shapeLayer = CAShapeLayer()
         self.frameObservation = nil
         super.init(frame: CGRect(origin: .zero, size: size.toCGSize()))
-
-        layer.contents = imageCanvas.cgImage
-        layer.addSublayer(shapeLayer)
 
         self.frameObservation = self.observe(\.frame, options: .new) { [weak self] (_, change) in
             guard let newFrame = change.newValue else { return }
@@ -24,6 +20,13 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     // MARK: - Canvas
+
+    public func add(_ tortoise: Tortoise) {
+        guard tortoise.delegate !== self else { return }
+        tortoise.delegate?.tortoiseDidAddToOtherCanvas(tortoise.uuid, tortoise.state)
+        tortoise.delegate = self
+        tortoiseDidInitialized(tortoise.uuid, tortoise.state)
+    }
 
     public var canvasSize: Vec2D {
         return imageCanvas.canvasSize
@@ -53,44 +56,49 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     // MARK: - TortoiseDelegate
 
-    func tortoiseDidInitialized(_ state: TortoiseState) {
-        addEvent(.tortoiseDidInitialize(state))
+    func tortoiseDidInitialized(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidInitialize(uuid, state))
     }
 
-    func tortoiseDidChangePosition(_ state: TortoiseState) {
-        addEvent(.tortoiseDidChangePosition(state))
+    func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidChangePosition(uuid, state))
     }
 
-    func tortoiseDidChangeHeading(_ state: TortoiseState) {
-        addEvent(.tortoiseDidChangeHeading(state))
+    func tortoiseDidChangeHeading(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidChangeHeading(uuid, state))
     }
 
-    func tortoiseDidChangePen(_ state: TortoiseState) {
-        addEvent(.tortoiseDidChangePen(state))
+    func tortoiseDidChangePen(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidChangePen(uuid, state))
     }
 
-    func tortoiseDidChangeShape(_ state: TortoiseState) {
-        addEvent(.tortoiseDidChangeShape(state))
+    func tortoiseDidChangeShape(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidChangeShape(uuid, state))
     }
 
-    func tortoiseDidRequestToFill(_ state: TortoiseState) {
-        addEvent(.tortoiseDidRequestToFill(state))
+    func tortoiseDidRequestToFill(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidRequestToFill(uuid, state))
     }
 
-    func tortoiseDidRequestToClear(_ state: TortoiseState) {
-        addEvent(.tortoiseDidRequestToClear(state))
+    func tortoiseDidRequestToClear(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidRequestToClear(uuid, state))
+    }
+
+    func tortoiseDidAddToOtherCanvas(_ uuid: UUID, _ state: TortoiseState) {
+        addEvent(.tortoiseDidAddToOtherCanvas(uuid, state))
     }
 
     // MARK: - Private
 
     private enum Event {
-        case tortoiseDidInitialize(TortoiseState)
-        case tortoiseDidChangePosition(TortoiseState)
-        case tortoiseDidChangeHeading(TortoiseState)
-        case tortoiseDidChangePen(TortoiseState)
-        case tortoiseDidChangeShape(TortoiseState)
-        case tortoiseDidRequestToFill(TortoiseState)
-        case tortoiseDidRequestToClear(TortoiseState)
+        case tortoiseDidInitialize(UUID, TortoiseState)
+        case tortoiseDidChangePosition(UUID, TortoiseState)
+        case tortoiseDidChangeHeading(UUID, TortoiseState)
+        case tortoiseDidChangePen(UUID, TortoiseState)
+        case tortoiseDidChangeShape(UUID, TortoiseState)
+        case tortoiseDidRequestToFill(UUID, TortoiseState)
+        case tortoiseDidRequestToClear(UUID, TortoiseState)
+        case tortoiseDidAddToOtherCanvas(UUID, TortoiseState)
         case canvasDidChangeBackground(Color)
         case canvasDidChangeSize(CGSize)
     }
@@ -100,8 +108,9 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     private var isHandling: Bool = false
 
     private var imageCanvas: ImageCanvas
-    private let shapeLayer: CAShapeLayer
     private var frameObservation: NSKeyValueObservation?
+
+    private var tortoiseShapeLayers: [UUID: CAShapeLayer] = [:]
 
     private func addEvent(_ event: Event) {
         lock.lock()
@@ -131,20 +140,22 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleEvent(_ event: Event, completion: @escaping () -> Void) {
         switch event {
-        case .tortoiseDidInitialize(let state):
-            handleInitializeEvent(state, completion)
-        case .tortoiseDidChangePosition(let state):
-            handleChangePositionEvent(state, completion)
-        case .tortoiseDidChangeHeading(let state):
-            handleChangeHeadingEvent(state, completion)
-        case .tortoiseDidChangePen(let state):
-            handleChangePenEvent(state, completion)
-        case .tortoiseDidChangeShape(let state):
-            handleChangeShapeEvent(state, completion)
-        case .tortoiseDidRequestToFill(let state):
-            handleRequestToFillEvent(state, completion)
-        case .tortoiseDidRequestToClear(let state):
-            handleRequestToClearEvent(state, completion)
+        case .tortoiseDidInitialize(let uuid, let state):
+            handleInitializeEvent(uuid, state, completion)
+        case .tortoiseDidChangePosition(let uuid, let state):
+            handleChangePositionEvent(uuid, state, completion)
+        case .tortoiseDidChangeHeading(let uuid, let state):
+            handleChangeHeadingEvent(uuid, state, completion)
+        case .tortoiseDidChangePen(let uuid, let state):
+            handleChangePenEvent(uuid, state, completion)
+        case .tortoiseDidChangeShape(let uuid, let state):
+            handleChangeShapeEvent(uuid, state, completion)
+        case .tortoiseDidRequestToFill(let uuid, let state):
+            handleRequestToFillEvent(uuid, state, completion)
+        case .tortoiseDidRequestToClear(let uuid, let state):
+            handleRequestToClearEvent(uuid, state, completion)
+        case .tortoiseDidAddToOtherCanvas(let uuid, let state):
+            handleAddToOtherCanvasEvent(uuid, state, completion)
         case .canvasDidChangeBackground(let color):
             handleChangeBackgroundEvent(color, completion)
         case .canvasDidChangeSize(let size):
@@ -152,8 +163,12 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         }
     }
 
-    private func handleInitializeEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+    private func handleInitializeEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
         CATransaction.transactionWithoutAnimation({
+            let shapeLayer = CAShapeLayer()
+            layer.addSublayer(shapeLayer)
+            tortoiseShapeLayers[uuid] = shapeLayer
+
             shapeLayer.position = translatedPosition(position: state.position.toCGPoint())
             shapeLayer.transform = rotatedTransform(angle: state.heading)
             shapeLayer.path = makeShapePath(shape: state.shape,
@@ -161,11 +176,16 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.strokeColor = state.pen.color.toCGColor()
             shapeLayer.lineWidth = CGFloat(state.pen.width)
             shapeLayer.fillColor = state.pen.fillColor.toCGColor()
-        }, completion: completion)
+        }, completion: { [weak self] in
+            self?.layer.contents = self?.imageCanvas.cgImage
+            completion()
+        })
     }
 
-    private func handleChangePositionEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let fromPos = shapeLayer.position
+    private func handleChangePositionEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        let shapeLayer = tortoiseShapeLayers[uuid]
+
+        let fromPos = shapeLayer?.position ?? .zero
         let toPos = translatedPosition(position: state.position.toCGPoint())
         let distance = fromPos.distance(to: toPos)
 
@@ -195,46 +215,51 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             let shapeAnimation = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.position))
             shapeAnimation.path = toPath
             shapeAnimation.duration = animationDuration
-            shapeLayer.add(shapeAnimation, forKey: "shape-position)")
+            shapeLayer?.add(shapeAnimation, forKey: "shape-position)")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.tortoiseDidChangePosition(state)
+            self?.imageCanvas.tortoiseDidChangePosition(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
             pathLayer?.removeFromSuperlayer()
 
             CATransaction.transactionWithoutAnimation({
-                self?.shapeLayer.position = toPos
+                shapeLayer?.position = toPos
             }, completion: completion)
         })
     }
 
-    private func handleChangeHeadingEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+    private func handleChangeHeadingEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        let shapeLayer = tortoiseShapeLayers[uuid]
+
         let toTransform = rotatedTransform(angle: state.heading)
 
         CATransaction.transaction({
             let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
             shapeAnimation.toValue = toTransform
             shapeAnimation.duration = state.speed.animationDuration()
-            shapeLayer.add(shapeAnimation, forKey: "shape-transform")
+            shapeLayer?.add(shapeAnimation, forKey: "shape-transform")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.tortoiseDidChangeHeading(state)
+            self?.imageCanvas.tortoiseDidChangeHeading(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
 
             CATransaction.transactionWithoutAnimation({
-                self?.shapeLayer.transform = toTransform
+                shapeLayer?.transform = toTransform
             }, completion: completion)
         })
     }
 
-    private func handleChangePenEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
-        shapeLayer.strokeColor = state.pen.color.toCGColor()
-        shapeLayer.lineWidth = CGFloat(state.pen.width)
-        shapeLayer.fillColor = state.pen.fillColor.toCGColor()
-        handleChangeShapeEvent(state, completion)
+    private func handleChangePenEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        let shapeLayer = tortoiseShapeLayers[uuid]
+        shapeLayer?.strokeColor = state.pen.color.toCGColor()
+        shapeLayer?.lineWidth = CGFloat(state.pen.width)
+        shapeLayer?.fillColor = state.pen.fillColor.toCGColor()
+        handleChangeShapeEvent(uuid, state, completion)
     }
 
-    private func handleChangeShapeEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+    private func handleChangeShapeEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        let shapeLayer = tortoiseShapeLayers[uuid]
+
         let toPath = makeShapePath(shape: state.shape,
                                    penSize: CGFloat(state.pen.width))
         let toOpacity: Float = state.shape.isVisible ? 1 : 0
@@ -245,32 +270,32 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             let anim1 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
             anim1.toValue = toPath
             anim1.duration = animationDuration
-            shapeLayer.add(anim1, forKey: "shape-path")
+            shapeLayer?.add(anim1, forKey: "shape-path")
 
             let anim2 = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
             anim2.toValue = toOpacity
             anim2.duration = animationDuration
-            shapeLayer.add(anim2, forKey: "shape-opacity")
+            shapeLayer?.add(anim2, forKey: "shape-opacity")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.tortoiseDidChangeShape(state)
+            self?.imageCanvas.tortoiseDidChangeShape(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
 
             CATransaction.transactionWithoutAnimation({
-                self?.shapeLayer.path = toPath
-                self?.shapeLayer.opacity = toOpacity
+                shapeLayer?.path = toPath
+                shapeLayer?.opacity = toOpacity
             }, completion: completion)
         })
     }
 
-    private func handleRequestToFillEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
+    private func handleRequestToFillEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
         guard let fillPath = state.fillPath else {
             completion()
             return
         }
 
         let fillLayer = CAShapeLayer()
-        self.layer.addSublayer(shapeLayer)
+        self.layer.addSublayer(fillLayer)
         fillLayer.frame = CGRect(origin: .zero, size: .zero)
         fillLayer.path = translatedPath(path: fillPath.toCGPath())
         fillLayer.backgroundColor = CGColor.clear
@@ -285,16 +310,24 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             fillLayer.add(animation, forKey: "fill-path")
 
         }, completion: { [weak self] in
-            self?.imageCanvas.tortoiseDidRequestToFill(state)
+            self?.imageCanvas.tortoiseDidRequestToFill(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
             fillLayer.removeFromSuperlayer()
             completion()
         })
     }
 
-    private func handleRequestToClearEvent(_ state: TortoiseState, _ completion: @escaping () -> Void) {
-        imageCanvas.tortoiseDidRequestToClear(state)
+    private func handleRequestToClearEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        imageCanvas.tortoiseDidRequestToClear(uuid, state)
         layer.contents = imageCanvas.cgImage
+        completion()
+    }
+
+    private func handleAddToOtherCanvasEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
+        if let shapeLayer = tortoiseShapeLayers[uuid] {
+            shapeLayer.removeFromSuperlayer()
+            tortoiseShapeLayers[uuid] = nil
+        }
         completion()
     }
 

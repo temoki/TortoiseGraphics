@@ -24,6 +24,13 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     // MARK: - Canvas
 
+    public func add(_ tortoise: Tortoise) {
+        guard tortoise.delegate !== self else { return }
+        tortoise.delegate?.tortoiseDidAddToOtherCanvas(tortoise.uuid, tortoise.state)
+        tortoise.delegate = self
+        tortoiseDidInitialized(tortoise.uuid, tortoise.state)
+    }
+
     public var canvasSize: Vec2D
 
     public func canvasColor(_ palette: ColorPalette) {
@@ -46,35 +53,36 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     // MARK: - TortoiseDelegate
 
-    func tortoiseDidInitialized(_ state: TortoiseState) {
-        currentPosition = state.position
+    func tortoiseDidInitialized(_ uuid: UUID, _ state: TortoiseState) {
+        tortoisePositions[uuid] = state.position
     }
 
-    func tortoiseDidChangePosition(_ state: TortoiseState) {
+    func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
         guard state.pen.isDown else { return }
+        let position = tortoisePositions[uuid] ?? Vec2D(0, 0)
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(state.pen.color.toCGColor())
         bitmapContext.setFillColor(CGColor.clear)
         bitmapContext.setLineWidth(CGFloat(state.pen.width))
-        bitmapContext.addPath([currentPosition, state.position].toCGPath())
-        currentPosition = state.position
+        bitmapContext.addPath([position, state.position].toCGPath())
+        tortoisePositions[uuid] = state.position
         bitmapContext.strokePath()
         bitmapContext.restoreGState()
     }
 
-    func tortoiseDidChangeHeading(_ state: TortoiseState) {
+    func tortoiseDidChangeHeading(_ uuid: UUID, _ state: TortoiseState) {
         // Nothing to do
     }
 
-    func tortoiseDidChangePen(_ state: TortoiseState) {
+    func tortoiseDidChangePen(_ uuid: UUID, _ state: TortoiseState) {
         // Nothing to do
     }
 
-    func tortoiseDidChangeShape(_ state: TortoiseState) {
+    func tortoiseDidChangeShape(_ uuid: UUID, _ state: TortoiseState) {
         // Nothing to do
     }
 
-    func tortoiseDidRequestToFill(_ state: TortoiseState) {
+    func tortoiseDidRequestToFill(_ uuid: UUID, _ state: TortoiseState) {
         guard let fillPath = state.fillPath else { return }
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(CGColor.clear)
@@ -84,9 +92,13 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         bitmapContext.restoreGState()
     }
 
-    func tortoiseDidRequestToClear(_ state: TortoiseState) {
+    func tortoiseDidRequestToClear(_ uuid: UUID, _ state: TortoiseState) {
         bitmapContext = createForegroundContext(size: canvasSize.toCGSize(),
                                                 scale: bitmapScale)
+    }
+
+    func tortoiseDidAddToOtherCanvas(_ uuid: UUID, _ state: TortoiseState) {
+        tortoisePositions[uuid] = nil
     }
 
     // MARK: - Internal
@@ -101,7 +113,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     private let bitmapScale: CGFloat
 
-    private var currentPosition: Vec2D = Vec2D()
+    private var tortoisePositions: [UUID: Vec2D] = [:]
 
 }
 

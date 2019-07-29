@@ -2,13 +2,14 @@
 import PlaygroundSupport
 import TortoiseGraphics
 
+let 🐢 = Tortoise("ホシガメ")
+
 let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
+canvas.add(🐢)
 PlaygroundPage.current.liveView = canvas
 
-let 🐢 = Tortoise(canvas: canvas)
 
 // Turtle Star!
-🐢.speed(.fastest)
 🐢.penColor(.blue)
 🐢.fillColor(.deepPurple)
 🐢.beginFill()

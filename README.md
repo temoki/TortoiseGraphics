@@ -30,15 +30,18 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 ## Usage
 
 ```swift
-// Instantiate a ImageCanvas and Tortoise
+// Instantiate a `Tortoise`
+let 🐢 = Tortoise()
+
+// Instantiate `ImageCanvas` and add the tortoise
 let canvas = ImageCanvas(size: Vec2D(300, 300))
-let 🐢 = Tortoise(canvas: canvas)
+canvas.add(🐢)
 
 // Command 🐢
 🐢.right(90)
 🐢.forward(100)
 
-// Get drawn CGImage
+// Get drawn `CGImage`
 let cgImage = canvas.cgImage
 
 ```

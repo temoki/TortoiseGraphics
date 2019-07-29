@@ -1,10 +1,13 @@
+import Foundation
 import CoreGraphics
 
 public class Tortoise {
 
-    public init(canvas: Canvas) {
-        self.canvas = canvas
-        delegate?.tortoiseDidInitialized(self.state)
+    public let name: String
+
+    public init(_ name: String? = nil) {
+        // TODO: ランダムで名前をつけたい
+        self.name = name ?? ""
     }
 
     // MARK: - [Motion] Move and Draw
@@ -34,7 +37,7 @@ public class Tortoise {
         let newPosition = Vec2D(x, y)
         state.position = newPosition
         state.fillPath?.append(newPosition)
-        delegate?.tortoiseDidChangePosition(state)
+        delegate?.tortoiseDidChangePosition(uuid, state)
     }
 
     public func setX(_ x: Double) {
@@ -47,7 +50,7 @@ public class Tortoise {
 
     public func setHeading(_ heading: Double) {
         state.heading = Degree(heading)
-        delegate?.tortoiseDidChangeHeading(state)
+        delegate?.tortoiseDidChangeHeading(uuid, state)
 
     }
 
@@ -148,21 +151,21 @@ public class Tortoise {
     public func penDown() {
         if !state.pen.isDown {
             state.pen.isDown = true
-            delegate?.tortoiseDidChangePen(state)
+            delegate?.tortoiseDidChangePen(uuid, state)
         }
     }
 
     public func penUp() {
         if state.pen.isDown {
             state.pen.isDown = false
-            delegate?.tortoiseDidChangePen(state)
+            delegate?.tortoiseDidChangePen(uuid, state)
         }
     }
 
     public func penSize(_ size: Double) {
         if state.pen.width != size {
             state.pen.width = size
-            delegate?.tortoiseDidChangePen(state)
+            delegate?.tortoiseDidChangePen(uuid, state)
         }
     }
 
@@ -178,22 +181,22 @@ public class Tortoise {
 
     public func penColor(_ palette: ColorPalette) {
         state.pen.color = palette.color
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
         state.pen.color = Color(r, g, b)
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func penColor(_ hex: String) {
         state.pen.color = Color(hex)
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func penColor(_ color: Color) {
         state.pen.color = color
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public var penColor: Color {
@@ -202,22 +205,22 @@ public class Tortoise {
 
     public func fillColor(_ palette: ColorPalette) {
         state.pen.fillColor = palette.color
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
         state.pen.fillColor = Color(r, g, b)
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func fillColor(_ hex: String) {
         state.pen.color = Color(hex)
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func fillColor(_ color: Color) {
         state.pen.fillColor = color
-        delegate?.tortoiseDidChangePen(state)
+        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public var fillColor: Color {
@@ -235,7 +238,7 @@ public class Tortoise {
     }
 
     public func endFill() {
-        delegate?.tortoiseDidRequestToFill(state)
+        delegate?.tortoiseDidRequestToFill(uuid, state)
         state.fillPath = nil
     }
 
@@ -243,12 +246,12 @@ public class Tortoise {
 
     public func reset() {
         state = TortoiseState()
-        delegate?.tortoiseDidRequestToClear(state)
-        delegate?.tortoiseDidInitialized(state)
+        delegate?.tortoiseDidRequestToClear(uuid, state)
+        delegate?.tortoiseDidInitialized(uuid, state)
     }
 
     public func clear() {
-        delegate?.tortoiseDidRequestToClear(state)
+        delegate?.tortoiseDidRequestToClear(uuid, state)
     }
 
     // MARK: - [Tortoise state] Visiblity
@@ -256,14 +259,14 @@ public class Tortoise {
     public func showTortoise() {
         if !state.shape.isVisible {
             state.shape.isVisible = true
-            delegate?.tortoiseDidChangeShape(state)
+            delegate?.tortoiseDidChangeShape(uuid, state)
         }
     }
 
     public func hideTortoise() {
         if state.shape.isVisible {
             state.shape.isVisible = false
-            delegate?.tortoiseDidChangeShape(state)
+            delegate?.tortoiseDidChangeShape(uuid, state)
         }
     }
 
@@ -274,7 +277,7 @@ public class Tortoise {
     public func shape(_ shape: Shape) {
         if state.shape.name != shape.name {
             state.shape = shape
-            delegate?.tortoiseDidChangeShape(state)
+            delegate?.tortoiseDidChangeShape(uuid, state)
         }
     }
 
@@ -284,12 +287,10 @@ public class Tortoise {
 
     // MARK: - Internal
 
+    let uuid: UUID = UUID()
+
     var state: TortoiseState = TortoiseState()
 
-    let canvas: Canvas
-
-    var delegate: TortoiseDelegate? {
-        return canvas as? TortoiseDelegate
-    }
+    weak var delegate: TortoiseDelegate?
 
 }

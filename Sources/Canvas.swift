@@ -2,6 +2,8 @@ import Foundation
 
 public protocol Canvas {
 
+    func add(_ tortoise: Tortoise)
+
     var canvasSize: Vec2D { get }
 
     func canvasColor(_ palette: ColorPalette)
