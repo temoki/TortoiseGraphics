@@ -56,10 +56,6 @@ public class Tortoise {
         setHeading(0)
     }
 
-    public func dot(_ size: Double? = nil) {
-        // TODO: impl
-    }
-
     public func circle(_ radius: Double, _ extent: Double = 360, _ steps: Int = 0) {
         let checkedExtent = max(min(extent, 360), 1)
 

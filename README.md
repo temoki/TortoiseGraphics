@@ -74,9 +74,9 @@ let cgImage = canvas.cgImage
 
 ## Classes
 
+* `Tortoise`
 * `ImageCanvas`
 * `XCPlaygroundCanvas` (iOS only)
-* `Tortoise`
 * `Shape`
 * `Color`
 * `Vec2D`
@@ -101,7 +101,6 @@ let cgImage = canvas.cgImage
 * `setY()`
 * `setHeading()`, `setH()`
 * `home()`
-* `dot()`
 * `circle()`
 * `repeat() {}`
 
@@ -157,7 +156,7 @@ let cgImage = canvas.cgImage
 
 ## Requirements
 
-* Swift 5.0 (Xcode 10.2)
+* Swift 5 (Xcode 10)
 * macOS 10.10 or later
 * iOS 10.0 or later
 
