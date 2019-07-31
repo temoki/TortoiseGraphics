@@ -15,6 +15,5 @@ if [ ! -e $TO_SOURCES_DIR ]; then
 fi
 rm -f $TO_SOURCES_DIR/*
 cp $FROM_DIR/Sources/*.swift $TO_SOURCES_DIR
-cp $FROM_DIR/Playground/*.swift $TO_SOURCES_DIR
 
 echo "Done."

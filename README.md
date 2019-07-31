@@ -157,8 +157,8 @@ let cgImage = canvas.cgImage
 ## Requirements
 
 * Swift 5 (Xcode 10)
-* macOS 10.10 or later
-* iOS 10.0 or later
+* macOS 10.12 or later
+* iOS 12.0 or later
 
 ## Installation
 

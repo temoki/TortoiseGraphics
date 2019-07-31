@@ -1,38 +1,36 @@
+//: # Let's play with 🐢🐇
 //#-hidden-code
+//#-code-completion(identifier, hide, Canvas, ImageCanvas, GraphicsCanvas PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas. tortoises)
 import UIKit
 import PlaygroundSupport
 
-let liveView = PlaygroundLiveViewController()
-PlaygroundPage.current.liveView = liveView
+let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
+PlaygroundPage.current.liveView = canvas
 
-liveView.canvas.drawingWithTortoises(count: 2) { tortoises in
-    let 🐢 = tortoises[0]
-    let 🐇 = tortoises[1]
-    🐢.shape(.tortoise)
-    🐇.shape(.classic)
-//#-code-completion(identifier, hide, Canvas, ImageCanvas, GraphicsCanvas PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas. tortoises)
-//#-code-completion(module, hide, UIKit, PlaygroundSupport)
 //#-end-hidden-code
-//: # Let's play with 🐢🐇
-    🐢.penColor(.red)
-    🐢.fillColor(.orange)
-    🐢.left(90)
-    
-    🐇.penColor(.purple)
-    🐇.fillColor(.lightBlue)
-    🐇.right(90)
-    
-    // Turtle Star!
-    🐢.beginFill()
-    🐇.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(120)
-        🐇.forward(120)
-        🐢.left(170)
-        🐇.right(170)
-    }
-    🐢.endFill()
-    🐇.endFill()
-    //#-hidden-code
-}
+let 🐢 = Tortoise()
+let 🐇 = Tortoise()
+//#-hidden-code
+canvas.add(🐢)
+canvas.add(🐇)
+//#-end-hidden-code
+🐢.penColor(.red)
+🐢.fillColor(.orange)
+🐢.left(90)
 
+🐇.shape(.classic)
+🐇.penColor(.purple)
+🐇.fillColor(.lightBlue)
+🐇.right(90)
+
+// Turtle Star!
+🐢.beginFill()
+🐇.beginFill()
+🐢.repeat(36) {
+    🐢.forward(120)
+    🐇.forward(120)
+    🐢.left(170)
+    🐇.right(170)
+}
+🐢.endFill()
+🐇.endFill()

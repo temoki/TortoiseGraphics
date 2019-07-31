@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TortoiseGraphics'
-  s.version          = '0.16.0'
+  s.version          = '1.0.0-alpha'
   s.summary          = 'A turtle graphics (a key feature of the Logo) engine written in Swift.'
   s.description      = 'A turtle graphics (a key feature of the Logo) engine written in Swift. The commands were implemented with reference to the turtle in Python 3 standard libraries.'
   s.homepage         = 'https://github.com/temoki/TortoiseGraphics'
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.frameworks       = 'CoreGraphics'
   s.ios.framework    = 'UIKit'
   s.osx.framework    = 'AppKit'
-  s.ios.deployment_target = '10.0'
-  s.osx.deployment_target = '10.10'
+  s.ios.deployment_target = '12.0'
+  s.osx.deployment_target = '10.12'
 end

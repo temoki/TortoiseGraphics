@@ -1,27 +1,28 @@
+//: # Let's play with 🐢
 //#-hidden-code
+//#-code-completion(identifier, hide, Canvas, ImageCanvas, GraphicsCanvas PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas. tortoises)
 import UIKit
 import PlaygroundSupport
 
-let liveView = PlaygroundLiveViewController()
-PlaygroundPage.current.liveView = liveView
+let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
+PlaygroundPage.current.liveView = canvas
 
-liveView.canvas.drawing { 🐢 in
-//#-code-completion(identifier, hide, Canvas, ImageCanvas, GraphicsCanvas PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas. tortoises)
 //#-end-hidden-code
-//: # Let's play with 🐢
-    🐢.penColor(.red)
-    🐢.fillColor(.orange)
-    
-    🐢.penUp()
-    🐢.back(100)
-    🐢.penDown()
-    
-    // Turtle Star!
-    🐢.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(200)
-        🐢.left(170)
-    }
-    🐢.endFill()
+let 🐢 = Tortoise()
 //#-hidden-code
+canvas.add(🐢)
+//#-end-hidden-code
+🐢.penColor(.red)
+🐢.fillColor(.orange)
+
+🐢.penUp()
+🐢.back(100)
+🐢.penDown()
+
+// Turtle Star!
+🐢.beginFill()
+🐢.repeat(36) {
+    🐢.forward(200)
+    🐢.left(170)
 }
+🐢.endFill()

@@ -58,14 +58,14 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     }
 
     func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
-        guard state.pen.isDown else { return }
         let position = tortoisePositions[uuid] ?? Vec2D(0, 0)
+        tortoisePositions[uuid] = state.position
+        guard state.pen.isDown else { return }
         bitmapContext.saveGState()
         bitmapContext.setStrokeColor(state.pen.color.toCGColor())
         bitmapContext.setFillColor(CGColor.clear)
         bitmapContext.setLineWidth(CGFloat(state.pen.width))
         bitmapContext.addPath([position, state.position].toCGPath())
-        tortoisePositions[uuid] = state.position
         bitmapContext.strokePath()
         bitmapContext.restoreGState()
     }
