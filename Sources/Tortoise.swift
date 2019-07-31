@@ -1,5 +1,4 @@
 import Foundation
-import CoreGraphics
 
 public class Tortoise {
 
@@ -13,11 +12,7 @@ public class Tortoise {
     // MARK: - [Motion] Move and Draw
 
     public func forward(_ distance: Double) {
-        let transform = CGAffineTransform(translationX: CGFloat(state.position.x),
-                                          y: CGFloat(state.position.y))
-            .rotated(by: CGFloat(-state.heading.radian))
-        let newPosition = CGPoint(x: 0, y: distance).applying(transform)
-        setPosition(Double(newPosition.x), Double(newPosition.y))
+        setPosition(state.position.moved(distance, toward: state.heading))
     }
 
     public func backword(_ distance: Double) {
@@ -33,11 +28,14 @@ public class Tortoise {
         right(-angle)
     }
 
-    public func setPosition(_ x: Double, _ y: Double) {
-        let newPosition = Vec2D(x, y)
-        state.position = newPosition
-        state.fillPath?.append(newPosition)
+    public func setPosition(_ position: Vec2D) {
+        state.position = position
+        state.fillPath?.append(position)
         delegate?.tortoiseDidChangePosition(uuid, state)
+    }
+
+    public func setPosition(_ x: Double, _ y: Double) {
+        setPosition(Vec2D(x, y))
     }
 
     public func setX(_ x: Double) {

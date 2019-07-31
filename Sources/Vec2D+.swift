@@ -24,6 +24,12 @@ extension Vec2D {
         return toCGPoint().toCGPath()
     }
 
+    func moved(_ distance: Double, toward direction: Angle) -> Vec2D {
+        let transform = CGAffineTransform(translationX: CGFloat(x), y: CGFloat(y))
+            .rotated(by: CGFloat(-direction.radian))
+        return Vec2D(point: CGPoint(x: 0, y: distance).applying(transform))
+    }
+
 }
 
 extension Array where Element == Vec2D {
