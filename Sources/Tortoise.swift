@@ -5,8 +5,7 @@ public class Tortoise {
     public let name: String
 
     public init(_ name: String? = nil) {
-        // TODO: ランダムで名前をつけたい
-        self.name = name ?? ""
+        self.name = name ?? Tortoise.randomName()
     }
 
     // MARK: - [Motion] Move and Draw

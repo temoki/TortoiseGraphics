@@ -2,7 +2,7 @@
 import PlaygroundSupport
 import TortoiseGraphics
 
-let 🐢 = Tortoise("ホシガメ")
+let 🐢 = Tortoise()
 
 let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
 canvas.add(🐢)
