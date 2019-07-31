@@ -6,12 +6,6 @@ extension Shape {
         return path.toCGPath()
     }
 
-    func toScaledPath(by scale: CGFloat) -> CGPath {
-        let scaledPath = CGMutablePath()
-        scaledPath.addPath(path.toCGPath(), transform: CGAffineTransform(scaleX: scale, y: scale))
-        return scaledPath
-    }
-
 }
 
 extension Shape.Path {

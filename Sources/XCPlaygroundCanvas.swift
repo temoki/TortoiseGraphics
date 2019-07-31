@@ -428,9 +428,10 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func makeShapePath(shape: Shape, penSize: CGFloat) -> CGPath {
-        let transform = CGAffineTransform(scaleX: 1, y: -1)
+        let scale = 10 + penSize * 2
+        let transform = CGAffineTransform(scaleX: scale, y: -scale)
         let shapePath = CGMutablePath()
-        shapePath.addPath(shape.toScaledPath(by: 10 + penSize*2), transform: transform)
+        shapePath.addPath(shape.toCGPath(), transform: transform)
         shapePath.closeSubpath()
         return shapePath
     }
