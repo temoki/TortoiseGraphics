@@ -1,4 +1,4 @@
-import CoreGraphics
+import Foundation
 
 public struct Shape: CustomStringConvertible {
 
@@ -7,31 +7,51 @@ public struct Shape: CustomStringConvertible {
     public var isVisible: Bool = true
 
     public static var arrow: Shape {
-        return Shape("arrow", points: [(0, 0), (0.5, -0.7), (0, -0.7), (0, -1), (0, -0.7), (-0.5, -0.7)])
+        return Shape("arrow", path: .points([
+            Vec2D( 0.00, 0.00),
+            Vec2D( 0.50, -0.70),
+            Vec2D( 0.00, -0.70),
+            Vec2D( 0.00, -1.00),
+            Vec2D( 0.00, -0.70),
+            Vec2D(-0.50, -0.70)
+            ]))
     }
 
     public static var tortoise: Shape {
-        let oneSide: [(CGFloat, CGFloat)] = [(0, 0.75), (0.12, 0.63), (0.06, 0.39), (0.24, 0.18), (0.42, 0.30),
-                                             (0.54, 0.24), (0.36, 0.06), (0.42, -0.18), (0.3, -0.42),
-                                             (0.48, -0.6), (0.36, -0.75), (0.24, -0.54), (0, -0.66)]
-        return Shape("tortoise", points: (oneSide + oneSide.map({(-$0.0, $0.1)}).reversed()))
+        let side1: [Vec2D] = [
+            Vec2D( 0.00, 0.75),
+            Vec2D( 0.12, 0.63),
+            Vec2D( 0.06, 0.39),
+            Vec2D( 0.24, 0.18),
+            Vec2D( 0.42, 0.30),
+            Vec2D( 0.54, 0.24),
+            Vec2D( 0.36, 0.06),
+            Vec2D( 0.42, -0.18),
+            Vec2D( 0.30, -0.42),
+            Vec2D( 0.48, -0.60),
+            Vec2D( 0.36, -0.75),
+            Vec2D( 0.24, -0.54),
+            Vec2D( 0.00, -0.66)
+        ]
+        let side2 = side1.map { Vec2D(-$0.x, $0.y) }.reversed()
+        return Shape("tortoise", path: .points(side1 + side2))
     }
 
     public static var circle: Shape {
-        return Shape("circle", path: CGPath(ellipseIn: CGRect(x: -0.5, y: -0.5, width: 1, height: 1), transform: nil))
+        return Shape("circle", path: .ellipse(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1)))
     }
 
     public static var square: Shape {
-        return Shape("square", path: CGPath(rect: CGRect(x: -0.5, y: -0.5, width: 1, height: 1), transform: nil))
+        return Shape("square", path: .rect(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1)))
     }
 
     public static var triangle: Shape {
-        let y = cos(CGFloat.pi / 6)
-        return Shape("triangle", points: [(0, 0), (0.5, -y), (-0.5, -y)])
+        let y = cos(Double.pi / 6)
+        return Shape("triangle", path: .points([Vec2D(0, 0), Vec2D(0.5, -y), Vec2D(-0.5, -y)]))
     }
 
     public static var classic: Shape {
-        return Shape("classic", points: [(0, 0), (0.5, -1), (0, -0.75), (-0.5, -1)])
+        return Shape("classic", path: .points([Vec2D(0, 0), Vec2D(0.5, -1), Vec2D(0, -0.75), Vec2D(-0.5, -1)]))
     }
 
     // MARK: - CustomStringConvertible
@@ -42,24 +62,17 @@ public struct Shape: CustomStringConvertible {
 
     // MARK: - Internal
 
-    let path: CGPath
-
-    init(_ name: String, path: CGPath) {
-        self.name = name
-        self.path = path
+    enum ShapePath {
+        case points([Vec2D])
+        case ellipse(origin: Vec2D, size: Vec2D)
+        case rect(origin: Vec2D, size: Vec2D)
     }
 
-    init(_ name: String, points: [(CGFloat, CGFloat)]) {
-        let path = CGMutablePath()
-        path.addLines(between: points.map({ CGPoint(x: $0.0, y: $0.1) }))
+    let path: ShapePath
+
+    init(_ name: String, path: ShapePath) {
         self.name = name
         self.path = path
-    }
-
-    func scaledPath(by scale: CGFloat) -> CGPath {
-        let path = CGMutablePath()
-        path.addPath(self.path, transform: CGAffineTransform(scaleX: scale, y: scale))
-        return path
     }
 
 }
