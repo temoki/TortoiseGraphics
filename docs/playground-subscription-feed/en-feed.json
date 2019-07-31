@@ -11,7 +11,7 @@
       "detailSubtitle": "Let's draw with 🐢",
       "description": "A turtle graphics (a key feature of the Logo) engine written in Swift.",
       "contentIdentifier": "com.temoki.playgroundbook.TortoiseGraphics.main",
-      "contentVersion": "1.0.0-alpha",
+      "contentVersion": "1.0.0",
       "url": "https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/TortoisePlayground.playgroundbook.zip",
       "publishedDate": "2018-02-01T00:00:00+00:00",
       "lastUpdatedDate": "2019-07-31T00:00:00+00:00",
@@ -24,7 +24,7 @@
         },
         {
           "name": "Version:",
-          "value": "1.0.0-alpha"
+          "value": "1.0.0"
         },
         {
           "type": "date",
