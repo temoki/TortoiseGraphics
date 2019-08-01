@@ -76,7 +76,6 @@ let cgImage = canvas.cgImage
 
 * `Tortoise`
 * `ImageCanvas`
-* `XCPlaygroundCanvas` (iOS only)
 * `Shape`
 * `Color`
 * `Vec2D`
@@ -153,6 +152,11 @@ let cgImage = canvas.cgImage
 * `isVisible`
 * `shape()`
 * `shape`
+
+## For Playground
+
+* `PlaygroundCanvas` (iOS only)
+* `PlaygroundCanvasLiveView` (iOS only)
 
 ## Requirements
 

@@ -1,18 +1,12 @@
 #if os (iOS)
 import UIKit
 
-public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
+public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public init(size: Vec2D, color: Color? = nil) {
         self.canvasColor = color ?? ColorPalette.white.color
         self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
-        self.frameObservation = nil
         super.init(frame: CGRect(origin: .zero, size: size.toCGSize()))
-
-        self.frameObservation = self.observe(\.frame, options: .new) { [weak self] (_, change) in
-            guard let newFrame = change.newValue else { return }
-            self?.addEvent(.canvasDidChangeSize(newFrame.size))
-        }
     }
 
     required init?(coder decoder: NSCoder) {
@@ -88,6 +82,12 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         addEvent(.tortoiseDidAddToOtherCanvas(uuid, state))
     }
 
+    // MARK: - Internal
+
+    func canvasDidLayout() {
+        addEvent(.canvasDidLayout)
+    }
+
     // MARK: - Private
 
     private enum Event {
@@ -100,7 +100,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case tortoiseDidRequestToClear(UUID, TortoiseState)
         case tortoiseDidAddToOtherCanvas(UUID, TortoiseState)
         case canvasDidChangeBackground(Color)
-        case canvasDidChangeSize(CGSize)
+        case canvasDidLayout
     }
 
     private let lock = NSLock()
@@ -108,9 +108,12 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     private var isHandling: Bool = false
 
     private var imageCanvas: ImageCanvas
-    private var frameObservation: NSKeyValueObservation?
 
-    private var tortoiseShapeLayers: [UUID: CAShapeLayer] = [:]
+    private struct TortoiseShape {
+        var position: Vec2D
+        var shapeLayer: CAShapeLayer
+    }
+    private var tortoiseShapeMap: [UUID: TortoiseShape] = [:]
 
     private func addEvent(_ event: Event) {
         lock.lock()
@@ -158,8 +161,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleAddToOtherCanvasEvent(uuid, state, completion)
         case .canvasDidChangeBackground(let color):
             handleChangeBackgroundEvent(color, completion)
-        case .canvasDidChangeSize(let size):
-            handleChangeSizeEvent(size, completion)
+        case .canvasDidLayout:
+            handleLayoutEvent(completion)
         }
     }
 
@@ -167,7 +170,8 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         CATransaction.transactionWithoutAnimation({
             let shapeLayer = CAShapeLayer()
             layer.addSublayer(shapeLayer)
-            tortoiseShapeLayers[uuid] = shapeLayer
+            tortoiseShapeMap[uuid] = TortoiseShape(position: state.position,
+                                                   shapeLayer: shapeLayer)
 
             shapeLayer.position = translatedPosition(position: state.position.toCGPoint())
             shapeLayer.transform = rotatedTransform(angle: state.heading)
@@ -183,7 +187,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangePositionEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let shapeLayer = tortoiseShapeLayers[uuid]
+        let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
         let toPos = translatedPosition(position: state.position.toCGPoint())
         let fromPos = shapeLayer?.position ?? .zero
         let pathLayer = state.pen.isDown ? CAShapeLayer() : nil
@@ -232,7 +236,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangeHeadingEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let shapeLayer = tortoiseShapeLayers[uuid]
+        let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
         let toTransform = rotatedTransform(angle: state.heading)
 
         let completionBlock = { [weak self] in
@@ -257,7 +261,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangePenEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let shapeLayer = tortoiseShapeLayers[uuid]
+        let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
         let strokeColor = state.pen.color.toCGColor()
         let lineWidth = CGFloat(state.pen.width)
         let fillColor = state.pen.fillColor.toCGColor()
@@ -296,7 +300,7 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleChangeShapeEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
-        let shapeLayer = tortoiseShapeLayers[uuid]
+        let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
 
         let toPath = makeShapePath(shape: state.shape, penSize: CGFloat(state.pen.width))
         let toOpacity: Float = state.shape.isVisible ? 1 : 0
@@ -377,9 +381,9 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
     }
 
     private func handleAddToOtherCanvasEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
-        if let shapeLayer = tortoiseShapeLayers[uuid] {
+        if let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer {
             shapeLayer.removeFromSuperlayer()
-            tortoiseShapeLayers[uuid] = nil
+            tortoiseShapeMap[uuid] = nil
         }
         completion()
     }
@@ -390,22 +394,29 @@ public class XCPlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         completion()
     }
 
-    private func handleChangeSizeEvent(_ size: CGSize, _ completion: () -> Void) {
-        defer { completion() }
+    private func handleLayoutEvent(_ completion: @escaping () -> Void) {
         let oldSize = imageCanvas.canvasSize.toCGSize()
-        guard size != oldSize else { return }
-        let newCanvas = ImageCanvas(size: Vec2D(size: size),
+        let newSize = bounds.size
+        let newCanvas = ImageCanvas(size: Vec2D(size: newSize),
                                     scale: Double(UIScreen.main.scale),
                                     color: canvasColor)
         if let oldImage = imageCanvas.cgImage {
-            let drawRect = CGRect(x: (size.width - oldSize.width) * 0.5,
-                                  y: (size.height - oldSize.height) * 0.5,
+            let drawRect = CGRect(x: (newSize.width - oldSize.width) * 0.5,
+                                  y: (newSize.height - oldSize.height) * 0.5,
                                   width: oldSize.width,
                                   height: oldSize.height)
             newCanvas.drawImage(oldImage, in: drawRect)
         }
         imageCanvas = newCanvas
         layer.contents = imageCanvas.cgImage
+
+        CATransaction.transactionWithoutAnimation({ [weak self] in
+            guard let self = self else { return }
+            for shape in self.tortoiseShapeMap.values {
+                let toPos = translatedPosition(position: shape.position.toCGPoint())
+                shape.shapeLayer.position = toPos
+            }
+        }, completion: completion)
     }
 
     private func makePositionTransform() -> CGAffineTransform {

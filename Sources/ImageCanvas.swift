@@ -58,7 +58,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     }
 
     func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
-        let position = tortoisePositions[uuid] ?? Vec2D(0, 0)
+        let position = tortoisePositions[uuid] ?? .zero
         tortoisePositions[uuid] = state.position
         guard state.pen.isDown else { return }
         bitmapContext.saveGState()

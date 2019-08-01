@@ -4,9 +4,9 @@ import TortoiseGraphics
 
 let 🐢 = Tortoise()
 
-let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
-canvas.add(🐢)
-PlaygroundPage.current.liveView = canvas
+let liveView = PlaygroundCanvasLiveView()
+liveView.canvas.add(🐢)
+PlaygroundPage.current.liveView = liveView
 
 🐢.penUp()
 🐢.back(100)
