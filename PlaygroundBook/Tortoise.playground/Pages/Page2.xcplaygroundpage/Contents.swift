@@ -1,19 +1,18 @@
 //: # Let's play with 🐢🐇
+//#-code-completion(identifier, hide, Canvas, ImageCanvas, PlaygroundCanvas, PlaygroundCanvasLiveView, liveView)
 //#-hidden-code
-//#-code-completion(identifier, hide, Canvas, ImageCanvas, GraphicsCanvas PlaygroundCanvas, View, Tortoise, PlaygroundLiveViewController, liveView, canvas. tortoises)
 import UIKit
 import PlaygroundSupport
-
-let canvas = XCPlaygroundCanvas(size: Vec2D(300, 300))
-PlaygroundPage.current.liveView = canvas
-
+let liveView = PlaygroundCanvasLiveView()
+let canvas = liveView.canvas
+PlaygroundPage.current.liveView = liveView
 //#-end-hidden-code
+
 let 🐢 = Tortoise()
 let 🐇 = Tortoise()
-//#-hidden-code
 canvas.add(🐢)
 canvas.add(🐇)
-//#-end-hidden-code
+
 🐢.penColor(.red)
 🐢.fillColor(.orange)
 🐢.left(90)
