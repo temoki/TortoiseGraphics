@@ -8,10 +8,10 @@
 
 // This is the prefix for all bundle identifiers in this project, including the playground book's ContentIdentifier by default.
 // This should be updated to something specific to your team.
-BUNDLE_IDENTIFIER_PREFIX = com.example
+BUNDLE_IDENTIFIER_PREFIX = io.github.temoki
 
 // This is the base of the file name for the playground book produced by this project (e.g. "PlaygroundBook" in "PlaygroundBook.playgroundbook").
-PLAYGROUND_BOOK_FILE_NAME = PlaygroundBook
+PLAYGROUND_BOOK_FILE_NAME = TortoiseGraphics
 
 // This is the ContentIdentifier of the playground book.
 // This should be updated to something specific to your team and your specific content.
