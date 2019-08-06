@@ -18,7 +18,6 @@
 		1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
 		1407C92422F9B9550065F3FE /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
 		1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
-		1407C92622F9B9550065F3FE /* PlaygroundCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */; };
 		1407C92722F9B9550065F3FE /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90F22F9B9190065F3FE /* Shape.swift */; };
 		1407C92822F9B9550065F3FE /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90722F9B9190065F3FE /* Shape+.swift */; };
 		1407C92922F9B9550065F3FE /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91422F9B91A0065F3FE /* Speed.swift */; };
@@ -30,7 +29,7 @@
 		1407C92F22F9B9550065F3FE /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90C22F9B9190065F3FE /* TortoiseState.swift */; };
 		1407C93022F9B9550065F3FE /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
 		1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
-		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
+		1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
 		5EA2E3C02056F35A00416A35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E3BF2056F35A00416A35 /* AppDelegate.swift */; };
@@ -134,11 +133,10 @@
 		1407C91622F9B91A0065F3FE /* Tortoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tortoise.swift; sourceTree = "<group>"; };
 		1407C91722F9B91A0065F3FE /* Speed+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Speed+.swift"; sourceTree = "<group>"; };
 		1407C91822F9B91A0065F3FE /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
-		1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasViewController.swift; sourceTree = "<group>"; };
 		1407C91A22F9B91A0065F3FE /* CGColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
+		1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasLiveView.swift; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* TortoiseGraphics.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TortoiseGraphics.playgroundbook; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
-		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
 		5E086DCF2051DF0F004D8D25 /* Manifest.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Manifest.plist; sourceTree = "<group>"; };
 		5E0E37522065981C008FA4BE /* BuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E0E37542065A065008FA4BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				5EF2F97E2054B6E400191409 /* ManifestPlist.strings */,
-				5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */,
 			);
 			path = PrivateResources;
 			sourceTree = "<group>";
@@ -309,7 +306,7 @@
 				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
 				1407C90D22F9B9190065F3FE /* Pen.swift */,
 				1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */,
-				1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */,
+				1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */,
 				1407C90F22F9B9190065F3FE /* Shape.swift */,
 				1407C90722F9B9190065F3FE /* Shape+.swift */,
 				1407C91422F9B91A0065F3FE /* Speed.swift */,
@@ -440,7 +437,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
-				5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */,
 				1407C91B22F9B9550065F3FE /* Angle.swift in Sources */,
 				1407C91C22F9B9550065F3FE /* Canvas.swift in Sources */,
 				1407C91D22F9B9550065F3FE /* CATransaction+.swift in Sources */,
@@ -497,7 +494,6 @@
 				1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */,
 				1407C92422F9B9550065F3FE /* Pen.swift in Sources */,
 				1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */,
-				1407C92622F9B9550065F3FE /* PlaygroundCanvasViewController.swift in Sources */,
 				1407C92722F9B9550065F3FE /* Shape.swift in Sources */,
 				1407C92822F9B9550065F3FE /* Shape+.swift in Sources */,
 				1407C92922F9B9550065F3FE /* Speed.swift in Sources */,
@@ -535,14 +531,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E086DCD2051DDB8004D8D25 /* Base */,
-			);
-			name = LiveView.storyboard;
-			sourceTree = "<group>";
-		};
 		5EA2E3C82056F35B00416A35 /* LiveViewTestAppLaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

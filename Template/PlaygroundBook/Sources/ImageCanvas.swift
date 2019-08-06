@@ -14,12 +14,12 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     public var cgImage: CGImage? {
         let size = canvasSize.toCGSize()
         let bgContext = createBackgroundContext(size: size, scale: bitmapScale)
-        bgContext.setFillColor(canvasColor.toCGColor())
-        bgContext.fill(CGRect(origin: .zero, size: size))
-        if let fgImage = bitmapContext.makeImage() {
-            bgContext.draw(fgImage, in: CGRect(origin: .zero, size: size))
+        bgContext?.setFillColor(canvasColor.toCGColor())
+        bgContext?.fill(CGRect(origin: .zero, size: size))
+        if let fgImage = bitmapContext?.makeImage() {
+            bgContext?.draw(fgImage, in: CGRect(origin: .zero, size: size))
         }
-        return bgContext.makeImage()
+        return bgContext?.makeImage()
     }
 
     // MARK: - Canvas
@@ -61,13 +61,13 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         let position = tortoisePositions[uuid] ?? .zero
         tortoisePositions[uuid] = state.position
         guard state.pen.isDown else { return }
-        bitmapContext.saveGState()
-        bitmapContext.setStrokeColor(state.pen.color.toCGColor())
-        bitmapContext.setFillColor(CGColor.clear)
-        bitmapContext.setLineWidth(CGFloat(state.pen.width))
-        bitmapContext.addPath([position, state.position].toCGPath())
-        bitmapContext.strokePath()
-        bitmapContext.restoreGState()
+        bitmapContext?.saveGState()
+        bitmapContext?.setStrokeColor(state.pen.color.toCGColor())
+        bitmapContext?.setFillColor(CGColor.clear)
+        bitmapContext?.setLineWidth(CGFloat(state.pen.width))
+        bitmapContext?.addPath([position, state.position].toCGPath())
+        bitmapContext?.strokePath()
+        bitmapContext?.restoreGState()
     }
 
     func tortoiseDidChangeHeading(_ uuid: UUID, _ state: TortoiseState) {
@@ -84,12 +84,12 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
     func tortoiseDidRequestToFill(_ uuid: UUID, _ state: TortoiseState) {
         guard let fillPath = state.fillPath else { return }
-        bitmapContext.saveGState()
-        bitmapContext.setStrokeColor(CGColor.clear)
-        bitmapContext.setFillColor(state.pen.fillColor.toCGColor())
-        bitmapContext.addPath(fillPath.toCGPath())
-        bitmapContext.fillPath(using: .evenOdd)
-        bitmapContext.restoreGState()
+        bitmapContext?.saveGState()
+        bitmapContext?.setStrokeColor(CGColor.clear)
+        bitmapContext?.setFillColor(state.pen.fillColor.toCGColor())
+        bitmapContext?.addPath(fillPath.toCGPath())
+        bitmapContext?.fillPath(using: .evenOdd)
+        bitmapContext?.restoreGState()
     }
 
     func tortoiseDidRequestToClear(_ uuid: UUID, _ state: TortoiseState) {
@@ -104,12 +104,12 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     // MARK: - Internal
 
     func drawImage(_ image: CGImage, in rect: CGRect) {
-        bitmapContext.draw(image, in: rect)
+        bitmapContext?.draw(image, in: rect)
     }
 
     // MARK: - Private
 
-    private var bitmapContext: CGContext
+    private var bitmapContext: CGContext?
 
     private let bitmapScale: CGFloat
 
@@ -117,9 +117,11 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
 
 }
 
-private func createBackgroundContext(size: CGSize, scale: CGFloat) -> CGContext {
+private func createBackgroundContext(size: CGSize, scale: CGFloat) -> CGContext? {
     let width = Int(size.width * scale)
     let height = Int(size.height * scale)
+    guard width > 0, height > 0 else { return nil }
+
     let context = CGContext(data: nil,
                             width: width,
                             height: height,
@@ -132,8 +134,8 @@ private func createBackgroundContext(size: CGSize, scale: CGFloat) -> CGContext 
     return context
 }
 
-private func createForegroundContext(size: CGSize, scale: CGFloat) -> CGContext {
+private func createForegroundContext(size: CGSize, scale: CGFloat) -> CGContext? {
     let context = createBackgroundContext(size: size, scale: scale)
-    context.translateBy(x: size.width * 0.5, y: size.height * 0.5)
+    context?.translateBy(x: size.width * 0.5, y: size.height * 0.5)
     return context
 }

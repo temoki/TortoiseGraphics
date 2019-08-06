@@ -196,8 +196,10 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             self?.imageCanvas.tortoiseDidChangePosition(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
             CATransaction.transactionWithoutAnimation({
+                pathLayer?.removeAllAnimations()
                 pathLayer?.removeFromSuperlayer()
                 shapeLayer?.position = toPos
+                shapeLayer?.removeAllAnimations()
             }, completion: completion)
         }
 
@@ -224,12 +226,16 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 let pathAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))
                 pathAnimation.toValue = toPath
                 pathAnimation.duration = duration
+                pathAnimation.fillMode = .forwards
+                pathAnimation.isRemovedOnCompletion = false
                 pathLayer.add(pathAnimation, forKey: "shape-path")
             }
 
             let shapeAnimation = CAKeyframeAnimation(keyPath: #keyPath(CAShapeLayer.position))
             shapeAnimation.path = toPath
             shapeAnimation.duration = duration
+            shapeAnimation.fillMode = .forwards
+            shapeAnimation.isRemovedOnCompletion = false
             shapeLayer?.add(shapeAnimation, forKey: "shape-position)")
 
         }, completion: completionBlock)
@@ -244,6 +250,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             self?.layer.contents = self?.imageCanvas.cgImage
             CATransaction.transactionWithoutAnimation({
                 shapeLayer?.transform = toTransform
+                shapeLayer?.removeAllAnimations()
             }, completion: completion)
         }
 
@@ -256,6 +263,8 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             let shapeAnimation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.transform))
             shapeAnimation.toValue = toTransform
             shapeAnimation.duration = state.speed.animationDuration()
+            shapeAnimation.fillMode = .forwards
+            shapeAnimation.isRemovedOnCompletion = false
             shapeLayer?.add(shapeAnimation, forKey: "shape-transform")
         }, completion: completionBlock)
     }
@@ -271,6 +280,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 shapeLayer?.strokeColor = strokeColor
                 shapeLayer?.lineWidth = lineWidth
                 shapeLayer?.fillColor = fillColor
+                shapeLayer?.removeAllAnimations()
             }, completion: { [weak self] in
                 self?.handleChangeShapeEvent(uuid, state, completion)
             })
@@ -294,6 +304,9 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             let animGroup = CAAnimationGroup()
             animGroup.animations = [anim1, anim2, anim3]
             animGroup.duration = duration
+            animGroup.fillMode = .forwards
+            animGroup.isRemovedOnCompletion = false
+            
             shapeLayer?.add(animGroup, forKey: "shape-color")
 
         }, completion: completionBlock)
@@ -311,6 +324,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             CATransaction.transactionWithoutAnimation({
                 shapeLayer?.path = toPath
                 shapeLayer?.opacity = toOpacity
+                shapeLayer?.removeAllAnimations()
             }, completion: completion)
         }
 
@@ -331,6 +345,9 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             let animGroup = CAAnimationGroup()
             animGroup.animations = [anim1, anim2]
             animGroup.duration = duration
+            animGroup.fillMode = .forwards
+            animGroup.isRemovedOnCompletion = false
+
             shapeLayer?.add(animGroup, forKey: "shape-path")
 
         }, completion: completionBlock)
@@ -345,6 +362,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             self?.imageCanvas.tortoiseDidRequestToFill(uuid, state)
             self?.layer.contents = self?.imageCanvas.cgImage
             CATransaction.transactionWithoutAnimation({
+                fillLayer?.removeAllAnimations()
                 fillLayer?.removeFromSuperlayer()
             }, completion: completion)
         }
@@ -369,6 +387,9 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))
                 animation.toValue = 1
                 animation.duration = state.speed.animationDuration()
+                animation.fillMode = .forwards
+                animation.isRemovedOnCompletion = false
+
                 fillLayer.add(animation, forKey: "fill-path")
             }
         }, completion: completionBlock)
