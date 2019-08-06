@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1407C91B22F9B9550065F3FE /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91822F9B91A0065F3FE /* Angle.swift */; };
+		1407C91C22F9B9550065F3FE /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91522F9B91A0065F3FE /* Canvas.swift */; };
+		1407C91D22F9B9550065F3FE /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91022F9B9190065F3FE /* CATransaction+.swift */; };
+		1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
+		1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
+		1407C92022F9B9550065F3FE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
+		1407C92122F9B9550065F3FE /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90822F9B9190065F3FE /* Color+.swift */; };
+		1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
+		1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
+		1407C92422F9B9550065F3FE /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
+		1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
+		1407C92622F9B9550065F3FE /* PlaygroundCanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */; };
+		1407C92722F9B9550065F3FE /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90F22F9B9190065F3FE /* Shape.swift */; };
+		1407C92822F9B9550065F3FE /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90722F9B9190065F3FE /* Shape+.swift */; };
+		1407C92922F9B9550065F3FE /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91422F9B91A0065F3FE /* Speed.swift */; };
+		1407C92A22F9B9550065F3FE /* Speed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91722F9B91A0065F3FE /* Speed+.swift */; };
+		1407C92B22F9B9550065F3FE /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91622F9B91A0065F3FE /* Tortoise.swift */; };
+		1407C92C22F9B9550065F3FE /* Tortoise+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90A22F9B9190065F3FE /* Tortoise+.swift */; };
+		1407C92D22F9B9550065F3FE /* Tortoise+Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */; };
+		1407C92E22F9B9550065F3FE /* TortoiseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */; };
+		1407C92F22F9B9550065F3FE /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90C22F9B9190065F3FE /* TortoiseState.swift */; };
+		1407C93022F9B9550065F3FE /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
+		1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
 		5E086DCA2051DDAE004D8D25 /* LiveView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E086DCC2051DDAE004D8D25 /* LiveView.storyboard */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
@@ -90,6 +113,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TortoiseDelegate.swift; sourceTree = "<group>"; };
+		1407C90522F9B9190065F3FE /* CGPoint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+.swift"; sourceTree = "<group>"; };
+		1407C90622F9B9190065F3FE /* Vec2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
+		1407C90722F9B9190065F3FE /* Shape+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shape+.swift"; sourceTree = "<group>"; };
+		1407C90822F9B9190065F3FE /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		1407C90922F9B9190065F3FE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		1407C90A22F9B9190065F3FE /* Tortoise+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+.swift"; sourceTree = "<group>"; };
+		1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+Alias.swift"; sourceTree = "<group>"; };
+		1407C90C22F9B9190065F3FE /* TortoiseState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TortoiseState.swift; sourceTree = "<group>"; };
+		1407C90D22F9B9190065F3FE /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
+		1407C90E22F9B9190065F3FE /* Vec2D+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Vec2D+.swift"; sourceTree = "<group>"; };
+		1407C90F22F9B9190065F3FE /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		1407C91022F9B9190065F3FE /* CATransaction+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATransaction+.swift"; sourceTree = "<group>"; };
+		1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvas.swift; sourceTree = "<group>"; };
+		1407C91222F9B9190065F3FE /* ImageCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCanvas.swift; sourceTree = "<group>"; };
+		1407C91322F9B91A0065F3FE /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		1407C91422F9B91A0065F3FE /* Speed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
+		1407C91522F9B91A0065F3FE /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
+		1407C91622F9B91A0065F3FE /* Tortoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tortoise.swift; sourceTree = "<group>"; };
+		1407C91722F9B91A0065F3FE /* Speed+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Speed+.swift"; sourceTree = "<group>"; };
+		1407C91822F9B91A0065F3FE /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasViewController.swift; sourceTree = "<group>"; };
+		1407C91A22F9B91A0065F3FE /* CGColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* TortoiseGraphics.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TortoiseGraphics.playgroundbook; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
 		5E086DCD2051DDB8004D8D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveView.storyboard; sourceTree = "<group>"; };
@@ -252,6 +298,29 @@
 			children = (
 				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
+				1407C91822F9B91A0065F3FE /* Angle.swift */,
+				1407C91522F9B91A0065F3FE /* Canvas.swift */,
+				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
+				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
+				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
+				1407C90922F9B9190065F3FE /* Color.swift */,
+				1407C90822F9B9190065F3FE /* Color+.swift */,
+				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
+				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
+				1407C90D22F9B9190065F3FE /* Pen.swift */,
+				1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */,
+				1407C91922F9B91A0065F3FE /* PlaygroundCanvasViewController.swift */,
+				1407C90F22F9B9190065F3FE /* Shape.swift */,
+				1407C90722F9B9190065F3FE /* Shape+.swift */,
+				1407C91422F9B91A0065F3FE /* Speed.swift */,
+				1407C91722F9B91A0065F3FE /* Speed+.swift */,
+				1407C91622F9B91A0065F3FE /* Tortoise.swift */,
+				1407C90A22F9B9190065F3FE /* Tortoise+.swift */,
+				1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */,
+				1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */,
+				1407C90C22F9B9190065F3FE /* TortoiseState.swift */,
+				1407C90622F9B9190065F3FE /* Vec2D.swift */,
+				1407C90E22F9B9190065F3FE /* Vec2D+.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -333,6 +402,7 @@
 				TargetAttributes = {
 					5E086DBF2051C5A7004D8D25 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1030;
 					};
 					5EA2E3BC2056F35A00416A35 = {
 						CreatedOnToolsVersion = 9.3;
@@ -416,6 +486,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1407C91B22F9B9550065F3FE /* Angle.swift in Sources */,
+				1407C91C22F9B9550065F3FE /* Canvas.swift in Sources */,
+				1407C91D22F9B9550065F3FE /* CATransaction+.swift in Sources */,
+				1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */,
+				1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */,
+				1407C92022F9B9550065F3FE /* Color.swift in Sources */,
+				1407C92122F9B9550065F3FE /* Color+.swift in Sources */,
+				1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */,
+				1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */,
+				1407C92422F9B9550065F3FE /* Pen.swift in Sources */,
+				1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */,
+				1407C92622F9B9550065F3FE /* PlaygroundCanvasViewController.swift in Sources */,
+				1407C92722F9B9550065F3FE /* Shape.swift in Sources */,
+				1407C92822F9B9550065F3FE /* Shape+.swift in Sources */,
+				1407C92922F9B9550065F3FE /* Speed.swift in Sources */,
+				1407C92A22F9B9550065F3FE /* Speed+.swift in Sources */,
+				1407C92B22F9B9550065F3FE /* Tortoise.swift in Sources */,
+				1407C92C22F9B9550065F3FE /* Tortoise+.swift in Sources */,
+				1407C92D22F9B9550065F3FE /* Tortoise+Alias.swift in Sources */,
+				1407C92E22F9B9550065F3FE /* TortoiseDelegate.swift in Sources */,
+				1407C92F22F9B9550065F3FE /* TortoiseState.swift in Sources */,
+				1407C93022F9B9550065F3FE /* Vec2D.swift in Sources */,
+				1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,
 				5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */,
 			);
@@ -473,6 +566,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -480,10 +574,17 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = /;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PLAYGROUND_BOOK_CONTENT_IDENTIFIER)";
 				PRODUCT_NAME = "$(PLAYGROUND_BOOK_FILE_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -491,16 +592,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = "";
 				INSTALL_PATH = /;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(PLAYGROUND_BOOK_CONTENT_IDENTIFIER)";
 				PRODUCT_NAME = "$(PLAYGROUND_BOOK_FILE_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
