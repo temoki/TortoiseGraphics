@@ -14,10 +14,14 @@ extension Shape.Path {
         switch self {
         case .points(let points):
             return points.toCGPath()
-        case .ellipse(let origin, let size):
-            return CGPath(ellipseIn: CGRect(origin: origin.toCGPoint(), size: size.toCGSize()), transform: nil)
-        case .rect(let origin, let size):
-            return CGPath(rect: CGRect(origin: origin.toCGPoint(), size: size.toCGSize()), transform: nil)
+        case .ellipse(let rect):
+            return CGPath(ellipseIn: CGRect(origin: rect.origin.toCGPoint(),
+                                            size: rect.size.toCGSize()),
+                          transform: nil)
+        case .rect(let rect):
+            return CGPath(rect: CGRect(origin: rect.origin.toCGPoint(),
+                                       size: rect.size.toCGSize()),
+                          transform: nil)
         }
     }
 
@@ -53,11 +57,11 @@ extension Shape.Path {
     }
 
     static func circlePath() -> Shape.Path {
-        return .ellipse(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1))
+        return .ellipse(Shape.Rect(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1)))
     }
 
     static func squarePath() -> Shape.Path {
-        return .rect(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1))
+        return .rect(Shape.Rect(origin: Vec2D(-0.5, -0.5), size: Vec2D(1, 1)))
     }
 
     static func trianglePath() -> Shape.Path {

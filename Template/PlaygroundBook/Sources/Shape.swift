@@ -40,8 +40,13 @@ public struct Shape: CustomStringConvertible {
 
     enum Path {
         case points([Vec2D])
-        case ellipse(origin: Vec2D, size: Vec2D)
-        case rect(origin: Vec2D, size: Vec2D)
+        case ellipse(Rect)
+        case rect(Rect)
+    }
+    
+    struct Rect {
+        var origin: Vec2D
+        var size: Vec2D
     }
 
     let path: Path
@@ -52,3 +57,47 @@ public struct Shape: CustomStringConvertible {
     }
 
 }
+
+extension Shape: Codable {
+}
+
+extension Shape.Rect: Codable {
+}
+
+extension Shape.Path: Codable {
+    
+    private enum CodingKeys: String, CodingKey, CaseIterable {
+        case points
+        case ellipse
+        case rect
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let value = try container.decodeIfPresent([Vec2D].self, forKey: .points) {
+            self = .points(value)
+        } else if let value = try container.decodeIfPresent(Shape.Rect.self, forKey: .ellipse) {
+            self = .ellipse(value)
+        } else if let value = try container.decodeIfPresent(Shape.Rect.self, forKey: .rect) {
+            self = .rect(value)
+        } else {
+            throw DecodingError.dataCorrupted(.init(codingPath: CodingKeys.allCases,
+                                                    debugDescription: "Does not match any CodingKey."))
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .points(let value):
+            try container.encode(value, forKey: .points)
+        case .ellipse(let value):
+            try container.encode(value, forKey: .ellipse)
+        case .rect(let value):
+            try container.encode(value, forKey: .rect)
+        }
+    }
+    
+}
+
+
