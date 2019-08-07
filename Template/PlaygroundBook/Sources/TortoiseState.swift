@@ -15,3 +15,6 @@ struct TortoiseState {
     var fillPath: [Vec2D]?
 
 }
+
+extension TortoiseState: Codable {
+}
