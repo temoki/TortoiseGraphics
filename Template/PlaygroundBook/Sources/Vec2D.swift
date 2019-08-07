@@ -47,3 +47,6 @@ extension Vec2D {
     }
 
 }
+
+extension Vec2D: Codable {
+}
