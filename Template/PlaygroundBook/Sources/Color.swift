@@ -67,3 +67,9 @@ public struct Color: CustomStringConvertible {
     }
 
 }
+
+extension Color: Codable {
+}
+
+extension Color.Mode: Codable {
+}
