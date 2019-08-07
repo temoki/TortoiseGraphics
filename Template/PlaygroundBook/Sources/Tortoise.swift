@@ -46,7 +46,7 @@ public class Tortoise {
     }
 
     public func setHeading(_ heading: Double) {
-        state.heading = Degree(heading)
+        state.heading = Angle(heading, .degree)
         delegate?.tortoiseDidChangeHeading(uuid, state)
 
     }
@@ -67,7 +67,7 @@ public class Tortoise {
         let baseAngle = (180 - checkedExtent / Double(definedSteps)) * 0.5
         let leftAngle1 = 90 - baseAngle
         let leftAngleN = 2 * leftAngle1
-        let distance = 2 * radius * cos(Degree(baseAngle).radian)
+        let distance = 2 * radius * cos(Angle(baseAngle, .degree).radian)
         for index in 1 ... definedSteps {
             if index == 1 {
                 right(-leftAngle1)
@@ -105,7 +105,7 @@ public class Tortoise {
 
     public func towards(_ x: Double, _ y: Double) -> Double {
         let tan = (y - state.position.y) / (x - state.position.x)
-        return 90 - Radian(atan(tan)).degree
+        return 90 - Angle(atan(tan), .radian).degree
     }
 
     public func towards(_ position: Vec2D) -> Double {

@@ -1,35 +1,39 @@
 import Foundation
 
-protocol Angle {
+struct Angle {
+    
+    enum Unit: String {
+        case degree
+        case radian
+    }
 
-    var value: Double { get set }
+    let value: Double
+    
+    let unit: Unit
 
-    var degree: Double { get }
+    init(_ value: Double, _ unit: Unit) {
+        self.value = value
+        self.unit = unit
+    }
+    
+    var degree: Double {
+        switch unit {
+        case .degree: return value
+        case .radian: return value * (.pi / 180.0)
+        }
+    }
 
-    var radian: Double { get }
+    var radian: Double {
+        switch unit {
+        case .degree: return value * (180.0 / .pi)
+        case .radian: return value
+        }
+    }
 
 }
 
-struct Degree: Angle {
-
-    init(_ value: Double) { self.value = value }
-
-    var value: Double
-
-    var degree: Double { return value }
-
-    var radian: Double { return value * (.pi / 180.0) }
-
+extension Angle: Codable {
 }
 
-struct Radian: Angle {
-
-    init(_ value: Double) { self.value = value }
-
-    var value: Double
-
-    var degree: Double { return value * (180.0 / .pi) }
-
-    var radian: Double { return value }
-
+extension Angle.Unit: Codable {
 }

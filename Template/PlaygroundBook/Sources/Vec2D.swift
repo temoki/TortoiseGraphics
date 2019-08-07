@@ -41,7 +41,7 @@ extension Vec2D {
     public static let zero = Vec2D(0, 0)
 
     public func rotate(_ degree: Double) -> Vec2D {
-        let radian = Double(Degree(degree).radian)
+        let radian = Double(Angle(degree, .degree).radian)
         return Vec2D(x * cos(radian) - y * sin(radian),
                      x * sin(radian) + y * cos(radian))
     }

@@ -4,7 +4,7 @@ struct TortoiseState {
 
     var position: Vec2D = Vec2D()
 
-    var heading: Angle = Degree(0)
+    var heading: Angle = Angle(0, .degree)
 
     var pen: Pen = Pen()
 
