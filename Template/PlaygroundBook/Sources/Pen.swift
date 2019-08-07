@@ -11,3 +11,6 @@ struct Pen {
     var fillColor: Color = ColorPalette.black.color
 
 }
+
+extension Pen: Codable {
+}
