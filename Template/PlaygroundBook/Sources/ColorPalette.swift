@@ -52,3 +52,6 @@ public enum ColorPalette: String {
     }
 
 }
+
+extension ColorPalette: Codable {
+}
