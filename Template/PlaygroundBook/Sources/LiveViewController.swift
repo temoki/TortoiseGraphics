@@ -4,6 +4,30 @@ import PlaygroundSupport
 @objc(Book_Sources_LiveViewController)
 public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
     
+    struct ReceiveMessage: Codable {
+        var canvasColor: Color?
+    }
+
+    struct SendMessage: Codable {
+        var canvasSize: Vec2D?
+        var canvasColor: Color?
+    }
+    
+    // MARK: - PlaygroundCanvasLiveView
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        send(SendMessage(canvasSize: nil, canvasColor: canvas.canvasColor))
+    }
+
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        send(SendMessage(canvasSize: Vec2D(size: view.bounds.size), canvasColor: nil))
+    }
+    
+    
+    // MARK: - PlaygroundLiveViewMessageHandler
+
     // Implement this method to be notified when the live view message connection is opened.
     // The connection will be opened when the process running Contents.swift starts running and listening for messages.
     public func liveViewMessageConnectionOpened() {
@@ -19,6 +43,15 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
     // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
     // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
     public func receive(_ message: PlaygroundValue) {
+    }
+    
+    
+    // MARK: - Private
+    
+    private func send(_ message: SendMessage) {
+        if let data = try? JSONEncoder().encode(message) {
+            send(.data(data))
+        }
     }
 
 }
