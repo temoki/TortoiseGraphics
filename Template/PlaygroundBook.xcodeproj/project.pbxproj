@@ -43,6 +43,8 @@
 		5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2F9AD2054BBF300191409 /* LiveViewController.swift */; };
 		5EF2F9B72054E6FB00191409 /* Chapters in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9B62054E6F900191409 /* Chapters */; };
 		5EF2F9B82054E6FE00191409 /* Sources in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9A52054BBB200191409 /* Sources */; };
+		FAB71B3322FD209300C539E8 /* MessageToRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB71B3222FD209300C539E8 /* MessageToRemote.swift */; };
+		FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -157,6 +159,8 @@
 		5EF2F9AB2054BBF300191409 /* libBook_Sources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBook_Sources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF2F9AD2054BBF300191409 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		5EF2F9B62054E6F900191409 /* Chapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chapters; sourceTree = "<group>"; };
+		FAB71B3222FD209300C539E8 /* MessageToRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageToRemote.swift; sourceTree = "<group>"; };
+		FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageToLiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,8 +300,10 @@
 			isa = PBXGroup;
 			children = (
 				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
-				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
+				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
+				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
+				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
 				1407C91822F9B91A0065F3FE /* Angle.swift */,
 				1407C91522F9B91A0065F3FE /* Canvas.swift */,
 				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
@@ -490,6 +496,7 @@
 				1407C91C22F9B9550065F3FE /* Canvas.swift in Sources */,
 				1407C91D22F9B9550065F3FE /* CATransaction+.swift in Sources */,
 				1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */,
+				FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */,
 				1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */,
 				1407C92022F9B9550065F3FE /* Color.swift in Sources */,
 				1407C92122F9B9550065F3FE /* Color+.swift in Sources */,
@@ -507,6 +514,7 @@
 				1407C92D22F9B9550065F3FE /* Tortoise+Alias.swift in Sources */,
 				1407C92E22F9B9550065F3FE /* TortoiseDelegate.swift in Sources */,
 				1407C92F22F9B9550065F3FE /* TortoiseState.swift in Sources */,
+				FAB71B3322FD209300C539E8 /* MessageToRemote.swift in Sources */,
 				1407C93022F9B9550065F3FE /* Vec2D.swift in Sources */,
 				1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */,
 				5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */,

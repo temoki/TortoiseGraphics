@@ -25,17 +25,17 @@ public class SwiftPlaygroundCanvas: Canvas {
     
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
         canvasColor = Color(r, g, b)
-        send(LiveViewController.ReceiveMessage(canvasColor: canvasColor))
+        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public func canvasColor(_ hex: String) {
         canvasColor = Color(hex)
-        send(LiveViewController.ReceiveMessage(canvasColor: canvasColor))
+        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public func canvasColor(_ color: Color) {
         canvasColor = color
-        send(LiveViewController.ReceiveMessage(canvasColor: canvasColor))
+        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public private(set) var canvasColor: Color = ColorPalette.white.color
@@ -43,7 +43,7 @@ public class SwiftPlaygroundCanvas: Canvas {
     
     // MARK: - Private
     
-    private func send(_ message: LiveViewController.ReceiveMessage) {
+    private func send(_ message: MessageToLiveView) {
         if let proxy = self.proxy, let data = try? JSONEncoder().encode(message) {
             proxy.send(.data(data))
         }
@@ -55,35 +55,35 @@ public class SwiftPlaygroundCanvas: Canvas {
 extension SwiftPlaygroundCanvas: TortoiseDelegate {
     
     func tortoiseDidInitialized(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .initialize(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .changePosition(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangeHeading(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .changeHeading(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangePen(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .changePen(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangeShape(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .changeShape(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidRequestToFill(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .requestFill(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidRequestToClear(_ uuid: UUID, _ state: TortoiseState) {
-        
+        send(MessageToLiveView(message: .requestClear(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidAddToOtherCanvas(_ uuid: UUID, _ state: TortoiseState) {
-        
+        // TODO: 不要なはず？
     }
 
 }
@@ -97,9 +97,13 @@ extension SwiftPlaygroundCanvas: PlaygroundRemoteLiveViewProxyDelegate {
     
     public func remoteLiveViewProxy(_ remoteLiveViewProxy: PlaygroundRemoteLiveViewProxy, received message: PlaygroundValue) {
         guard case .data(let data) = message else { return }
-        guard let message = try? JSONDecoder().decode(LiveViewController.SendMessage.self, from: data) else { return }
-        self.canvasSize = message.canvasSize ?? self.canvasSize
-        self.canvasColor = message.canvasColor ?? self.canvasColor
+        guard let messageToRemote = try? JSONDecoder().decode(MessageToRemote.self, from: data) else { return }
+        switch messageToRemote.message {
+        case .canvasSize(let size):
+            canvasSize = size
+        case .canvasColor(let color):
+            canvasColor = color
+        }
     }
  
 }

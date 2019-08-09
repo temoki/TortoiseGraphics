@@ -4,25 +4,16 @@ import PlaygroundSupport
 @objc(Book_Sources_LiveViewController)
 public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
     
-    struct ReceiveMessage: Codable {
-        var canvasColor: Color?
-    }
-
-    struct SendMessage: Codable {
-        var canvasSize: Vec2D?
-        var canvasColor: Color?
-    }
-    
     // MARK: - PlaygroundCanvasLiveView
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        send(SendMessage(canvasSize: nil, canvasColor: canvas.canvasColor))
+        send(MessageToRemote(message: .canvasColor(canvas.canvasColor)))
     }
 
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        send(SendMessage(canvasSize: Vec2D(size: view.bounds.size), canvasColor: nil))
+        send(MessageToRemote(message: .canvasSize(Vec2D(size: view.bounds.size))))
     }
     
     
@@ -48,7 +39,7 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
     
     // MARK: - Private
     
-    private func send(_ message: SendMessage) {
+    private func send(_ message: MessageToRemote) {
         if let data = try? JSONEncoder().encode(message) {
             send(.data(data))
         }
