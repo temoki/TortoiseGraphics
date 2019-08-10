@@ -34,6 +34,26 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
     // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
     // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
     public func receive(_ message: PlaygroundValue) {
+        guard case .data(let data) = message else { return }
+        guard let messageToLiveView = try? JSONDecoder().decode(MessageToLiveView.self, from: data) else { return }
+        switch messageToLiveView.message {
+        case .initialize(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidInitialize(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .changePosition(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidChangePosition(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .changeHeading(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidChangeHeading(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .changePen(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidChangePen(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .changeShape(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidChangeShape(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .requestFill(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidRequestToFill(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .requestClear(let tortoiseMmessage):
+            playgroundCanvas.addEvent(.tortoiseDidRequestToClear(tortoiseMmessage.uuid, tortoiseMmessage.state))
+        case .changeBackgroud(let canvasMessage):
+            playgroundCanvas.addEvent(.canvasDidChangeBackground(canvasMessage.color))
+        }
     }
     
     

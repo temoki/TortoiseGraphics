@@ -12,6 +12,7 @@ import Book_Sources
 
 @UIApplicationMain
 class AppDelegate: LiveViewHost.AppDelegate {
+    
     override func setUpLiveView() -> PlaygroundLiveViewable {
         // This method should return a fully-configured live view. This method must be implemented.
         //
@@ -29,4 +30,5 @@ class AppDelegate: LiveViewHost.AppDelegate {
         // the live view is shown next to or above the source code editor in Swift Playgrounds.
         return .fullScreen
     }
+
 }

@@ -88,9 +88,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         addEvent(.canvasDidLayout)
     }
 
-    // MARK: - Private
-
-    private enum Event {
+    enum Event {
         case tortoiseDidInitialize(UUID, TortoiseState)
         case tortoiseDidChangePosition(UUID, TortoiseState)
         case tortoiseDidChangeHeading(UUID, TortoiseState)
@@ -102,6 +100,20 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case canvasDidChangeBackground(Color)
         case canvasDidLayout
     }
+    
+    func addEvent(_ event: Event) {
+        lock.lock()
+        eventQueue.append(event)
+        if isHandling {
+            lock.unlock()
+        } else {
+            isHandling = true
+            lock.unlock()
+            handleNextEvent()
+        }
+    }
+    
+    // MARK: Private
 
     private let lock = NSLock()
     private var eventQueue: [Event] = []
@@ -114,18 +126,6 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         var shapeLayer: CAShapeLayer
     }
     private var tortoiseShapeMap: [UUID: TortoiseShape] = [:]
-
-    private func addEvent(_ event: Event) {
-        lock.lock()
-        eventQueue.append(event)
-        if isHandling {
-            lock.unlock()
-        } else {
-            isHandling = true
-            lock.unlock()
-            handleNextEvent()
-        }
-    }
 
     private func handleNextEvent() {
         lock.lock()

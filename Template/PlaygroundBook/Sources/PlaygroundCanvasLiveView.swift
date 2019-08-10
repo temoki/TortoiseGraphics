@@ -17,7 +17,7 @@ public class PlaygroundCanvasLiveView: UIViewController {
         playgroundCanvas.canvasDidLayout()
     }
 
-    private lazy var playgroundCanvas: PlaygroundCanvas = {
+    lazy var playgroundCanvas: PlaygroundCanvas = {
         let canvas = PlaygroundCanvas(size: Vec2D(size: view.bounds.size))
         canvas.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(canvas)
