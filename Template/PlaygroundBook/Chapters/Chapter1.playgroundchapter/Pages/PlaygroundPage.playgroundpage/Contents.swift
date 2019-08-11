@@ -1,13 +1,23 @@
+//: # Let's play with 🐢
 //#-hidden-code
-//#-end-hidden-code
 import Foundation
 import PlaygroundSupport
 
-let canvas = SwiftPlaygroundCanvas()
 let 🐢 = Tortoise()
+let canvas = SwiftPlaygroundCanvas()
 canvas.add(🐢)
+//#-end-hidden-code
 
-🐢.repeat(4) {
-    🐢.forward(100)
-    🐢.right(90)
+🐢.penUp()
+🐢.back(100)
+🐢.penDown()
+
+// Turtle Star!
+🐢.penColor(.blue)
+🐢.fillColor(.deepPurple)
+🐢.beginFill()
+🐢.repeat(36) {
+    🐢.forward(200)
+    🐢.left(170)
 }
+🐢.endFill()

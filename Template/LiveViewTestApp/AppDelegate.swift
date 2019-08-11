@@ -14,20 +14,33 @@ import Book_Sources
 class AppDelegate: LiveViewHost.AppDelegate {
     
     override func setUpLiveView() -> PlaygroundLiveViewable {
-        // This method should return a fully-configured live view. This method must be implemented.
-        //
-        // The view or view controller returned from this method will be automatically be shown on screen,
-        // as if it were a live view in Swift Playgrounds. You can control how the live view is shown by
-        // changing the implementation of the `liveViewConfiguration` property below.
-        return Book_Sources.instantiateLiveView()
+        let liveView = instantiateLiveView()
+
+        // Check code
+        do {
+            let 🐢 = Tortoise()
+            liveView.canvas.add(🐢)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+                🐢.penUp()
+                🐢.back(100)
+                🐢.penDown()
+                
+                // Turtle Star!
+                🐢.penColor(.blue)
+                🐢.fillColor(.deepPurple)
+                🐢.beginFill()
+                🐢.repeat(36) {
+                    🐢.forward(200)
+                    🐢.left(170)
+                }
+                🐢.endFill()
+            }
+        }
+
+        return liveView
     }
 
     override var liveViewConfiguration: LiveViewConfiguration {
-        // Make this property return the configuration of the live view which you desire to test.
-        //
-        // Valid values are `.fullScreen`, which simulates when the user has expanded the live
-        // view to fill the full screen in Swift Playgrounds, and `.sideBySide`, which simulates when
-        // the live view is shown next to or above the source code editor in Swift Playgrounds.
         return .fullScreen
     }
 
