@@ -99,6 +99,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case tortoiseDidAddToOtherCanvas(UUID, TortoiseState)
         case canvasDidChangeBackground(Color)
         case canvasDidLayout
+        case canvasDidRequestReset(Color)
     }
     
     func addEvent(_ event: Event) {
@@ -163,6 +164,8 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleChangeBackgroundEvent(color, completion)
         case .canvasDidLayout:
             handleLayoutEvent(completion)
+        case .canvasDidRequestReset(let color):
+            handleResetEvent(color, completion)
         }
     }
 
@@ -438,6 +441,18 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 shape.shapeLayer.position = toPos
             }
         }, completion: completion)
+    }
+
+    private func handleResetEvent(_ canvasColor: Color, _ completion: @escaping () -> Void) {
+        imageCanvas = ImageCanvas(size: imageCanvas.canvasSize,
+                                  scale: Double(UIScreen.main.scale),
+                                  color: canvasColor)
+        layer.contents = imageCanvas.cgImage
+        tortoiseShapeMap.forEach {
+            $0.value.shapeLayer.removeFromSuperlayer()
+        }
+        tortoiseShapeMap.removeAll()
+        completion()
     }
 
     private func makePositionTransform() -> CGAffineTransform {

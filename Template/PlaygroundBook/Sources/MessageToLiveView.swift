@@ -11,15 +11,19 @@ struct MessageToLiveView: Codable {
         var color: Color
     }
     
+    struct LiveViewMessage: Codable {
+    }
+    
     enum Message {
-        case initialize(TortoiseMessage)
-        case changePosition(TortoiseMessage)
-        case changeHeading(TortoiseMessage)
-        case changePen(TortoiseMessage)
-        case changeShape(TortoiseMessage)
-        case requestFill(TortoiseMessage)
-        case requestClear(TortoiseMessage)
-        case changeBackgroud(CanvasMessage)
+        case tortoiseDidInitialize(TortoiseMessage)
+        case tortoiseDidChangePosition(TortoiseMessage)
+        case tortoiseDidChangeHeading(TortoiseMessage)
+        case tortoiseDidChangePen(TortoiseMessage)
+        case tortoiseDidChangeShape(TortoiseMessage)
+        case tortoiseDidRequestFill(TortoiseMessage)
+        case tortoiseDidRequestClear(TortoiseMessage)
+        case canvadDidChangeBackgroud(CanvasMessage)
+        case canvasDidRequestReset(CanvasMessage)
     }
     
     var message: Message
@@ -29,34 +33,37 @@ struct MessageToLiveView: Codable {
 extension MessageToLiveView.Message: Codable {
     
     private enum CodingKeys: String, CodingKey, CaseIterable {
-        case initialize
-        case changePosition
-        case changeHeading
-        case changePen
-        case changeShape
-        case requestFill
-        case requestClear
-        case changeBackgroud
+        case tortoiseDidInitialize
+        case tortoiseDidChangePosition
+        case tortoiseDidChangeHeading
+        case tortoiseDidChangePen
+        case tortoiseDidChangeShape
+        case tortoiseDidRequestFill
+        case tortoiseDidRequestClear
+        case canvasDidChangeBackgroud
+        case canvasDidRequestClear
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .initialize) {
-            self = .initialize(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .changePosition) {
-            self = .changePosition(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .changeHeading) {
-            self = .changeHeading(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .changePen) {
-            self = .changePen(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .changeShape) {
-            self = .changeShape(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .requestFill) {
-            self = .requestFill(tortoiseMessage)
-        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .requestClear) {
-            self = .requestClear(tortoiseMessage)
-        } else if let canvasMessage = try container.decodeIfPresent(MessageToLiveView.CanvasMessage.self, forKey: .changeBackgroud) {
-            self = .changeBackgroud(canvasMessage)
+        if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidInitialize) {
+            self = .tortoiseDidInitialize(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidChangePosition) {
+            self = .tortoiseDidChangePosition(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidChangeHeading) {
+            self = .tortoiseDidChangeHeading(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidChangePen) {
+            self = .tortoiseDidChangePen(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidChangeShape) {
+            self = .tortoiseDidChangeShape(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidRequestFill) {
+            self = .tortoiseDidRequestFill(tortoiseMessage)
+        } else if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidRequestClear) {
+            self = .tortoiseDidRequestClear(tortoiseMessage)
+        } else if let canvasMessage = try container.decodeIfPresent(MessageToLiveView.CanvasMessage.self, forKey: .canvasDidChangeBackgroud) {
+            self = .canvadDidChangeBackgroud(canvasMessage)
+        } else if let canvasMessage = try container.decodeIfPresent(MessageToLiveView.CanvasMessage.self, forKey: .canvasDidRequestClear) {
+            self = .canvasDidRequestReset(canvasMessage)
         } else {
             throw DecodingError.dataCorrupted(.init(codingPath: CodingKeys.allCases,
                                                     debugDescription: "Does not match any CodingKey."))
@@ -66,34 +73,25 @@ extension MessageToLiveView.Message: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
-        case .initialize(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .initialize)
-        case .changePosition(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .changePosition)
-        case .changeHeading(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .changeHeading)
-        case .changePen(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .changePen)
-        case .changeShape(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .changeShape)
-        case .requestFill(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .requestFill)
-        case .requestClear(let tortoiseMessage):
-            try container.encode(tortoiseMessage, forKey: .requestClear)
-        case .changeBackgroud(let canvasMessage):
-            try container.encode(canvasMessage, forKey: .changeBackgroud)
+        case .tortoiseDidInitialize(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidInitialize)
+        case .tortoiseDidChangePosition(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidChangePosition)
+        case .tortoiseDidChangeHeading(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidChangeHeading)
+        case .tortoiseDidChangePen(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidChangePen)
+        case .tortoiseDidChangeShape(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidChangeShape)
+        case .tortoiseDidRequestFill(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidRequestFill)
+        case .tortoiseDidRequestClear(let tortoiseMessage):
+            try container.encode(tortoiseMessage, forKey: .tortoiseDidRequestClear)
+        case .canvadDidChangeBackgroud(let canvasMessage):
+            try container.encode(canvasMessage, forKey: .canvasDidChangeBackgroud)
+        case .canvasDidRequestReset(let liveViewMessage):
+            try container.encode(liveViewMessage, forKey: .canvasDidRequestClear)
         }
     }
     
 }
-/*
- case tortoiseDidInitialize(UUID, TortoiseState)
- case tortoiseDidChangePosition(UUID, TortoiseState)
- case tortoiseDidChangeHeading(UUID, TortoiseState)
- case tortoiseDidChangePen(UUID, TortoiseState)
- case tortoiseDidChangeShape(UUID, TortoiseState)
- case tortoiseDidRequestToFill(UUID, TortoiseState)
- case tortoiseDidRequestToClear(UUID, TortoiseState)
- case tortoiseDidAddToOtherCanvas(UUID, TortoiseState)
- case canvasDidChangeBackground(Color)
-*/

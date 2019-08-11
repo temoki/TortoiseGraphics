@@ -5,6 +5,7 @@ public class SwiftPlaygroundCanvas: Canvas {
     
     public init() {
         self.proxy?.delegate = self
+        send(MessageToLiveView(message: .canvasDidRequestReset(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     // MARK: - Canvas
@@ -21,22 +22,22 @@ public class SwiftPlaygroundCanvas: Canvas {
     
     public func canvasColor(_ palette: ColorPalette) {
         canvasColor = palette.color
-        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
+        send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
         canvasColor = Color(r, g, b)
-        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
+        send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public func canvasColor(_ hex: String) {
         canvasColor = Color(hex)
-        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
+        send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public func canvasColor(_ color: Color) {
         canvasColor = color
-        send(MessageToLiveView(message: .changeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
+        send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
     
     public private(set) var canvasColor: Color = ColorPalette.white.color
@@ -60,31 +61,31 @@ public class SwiftPlaygroundCanvas: Canvas {
 extension SwiftPlaygroundCanvas: TortoiseDelegate {
     
     func tortoiseDidInitialized(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .initialize(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidInitialize(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangePosition(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .changePosition(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidChangePosition(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangeHeading(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .changeHeading(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidChangeHeading(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangePen(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .changePen(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidChangePen(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidChangeShape(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .changeShape(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidChangeShape(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidRequestToFill(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .requestFill(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidRequestFill(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidRequestToClear(_ uuid: UUID, _ state: TortoiseState) {
-        send(MessageToLiveView(message: .requestClear(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
+        send(MessageToLiveView(message: .tortoiseDidRequestClear(MessageToLiveView.TortoiseMessage(uuid: uuid, state: state))))
     }
     
     func tortoiseDidAddToOtherCanvas(_ uuid: UUID, _ state: TortoiseState) {

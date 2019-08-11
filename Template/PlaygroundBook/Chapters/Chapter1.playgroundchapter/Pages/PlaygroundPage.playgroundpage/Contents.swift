@@ -5,7 +5,9 @@ import PlaygroundSupport
 
 let canvas = SwiftPlaygroundCanvas()
 let 🐢 = Tortoise()
-canvas.add(Tortoise())
+canvas.add(🐢)
 
-🐢.fd(100)
-🐢.rt(90)
+🐢.repeat(4) {
+    🐢.forward(100)
+    🐢.right(90)
+}

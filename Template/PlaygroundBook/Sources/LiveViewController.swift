@@ -43,38 +43,44 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
         guard let messageToLiveView = try? JSONDecoder().decode(MessageToLiveView.self, from: data) else { return }
 
         switch messageToLiveView.message {
-        case .initialize(let tortoiseMmessage):
+        case .tortoiseDidInitialize(let tortoiseMmessage):
             log(#function + ".initialize")
             playgroundCanvas.addEvent(.tortoiseDidInitialize(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .changePosition(let tortoiseMmessage):
+        case .tortoiseDidChangePosition(let tortoiseMmessage):
             log(#function + ".changePosition")
             playgroundCanvas.addEvent(.tortoiseDidChangePosition(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .changeHeading(let tortoiseMmessage):
+        case .tortoiseDidChangeHeading(let tortoiseMmessage):
             log(#function + ".changeHeading")
             playgroundCanvas.addEvent(.tortoiseDidChangeHeading(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .changePen(let tortoiseMmessage):
+        case .tortoiseDidChangePen(let tortoiseMmessage):
             log(#function + ".changePen")
             playgroundCanvas.addEvent(.tortoiseDidChangePen(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .changeShape(let tortoiseMmessage):
+        case .tortoiseDidChangeShape(let tortoiseMmessage):
             log(#function + ".changeShape")
             playgroundCanvas.addEvent(.tortoiseDidChangeShape(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .requestFill(let tortoiseMmessage):
+        case .tortoiseDidRequestFill(let tortoiseMmessage):
             log(#function + ".requestFill")
             playgroundCanvas.addEvent(.tortoiseDidRequestToFill(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .requestClear(let tortoiseMmessage):
+        case .tortoiseDidRequestClear(let tortoiseMmessage):
             log(#function + ".requestClear")
             playgroundCanvas.addEvent(.tortoiseDidRequestToClear(tortoiseMmessage.uuid, tortoiseMmessage.state))
 
-        case .changeBackgroud(let canvasMessage):
+        case .canvadDidChangeBackgroud(let canvasMessage):
             log(#function + ".changeBackgroud")
             playgroundCanvas.addEvent(.canvasDidChangeBackground(canvasMessage.color))
+        
+        case .canvasDidRequestReset(let canvasMessage):
+            log(#function + ".canvasDidRequestReset")
+            playgroundCanvas.addEvent(.canvasDidRequestReset(canvasMessage.color))
+            log.removeAll()
         }
+        
     }
     
     
@@ -95,14 +101,14 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
         return textView
     }()
     
-    private let isLogEnabled: Bool = true
+    private let isLogEnabled: Bool = false
 
     private var log: [String] = []
     
     private func log(_ message: String) {
         guard isLogEnabled else { return }
         log.append(message)
-        if log.count > 100 {
+        if log.count > 50 {
             log.remove(at: 0)
         }
         debugConsole.text = log.joined(separator: "\n")
