@@ -3,8 +3,8 @@ import PlaygroundSupport
 
 public class SwiftPlaygroundCanvas: Canvas {
     
-    public init(liveView: PlaygroundLiveViewable?) {
-        self.proxy = liveView as? PlaygroundRemoteLiveViewProxy
+    public init() {
+        self.proxy?.delegate = self
     }
     
     // MARK: - Canvas
@@ -44,7 +44,9 @@ public class SwiftPlaygroundCanvas: Canvas {
     
     // MARK: - Private
     
-    private weak var proxy: PlaygroundRemoteLiveViewProxy?
+    private var proxy: PlaygroundRemoteLiveViewProxy? {
+        return PlaygroundPage.current.liveView as? PlaygroundRemoteLiveViewProxy
+    }
     
     private func send(_ message: MessageToLiveView) {
         if let proxy = self.proxy, let data = try? JSONEncoder().encode(message) {

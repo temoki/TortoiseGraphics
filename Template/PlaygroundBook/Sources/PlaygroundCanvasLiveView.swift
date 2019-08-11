@@ -10,6 +10,7 @@ public class PlaygroundCanvasLiveView: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        _ = playgroundCanvas
     }
 
     public override func viewDidLayoutSubviews() {

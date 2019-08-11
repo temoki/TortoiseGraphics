@@ -3,8 +3,9 @@
 import Foundation
 import PlaygroundSupport
 
-let canvas = SwiftPlaygroundCanvas(liveView: PlaygroundPage.current.liveView)
+let canvas = SwiftPlaygroundCanvas()
 let 🐢 = Tortoise()
 canvas.add(Tortoise())
 
 🐢.fd(100)
+🐢.rt(90)
