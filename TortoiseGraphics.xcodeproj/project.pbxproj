@@ -238,25 +238,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1483405A2301442F000E15E2 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				1407C91822F9B91A0065F3FE /* Angle.swift */,
-				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
-				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
-				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
-				1407C90822F9B9190065F3FE /* Color+.swift */,
-				1407C90D22F9B9190065F3FE /* Pen.swift */,
-				1407C90722F9B9190065F3FE /* Shape+.swift */,
-				1407C91722F9B91A0065F3FE /* Speed+.swift */,
-				1407C90A22F9B9190065F3FE /* Tortoise+.swift */,
-				1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */,
-				1407C90C22F9B9190065F3FE /* TortoiseState.swift */,
-				1407C90E22F9B9190065F3FE /* Vec2D+.swift */,
-			);
-			path = Internal;
-			sourceTree = "<group>";
-		};
 		1483405B2301443B000E15E2 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +253,7 @@
 				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
 				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
-				1483409323019C24000E15E2 /* Internal */,
+				148340AD2301A768000E15E2 /* Internal */,
 			);
 			path = SwiftPlayground;
 			sourceTree = "<group>";
@@ -307,18 +288,37 @@
 				1407C90F22F9B9190065F3FE /* Shape.swift */,
 				1407C91422F9B91A0065F3FE /* Speed.swift */,
 				1407C90622F9B9190065F3FE /* Vec2D.swift */,
-				1483405A2301442F000E15E2 /* Internal */,
+				148340AE2301A78F000E15E2 /* Internal */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		1483409323019C24000E15E2 /* Internal */ = {
+		148340AD2301A768000E15E2 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
 				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
 				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
 			);
-			path = Internal;
+			name = Internal;
+			sourceTree = "<group>";
+		};
+		148340AE2301A78F000E15E2 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				1407C91822F9B91A0065F3FE /* Angle.swift */,
+				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
+				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
+				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
+				1407C90822F9B9190065F3FE /* Color+.swift */,
+				1407C90D22F9B9190065F3FE /* Pen.swift */,
+				1407C90722F9B9190065F3FE /* Shape+.swift */,
+				1407C91722F9B91A0065F3FE /* Speed+.swift */,
+				1407C90A22F9B9190065F3FE /* Tortoise+.swift */,
+				1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */,
+				1407C90C22F9B9190065F3FE /* TortoiseState.swift */,
+				1407C90E22F9B9190065F3FE /* Vec2D+.swift */,
+			);
+			name = Internal;
 			sourceTree = "<group>";
 		};
 		5E086DA4204F706E004D8D25 /* Products */ = {
