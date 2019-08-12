@@ -551,6 +551,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5EF2F9AF2054BBF300191409 /* Build configuration list for PBXNativeTarget "Book_Sources" */;
 			buildPhases = (
+				148340AF2301ABE5000E15E2 /* SwiftLint */,
 				5EF2F9A72054BBF300191409 /* Sources */,
 				5EF2F9A82054BBF300191409 /* Frameworks */,
 			);
@@ -649,6 +650,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		148340AF2301ABE5000E15E2 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SWIFTLINT=${PROJECT_DIR}/tools/portable_swiftlint/swiftlint\nif which ${SWIFTLINT} >/dev/null; then\n${SWIFTLINT} autocorrect\n${SWIFTLINT}\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		5EA2E3DD2056FB2900416A35 /* Embed Playground Book PublicResources & PrivateResources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

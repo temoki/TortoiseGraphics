@@ -12,7 +12,7 @@ import Book_Sources
 
 @UIApplicationMain
 class AppDelegate: LiveViewHost.AppDelegate {
-    
+
     override func setUpLiveView() -> PlaygroundLiveViewable {
         let liveView = instantiateLiveView()
 
@@ -24,7 +24,7 @@ class AppDelegate: LiveViewHost.AppDelegate {
                 🐢.penUp()
                 🐢.back(100)
                 🐢.penDown()
-                
+
                 // Turtle Star!
                 🐢.penColor(.red)
                 🐢.fillColor(.yellow)

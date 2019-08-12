@@ -101,7 +101,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         case canvasDidLayout
         case canvasDidRequestReset(Color)
     }
-    
+
     func addEvent(_ event: Event) {
         lock.lock()
         eventQueue.append(event)
@@ -113,7 +113,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             handleNextEvent()
         }
     }
-    
+
     // MARK: Private
 
     private let lock = NSLock()
@@ -309,7 +309,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             animGroup.duration = duration
             animGroup.fillMode = .forwards
             animGroup.isRemovedOnCompletion = false
-            
+
             shapeLayer?.add(animGroup, forKey: "shape-color")
 
         }, completion: completionBlock)

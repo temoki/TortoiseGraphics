@@ -1,19 +1,19 @@
 import Foundation
 
 struct MessageToLiveView: Codable {
-    
+
     struct TortoiseMessage: Codable {
         var uuid: UUID
         var state: TortoiseState
     }
-    
+
     struct CanvasMessage: Codable {
         var color: Color
     }
-    
+
     struct LiveViewMessage: Codable {
     }
-    
+
     enum Message {
         case tortoiseDidInitialize(TortoiseMessage)
         case tortoiseDidChangePosition(TortoiseMessage)
@@ -25,13 +25,13 @@ struct MessageToLiveView: Codable {
         case canvadDidChangeBackgroud(CanvasMessage)
         case canvasDidRequestReset(CanvasMessage)
     }
-    
+
     var message: Message
 
 }
 
 extension MessageToLiveView.Message: Codable {
-    
+
     private enum CodingKeys: String, CodingKey, CaseIterable {
         case tortoiseDidInitialize
         case tortoiseDidChangePosition
@@ -43,7 +43,7 @@ extension MessageToLiveView.Message: Codable {
         case canvasDidChangeBackgroud
         case canvasDidRequestClear
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let tortoiseMessage = try container.decodeIfPresent(MessageToLiveView.TortoiseMessage.self, forKey: .tortoiseDidInitialize) {
@@ -69,7 +69,7 @@ extension MessageToLiveView.Message: Codable {
                                                     debugDescription: "Does not match any CodingKey."))
         }
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
@@ -93,5 +93,5 @@ extension MessageToLiveView.Message: Codable {
             try container.encode(liveViewMessage, forKey: .canvasDidRequestClear)
         }
     }
-    
+
 }

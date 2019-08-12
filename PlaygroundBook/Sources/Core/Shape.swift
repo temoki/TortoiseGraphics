@@ -43,7 +43,7 @@ public struct Shape: CustomStringConvertible {
         case ellipse(Rect)
         case rect(Rect)
     }
-    
+
     struct Rect {
         var origin: Vec2D
         var size: Vec2D
@@ -65,13 +65,13 @@ extension Shape.Rect: Codable {
 }
 
 extension Shape.Path: Codable {
-    
+
     private enum CodingKeys: String, CodingKey, CaseIterable {
         case points
         case ellipse
         case rect
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let value = try container.decodeIfPresent([Vec2D].self, forKey: .points) {
@@ -97,7 +97,5 @@ extension Shape.Path: Codable {
             try container.encode(value, forKey: .rect)
         }
     }
-    
+
 }
-
-

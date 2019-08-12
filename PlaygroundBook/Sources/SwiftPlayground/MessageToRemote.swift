@@ -6,19 +6,18 @@ struct MessageToRemote: Codable {
         case canvasSize(Vec2D)
         case canvasColor(Color)
     }
-    
-    
+
     var message: Message
 
 }
 
 extension MessageToRemote.Message: Codable {
-    
+
     private enum CodingKeys: String, CodingKey, CaseIterable {
         case canvasSize
         case canvasColor
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let value = try container.decodeIfPresent(Vec2D.self, forKey: .canvasSize) {
@@ -30,7 +29,7 @@ extension MessageToRemote.Message: Codable {
                                                     debugDescription: "Does not match any CodingKey."))
         }
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {

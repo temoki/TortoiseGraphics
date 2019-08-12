@@ -3,9 +3,9 @@ import PlaygroundSupport
 
 @objc(Book_Sources_LiveViewController)
 public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMessageHandler, PlaygroundLiveViewSafeAreaContainer {
-    
+
     // MARK: - PlaygroundCanvasLiveView
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         log(#function)
@@ -17,8 +17,7 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
         log(#function)
         send(MessageToRemote(message: .canvasSize(Vec2D(size: view.bounds.size))))
     }
-    
-    
+
     // MARK: - PlaygroundLiveViewMessageHandler
 
     // Implement this method to be notified when the live view message connection is opened.
@@ -26,14 +25,14 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
     public func liveViewMessageConnectionOpened() {
         log(#function)
     }
-    
+
     // Implement this method to be notified when the live view message connection is closed.
     // The connection will be closed when the process running Contents.swift exits and is no longer listening for messages.
     // This happens when the user's code naturally finishes running, if the user presses Stop, or if there is a crash.
     public func liveViewMessageConnectionClosed() {
         log(#function)
     }
-    
+
     // Implement this method to receive messages sent from the process running Contents.swift.
     // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
     // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
@@ -74,18 +73,17 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
         case .canvadDidChangeBackgroud(let canvasMessage):
             log(#function + ".changeBackgroud")
             playgroundCanvas.addEvent(.canvasDidChangeBackground(canvasMessage.color))
-        
+
         case .canvasDidRequestReset(let canvasMessage):
             log(#function + ".canvasDidRequestReset")
             playgroundCanvas.addEvent(.canvasDidRequestReset(canvasMessage.color))
             log.removeAll()
         }
-        
+
     }
-    
-    
+
     // MARK: - Private
-    
+
     private lazy var debugConsole: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -100,11 +98,11 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
             ])
         return textView
     }()
-    
+
     private let isLogEnabled: Bool = false
 
     private var log: [String] = []
-    
+
     private func log(_ message: String) {
         guard isLogEnabled else { return }
         log.append(message)
@@ -113,13 +111,11 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
         }
         debugConsole.text = log.joined(separator: "\n")
     }
-    
+
     private func send(_ message: MessageToRemote) {
         if let data = try? JSONEncoder().encode(message) {
             send(.data(data))
         }
     }
-    
-    
 
 }
