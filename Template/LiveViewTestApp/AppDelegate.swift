@@ -26,8 +26,8 @@ class AppDelegate: LiveViewHost.AppDelegate {
                 🐢.penDown()
                 
                 // Turtle Star!
-                🐢.penColor(.blue)
-                🐢.fillColor(.deepPurple)
+                🐢.penColor(.red)
+                🐢.fillColor(.yellow)
                 🐢.beginFill()
                 🐢.repeat(36) {
                     🐢.forward(200)

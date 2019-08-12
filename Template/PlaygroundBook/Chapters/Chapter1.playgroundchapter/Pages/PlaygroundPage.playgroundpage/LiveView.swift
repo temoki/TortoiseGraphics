@@ -2,6 +2,6 @@ import UIKit
 import PlaygroundSupport
 
 let liveView = instantiateLiveView()
-let initialTortoise = Tortoise("initial")
-liveView.canvas.add(initialTortoise)
+let 🐢 = Tortoise("initial")
+liveView.canvas.add(🐢)
 PlaygroundPage.current.liveView = liveView
