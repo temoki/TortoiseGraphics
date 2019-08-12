@@ -29,6 +29,7 @@
 		1407C92F22F9B9550065F3FE /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90C22F9B9190065F3FE /* TortoiseState.swift */; };
 		1407C93022F9B9550065F3FE /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
 		1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
+		140883E12301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140883DF2301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard */; };
 		140D505422FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */; };
 		1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
@@ -137,6 +138,7 @@
 		1407C91822F9B91A0065F3FE /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		1407C91A22F9B91A0065F3FE /* CGColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGColor+.swift"; sourceTree = "<group>"; };
 		1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasLiveView.swift; sourceTree = "<group>"; };
+		140883E02301056300E42435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveViewTestAppLaunchScreen.storyboard; sourceTree = "<group>"; };
 		140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundCanvas.swift; sourceTree = "<group>"; };
 		5E086DC02051C5A7004D8D25 /* TortoiseGraphics.playgroundbook */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TortoiseGraphics.playgroundbook; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E086DC72051DD03004D8D25 /* BookOverridingBuildSettings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = BookOverridingBuildSettings.xcconfig; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				5EA2E3BF2056F35A00416A35 /* AppDelegate.swift */,
+				140883DF2301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard */,
 				5EA2E3CB2056F35B00416A35 /* Info.plist */,
 			);
 			path = LiveViewTestApp;
@@ -474,6 +477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140883E12301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +567,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		140883DF2301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				140883E02301056300E42435 /* Base */,
+			);
+			name = LiveViewTestAppLaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		5EF2F97E2054B6E400191409 /* ManifestPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -752,7 +764,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LiveViewTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.temoki.TortoiseGraphics.LiveViewTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
@@ -775,7 +787,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-all_load";
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.LiveViewTestApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.temoki.TortoiseGraphics.LiveViewTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
 					"\"$(OTHER_FRAMEWORKS_DIR)\"",
