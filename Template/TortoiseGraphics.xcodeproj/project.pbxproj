@@ -35,29 +35,29 @@
 		1483406B23014844000E15E2 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1483406223014843000E15E2 /* TortoiseGraphics.framework */; };
 		1483407023014844000E15E2 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483406F23014844000E15E2 /* TortoiseGraphicsTests.swift */; };
 		1483407223014844000E15E2 /* TortoiseGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1483406423014844000E15E2 /* TortoiseGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1483407923014862000E15E2 /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
-		1483407A23014862000E15E2 /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
-		1483407B23014862000E15E2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91822F9B91A0065F3FE /* Angle.swift */; };
-		1483407C23014862000E15E2 /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91022F9B9190065F3FE /* CATransaction+.swift */; };
-		1483407D23014862000E15E2 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
-		1483407E23014862000E15E2 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
-		1483407F23014862000E15E2 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90822F9B9190065F3FE /* Color+.swift */; };
-		1483408023014862000E15E2 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
-		1483408123014862000E15E2 /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90722F9B9190065F3FE /* Shape+.swift */; };
-		1483408223014862000E15E2 /* Speed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91722F9B91A0065F3FE /* Speed+.swift */; };
-		1483408323014862000E15E2 /* Tortoise+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90A22F9B9190065F3FE /* Tortoise+.swift */; };
-		1483408423014862000E15E2 /* TortoiseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */; };
-		1483408523014862000E15E2 /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90C22F9B9190065F3FE /* TortoiseState.swift */; };
-		1483408623014862000E15E2 /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
-		1483408723014862000E15E2 /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91622F9B91A0065F3FE /* Tortoise.swift */; };
-		1483408823014862000E15E2 /* Tortoise+Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */; };
-		1483408923014862000E15E2 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91522F9B91A0065F3FE /* Canvas.swift */; };
-		1483408A23014862000E15E2 /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
-		1483408B23014862000E15E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
-		1483408C23014862000E15E2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
-		1483408D23014862000E15E2 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90F22F9B9190065F3FE /* Shape.swift */; };
-		1483408E23014862000E15E2 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91422F9B91A0065F3FE /* Speed.swift */; };
-		1483408F23014862000E15E2 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
+		1483409423019C5C000E15E2 /* Tortoise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91622F9B91A0065F3FE /* Tortoise.swift */; };
+		1483409523019C5C000E15E2 /* Tortoise+Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */; };
+		1483409623019C5C000E15E2 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91522F9B91A0065F3FE /* Canvas.swift */; };
+		1483409723019C5C000E15E2 /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
+		1483409823019C5C000E15E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
+		1483409923019C5C000E15E2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
+		1483409A23019C5C000E15E2 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90F22F9B9190065F3FE /* Shape.swift */; };
+		1483409B23019C5C000E15E2 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91422F9B91A0065F3FE /* Speed.swift */; };
+		1483409C23019C5C000E15E2 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
+		1483409D23019C5C000E15E2 /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91822F9B91A0065F3FE /* Angle.swift */; };
+		1483409E23019C5C000E15E2 /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91022F9B9190065F3FE /* CATransaction+.swift */; };
+		1483409F23019C5C000E15E2 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
+		148340A023019C5C000E15E2 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
+		148340A123019C5C000E15E2 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90822F9B9190065F3FE /* Color+.swift */; };
+		148340A223019C5C000E15E2 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
+		148340A323019C5C000E15E2 /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90722F9B9190065F3FE /* Shape+.swift */; };
+		148340A423019C5C000E15E2 /* Speed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91722F9B91A0065F3FE /* Speed+.swift */; };
+		148340A523019C5C000E15E2 /* Tortoise+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90A22F9B9190065F3FE /* Tortoise+.swift */; };
+		148340A623019C5C000E15E2 /* TortoiseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */; };
+		148340A723019C5C000E15E2 /* TortoiseState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90C22F9B9190065F3FE /* TortoiseState.swift */; };
+		148340A823019C5C000E15E2 /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
+		148340A923019C64000E15E2 /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
+		148340AA23019C64000E15E2 /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
 		5EA2E3C02056F35A00416A35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E3BF2056F35A00416A35 /* AppDelegate.swift */; };
@@ -267,11 +267,10 @@
 		1483405C2301443E000E15E2 /* SwiftPlayground */ = {
 			isa = PBXGroup;
 			children = (
+				1483409323019C24000E15E2 /* Internal */,
 				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
 				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
-				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
-				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
 			);
 			path = SwiftPlayground;
 			sourceTree = "<group>";
@@ -292,6 +291,32 @@
 				1483407123014844000E15E2 /* Info.plist */,
 			);
 			path = TortoiseGraphicsTests;
+			sourceTree = "<group>";
+		};
+		1483409223019BBF000E15E2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1407C91622F9B91A0065F3FE /* Tortoise.swift */,
+				1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */,
+				1407C91522F9B91A0065F3FE /* Canvas.swift */,
+				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
+				1407C90922F9B9190065F3FE /* Color.swift */,
+				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
+				1407C90F22F9B9190065F3FE /* Shape.swift */,
+				1407C91422F9B91A0065F3FE /* Speed.swift */,
+				1407C90622F9B9190065F3FE /* Vec2D.swift */,
+				1483405A2301442F000E15E2 /* Internal */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1483409323019C24000E15E2 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
+				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 		5E086DA4204F706E004D8D25 /* Products */ = {
@@ -415,18 +440,9 @@
 		5EF2F9A22054BB3E00191409 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1483409223019BBF000E15E2 /* Core */,
 				1483405C2301443E000E15E2 /* SwiftPlayground */,
 				1483405B2301443B000E15E2 /* Playground */,
-				1483405A2301442F000E15E2 /* Internal */,
-				1407C91622F9B91A0065F3FE /* Tortoise.swift */,
-				1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */,
-				1407C91522F9B91A0065F3FE /* Canvas.swift */,
-				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
-				1407C90922F9B9190065F3FE /* Color.swift */,
-				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
-				1407C90F22F9B9190065F3FE /* Shape.swift */,
-				1407C91422F9B91A0065F3FE /* Speed.swift */,
-				1407C90622F9B9190065F3FE /* Vec2D.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -652,29 +668,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1483407923014862000E15E2 /* PlaygroundCanvas.swift in Sources */,
-				1483407A23014862000E15E2 /* PlaygroundCanvasLiveView.swift in Sources */,
-				1483407B23014862000E15E2 /* Angle.swift in Sources */,
-				1483407C23014862000E15E2 /* CATransaction+.swift in Sources */,
-				1483407D23014862000E15E2 /* CGColor+.swift in Sources */,
-				1483407E23014862000E15E2 /* CGPoint+.swift in Sources */,
-				1483407F23014862000E15E2 /* Color+.swift in Sources */,
-				1483408023014862000E15E2 /* Pen.swift in Sources */,
-				1483408123014862000E15E2 /* Shape+.swift in Sources */,
-				1483408223014862000E15E2 /* Speed+.swift in Sources */,
-				1483408323014862000E15E2 /* Tortoise+.swift in Sources */,
-				1483408423014862000E15E2 /* TortoiseDelegate.swift in Sources */,
-				1483408523014862000E15E2 /* TortoiseState.swift in Sources */,
-				1483408623014862000E15E2 /* Vec2D+.swift in Sources */,
-				1483408723014862000E15E2 /* Tortoise.swift in Sources */,
-				1483408823014862000E15E2 /* Tortoise+Alias.swift in Sources */,
-				1483408923014862000E15E2 /* Canvas.swift in Sources */,
-				1483408A23014862000E15E2 /* ImageCanvas.swift in Sources */,
-				1483408B23014862000E15E2 /* Color.swift in Sources */,
-				1483408C23014862000E15E2 /* ColorPalette.swift in Sources */,
-				1483408D23014862000E15E2 /* Shape.swift in Sources */,
-				1483408E23014862000E15E2 /* Speed.swift in Sources */,
-				1483408F23014862000E15E2 /* Vec2D.swift in Sources */,
+				148340A923019C64000E15E2 /* PlaygroundCanvas.swift in Sources */,
+				148340AA23019C64000E15E2 /* PlaygroundCanvasLiveView.swift in Sources */,
+				1483409423019C5C000E15E2 /* Tortoise.swift in Sources */,
+				1483409523019C5C000E15E2 /* Tortoise+Alias.swift in Sources */,
+				1483409623019C5C000E15E2 /* Canvas.swift in Sources */,
+				1483409723019C5C000E15E2 /* ImageCanvas.swift in Sources */,
+				1483409823019C5C000E15E2 /* Color.swift in Sources */,
+				1483409923019C5C000E15E2 /* ColorPalette.swift in Sources */,
+				1483409A23019C5C000E15E2 /* Shape.swift in Sources */,
+				1483409B23019C5C000E15E2 /* Speed.swift in Sources */,
+				1483409C23019C5C000E15E2 /* Vec2D.swift in Sources */,
+				1483409D23019C5C000E15E2 /* Angle.swift in Sources */,
+				1483409E23019C5C000E15E2 /* CATransaction+.swift in Sources */,
+				1483409F23019C5C000E15E2 /* CGColor+.swift in Sources */,
+				148340A023019C5C000E15E2 /* CGPoint+.swift in Sources */,
+				148340A123019C5C000E15E2 /* Color+.swift in Sources */,
+				148340A223019C5C000E15E2 /* Pen.swift in Sources */,
+				148340A323019C5C000E15E2 /* Shape+.swift in Sources */,
+				148340A423019C5C000E15E2 /* Speed+.swift in Sources */,
+				148340A523019C5C000E15E2 /* Tortoise+.swift in Sources */,
+				148340A623019C5C000E15E2 /* TortoiseDelegate.swift in Sources */,
+				148340A723019C5C000E15E2 /* TortoiseState.swift in Sources */,
+				148340A823019C5C000E15E2 /* Vec2D+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
