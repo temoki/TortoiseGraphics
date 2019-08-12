@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1483406123014843000E15E2"
-               BuildableName = "TortoiseGraphics.framework"
-               BlueprintName = "TortoiseGraphics"
+               BlueprintIdentifier = "5E086DBF2051C5A7004D8D25"
+               BuildableName = "TortoiseGraphics.playgroundbook"
+               BlueprintName = "PlaygroundBook"
                ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1483406923014844000E15E2"
-               BuildableName = "TortoiseGraphicsTests.xctest"
-               BlueprintName = "TortoiseGraphicsTests"
-               ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1483406123014843000E15E2"
-            BuildableName = "TortoiseGraphics.framework"
-            BlueprintName = "TortoiseGraphics"
-            ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1483406123014843000E15E2"
-            BuildableName = "TortoiseGraphics.framework"
-            BlueprintName = "TortoiseGraphics"
+            BlueprintIdentifier = "5E086DBF2051C5A7004D8D25"
+            BuildableName = "TortoiseGraphics.playgroundbook"
+            BlueprintName = "PlaygroundBook"
             ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1483406123014843000E15E2"
-            BuildableName = "TortoiseGraphics.framework"
-            BlueprintName = "TortoiseGraphics"
+            BlueprintIdentifier = "5E086DBF2051C5A7004D8D25"
+            BuildableName = "TortoiseGraphics.playgroundbook"
+            BlueprintName = "PlaygroundBook"
             ReferencedContainer = "container:TortoiseGraphics.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

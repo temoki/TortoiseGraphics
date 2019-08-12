@@ -1,8 +1,0 @@
-platform :ios, '12.0'
-
-target 'Cocoapods-iOS' do
-  use_frameworks!
-
-  pod 'TortoiseGraphics', :git => 'https://github.com/temoki/TortoiseGraphics.git', :branch => 'develop'
-
-end

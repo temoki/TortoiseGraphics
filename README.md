@@ -166,14 +166,6 @@ let cgImage = canvas.cgImage
 
 ## Installation
 
-### [Swift Package Manager](https://swift.org/package-manager)
-
-```swift
-dependencies: [
-    .Package(url: "https://github.com/temoki/TortoiseGraphics.git", majorVersion: 0)
-]
-```
-
 ### [Carthage](https://github.com/Carthage/Carthage)
 
 ```
