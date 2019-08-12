@@ -12,7 +12,5 @@ Pod::Spec.new do |s|
   s.source_files     = 'Sources/PlaygroundBook/Core/*'
   s.frameworks       = 'CoreGraphics'
   s.ios.framework    = 'UIKit'
-  s.osx.framework    = 'AppKit'
   s.ios.deployment_target = '12.0'
-  s.osx.deployment_target = '10.13'
 end

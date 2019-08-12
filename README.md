@@ -1,7 +1,6 @@
 <img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5-blue.svg)](https://swift.org)
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
@@ -68,7 +67,7 @@ let cgImage = canvas.cgImage
 
 1. Download `TortoisePlayground.playgroundbook.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
 1. Unarchive the downloaded zip file.
-1. Send the unarchvied `TortoisePlayground.playgroundbook` file to your iPad by AirDrop.
+1. Send the unarchvied `TortoiseGraphics.playgroundbook` file to your iPad by AirDrop.
 1. Open it with Swift Playgrounds app.
 1. Let's play!
 
@@ -153,15 +152,19 @@ let cgImage = canvas.cgImage
 * `shape()`
 * `shape`
 
-## For Playground
+## for Playground
 
-* `PlaygroundCanvas` (iOS only)
-* `PlaygroundCanvasLiveView` (iOS only)
+* `PlaygroundCanvas`
+* `PlaygroundCanvasLiveView`
+
+### for Swift Playgrounds
+
+* `SwiftPlaygroundCanvas`
+* `LiveViewController`
 
 ## Requirements
 
 * Swift 5 (Xcode 10)
-* macOS 10.12 or later
 * iOS 12.0 or later
 
 ## Installation

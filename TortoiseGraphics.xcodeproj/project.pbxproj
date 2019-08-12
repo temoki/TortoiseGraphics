@@ -269,10 +269,10 @@
 		1483405C2301443E000E15E2 /* SwiftPlayground */ = {
 			isa = PBXGroup;
 			children = (
-				1483409323019C24000E15E2 /* Internal */,
 				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
 				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
 				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
+				1483409323019C24000E15E2 /* Internal */,
 			);
 			path = SwiftPlayground;
 			sourceTree = "<group>";

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TortoiseGraphics.playground">
+      location = "group:Playground.playground">
    </FileRef>
    <FileRef
       location = "container:TortoiseGraphics.xcodeproj">
