@@ -366,9 +366,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5E086DBF2051C5A7004D8D25 /* TortoiseGraphics */ = {
+		5E086DBF2051C5A7004D8D25 /* PlaygroundBook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */;
+			buildConfigurationList = 5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "PlaygroundBook" */;
 			buildPhases = (
 				5E086DD22051E35D004D8D25 /* Copy Book Contents */,
 				5E086DC62051DB17004D8D25 /* Resources */,
@@ -379,7 +379,7 @@
 			dependencies = (
 				5EF2F9B52054BDD100191409 /* PBXTargetDependency */,
 			);
-			name = TortoiseGraphics;
+			name = PlaygroundBook;
 			productName = PlaygroundBook;
 			productReference = 5E086DC02051C5A7004D8D25 /* TortoiseGraphics.playgroundbook */;
 			productType = "com.apple.product-type.bundle";
@@ -457,7 +457,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5E086DBF2051C5A7004D8D25 /* TortoiseGraphics */,
+				5E086DBF2051C5A7004D8D25 /* PlaygroundBook */,
 				5EF2F9AA2054BBF300191409 /* Book_Sources */,
 				5EA2E3BC2056F35A00416A35 /* LiveViewTestApp */,
 			);
@@ -551,7 +551,7 @@
 /* Begin PBXTargetDependency section */
 		5EA2E3D02056F36100416A35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5E086DBF2051C5A7004D8D25 /* TortoiseGraphics */;
+			target = 5E086DBF2051C5A7004D8D25 /* PlaygroundBook */;
 			targetProxy = 5EA2E3CF2056F36100416A35 /* PBXContainerItemProxy */;
 		};
 		5EA2E3D22056F36300416A35 /* PBXTargetDependency */ = {
@@ -826,7 +826,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "TortoiseGraphics" */ = {
+		5E086DC52051C5A7004D8D25 /* Build configuration list for PBXNativeTarget "PlaygroundBook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5E086DC32051C5A7004D8D25 /* Debug */,
