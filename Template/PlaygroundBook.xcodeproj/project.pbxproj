@@ -180,6 +180,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140883D82300F8F000E42435 /* SwiftPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
+				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
+				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
+				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
+				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
+			);
+			name = SwiftPlayground;
+			sourceTree = "<group>";
+		};
+		140883DB2300F97400E42435 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				1407C91822F9B91A0065F3FE /* Angle.swift */,
+				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
+				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
+				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
+				1407C90822F9B9190065F3FE /* Color+.swift */,
+				1407C90D22F9B9190065F3FE /* Pen.swift */,
+				1407C90722F9B9190065F3FE /* Shape+.swift */,
+				1407C91722F9B91A0065F3FE /* Speed+.swift */,
+				1407C90A22F9B9190065F3FE /* Tortoise+.swift */,
+				1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */,
+				1407C90C22F9B9190065F3FE /* TortoiseState.swift */,
+				1407C90E22F9B9190065F3FE /* Vec2D+.swift */,
+			);
+			name = Internal;
+			sourceTree = "<group>";
+		};
+		140883DE2300F9DB00E42435 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */,
+				1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
 		5E086DA4204F706E004D8D25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,34 +336,18 @@
 		5EF2F9A22054BB3E00191409 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */,
-				5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */,
-				5EF2F9AD2054BBF300191409 /* LiveViewController.swift */,
-				FAB71B3222FD209300C539E8 /* MessageToRemote.swift */,
-				FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */,
-				1407C91822F9B91A0065F3FE /* Angle.swift */,
-				1407C91522F9B91A0065F3FE /* Canvas.swift */,
-				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
-				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
-				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
-				1407C90922F9B9190065F3FE /* Color.swift */,
-				1407C90822F9B9190065F3FE /* Color+.swift */,
-				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
-				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
-				1407C90D22F9B9190065F3FE /* Pen.swift */,
-				1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */,
-				1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */,
-				1407C90F22F9B9190065F3FE /* Shape.swift */,
-				1407C90722F9B9190065F3FE /* Shape+.swift */,
-				1407C91422F9B91A0065F3FE /* Speed.swift */,
-				1407C91722F9B91A0065F3FE /* Speed+.swift */,
 				1407C91622F9B91A0065F3FE /* Tortoise.swift */,
-				1407C90A22F9B9190065F3FE /* Tortoise+.swift */,
 				1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */,
-				1407C90422F9B9190065F3FE /* TortoiseDelegate.swift */,
-				1407C90C22F9B9190065F3FE /* TortoiseState.swift */,
+				1407C91522F9B91A0065F3FE /* Canvas.swift */,
+				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
+				1407C90922F9B9190065F3FE /* Color.swift */,
+				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
+				1407C90F22F9B9190065F3FE /* Shape.swift */,
+				1407C91422F9B91A0065F3FE /* Speed.swift */,
 				1407C90622F9B9190065F3FE /* Vec2D.swift */,
-				1407C90E22F9B9190065F3FE /* Vec2D+.swift */,
+				140883DB2300F97400E42435 /* Internal */,
+				140883DE2300F9DB00E42435 /* Playground */,
+				140883D82300F8F000E42435 /* SwiftPlayground */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
