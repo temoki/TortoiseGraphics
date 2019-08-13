@@ -16,6 +16,8 @@
 	<string>$(SWIFT_VERSION)</string>
 	<key>Name</key>
 	<string>PlaygroundBookName</string>
+	<key>ImageReference</key>
+	<string>icon.png</string>
 	<key>Chapters</key>
 	<array>
 		<string>Chapter1.playgroundchapter</string>
