@@ -1,4 +1,5 @@
 //: # Let's play with 🐢
+//: [👉 Next](@next)
 import UIKit
 import PlaygroundSupport
 import TortoiseGraphics
