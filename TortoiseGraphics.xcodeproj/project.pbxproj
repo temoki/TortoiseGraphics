@@ -70,6 +70,7 @@
 		5EF2F9AE2054BBF300191409 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF2F9AD2054BBF300191409 /* LiveViewController.swift */; };
 		5EF2F9B72054E6FB00191409 /* Chapters in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9B62054E6F900191409 /* Chapters */; };
 		5EF2F9B82054E6FE00191409 /* Sources in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5EF2F9A52054BBB200191409 /* Sources */; };
+		FA9DBE4C2302740200E5B638 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9DBE4B2302740200E5B638 /* icon.png */; };
 		FAB71B3322FD209300C539E8 /* MessageToRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB71B3222FD209300C539E8 /* MessageToRemote.swift */; };
 		FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */; };
 /* End PBXBuildFile section */
@@ -200,6 +201,7 @@
 		5EF2F9AB2054BBF300191409 /* libBook_Sources.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBook_Sources.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF2F9AD2054BBF300191409 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		5EF2F9B62054E6F900191409 /* Chapters */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Chapters; sourceTree = "<group>"; };
+		FA9DBE4B2302740200E5B638 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		FAB71B3222FD209300C539E8 /* MessageToRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageToRemote.swift; sourceTree = "<group>"; };
 		FAB71B3422FD20E000C539E8 /* MessageToLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageToLiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -436,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				5EF2F97E2054B6E400191409 /* ManifestPlist.strings */,
+				FA9DBE4B2302740200E5B638 /* icon.png */,
 			);
 			path = PrivateResources;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 			files = (
 				148340AC2301A027000E15E2 /* TortoiseGraphics.podspec in Resources */,
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
+				FA9DBE4C2302740200E5B638 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
