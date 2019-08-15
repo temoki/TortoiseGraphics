@@ -67,7 +67,7 @@ let cgImage = canvas.cgImage
 
 #### Download
 
-1. Download `TortoisePlayground.playgroundbook.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
+1. Download `TortoiseGraphics.playgroundbook.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
 1. Unarchive the downloaded zip file.
 1. Send the unarchvied `TortoiseGraphics.playgroundbook` file to your iPad by AirDrop.
 1. Open it with Swift Playgrounds app.
