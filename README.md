@@ -24,7 +24,7 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 
 ### Result
 
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.png" width="300" />
+<img src="https://temoki.github.io/TortoiseGraphics/images/example.png" width="300" />
 
 ## Usage
 
@@ -55,6 +55,8 @@ let cgImage = canvas.cgImage
 1. Let's play!
 
 ### On Swift Playgrounds (iPad app)
+
+<img src="https://temoki.github.io/TortoiseGraphics/images/swift_playgrounds_mov.gif" />
 
 #### Subscription
 
@@ -180,6 +182,14 @@ github "temoki/TortoiseGraphics"
 ```ruby
 pod 'TortoiseGraphics'
 ```
+
+## Remaining Work
+
+* macOS support
+* [Swift Package Manager](https://swift.org/package-manager/) support
+* Enrich tortoise commands
+* Enrich playground contents
+
 
 ## License
 
