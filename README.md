@@ -1,7 +1,6 @@
 <img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5-blue.svg)](https://swift.org)
-[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://swift.org/package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
@@ -25,126 +24,39 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 
 ### Result
 
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.png" width="300" /> <img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example1.gif" width="300" />
+<img src="https://temoki.github.io/TortoiseGraphics/images/example.png" width="300" />
 
 ## Usage
 
-### Draw in NSView (macOS)
-
 ```swift
-class CanvasView: NSView {
+// Instantiate a `Tortoise`
+let 🐢 = Tortoise()
 
-    public override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
+// Instantiate `ImageCanvas` and add the tortoise
+let canvas = ImageCanvas(size: Vec2D(300, 300))
+canvas.add(🐢)
 
-        // Get current context
-        guard let cgContext = NSGraphicsContext.current?.cgContext else { return }
+// Command 🐢
+🐢.right(90)
+🐢.forward(100)
 
-        // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: bounds.size, context: cgContext)
-
-        // Command 🐢 on canvas.
-        canvas.drawing { 🐢 in
-            🐢.right(90)
-            🐢.forward(100)
-        }
-    }
-
-}
-```
-
-### Draw in UIView (iOS)
-
-```swift
-class CanvasView: UIView {
-
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-        // Get current context
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-
-        // Instantiate a GraphicsCanvas
-        let canvas = GraphicsCanvas(size: bounds.size, context: context)
-
-        // Command 🐢 on canvas.
-        canvas.drawing { 🐢 in
-            🐢.right(90)
-            🐢.forward(100)
-        }
-    }
-
-}
-```
-
-### Make or Write image
-
-```swift
-// Instantiate a ImageCanvas
-let canvas = ImageCanvas(size: CGSize(width: 300, height: 300))
-
-// Command 🐢 on canvas
-canvas.drawing { 🐢 in
-    🐢.right(90)
-    🐢.forward(100)
-}
-
-// Get drawn CGImage
+// Get drawn `CGImage`
 let cgImage = canvas.cgImage
 
-// Get drawn NSImage or UIImage
-let image = canvas.image
-
-// Write to image file (PNG, JPEG, TIFF, GIF)
-canvas.writePNG(to: URL(fileURLWithPath: "./image.png")
-canvas.writeJPEG(to: URL(fileURLWithPath: "./image.jpeg")
-canvas.writeTIFF(to: URL(fileURLWithPath: "./image.tiff")
-canvas.writeGIF(to: URL(fileURLWithPath: "./image.gif")
 ```
-
-### With multiple tortoises
-
-```swift
-canvas.drawingWithTortoises(count: 2) { tortoises in
-    let 🐢 = tortoises[0]
-    let 🐇 = tortoises[1]
-    🐢.shape(.tortoise)
-    🐇.shape(.classic)
-
-    🐢.penColor(.red)
-    🐢.fillColor(.orange)
-    🐢.left(90)
-
-    🐇.penColor(.purple)
-    🐇.fillColor(.lightBlue)
-    🐇.right(90)
-
-    // Turtle Star!
-    🐢.beginFill()
-    🐇.beginFill()
-    🐢.repeat(36) {
-        🐢.forward(120)
-        🐇.forward(120)
-        🐢.left(170)
-        🐇.right(170)
-    }
-    🐢.endFill()
-    🐇.endFill()
-}
-```
-
-<img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.png" width="300" /> <img src="https://github.com/temoki/TortoiseGraphics/blob/master/OutputExamples/example2.gif" width="300" />
 
 ## Playgrounds
 
 ### On Xcode
 
 1. Open `TortoiseGraphics.xcworkspace` in Xcode.
-1. Build `TortoiseGraphics` scheme for _My Mac_.
+1. Build `TortoiseGraphics` scheme for iOS Simulator.
 1. Select `Playground` in project navigator.
 1. Let's play!
 
 ### On Swift Playgrounds (iPad app)
+
+<img src="https://temoki.github.io/TortoiseGraphics/images/swift_playgrounds_mov.gif" />
 
 #### Subscription
 
@@ -157,17 +69,22 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 
 1. Download `TortoisePlayground.playgroundbook.zip` from [here](https://github.com/temoki/TortoiseGraphics/releases).
 1. Unarchive the downloaded zip file.
-1. Send the unarchvied `TortoisePlayground.playgroundbook` file to your iPad by AirDrop.
+1. Send the unarchvied `TortoiseGraphics.playgroundbook` file to your iPad by AirDrop.
 1. Open it with Swift Playgrounds app.
 1. Let's play!
 
 ## Classes
 
-* `ImageCanvas`
-* `GraphicsCanvas`
 * `Tortoise`
+* `ImageCanvas`
 * `Shape`
+* `Color`
 * `Vec2D`
+
+## Enums
+
+* `ColorPalette`
+* `Speed`
 
 ## Tortoise Commands
 
@@ -184,7 +101,6 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 * `setY()`
 * `setHeading()`, `setH()`
 * `home()`
-* `dot()`
 * `circle()`
 * `repeat() {}`
 
@@ -238,21 +154,22 @@ canvas.drawingWithTortoises(count: 2) { tortoises in
 * `shape()`
 * `shape`
 
+## for Playground
+
+* `PlaygroundCanvas`
+* `PlaygroundCanvasLiveView`
+
+### for Swift Playgrounds
+
+* `SwiftPlaygroundCanvas`
+* `LiveViewController`
+
 ## Requirements
 
-* Swift 5.0 (Xcode 10.2)
-* macOS 10.10 or later
-* iOS 10.0 or later
+* Swift 5 (Xcode 10)
+* iOS 12.0 or later
 
 ## Installation
-
-### [Swift Package Manager](https://swift.org/package-manager)
-
-```swift
-dependencies: [
-    .Package(url: "https://github.com/temoki/TortoiseGraphics.git", majorVersion: 0)
-]
-```
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 
@@ -265,6 +182,14 @@ github "temoki/TortoiseGraphics"
 ```ruby
 pod 'TortoiseGraphics'
 ```
+
+## Remaining Work
+
+* macOS support
+* [Swift Package Manager](https://swift.org/package-manager/) support
+* Enrich tortoise commands
+* Enrich playground contents
+
 
 ## License
 
