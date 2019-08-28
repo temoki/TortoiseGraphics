@@ -1,6 +1,7 @@
 <img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/main.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5-blue.svg)](https://swift.org)
+[![Swift Playgrounds](https://img.shields.io/badge/Swift_Playgrounds-available-blue.svg)](https://swift.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
 [![License](https://img.shields.io/cocoapods/l/TortoiseGraphics.svg?style=flat)](http://cocoapods.org/pods/TortoiseGraphics)
