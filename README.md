@@ -1,4 +1,4 @@
-<img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/main.png" />
+<img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5-blue.svg)](https://swift.org)
 [![Swift Playgrounds](https://img.shields.io/badge/Swift_Playgrounds-available-blue.svg)](https://swift.org)
