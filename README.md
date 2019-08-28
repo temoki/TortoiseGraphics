@@ -190,6 +190,9 @@ pod 'TortoiseGraphics'
 * Enrich tortoise commands
 * Enrich playground contents
 
+## Credits
+
+* Special thanks to [@kiyoshifuwa](https://twitter.com/kiyoshifuwa), for the amazing art works.
 
 ## License
 
