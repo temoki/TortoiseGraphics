@@ -1,4 +1,4 @@
-<img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
+<img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/main.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5-blue.svg)](https://swift.org)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
