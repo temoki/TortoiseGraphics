@@ -15,7 +15,7 @@ PLAYGROUND_BOOK_FILE_NAME = TortoiseGraphics
 
 // This is the ContentIdentifier of the playground book.
 // This should be updated to something specific to your team and your specific content.
-PLAYGROUND_BOOK_CONTENT_IDENTIFIER = $(BUNDLE_IDENTIFIER_PREFIX).$(PLAYGROUND_BOOK_FILE_NAME:rfc1034identifier)
+PLAYGROUND_BOOK_CONTENT_IDENTIFIER = $(BUNDLE_IDENTIFIER_PREFIX).$(PLAYGROUND_BOOK_FILE_NAME:rfc1034identifier).main
 
 // This is the ContentVersion of the playground book.
 PLAYGROUND_BOOK_CONTENT_VERSION = 1.0.0

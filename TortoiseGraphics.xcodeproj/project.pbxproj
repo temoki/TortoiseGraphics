@@ -58,7 +58,6 @@
 		148340A823019C5C000E15E2 /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
 		148340A923019C64000E15E2 /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
 		148340AA23019C64000E15E2 /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
-		148340AC2301A027000E15E2 /* TortoiseGraphics.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 148340AB2301A027000E15E2 /* TortoiseGraphics.podspec */; };
 		5E086DD32051E3A3004D8D25 /* Manifest.plist in Copy Book Contents */ = {isa = PBXBuildFile; fileRef = 5E086DCF2051DF0F004D8D25 /* Manifest.plist */; };
 		5E3196F32061DEA40077BBD7 /* LiveViewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3196F22061DEA40077BBD7 /* LiveViewSupport.swift */; };
 		5EA2E3C02056F35A00416A35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA2E3BF2056F35A00416A35 /* AppDelegate.swift */; };
@@ -637,7 +636,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				148340AC2301A027000E15E2 /* TortoiseGraphics.podspec in Resources */,
 				5EF2F97C2054B6E400191409 /* ManifestPlist.strings in Resources */,
 				FA9DBE4C2302740200E5B638 /* icon.png in Resources */,
 			);
