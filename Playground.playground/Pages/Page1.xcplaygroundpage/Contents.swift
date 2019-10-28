@@ -4,7 +4,8 @@ import UIKit
 import PlaygroundSupport
 import TortoiseGraphics
 
-let liveView = PlaygroundCanvasLiveView()
+let size = CGSize(width: 300, height: 300)
+let liveView = PlaygroundCanvasLiveView(size: size)
 PlaygroundPage.current.liveView = liveView
 
 let 🐢 = Tortoise()

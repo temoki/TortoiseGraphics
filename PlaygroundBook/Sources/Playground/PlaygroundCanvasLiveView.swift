@@ -3,6 +3,19 @@ import UIKit
 
 public class PlaygroundCanvasLiveView: UIViewController {
 
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    public init(size: CGSize) {
+        super.init(nibName: nil, bundle: nil)
+        self.preferredContentSize = size
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     public var canvas: Canvas {
         return playgroundCanvas
     }
