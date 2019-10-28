@@ -947,7 +947,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.1;
 			};
 			name = Debug;
 		};
@@ -971,7 +971,7 @@
 				PRODUCT_NAME = "$(PLAYGROUND_BOOK_FILE_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.1;
 			};
 			name = Release;
 		};

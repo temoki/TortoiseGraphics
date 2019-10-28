@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author           = 'temoki'
   s.source           = { :git => 'https://github.com/temoki/TortoiseGraphics.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/temoki'
-  s.swift_version    = '5.1'
+  s.swift_version    = '5'
   s.source_files     = 'PlaygroundBook/Sources/Core/*'
   s.frameworks       = 'CoreGraphics'
   s.ios.framework    = 'UIKit'

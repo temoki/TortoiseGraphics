@@ -7,14 +7,14 @@
   "documents": [
     {
       "title": "Tortoise Graphics",
-      "overviewSubtitle": "Swift 5.0 Edition",
+      "overviewSubtitle": "Swift 5.1 Edition",
       "detailSubtitle": "Let's play with 🐢",
       "description": "A turtle graphics (a key feature of the Logo) engine written in Swift.",
       "contentIdentifier": "io.github.temoki.TortoiseGraphics.main",
       "contentVersion": "1.0.0",
       "url": "https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/TortoiseGraphics.playgroundbook.zip",
       "publishedDate": "2018-02-01T00:00:00+00:00",
-      "lastUpdatedDate": "2019-08-16T00:00:00+00:00",
+      "lastUpdatedDate": "2019-010-28T00:00:00+00:00",
       "thumbnailURL": "main/icon.png",
       "bannerImageURL": "main/banner.png",
       "previewImageURLs": ["main/preview1.png", "main/preview2.png"],
@@ -30,11 +30,11 @@
         {
           "type": "date",
           "name": "Released:",
-          "value": "2019-08-16T00:00:00+00:00"
+          "value": "2019-10-28T00:00:00+00:00"
         },
         {
           "name": "Edition:",
-          "value": "Swift 5.0 Edition"
+          "value": "Swift 5.1 Edition"
         },
         {
           "name": "Languages:",
