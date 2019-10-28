@@ -36,6 +36,7 @@ public class LiveViewController: PlaygroundCanvasLiveView, PlaygroundLiveViewMes
     // Implement this method to receive messages sent from the process running Contents.swift.
     // This method is *required* by the PlaygroundLiveViewMessageHandler protocol.
     // Use this method to decode any messages sent as PlaygroundValue values and respond accordingly.
+    // swiftlint:disable:next cyclomatic_complexity
     public func receive(_ message: PlaygroundValue) {
         log(#function)
         guard case .data(let data) = message else { return }

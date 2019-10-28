@@ -142,6 +142,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         }
     }
 
+    // swiftlint:disable:next cyclomatic_complexity
     private func handleEvent(_ event: Event, completion: @escaping () -> Void) {
         switch event {
         case .tortoiseDidInitialize(let uuid, let state):

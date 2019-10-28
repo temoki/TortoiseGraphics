@@ -86,7 +86,7 @@ extension SwiftPlaygroundCanvas: TortoiseDelegate {
     }
 
     func tortoiseDidAddToOtherCanvas(_ uuid: UUID, _ state: TortoiseState) {
-        // TODO: 不要なはず？
+        // Nothing to do
     }
 
 }

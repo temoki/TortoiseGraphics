@@ -10,13 +10,22 @@ included:
   - TortoiseGraphicsTests
 
 identifier_name:
+  # インデックス (i, j)、座標(x,y,z)、色(r,g,b)等を考慮し、最小文字数はチェックしない
+  min_length: 1
   excluded:
     - 🐢
     - 🐇
-    - x
-    - y
-    - r
-    - g
-    - b
 
 force_cast: warning
+
+function_body_length:
+  warning: 200
+  error: 400
+
+type_body_length:
+  warning: 400
+  error: 800
+
+file_length:
+  warning: 600
+  error: 1200
