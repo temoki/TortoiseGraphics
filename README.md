@@ -187,6 +187,7 @@ pod 'TortoiseGraphics'
 
 ## Remaining Work
 
+* support SVG output 
 * macOS support
 * [Swift Package Manager](https://swift.org/package-manager/) support
 * Enrich tortoise commands
