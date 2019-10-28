@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		fYNO8X1HPIwSyItfKjDCEnybui8=
+		WpUrUyKNCnlwxVq/YrEs34Me0GQ=
 		</data>
 		<key>Headers/PlaygroundBluetooth.h</key>
 		<data>
@@ -14,15 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		SwEpl1j6Iy0fZC1OMwsHeWbIjF8=
+		LgUfdDMrwFg3NJXVL5uT5CsYjXU=
+		</data>
+		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<data>
+		Mm1mwRhYZLzJWIIeT43vGtPW0H0=
+		</data>
+		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<data>
+		VckgVmWoQq1Lo+KUj5wn4tmnRBs=
 		</data>
 		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		bXrAc+F9YxjHD/oIWw9WtuEsKis=
+		Mm1mwRhYZLzJWIIeT43vGtPW0H0=
 		</data>
 		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		NunLqoWQuHYdQmOCSfEK0l4sbNE=
+		VckgVmWoQq1Lo+KUj5wn4tmnRBs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +47,7 @@
 		</dict>
 		<key>version.plist</key>
 		<data>
-		X4h/sxZ+waq+3vVs+P5bjblDNAU=
+		jNFodP+jJcLaKjUfzASV85DIw6Q=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -48,11 +56,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fYNO8X1HPIwSyItfKjDCEnybui8=
+			WpUrUyKNCnlwxVq/YrEs34Me0GQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			HErl2KZnryBeHcO9ueB3lZ2vhZQbcjntpwOLRgOoOXY=
+			aXxxZL/3Don1LkpBDRN7ReZE4RGV8vyN266iXCc89IY=
 			</data>
 		</dict>
 		<key>Headers/PlaygroundBluetooth.h</key>
@@ -66,26 +74,48 @@
 			VDUOD3BofKO+uoA++HBb7jZVu7/GOv3WkB7av4+S7Sk=
 			</data>
 		</dict>
+		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Mm1mwRhYZLzJWIIeT43vGtPW0H0=
+			</data>
+			<key>hash2</key>
+			<data>
+			ReJZOB3qHg2ujMY7eOXLVqRZ0Qy5nry58h+D0dHx7uQ=
+			</data>
+		</dict>
+		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			VckgVmWoQq1Lo+KUj5wn4tmnRBs=
+			</data>
+			<key>hash2</key>
+			<data>
+			rp/I469QjiImKvRFbZmWCm7v6ksR/apAkPB6LU8/lSE=
+			</data>
+		</dict>
 		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bXrAc+F9YxjHD/oIWw9WtuEsKis=
+			Mm1mwRhYZLzJWIIeT43vGtPW0H0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jk3QmA3qIy52ePJx5ys96FIMdPd00rN7FG0L2ASNVB4=
+			ReJZOB3qHg2ujMY7eOXLVqRZ0Qy5nry58h+D0dHx7uQ=
 			</data>
 		</dict>
 		<key>Modules/PlaygroundBluetooth.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			NunLqoWQuHYdQmOCSfEK0l4sbNE=
+			VckgVmWoQq1Lo+KUj5wn4tmnRBs=
 			</data>
 			<key>hash2</key>
 			<data>
-			jazxiN8whiKCSK3Jo4iCT5O611Gu7I7/vMfsNAsGjMs=
+			rp/I469QjiImKvRFbZmWCm7v6ksR/apAkPB6LU8/lSE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -116,17 +146,17 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X4h/sxZ+waq+3vVs+P5bjblDNAU=
+			jNFodP+jJcLaKjUfzASV85DIw6Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jufg76BqcSqFVa60uESdGy4kfgoDST3oNZ1KD9hMioc=
+			YYY63GgyUHQicuPZQBEKLW8Jb55aW03ftiDQOTC7UEs=
 			</data>
 		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -157,24 +187,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -210,13 +228,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>

@@ -5,14 +5,14 @@
 	<key>BuildAliasOf</key>
 	<string>SerenityBookTemplate</string>
 	<key>BuildVersion</key>
-	<string>1</string>
+	<string>6</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>49</string>
+	<string>52</string>
 	<key>ProjectName</key>
 	<string>SerenityBookTemplate</string>
 	<key>SourceVersion</key>
-	<string>14000000000000</string>
+	<string>19000000000000</string>
 </dict>
 </plist>
