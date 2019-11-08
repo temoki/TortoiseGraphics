@@ -1,75 +1,72 @@
 import Foundation
 
-public struct Color: CustomStringConvertible {
+public struct Color: Equatable, Codable, CustomStringConvertible {
 
-    public var r: Double {
-        didSet { r = Color.componentToPresentationValue(r) }
-    }
+    public let r: Double
 
-    public var g: Double {
-        didSet { g = Color.componentToPresentationValue(g) }
-    }
+    public let g: Double
 
-    public var b: Double {
-        didSet { b = Color.componentToPresentationValue(b) }
-    }
+    public let b: Double
 
-    public var name: String?
+    public let name: String?
 
-    public init(_ r: Double, _ g: Double, _ b: Double, name: String? = nil) {
-        self.r = Color.componentToRawValue(r)
-        self.g = Color.componentToRawValue(g)
-        self.b = Color.componentToRawValue(b)
+    public let mode: Mode
+
+    public init(_ r: Double, _ g: Double, _ b: Double, name: String? = nil, mode: Mode = Color.defaultMode) {
+        self.r = r
+        self.g = g
+        self.b = b
         self.name = name
+        self.mode = mode
     }
 
-    public init(_ hex: String, name: String? = nil) {
+    public init(_ hex: String, name: String? = nil, mode: Mode = Color.defaultMode) {
         let scanner = Scanner(string: hex)
         var color: UInt32 = 0
         if scanner.scanHexInt32(&color) {
-            self.r = Double((color & 0xFF0000) >> 16) / 255.0
-            self.g = Double((color & 0x00FF00) >> 8)  / 255.0
-            self.b = Double((color & 0x0000FF) >> 0)  / 255.0
+            self.r = Double((color & 0xFF0000) >> 16) / mode.max
+            self.g = Double((color & 0x00FF00) >> 8) / mode.max
+            self.b = Double((color & 0x0000FF) >> 0) / mode.max
             self.name = name ?? hex
+            self.mode = mode
         } else {
             self.r = 0
             self.g = 0
             self.b = 0
             self.name = nil
+            self.mode = mode
         }
     }
 
-    public enum Mode: Double {
-        case range0to1 = 1.0
-        case range0to255 = 255.0
+    public enum Mode: String, Codable {
+        case range1
+        case range255
     }
 
-    public static var mode: Mode = .range0to255
+    public static var defaultMode: Mode = .range255
 
     // MARK: - CustomStringConvertible
 
     public var description: String {
-        if let name = self.name { return name }
-        let presenR = Color.componentToPresentationValue(r)
-        let presenG = Color.componentToPresentationValue(g)
-        let presenB = Color.componentToPresentationValue(b)
-        return "(\(presenR),\(presenG),\(presenB))"
-    }
-
-    // MARK: - Private
-
-    private static func componentToRawValue(_ component: Double) -> Double {
-        return max(0, min(component, mode.rawValue)) / mode.rawValue
-    }
-
-    private static func componentToPresentationValue(_ component: Double) -> Double {
-        return component * mode.rawValue
+        return "\(name ?? "") (\(r),\(g),\(b)) by \(mode)"
     }
 
 }
 
-extension Color: Codable {
-}
+extension Color.Mode {
 
-extension Color.Mode: Codable {
+    fileprivate var min: Double {
+        switch self {
+        case .range1: return 0
+        case .range255: return 0
+        }
+    }
+
+    fileprivate var max: Double {
+        switch self {
+        case .range1: return 1
+        case .range255: return 255
+        }
+    }
+
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-struct TortoiseState {
+struct TortoiseState: Equatable, Codable {
 
     var position: Vec2D = Vec2D()
 
@@ -12,9 +12,8 @@ struct TortoiseState {
 
     var speed: Speed = .normal
 
+    var strokePath: [Vec2D] = []
+
     var fillPath: [Vec2D]?
 
-}
-
-extension TortoiseState: Codable {
 }

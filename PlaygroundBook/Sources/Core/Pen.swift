@@ -1,6 +1,6 @@
 import Foundation
 
-struct Pen {
+struct Pen: Equatable, Codable {
 
     var isDown: Bool = true
 
@@ -10,7 +10,4 @@ struct Pen {
 
     var fillColor: Color = ColorPalette.black.color
 
-}
-
-extension Pen: Codable {
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Shape: CustomStringConvertible {
+public struct Shape: Equatable, Codable, CustomStringConvertible {
 
     public let name: String
 
@@ -38,13 +38,13 @@ public struct Shape: CustomStringConvertible {
 
     // MARK: - Internal
 
-    enum Path {
+    enum Path: Equatable {
         case points([Vec2D])
         case ellipse(Rect)
         case rect(Rect)
     }
 
-    struct Rect {
+    struct Rect: Equatable, Codable {
         var origin: Vec2D
         var size: Vec2D
     }
@@ -56,12 +56,6 @@ public struct Shape: CustomStringConvertible {
         self.path = path
     }
 
-}
-
-extension Shape: Codable {
-}
-
-extension Shape.Rect: Codable {
 }
 
 extension Shape.Path: Codable {

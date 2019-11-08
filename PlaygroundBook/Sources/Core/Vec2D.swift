@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Vec2D {
+public struct Vec2D: Equatable, Codable {
 
     public var x: Double
     public var y: Double
@@ -46,7 +46,4 @@ extension Vec2D {
                      x * sin(radian) + y * cos(radian))
     }
 
-}
-
-extension Vec2D: Codable {
 }

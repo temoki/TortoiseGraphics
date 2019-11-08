@@ -1,8 +1,8 @@
 import Foundation
 
-struct Angle {
+struct Angle: Equatable, Codable {
 
-    enum Unit: String {
+    enum Unit: String, Codable {
         case degree
         case radian
     }
@@ -30,10 +30,4 @@ struct Angle {
         }
     }
 
-}
-
-extension Angle: Codable {
-}
-
-extension Angle.Unit: Codable {
 }
