@@ -87,12 +87,6 @@ public class Tortoise {
         return state.speed
     }
 
-    public func `repeat`(_ times: Int, _ block: () -> Void) {
-        if times > 0 {
-            (0 ..< times).forEach { _ in block() }
-        }
-    }
-
     // MARK: - [Motion] Tell tortoise's state
 
     public var position: Vec2D {
@@ -105,7 +99,7 @@ public class Tortoise {
 
     public func towards(_ x: Double, _ y: Double) -> Double {
         let tan = (y - state.position.y) / (x - state.position.x)
-        return 90 - Angle(atan(tan), .radian).degree
+        return (Angle(90, .degree) - Angle(atan(tan), .radian)).value
     }
 
     public func towards(_ position: Vec2D) -> Double {
@@ -121,7 +115,7 @@ public class Tortoise {
     }
 
     public var heading: Double {
-        return Double(state.heading.value)
+        return state.heading.value
     }
 
     public func distance(_ x: Double, _ y: Double) -> Double {
@@ -132,11 +126,6 @@ public class Tortoise {
 
     public func distance(_ position: Vec2D) -> Double {
         return distance(position.x, position.y)
-    }
-
-    public func random(_ max: Double) -> Double {
-        let upperBound = UInt32(Swift.min(Swift.max(Int64(max), 0), Int64(UInt32.max)))
-        return Double(arc4random_uniform(upperBound))
     }
 
     // MARK: - [Pen control] Drawing state
@@ -250,21 +239,21 @@ public class Tortoise {
     // MARK: - [Tortoise state] Visiblity
 
     public func showTortoise() {
-        if !state.shape.isVisible {
-            state.shape.isVisible = true
+        if !state.isVisible {
+            state.isVisible = true
             delegate?.tortoiseDidChangeShape(uuid, state)
         }
     }
 
     public func hideTortoise() {
-        if state.shape.isVisible {
-            state.shape.isVisible = false
+        if state.isVisible {
+            state.isVisible = false
             delegate?.tortoiseDidChangeShape(uuid, state)
         }
     }
 
     public var isVisible: Bool {
-        return state.shape.isVisible
+        return state.isVisible
     }
 
     public func shape(_ shape: Shape) {

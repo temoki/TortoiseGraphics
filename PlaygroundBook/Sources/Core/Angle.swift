@@ -2,32 +2,41 @@ import Foundation
 
 struct Angle: Equatable, Codable {
 
+    static var currentUnit: Unit = .degree
+
     enum Unit: String, Codable {
         case degree
         case radian
     }
 
-    let value: Double
-
-    let unit: Unit
-
-    init(_ value: Double, _ unit: Unit) {
-        self.value = value
-        self.unit = unit
+    init(_ value: Double, _ unit: Unit = Angle.currentUnit) {
+        switch unit {
+        case .degree:
+            self.radian = value * (.pi / 180.0)
+        case .radian:
+            self.radian = value
+        }
     }
+
+    let radian: Double
 
     var degree: Double {
-        switch unit {
-        case .degree: return value
-        case .radian: return value * (180.0 / .pi)
+        return radian * (180.0 / .pi)
+    }
+
+    var value: Double {
+        switch Angle.currentUnit {
+        case .degree: return degree
+        case .radian: return radian
         }
     }
 
-    var radian: Double {
-        switch unit {
-        case .degree: return value * (.pi / 180.0)
-        case .radian: return value
-        }
-    }
+}
 
+func + (left: Angle, right: Angle) -> Angle {
+    return Angle(left.value + right.value)
+}
+
+func - (left: Angle, right: Angle) -> Angle {
+    return Angle(left.value - right.value)
 }

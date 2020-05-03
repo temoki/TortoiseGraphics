@@ -32,6 +32,7 @@
 		140883E12301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140883DF2301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard */; };
 		140D505422FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */; };
 		1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
+		145CD4B92375CB5100B2FCBA /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CD4B82375CB5100B2FCBA /* Other.swift */; };
 		1483406B23014844000E15E2 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1483406223014843000E15E2 /* TortoiseGraphics.framework */; };
 		1483407023014844000E15E2 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483406F23014844000E15E2 /* TortoiseGraphicsTests.swift */; };
 		1483407223014844000E15E2 /* TortoiseGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1483406423014844000E15E2 /* TortoiseGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -176,6 +177,7 @@
 		1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasLiveView.swift; sourceTree = "<group>"; };
 		140883E02301056300E42435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveViewTestAppLaunchScreen.storyboard; sourceTree = "<group>"; };
 		140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundCanvas.swift; sourceTree = "<group>"; };
+		145CD4B82375CB5100B2FCBA /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		1483406223014843000E15E2 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1483406423014844000E15E2 /* TortoiseGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TortoiseGraphics.h; sourceTree = "<group>"; };
 		1483406523014844000E15E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				1407C91622F9B91A0065F3FE /* Tortoise.swift */,
 				1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */,
+				145CD4B82375CB5100B2FCBA /* Other.swift */,
 				1407C91522F9B91A0065F3FE /* Canvas.swift */,
 				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
 				1407C90922F9B9190065F3FE /* Color.swift */,
@@ -746,6 +749,7 @@
 				1407C91C22F9B9550065F3FE /* Canvas.swift in Sources */,
 				1407C91D22F9B9550065F3FE /* CATransaction+.swift in Sources */,
 				1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */,
+				145CD4B92375CB5100B2FCBA /* Other.swift in Sources */,
 				FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */,
 				1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */,
 				1407C92022F9B9550065F3FE /* Color.swift in Sources */,

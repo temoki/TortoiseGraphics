@@ -4,8 +4,6 @@ public struct Shape: Equatable, Codable, CustomStringConvertible {
 
     public let name: String
 
-    public var isVisible: Bool = true
-
     public static var arrow: Shape {
         return Shape("arrow", path: Path.arrowPath())
     }

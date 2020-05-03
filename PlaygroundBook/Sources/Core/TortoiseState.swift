@@ -10,6 +10,8 @@ struct TortoiseState: Equatable, Codable {
 
     var shape: Shape = .tortoise
 
+    var isVisible: Bool = true
+
     var speed: Speed = .normal
 
     var strokePath: [Vec2D] = []

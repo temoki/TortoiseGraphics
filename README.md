@@ -104,7 +104,6 @@ let cgImage = canvas.cgImage
 * `setHeading()`, `setH()`
 * `home()`
 * `circle()`
-* `repeat() {}`
 
 #### Tell tortoise's state
 
@@ -114,7 +113,6 @@ let cgImage = canvas.cgImage
 * `ycor`
 * `heading`
 * `distance()`
-* `random()`
 
 ### Pen Control
 
@@ -155,6 +153,15 @@ let cgImage = canvas.cgImage
 * `isVisible`
 * `shape()`
 * `shape`
+
+## Other Commands
+
+* `repeating() {}`
+* `random()`
+* `degrees()`
+* `radians()`
+* `colorMode()`, 
+* `colorMode`
 
 ## for Playground
 

@@ -320,7 +320,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
         let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
 
         let toPath = makeShapePath(shape: state.shape, penSize: CGFloat(state.pen.width))
-        let toOpacity: Float = state.shape.isVisible ? 1 : 0
+        let toOpacity: Float = state.isVisible ? 1 : 0
 
         let completionBlock = { [weak self] in
             self?.imageCanvas.tortoiseDidChangeShape(uuid, state)
