@@ -14,7 +14,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
     public var cgImage: CGImage? {
         let size = canvasSize.toCGSize()
         let bgContext = createBackgroundContext(size: size, scale: bitmapScale)
-        bgContext?.setFillColor(canvasColor.toCGColor())
+        bgContext?.setFillColor(canvasColor.cgColor)
         bgContext?.fill(CGRect(origin: .zero, size: size))
         if let fgImage = bitmapContext?.makeImage() {
             bgContext?.draw(fgImage, in: CGRect(origin: .zero, size: size))
@@ -62,7 +62,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         tortoisePositions[uuid] = state.position
         guard state.pen.isDown else { return }
         bitmapContext?.saveGState()
-        bitmapContext?.setStrokeColor(state.pen.color.toCGColor())
+        bitmapContext?.setStrokeColor(state.pen.color.cgColor)
         bitmapContext?.setFillColor(CGColor.clear)
         bitmapContext?.setLineWidth(CGFloat(state.pen.width))
         bitmapContext?.addPath([position, state.position].toCGPath())
@@ -86,7 +86,7 @@ public class ImageCanvas: Canvas, TortoiseDelegate {
         guard let fillPath = state.fillPath else { return }
         bitmapContext?.saveGState()
         bitmapContext?.setStrokeColor(CGColor.clear)
-        bitmapContext?.setFillColor(state.pen.fillColor.toCGColor())
+        bitmapContext?.setFillColor(state.pen.fillColor.cgColor)
         bitmapContext?.addPath(fillPath.toCGPath())
         bitmapContext?.fillPath(using: .evenOdd)
         bitmapContext?.restoreGState()

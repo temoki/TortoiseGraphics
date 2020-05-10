@@ -181,9 +181,9 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
             shapeLayer.transform = rotatedTransform(angle: state.heading)
             shapeLayer.path = makeShapePath(shape: state.shape,
                                             penSize: CGFloat(state.pen.width))
-            shapeLayer.strokeColor = state.pen.color.toCGColor()
+            shapeLayer.strokeColor = state.pen.color.cgColor
             shapeLayer.lineWidth = CGFloat(state.pen.width)
-            shapeLayer.fillColor = state.pen.fillColor.toCGColor()
+            shapeLayer.fillColor = state.pen.fillColor.cgColor
         }, completion: { [weak self] in
             self?.layer.contents = self?.imageCanvas.cgImage
             completion()
@@ -223,7 +223,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 pathLayer.frame = CGRect(origin: .zero, size: .zero)
                 pathLayer.path = fromPath
                 pathLayer.backgroundColor = CGColor.clear
-                pathLayer.strokeColor = state.pen.color.toCGColor()
+                pathLayer.strokeColor = state.pen.color.cgColor
                 pathLayer.fillColor = CGColor.clear
                 pathLayer.lineWidth = CGFloat(state.pen.width)
 
@@ -275,9 +275,9 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     private func handleChangePenEvent(_ uuid: UUID, _ state: TortoiseState, _ completion: @escaping () -> Void) {
         let shapeLayer = tortoiseShapeMap[uuid]?.shapeLayer
-        let strokeColor = state.pen.color.toCGColor()
+        let strokeColor = state.pen.color.cgColor
         let lineWidth = CGFloat(state.pen.width)
-        let fillColor = state.pen.fillColor.toCGColor()
+        let fillColor = state.pen.fillColor.cgColor
 
         let completionBlock = { [weak self] in
             CATransaction.transactionWithoutAnimation({
@@ -385,7 +385,7 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
                 fillLayer.path = toPath
                 fillLayer.backgroundColor = CGColor.clear
                 fillLayer.strokeColor = CGColor.clear
-                fillLayer.fillColor = state.pen.fillColor.toCGColor()
+                fillLayer.fillColor = state.pen.fillColor.cgColor
                 fillLayer.fillRule = .evenOdd
 
                 let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.opacity))

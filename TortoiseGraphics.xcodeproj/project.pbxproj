@@ -13,7 +13,6 @@
 		1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
 		1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
 		1407C92022F9B9550065F3FE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
-		1407C92122F9B9550065F3FE /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90822F9B9190065F3FE /* Color+.swift */; };
 		1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
 		1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
 		1407C92422F9B9550065F3FE /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
@@ -49,7 +48,6 @@
 		1483409E23019C5C000E15E2 /* CATransaction+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91022F9B9190065F3FE /* CATransaction+.swift */; };
 		1483409F23019C5C000E15E2 /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
 		148340A023019C5C000E15E2 /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
-		148340A123019C5C000E15E2 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90822F9B9190065F3FE /* Color+.swift */; };
 		148340A223019C5C000E15E2 /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
 		148340A323019C5C000E15E2 /* Shape+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90722F9B9190065F3FE /* Shape+.swift */; };
 		148340A423019C5C000E15E2 /* Speed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91722F9B91A0065F3FE /* Speed+.swift */; };
@@ -156,7 +154,6 @@
 		1407C90522F9B9190065F3FE /* CGPoint+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+.swift"; sourceTree = "<group>"; };
 		1407C90622F9B9190065F3FE /* Vec2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vec2D.swift; sourceTree = "<group>"; };
 		1407C90722F9B9190065F3FE /* Shape+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shape+.swift"; sourceTree = "<group>"; };
-		1407C90822F9B9190065F3FE /* Color+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		1407C90922F9B9190065F3FE /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1407C90A22F9B9190065F3FE /* Tortoise+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+.swift"; sourceTree = "<group>"; };
 		1407C90B22F9B9190065F3FE /* Tortoise+Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tortoise+Alias.swift"; sourceTree = "<group>"; };
@@ -315,7 +312,6 @@
 				1407C91022F9B9190065F3FE /* CATransaction+.swift */,
 				1407C91A22F9B91A0065F3FE /* CGColor+.swift */,
 				1407C90522F9B9190065F3FE /* CGPoint+.swift */,
-				1407C90822F9B9190065F3FE /* Color+.swift */,
 				1407C90D22F9B9190065F3FE /* Pen.swift */,
 				1407C90722F9B9190065F3FE /* Shape+.swift */,
 				1407C91722F9B91A0065F3FE /* Speed+.swift */,
@@ -713,7 +709,6 @@
 				1483409E23019C5C000E15E2 /* CATransaction+.swift in Sources */,
 				1483409F23019C5C000E15E2 /* CGColor+.swift in Sources */,
 				148340A023019C5C000E15E2 /* CGPoint+.swift in Sources */,
-				148340A123019C5C000E15E2 /* Color+.swift in Sources */,
 				148340A223019C5C000E15E2 /* Pen.swift in Sources */,
 				148340A323019C5C000E15E2 /* Shape+.swift in Sources */,
 				148340A423019C5C000E15E2 /* Speed+.swift in Sources */,
@@ -753,7 +748,6 @@
 				FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */,
 				1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */,
 				1407C92022F9B9550065F3FE /* Color.swift in Sources */,
-				1407C92122F9B9550065F3FE /* Color+.swift in Sources */,
 				1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */,
 				1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */,
 				1407C92422F9B9550065F3FE /* Pen.swift in Sources */,

@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 public struct Color: Equatable, Codable, CustomStringConvertible {
 
@@ -44,10 +45,20 @@ public struct Color: Equatable, Codable, CustomStringConvertible {
 
     init(_ r: Double, _ g: Double, _ b: Double, name: String? = nil, mode: Mode) {
         let maxValue = Double(mode.rawValue)
-        self._r = max(0.0, r, min(r, maxValue)) / maxValue
-        self._g = max(0.0, g, min(g, maxValue)) / maxValue
-        self._b = max(0.0, b, min(b, maxValue)) / maxValue
+        self._r = max(0.0, min(r, maxValue)) / maxValue
+        self._g = max(0.0, min(g, maxValue)) / maxValue
+        self._b = max(0.0, min(b, maxValue)) / maxValue
         self.name = name
+    }
+
+    var cgColor: CGColor {
+        #if os(iOS)
+        return CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(),
+                       components: [CGFloat(_r), CGFloat(_g), CGFloat(_b), 1])!
+        // swiftlint:disable:previous force_unwrapping
+        #elseif os(macOS)
+        return CGColor(red: CGFloat(_r), green: CGFloat(_g), blue: CGFloat(_b), alpha: 1)
+        #endif
     }
 
     // MARK: - Private
