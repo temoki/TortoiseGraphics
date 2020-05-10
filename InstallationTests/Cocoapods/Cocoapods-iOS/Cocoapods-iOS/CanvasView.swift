@@ -29,7 +29,7 @@ class CanvasView: UIView {
         
         // Turtle Star!
         🐢.beginFill()
-        🐢.repeat(36) {
+        36.timesRepeat {
             🐢.forward(200)
             🐢.left(170)
         }
