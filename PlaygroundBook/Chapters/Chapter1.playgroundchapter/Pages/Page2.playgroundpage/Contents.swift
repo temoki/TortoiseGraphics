@@ -29,7 +29,7 @@ canvas.add(🐇)
 // Turtle Star!
 🐢.beginFill()
 🐇.beginFill()
-🐢.repeat(36) {
+36.timesRepeat {
     🐢.forward(120)
     🐇.forward(120)
     🐢.left(170)

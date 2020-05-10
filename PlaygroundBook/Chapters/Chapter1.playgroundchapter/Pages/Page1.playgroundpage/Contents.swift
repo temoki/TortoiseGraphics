@@ -22,7 +22,7 @@ canvas.add(🐢)
 🐢.penColor(.red)
 🐢.fillColor(.yellow)
 🐢.beginFill()
-🐢.repeat(36) {
+36.timesRepeat {
     🐢.forward(200)
     🐢.left(170)
 }
