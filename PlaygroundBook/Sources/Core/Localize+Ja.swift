@@ -24,12 +24,12 @@ extension Tortoise {
     }
 
     /// Alias to `penDown()`
-    public func ぺんをおろせ() {
+    public func ぺんをおろす() {
         penDown()
     }
 
     /// Alias to `penUp()`
-    public func ぺんをあげろ() {
+    public func ぺんをあげる() {
         penUp()
     }
 
@@ -44,9 +44,18 @@ extension Tortoise {
     }
 
     /// Alias to `home()`
-    public func もどれ() {
-        setPosition(0, 0)
-        setHeading(0)
+    public func もどる() {
+        home()
+    }
+
+    /// Alias to `reset()`
+    public func さいしょから() {
+        reset()
+    }
+
+    /// Alias to `clear()`
+    public func すべてけす() {
+        clear()
     }
 
     /// Alias to `beginFill()`
@@ -70,7 +79,7 @@ extension Tortoise {
     }
 
     /// Alias to `penColor()`
-    public func ペンのいろは(_ あか: Double, _ みどり: Double, _ あお: Double) {
+    public func ぺんのいろは(_ あか: Double, _ みどり: Double, _ あお: Double) {
         penColor(あか, みどり, あお)
     }
 
