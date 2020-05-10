@@ -49,13 +49,23 @@ extension Tortoise {
         setHeading(0)
     }
 
+    /// Alias to `beginFill()`
+    public func ぬるのをはじめる() {
+        beginFill()
+    }
+
+    /// Alias to `endFill()`
+    public func ぬるのをおわる() {
+        endFill()
+    }
+
     /// Alias to `penSize()`
     public func ぺんのおおきさは(_ おおきさ: Double) {
         penSize(おおきさ)
     }
 
     /// Alias to `penColor()`
-    public func ぺんのいろは(_ いろ: ColorPalette) {
+    public func ぺんのいろは(_ いろ: Color) {
         penColor(いろ)
     }
 
@@ -64,9 +74,37 @@ extension Tortoise {
         penColor(あか, みどり, あお)
     }
 
+    /// Alias to `fillColor()`
+    public func ぬるいろは(_ いろ: Color) {
+        fillColor(いろ)
+    }
+
+    /// Alias to `fillColor()`
+    public func ぬるいろは(_ あか: Double, _ みどり: Double, _ あお: Double) {
+        fillColor(あか, みどり, あお)
+    }
+
 }
 
 /// Alias to `repeating()`
 public func くりかえせ(_ かいすう: Int, _ block: () -> Void) {
     repeating(かいすう, block)
+}
+
+extension Color {
+
+    public static let くろ: Color = .black
+    public static let しろ: Color = .white
+    public static let はい: Color = .grey
+    public static let あお: Color = .blue
+    public static let むらさき: Color = .purple
+    public static let あか: Color = .red
+    public static let もも: Color = .pink
+    public static let だいだい: Color = .amber
+    public static let き: Color = .yellow
+    public static let きみどり: Color = .lightGreen
+    public static let みどり: Color = .green
+    public static let みずいろ: Color = .lightBlue
+    public static let ちゃ: Color = .brown
+
 }

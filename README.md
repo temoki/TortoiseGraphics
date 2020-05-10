@@ -85,7 +85,6 @@ let cgImage = canvas.cgImage
 
 ## Enums
 
-* `ColorPalette`
 * `Speed`
 
 ## Tortoise Commands

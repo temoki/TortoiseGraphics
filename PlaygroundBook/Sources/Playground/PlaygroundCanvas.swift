@@ -4,7 +4,7 @@ import UIKit
 public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public init(size: Vec2D, color: Color? = nil) {
-        self.canvasColor = color ?? ColorPalette.white.color
+        self.canvasColor = color ?? .white
         self.imageCanvas = ImageCanvas(size: size, scale: Double(UIScreen.main.scale), color: self.canvasColor)
         super.init(frame: CGRect(origin: .zero, size: size.toCGSize()))
     }
@@ -24,11 +24,6 @@ public class PlaygroundCanvas: UIView, Canvas, TortoiseDelegate {
 
     public var canvasSize: Vec2D {
         return imageCanvas.canvasSize
-    }
-
-    public func canvasColor(_ palette: ColorPalette) {
-        canvasColor = palette.color
-        addEvent(.canvasDidChangeBackground(canvasColor))
     }
 
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {

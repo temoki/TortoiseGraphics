@@ -13,7 +13,7 @@
 		1407C91E22F9B9550065F3FE /* CGColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91A22F9B91A0065F3FE /* CGColor+.swift */; };
 		1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90522F9B9190065F3FE /* CGPoint+.swift */; };
 		1407C92022F9B9550065F3FE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
-		1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
+		1407C92222F9B9550065F3FE /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* Color+Palette.swift */; };
 		1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
 		1407C92422F9B9550065F3FE /* Pen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90D22F9B9190065F3FE /* Pen.swift */; };
 		1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */; };
@@ -30,6 +30,7 @@
 		1407C93122F9B9550065F3FE /* Vec2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90E22F9B9190065F3FE /* Vec2D+.swift */; };
 		140883E12301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 140883DF2301056300E42435 /* LiveViewTestAppLaunchScreen.storyboard */; };
 		140D505422FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */; };
+		1426997C2467A33C00BBA8BC /* Localize+Ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426997B2467A33C00BBA8BC /* Localize+Ja.swift */; };
 		1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
 		145CD4B92375CB5100B2FCBA /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CD4B82375CB5100B2FCBA /* Other.swift */; };
 		1483406B23014844000E15E2 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1483406223014843000E15E2 /* TortoiseGraphics.framework */; };
@@ -40,7 +41,7 @@
 		1483409623019C5C000E15E2 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91522F9B91A0065F3FE /* Canvas.swift */; };
 		1483409723019C5C000E15E2 /* ImageCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91222F9B9190065F3FE /* ImageCanvas.swift */; };
 		1483409823019C5C000E15E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90922F9B9190065F3FE /* Color.swift */; };
-		1483409923019C5C000E15E2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* ColorPalette.swift */; };
+		1483409923019C5C000E15E2 /* Color+Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91322F9B91A0065F3FE /* Color+Palette.swift */; };
 		1483409A23019C5C000E15E2 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90F22F9B9190065F3FE /* Shape.swift */; };
 		1483409B23019C5C000E15E2 /* Speed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C91422F9B91A0065F3FE /* Speed.swift */; };
 		1483409C23019C5C000E15E2 /* Vec2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C90622F9B9190065F3FE /* Vec2D.swift */; };
@@ -164,7 +165,7 @@
 		1407C91022F9B9190065F3FE /* CATransaction+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CATransaction+.swift"; sourceTree = "<group>"; };
 		1407C91122F9B9190065F3FE /* PlaygroundCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvas.swift; sourceTree = "<group>"; };
 		1407C91222F9B9190065F3FE /* ImageCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCanvas.swift; sourceTree = "<group>"; };
-		1407C91322F9B91A0065F3FE /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		1407C91322F9B91A0065F3FE /* Color+Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Palette.swift"; sourceTree = "<group>"; };
 		1407C91422F9B91A0065F3FE /* Speed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speed.swift; sourceTree = "<group>"; };
 		1407C91522F9B91A0065F3FE /* Canvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		1407C91622F9B91A0065F3FE /* Tortoise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tortoise.swift; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 		1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasLiveView.swift; sourceTree = "<group>"; };
 		140883E02301056300E42435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveViewTestAppLaunchScreen.storyboard; sourceTree = "<group>"; };
 		140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundCanvas.swift; sourceTree = "<group>"; };
+		1426997B2467A33C00BBA8BC /* Localize+Ja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+Ja.swift"; sourceTree = "<group>"; };
 		145CD4B82375CB5100B2FCBA /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		1483406223014843000E15E2 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1483406423014844000E15E2 /* TortoiseGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TortoiseGraphics.h; sourceTree = "<group>"; };
@@ -287,10 +289,11 @@
 				1407C91522F9B91A0065F3FE /* Canvas.swift */,
 				1407C91222F9B9190065F3FE /* ImageCanvas.swift */,
 				1407C90922F9B9190065F3FE /* Color.swift */,
-				1407C91322F9B91A0065F3FE /* ColorPalette.swift */,
+				1407C91322F9B91A0065F3FE /* Color+Palette.swift */,
 				1407C90F22F9B9190065F3FE /* Shape.swift */,
 				1407C91422F9B91A0065F3FE /* Speed.swift */,
 				1407C90622F9B9190065F3FE /* Vec2D.swift */,
+				1426997B2467A33C00BBA8BC /* Localize+Ja.swift */,
 				148340AE2301A78F000E15E2 /* Internal */,
 			);
 			path = Core;
@@ -701,7 +704,7 @@
 				1483409623019C5C000E15E2 /* Canvas.swift in Sources */,
 				1483409723019C5C000E15E2 /* ImageCanvas.swift in Sources */,
 				1483409823019C5C000E15E2 /* Color.swift in Sources */,
-				1483409923019C5C000E15E2 /* ColorPalette.swift in Sources */,
+				1483409923019C5C000E15E2 /* Color+Palette.swift in Sources */,
 				1483409A23019C5C000E15E2 /* Shape.swift in Sources */,
 				1483409B23019C5C000E15E2 /* Speed.swift in Sources */,
 				1483409C23019C5C000E15E2 /* Vec2D.swift in Sources */,
@@ -748,9 +751,10 @@
 				FAB71B3522FD20E000C539E8 /* MessageToLiveView.swift in Sources */,
 				1407C91F22F9B9550065F3FE /* CGPoint+.swift in Sources */,
 				1407C92022F9B9550065F3FE /* Color.swift in Sources */,
-				1407C92222F9B9550065F3FE /* ColorPalette.swift in Sources */,
+				1407C92222F9B9550065F3FE /* Color+Palette.swift in Sources */,
 				1407C92322F9B9550065F3FE /* ImageCanvas.swift in Sources */,
 				1407C92422F9B9550065F3FE /* Pen.swift in Sources */,
+				1426997C2467A33C00BBA8BC /* Localize+Ja.swift in Sources */,
 				1407C92522F9B9550065F3FE /* PlaygroundCanvas.swift in Sources */,
 				1407C92722F9B9550065F3FE /* Shape.swift in Sources */,
 				1407C92822F9B9550065F3FE /* Shape+.swift in Sources */,

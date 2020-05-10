@@ -20,11 +20,6 @@ public class SwiftPlaygroundCanvas: Canvas {
 
     public private(set) var canvasSize: Vec2D = .zero
 
-    public func canvasColor(_ palette: ColorPalette) {
-        canvasColor = palette.color
-        send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
-    }
-
     public func canvasColor(_ r: Double, _ g: Double, _ b: Double) {
         canvasColor = Color(r, g, b)
         send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
@@ -40,7 +35,7 @@ public class SwiftPlaygroundCanvas: Canvas {
         send(MessageToLiveView(message: .canvadDidChangeBackgroud(MessageToLiveView.CanvasMessage(color: canvasColor))))
     }
 
-    public private(set) var canvasColor: Color = ColorPalette.white.color
+    public private(set) var canvasColor: Color = .white
 
     // MARK: - Private
 

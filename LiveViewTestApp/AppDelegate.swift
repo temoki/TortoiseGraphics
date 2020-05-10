@@ -21,7 +21,6 @@ class AppDelegate: LiveViewHost.AppDelegate {
             let 🐢 = Tortoise()
             liveView.canvas.add(🐢)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-                /*
                 🐢.penUp()
                 🐢.back(100)
                 🐢.penDown()
@@ -30,19 +29,12 @@ class AppDelegate: LiveViewHost.AppDelegate {
                 🐢.penColor(.red)
                 🐢.fillColor(.yellow)
                 🐢.beginFill()
+                 
                 repeating(36) {
                     🐢.forward(200)
                     🐢.left(170)
                 }
                 🐢.endFill()
- */
-                🐢.ぺんをあげろ()
-                🐢.うしろへ(100)
-                🐢.ぺんをおろせ()
-                くりかえせ(36) {
-                    🐢.まえへ(200)
-                    🐢.ひだりへ(170)
-                }
             }
         }
 

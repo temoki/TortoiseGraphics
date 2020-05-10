@@ -161,11 +161,6 @@ public class Tortoise {
 
     // MARK: - [Pen control] Color control
 
-    public func penColor(_ palette: ColorPalette) {
-        state.pen.color = palette.color
-        delegate?.tortoiseDidChangePen(uuid, state)
-    }
-
     public func penColor(_ r: Double, _ g: Double, _ b: Double) {
         state.pen.color = Color(r, g, b)
         delegate?.tortoiseDidChangePen(uuid, state)
@@ -183,11 +178,6 @@ public class Tortoise {
 
     public var penColor: Color {
         return state.pen.color
-    }
-
-    public func fillColor(_ palette: ColorPalette) {
-        state.pen.fillColor = palette.color
-        delegate?.tortoiseDidChangePen(uuid, state)
     }
 
     public func fillColor(_ r: Double, _ g: Double, _ b: Double) {
