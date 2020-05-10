@@ -33,6 +33,8 @@
 		1426997C2467A33C00BBA8BC /* Localize+Ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426997B2467A33C00BBA8BC /* Localize+Ja.swift */; };
 		1432CF7322F9BE20000DED7E /* PlaygroundCanvasLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */; };
 		145CD4B92375CB5100B2FCBA /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CD4B82375CB5100B2FCBA /* Other.swift */; };
+		1472A0D42467F6CE006D494B /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CD4B82375CB5100B2FCBA /* Other.swift */; };
+		1472A0D52467FA7D006D494B /* Localize+Ja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1426997B2467A33C00BBA8BC /* Localize+Ja.swift */; };
 		1483406B23014844000E15E2 /* TortoiseGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1483406223014843000E15E2 /* TortoiseGraphics.framework */; };
 		1483407023014844000E15E2 /* TortoiseGraphicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1483406F23014844000E15E2 /* TortoiseGraphicsTests.swift */; };
 		1483407223014844000E15E2 /* TortoiseGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 1483406423014844000E15E2 /* TortoiseGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -709,6 +711,8 @@
 				1483409B23019C5C000E15E2 /* Speed.swift in Sources */,
 				1483409C23019C5C000E15E2 /* Vec2D.swift in Sources */,
 				1483409D23019C5C000E15E2 /* Angle.swift in Sources */,
+				1472A0D42467F6CE006D494B /* Other.swift in Sources */,
+				1472A0D52467FA7D006D494B /* Localize+Ja.swift in Sources */,
 				1483409E23019C5C000E15E2 /* CATransaction+.swift in Sources */,
 				1483409F23019C5C000E15E2 /* CGColor+.swift in Sources */,
 				148340A023019C5C000E15E2 /* CGPoint+.swift in Sources */,

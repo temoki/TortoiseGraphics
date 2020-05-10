@@ -1,9 +1,13 @@
 import Foundation
 
-public func repeating(_ times: Int, _ block: () -> Void) {
-    if times > 0 {
-        (0 ..< times).forEach { _ in block() }
+extension Int {
+
+    public func timesRepeat(_ block: () -> Void) {
+        if self > 0 {
+            (0 ..< self).forEach { _ in block() }
+        }
     }
+
 }
 
 public func random(_ max: Double) -> Double {

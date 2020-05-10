@@ -86,9 +86,13 @@ extension Tortoise {
 
 }
 
-/// Alias to `repeating()`
-public func くりかえせ(_ かいすう: Int, _ block: () -> Void) {
-    repeating(かいすう, block)
+extension Int {
+
+    /// Alias to `timesRepeat()`
+    public func かいくりかえす(_ block: () -> Void) {
+        timesRepeat(block)
+    }
+
 }
 
 extension Color {

@@ -17,7 +17,7 @@ The commands were implemented with reference to the [turtle in Python 3 standard
 ```swift
 // Turtle Star!
 🐢.beginFill()
-🐢.repeat(36) {
+36.timesRepeat {
     🐢.forward(200)
     🐢.left(170)
 }
@@ -155,7 +155,7 @@ let cgImage = canvas.cgImage
 
 ## Other Commands
 
-* `repeating() {}`
+* `Int.timesRepeat() {}`
 * `random()`
 * `degrees()`
 * `radians()`
@@ -175,7 +175,7 @@ let cgImage = canvas.cgImage
 ## Requirements
 
 * Swift 5.1 (Xcode 11.1)
-* iOS 12.0 or later
+* iOS/iPadOS 13.0 or later
 
 ## Installation
 

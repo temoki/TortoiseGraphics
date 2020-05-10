@@ -30,7 +30,7 @@ class AppDelegate: LiveViewHost.AppDelegate {
                 🐢.fillColor(.yellow)
                 🐢.beginFill()
 
-                repeating(36) {
+                36.timesRepeat {
                     🐢.forward(200)
                     🐢.left(170)
                 }
