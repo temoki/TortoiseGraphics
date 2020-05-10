@@ -17,8 +17,8 @@ public struct Color: Equatable, Codable, CustomStringConvertible {
 
     public init(_ hex: String, name: String? = nil) {
         let scanner = Scanner(string: hex)
-        var color: UInt32 = 0
-        if scanner.scanHexInt32(&color) {
+        var color: UInt64 = 0
+        if scanner.scanHexInt64(&color) {
             let r = Double((color & 0xFF0000) >> 16)
             let g = Double((color & 0x00FF00) >> 8)
             let b = Double((color & 0x0000FF) >> 0)
