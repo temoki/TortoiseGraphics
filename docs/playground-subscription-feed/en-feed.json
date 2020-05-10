@@ -17,7 +17,7 @@
       "lastUpdatedDate": "2019-010-28T00:00:00+00:00",
       "thumbnailURL": "main/icon.png",
       "bannerImageURL": "main/banner.png",
-      "previewImageURLs": ["main/preview1.png", "main/preview2.png"],
+      "previewImageURLs": ["main/preview1.jpg", "main/preview2.jpg"],
       "additionalInformation": [
         {
           "name": "Publisher:",
