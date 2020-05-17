@@ -177,7 +177,7 @@
 		1407C93222F9BD6E0065F3FE /* PlaygroundCanvasLiveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundCanvasLiveView.swift; sourceTree = "<group>"; };
 		140883E02301056300E42435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LiveViewTestAppLaunchScreen.storyboard; sourceTree = "<group>"; };
 		140D505322FC4FEB00E66DB5 /* SwiftPlaygroundCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPlaygroundCanvas.swift; sourceTree = "<group>"; };
-		1426997B2467A33C00BBA8BC /* Localize+Ja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+Ja.swift"; sourceTree = "<group>"; };
+		1426997B2467A33C00BBA8BC /* Localize+Ja.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Localize+Ja.swift"; sourceTree = "<group>"; };
 		145CD4B82375CB5100B2FCBA /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		1483406223014843000E15E2 /* TortoiseGraphics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TortoiseGraphics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1483406423014844000E15E2 /* TortoiseGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TortoiseGraphics.h; sourceTree = "<group>"; };
