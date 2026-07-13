@@ -1,3 +1,10 @@
+
+> [!IMPORTANT]
+> This repository is no longer actively maintained.
+> The successor project **TortoiseGraphics2** has been rewritten for Swift 6 strict concurrency and SwiftUI.
+>
+> 👉 **[https://github.com/temoki/TortoiseGraphics2](https://github.com/temoki/TortoiseGraphics2)**
+
 <img src="https://temoki.github.io/TortoiseGraphics/playground-subscription-feed/main/banner.png" />
 
 [![Swift](https://img.shields.io/badge/Swift-5.1-blue.svg)](https://swift.org)
